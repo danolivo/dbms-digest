@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://danolivo.github.io/dbms-digest/sitemap.xml
