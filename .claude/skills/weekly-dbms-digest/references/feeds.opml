@@ -3,11 +3,11 @@
   <head>
     <title>DBMS Digest — input feeds</title>
     <!-- Curated RSS/Atom feeds scanned each run, across all languages.
-         Verified 2026-06-20:
+         Verified 2026-06-20 (browser-confirmed where noted):
            [ok]      fetches as plain XML with a normal fetch.
-           [browser] live feed, but our plain fetch returns empty/blocked - read it with
-                     the Claude-in-Chrome browser tools. Do NOT drop these; they are good
-                     sources, only the plain-fetch path is the problem.
+           [browser] live feed, but our plain fetch returns empty/blocked - read it with the
+                     Claude-in-Chrome browser tools. Do NOT drop these; the source is good,
+                     only the plain-fetch path fails. (Lobsters confirmed live via browser.)
          Maintain like the other source lists: add confirmed feeds, retire only truly dead ones. -->
   </head>
   <body>
@@ -15,7 +15,7 @@
       <outline type="rss" text="Planet PostgreSQL [ok]" xmlUrl="https://planet.postgresql.org/rss20.xml"/>
       <outline type="rss" text="Hacker News - postgres (>=20 pts) [ok]" xmlUrl="https://hnrss.org/newest?q=postgres&amp;points=20"/>
       <outline type="rss" text="Hacker News - database (>=50 pts) [ok]" xmlUrl="https://hnrss.org/newest?q=database&amp;points=50"/>
-      <outline type="rss" text="Lobsters - databases tag [browser]" xmlUrl="https://lobste.rs/t/databases.rss"/>
+      <outline type="rss" text="Lobsters - databases tag [browser - confirmed live]" xmlUrl="https://lobste.rs/t/databases.rss"/>
     </outline>
     <outline text="Community (browser - .rss blocklisted/empty for plain fetch)">
       <outline type="rss" text="r/PostgreSQL [browser]" xmlUrl="https://www.reddit.com/r/PostgreSQL/.rss"/>
@@ -34,7 +34,10 @@
       <outline type="rss" text="Dalibo blog [ok]" xmlUrl="https://blog.dalibo.com/feed.xml"/>
     </outline>
     <outline text="German [de]">
-      <outline type="rss" text="Cybertec (DE) [browser]" xmlUrl="https://www.cybertec-postgresql.com/de/feed/"/>
+      <!-- /de/feed/ redirects to a non-feed page (/en/de/feed/); real German feed URL unresolved.
+           Browse the /de/ blog with the browser to discover it, or rely on the EN Cybertec feed
+           (same team, mostly mirrored content). -->
+      <outline type="link" text="Cybertec (DE) [browser - discover feed; EN mirror exists]" htmlUrl="https://www.cybertec-postgresql.com/de/"/>
     </outline>
     <outline text="Chinese [zh] - discover feeds via browser; add here when confirmed">
       <!-- PingCAP/TiDB, OceanBase, PolarDB / Alibaba Cloud, modb.pro: feed URLs not yet
