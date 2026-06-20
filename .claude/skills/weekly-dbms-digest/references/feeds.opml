@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>DBMS Digest — input feeds</title>
+    <!-- Curated RSS/Atom feeds scanned each run, across all languages. Most fetch as
+         plain XML with a normal fetch. Feeds tagged [browser] are blocklisted for plain
+         fetch or JS-only - read them with the Claude-in-Chrome browser tools.
+         Maintain like the other source lists: add confirmed feeds, drop dead ones. -->
+  </head>
+  <body>
+    <outline text="Aggregators (English)">
+      <outline type="rss" text="Planet PostgreSQL" xmlUrl="https://planet.postgresql.org/rss20.xml"/>
+      <outline type="rss" text="Hacker News - postgres (>=20 pts)" xmlUrl="https://hnrss.org/newest?q=postgres&amp;points=20"/>
+      <outline type="rss" text="Hacker News - database (>=50 pts)" xmlUrl="https://hnrss.org/newest?q=database&amp;points=50"/>
+      <outline type="rss" text="Lobsters - databases tag" xmlUrl="https://lobste.rs/t/databases.rss"/>
+    </outline>
+    <outline text="Community (browser - .rss blocklisted for plain fetch)">
+      <outline type="rss" text="r/PostgreSQL [browser]" xmlUrl="https://www.reddit.com/r/PostgreSQL/.rss"/>
+      <outline type="rss" text="r/databasedevelopment [browser]" xmlUrl="https://www.reddit.com/r/databasedevelopment/.rss"/>
+    </outline>
+    <outline text="Research">
+      <outline type="rss" text="arXiv cs.DB" xmlUrl="https://rss.arxiv.org/rss/cs.DB"/>
+    </outline>
+    <outline text="Russian [ru]">
+      <outline type="rss" text="Habr - PostgreSQL hub" xmlUrl="https://habr.com/ru/rss/hubs/postgresql/articles/?fl=ru"/>
+    </outline>
+    <outline text="Japanese [ja]">
+      <outline type="rss" text="Qiita - PostgreSQL tag" xmlUrl="https://qiita.com/tags/postgresql/feed"/>
+    </outline>
+    <outline text="French [fr]">
+      <outline type="rss" text="Dalibo blog" xmlUrl="https://blog.dalibo.com/feed.xml"/>
+    </outline>
+    <outline text="German [de]">
+      <outline type="rss" text="Cybertec (DE)" xmlUrl="https://www.cybertec-postgresql.com/de/feed/"/>
+    </outline>
+    <outline text="Chinese [zh] - discover feeds via browser; add here when confirmed">
+      <!-- PingCAP/TiDB, OceanBase, PolarDB / Alibaba Cloud, modb.pro: feed URLs not yet
+           confirmed - find with the browser and add as type="rss" entries. -->
+    </outline>
+  </body>
+</opml>

@@ -6,6 +6,10 @@ When you find a new high-signal source, append it under the right section with a
 and a priority. When a source goes dormant or turns into pure marketing, mark it `[dormant]`
 or `[mostly-marketing]` rather than deleting it, so it isn't re-added next week.
 
+**Feed list:** the machine-readable RSS/Atom feeds scanned each run live in
+`references/feeds.opml` (all languages; also importable into any feed reader). Keep it in sync
+with this file — add confirmed feeds, drop dead ones.
+
 ## Aggregators & newsletters (start here — best fan-out)
 
 - **Planet PostgreSQL** — official community blog aggregator; the firehose of core contributors, vendors, and independents. P1. https://planet.postgresql.org/
