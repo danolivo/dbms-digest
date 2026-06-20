@@ -1,0 +1,21 @@
+{
+  "name": "DBMS Digest",
+  "short_name": "DBMS Digest",
+  "description": "A weekly, ad-free, fact-checked roundup of PostgreSQL & wider DBMS internals, news, and research. Monday → Sunday.",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#0d1b2e",
+  "theme_color": "#0d1b2e",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

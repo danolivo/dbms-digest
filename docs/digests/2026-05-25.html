@@ -4,7 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DBMS Weekly — 2026-05-31 (week of 2026-05-25–2026-05-31) · DBMS Digest</title>
+  <meta name="description" content="PostgreSQL &amp; DBMS internals digest for the week of May 25–May 31, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.">
+  <meta name="keywords" content="PostgreSQL, Postgres, database internals, DBMS, SQL, query optimizer, replication, MVCC, storage engine, database research, weekly digest, RSS">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#0d1b2e">
+  <link rel="canonical" href="https://danolivo.github.io/dbms-digest/digests/2026-05-25.html">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="DBMS Digest" href="../feed.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DBMS Digest">
+  <meta property="og:title" content="DBMS Weekly — 2026-05-31 (week of 2026-05-25–2026-05-31)">
+  <meta property="og:description" content="PostgreSQL &amp; DBMS internals digest for the week of May 25–May 31, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.">
+  <meta property="og:url" content="https://danolivo.github.io/dbms-digest/digests/2026-05-25.html">
+  <meta property="og:image" content="https://danolivo.github.io/dbms-digest/banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DBMS Weekly — 2026-05-31 (week of 2026-05-25–2026-05-31)">
+  <meta name="twitter:description" content="PostgreSQL &amp; DBMS internals digest for the week of May 25–May 31, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.">
+  <meta name="twitter:image" content="https://danolivo.github.io/dbms-digest/banner.jpg">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "DBMS Weekly — 2026-05-31 (week of 2026-05-25–2026-05-31)", "description": "PostgreSQL & DBMS internals digest for the week of May 25–May 31, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.", "inLanguage": "en", "url": "https://danolivo.github.io/dbms-digest/digests/2026-05-25.html", "mainEntityOfPage": "https://danolivo.github.io/dbms-digest/digests/2026-05-25.html", "datePublished": "2026-05-25T12:00:00+00:00", "dateModified": "2026-05-25T12:00:00+00:00", "author": {"@type": "Organization", "name": "DBMS Digest", "logo": {"@type": "ImageObject", "url": "https://danolivo.github.io/dbms-digest/icon-512.png"}}, "publisher": {"@type": "Organization", "name": "DBMS Digest", "logo": {"@type": "ImageObject", "url": "https://danolivo.github.io/dbms-digest/icon-512.png"}}, "image": "https://danolivo.github.io/dbms-digest/banner.jpg"}</script>
   <style>
     :root { --navy:#0d1b2e; --navy2:#13243a; --blue:#5a8bd4; --amber:#f5a623; --ink:#e7eef7; --mut:#8aa0bd; }
     * { box-sizing:border-box; }
@@ -34,7 +54,6 @@
     .backlink:hover { color:var(--amber); }
     footer { margin-top:40px; color:var(--mut); font-size:.85rem; border-top:1px solid var(--navy2); padding-top:18px; }
     footer a { color:var(--blue); }
-    /* two-column digest layout with a sticky section menu */
     .layout { display:block; }
     nav.toc { display:none; }
     @media (min-width:980px) {
@@ -47,7 +66,6 @@
     nav.toc a { display:block; padding:4px 10px; color:var(--mut); text-decoration:none;
       border-left:2px solid var(--navy2); line-height:1.35; }
     nav.toc a:hover { color:var(--amber); border-left-color:var(--amber); }
-    /* rendered digest prose */
     .prose h1 { font-size:1.5rem; line-height:1.25; margin:8px 0 18px; color:var(--ink); }
     .prose h2 { font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:var(--amber);
       border-top:1px solid var(--navy2); padding-top:22px; margin:34px 0 12px; scroll-margin-top:20px; }
