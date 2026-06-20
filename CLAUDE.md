@@ -27,9 +27,10 @@ Whenever you open this project (in Cowork or Claude Code), run the following rou
    `README.md`, newest first: `- [YYYY-MM-DD — week of …](digests/YYYY-MM-DD.md)`.
 
 5. **Keep sources fresh.** The skill may edit its source lists —
-   `.claude/skills/weekly-dbms-digest/references/sources.md` (publishers) and
-   `references/community-sources.md` (forums/chats/channels: new ones discovered, dead ones
-   retired). Include those edits in the commit.
+   `.claude/skills/weekly-dbms-digest/references/sources.md` (publishers),
+   `references/community-sources.md` (forums/chats/channels), and `references/feeds.opml`
+   (the RSS/Atom feed list scanned each run, all languages): new ones discovered, dead ones
+   retired. Include those edits in the commit.
 
 6. **Rebuild the RSS feed.** Whenever any digest was added or changed, run
    `python3 scripts/build_feed.py` to regenerate `docs/feed.xml` and `docs/index.html` from the
