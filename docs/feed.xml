@@ -5,7 +5,7 @@
     <link>https://danolivo.github.io/dbms-digest/</link>
     <description>A weekly, ad-free, fact-checked roundup of PostgreSQL &amp; wider DBMS internals, news, and research. Monday → Sunday.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Jun 2026 18:08:44 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2026 18:24:36 +0000</lastBuildDate>
     <atom:link href="https://danolivo.github.io/dbms-digest/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DBMS Weekly — 2026-06-14 (week of 2026-06-08–2026-06-14)</title>
@@ -57,28 +57,8 @@
 <li><strong><a href="https://arxiv.org/abs/2606.09361">Bespoke-Card: synthesizing workload-specific cardinality estimators</a></strong> — generate a per-workload cardinality estimator instead of tuning one generic model. <em>(AIDB @ VLDB '26)</em> <em>[paper]</em></li>
 <li><strong><a href="https://arxiv.org/abs/2606.10270">Determination Provenance: From Ambiguity to Algebra</a></strong> — Joseph M. Hellerstein gives an algebraic treatment of determination/provenance. <em>(arXiv)</em> <em>[paper]</em></li>
 </ul>
-<h2>Call for papers</h2>
-<p><em>Forward-looking; open as of 2026-06-20, nearest deadline first.</em></p>
-<ul>
-<li><strong><a href="https://www.postgresql.org/about/news/pgday-israel-2026-call-for-papers-is-now-open-3291/">PGDay Israel 2026</a></strong> — CFP closes <strong>Jul 1, 2026</strong>. <em>(community)</em></li>
-<li><strong><a href="https://vldb.org/2027/call-for-research-track.html">VLDB 2027 — Athens, Aug 23–27, 2027</a></strong> — rolling monthly PVLDB research deadlines; next on/around <strong>Jul 1, 2026</strong>. <em>(research)</em></li>
-<li><strong><a href="https://2027.sigmod.org/calls_papers_sigmod_research.shtml">SIGMOD 2027 — Huntington Beach, Jun 13–19, 2027</a></strong> — research-track Round 3 closes <strong>Jul 17, 2026</strong>. <em>(research)</em></li>
-<li><strong><a href="https://www.cidrdb.org/cidr2027/cfp.html">CIDR 2027 — Amsterdam, Jan 24–27, 2027</a></strong> — CFP open; deadline on the page. <em>(research)</em></li>
-</ul>
-<p><em>(PGConf.EU 2026's CFP closed Jun 1, so it's excluded — the section lists only still-open calls.)</em></p>
-<h2>Upcoming events</h2>
-<p><em>Next ~4–6 weeks. Talk picks flagged for an internals developer — ideas worth probing for our own products.</em></p>
-<ul>
-<li><strong><a href="https://2026.pgday.ch/schedule/">Swiss PGDay 2026 — Rapperswil, CH, Jun 25–26</a></strong> — the Swiss PostgreSQL conference, two tracks (EN/DE). Internals picks:<ul>
-<li><strong>Deep dive into the PostgreSQL Front/Backend protocol</strong> (Xavier Fischer, EDB) — the wire protocol every pooler, proxy, and distributed router must speak; directly useful for anything that intercepts or multiplexes client↔server traffic.</li>
-<li><strong>Optimizer Hints in PostgreSQL</strong> (Michael Banck, credativ) — timely against PG19's new <code>pg_plan_advice</code>; where hint-style plan control is heading and how to expose it.</li>
-<li><strong>Zooming in on OOM: a deep dive into Postgres and Linux memory</strong> (Oleksii Kliukin &amp; Dimitris Sideris, Tiger Data) — how backends interact with the Linux OOM killer; relevant to memory accounting and stability under load.</li>
-</ul>
-</li>
-</ul>
-<p><em>July itself is quiet for relational-DB conferences (only a Postgres meetup in Istanbul on Jul 2, programme TBA); the next program-rich events are PGDay UK (Sep 8) and PGConf.EU (Valencia, Oct 20–23).</em></p>
 <hr />
-<p><em>23 items · sources scanned: ~30 · community threads scanned: HN (40 DB stories) · international: 3 (ru, zh) · CFPs open: 4 · upcoming events: 1 · filtered out as marketing/ads: 8</em></p>]]></content:encoded>
+<p><em>23 items · sources scanned: ~30 · community threads scanned: HN (40 DB stories) · international: 3 (ru, zh) · filtered out as marketing/ads: 8</em></p>]]></content:encoded>
     </item>
     <item>
       <title>DBMS Weekly — 2026-06-07 (week of 2026-06-01–2026-06-07)</title>
@@ -119,24 +99,9 @@
 <li><strong><a href="https://habr.com/ru/articles/1044476/">VARCHAR(N) in PostgreSQL is a constraint, not a memory saving</a></strong> — myth-busting the <code>varchar(255)</code> habit: Postgres stores the actual string regardless of the limit, so <code>N</code> buys you a check constraint, not packed storage; when it helps and when it's cargo-culted. <em>(alwaysdeterminated · Habr)</em> [ru] <em>(orig: «VARCHAR(N) в PostgreSQL: ограничение, а не экономия памяти»)</em></li>
 </ul>
 <h2>Call for papers</h2>
-<p><em>Forward-looking; open as of 2026-06-20, nearest deadline first.</em></p>
 <ul>
-<li><strong><a href="https://www.postgresql.org/about/news/pgday-israel-2026-call-for-papers-is-now-open-3291/">PGDay Israel 2026</a></strong> — CFP closes <strong>Jul 1, 2026</strong>. <em>(community)</em></li>
-<li><strong><a href="https://vldb.org/2027/call-for-research-track.html">VLDB 2027 — Athens, Aug 23–27, 2027</a></strong> — rolling monthly PVLDB research deadlines; next on/around <strong>Jul 1, 2026</strong>. <em>(research)</em></li>
-<li><strong><a href="https://2027.sigmod.org/calls_papers_sigmod_research.shtml">SIGMOD 2027 — Huntington Beach, Jun 13–19, 2027</a></strong> — research-track Round 3 closes <strong>Jul 17, 2026</strong>. <em>(research)</em></li>
-<li><strong><a href="https://www.cidrdb.org/cidr2027/cfp.html">CIDR 2027 — Amsterdam, Jan 24–27, 2027</a></strong> — CFP open; deadline on the page. <em>(research)</em></li>
+<li><strong><a href="https://www.postgresql.org/about/news/pgconfpl-2026-call-for-papers-open-3312/">PostgreSQL Conference Poland — PGConf.PL 2026 — Gdańsk, Nov 24</a></strong> — the inaugural PGConf.PL; CfP opened this week (Jun 4), closes <strong>Jul 13, 2026</strong>. <em>(community)</em></li>
 </ul>
-<h2>Upcoming events</h2>
-<p><em>Next ~4–6 weeks. Talk picks flagged for an internals developer — ideas worth probing for our own products.</em></p>
-<ul>
-<li><strong><a href="https://2026.pgday.ch/schedule/">Swiss PGDay 2026 — Rapperswil, CH, Jun 25–26</a></strong> — the Swiss PostgreSQL conference, two tracks (EN/DE). Internals picks:<ul>
-<li><strong>Deep dive into the PostgreSQL Front/Backend protocol</strong> (Xavier Fischer, EDB) — the wire protocol every pooler, proxy, and distributed router must speak.</li>
-<li><strong>Optimizer Hints in PostgreSQL</strong> (Michael Banck, credativ) — timely against PG19's new <code>pg_plan_advice</code>.</li>
-<li><strong>Zooming in on OOM: Postgres &amp; Linux memory</strong> (Oleksii Kliukin &amp; Dimitris Sideris, Tiger Data) — backend/OOM-killer interaction and memory accounting.</li>
-</ul>
-</li>
-</ul>
-<p><em>July itself is quiet for relational-DB conferences; the next program-rich events are PGDay UK (Sep 8) and PGConf.EU (Valencia, Oct 20–23).</em></p>
 <hr />
 <p><em>18 items · sources scanned: ~30 · community threads scanned: Hacker News (Algolia, postgres+database queries) · international: Habr [ru] in-window; Dalibo [fr] and Qiita [ja] had no in-window items · filtered out as marketing/ads: ~14</em></p>]]></content:encoded>
     </item>
@@ -171,16 +136,7 @@
 <li><strong><a href="https://habr.com/ru/companies/tantor/articles/1039680/">Why Postgres with an external OLAP engine isn't really HTAP</a></strong> — argues that bolting an external columnar engine onto Postgres (separate storage model, ETL/CDC, parquet hand-off) breaks the single-transaction-visibility property real HTAP needs, and sketches doing OLTP + analytics over shared storage inside Postgres instead. <em>(Tantor Labs · habr.com)</em> [ru] <em>(orig: «Почему PostgreSQL с внешним OLAP — это не совсем HTAP?»)</em></li>
 <li><strong><a href="https://habr.com/ru/companies/tantor/articles/1039172/">Polymorphic associations in PostgreSQL: helping the planner avoid performance cliffs</a></strong> — how the ORM-generated discriminated-FK pattern (<code>type, id</code> LEFT JOINed to every subtype) regresses, and three pgsql-hackers patches discussed in 2024–2026 that each target a different source of the regression in the optimizer. <em>(Andrei Lepikhov · Tantor / habr.com)</em> [ru] <em>(orig: «Полиморфные ссылки в PostgreSQL: помогаем СУБД избежать провалов производительности»)</em></li>
 </ul>
-<h2>Call for papers</h2>
-<p><em>Forward-looking; open as of 2026-06-20, nearest deadline first.</em></p>
-<ul>
-<li><strong><a href="https://www.postgresql.org/about/news/pgday-israel-2026-call-for-papers-is-now-open-3291/">PGDay Israel 2026</a></strong> — CFP closes <strong>Jul 1, 2026</strong>. <em>(community)</em></li>
-<li><strong><a href="https://vldb.org/2027/call-for-research-track.html">VLDB 2027 — Athens, Aug 23–27, 2027</a></strong> — rolling monthly PVLDB research deadlines; next on/around <strong>Jul 1, 2026</strong>. <em>(research)</em></li>
-<li><strong><a href="https://2027.sigmod.org/calls_papers_sigmod_research.shtml">SIGMOD 2027 — Huntington Beach, Jun 13–19, 2027</a></strong> — research-track Round 3 closes <strong>Jul 17, 2026</strong>. <em>(research)</em></li>
-<li><strong><a href="https://www.cidrdb.org/cidr2027/cfp.html">CIDR 2027 — Amsterdam, Jan 24–27, 2027</a></strong> — CFP open; deadline on the page. <em>(research)</em></li>
-</ul>
 <h2>Upcoming events</h2>
-<p><em>Next ~4–6 weeks. Talk picks flagged for an internals developer — ideas worth probing for our own products.</em></p>
 <ul>
 <li><strong><a href="https://2026.pgday.ch/schedule/">Swiss PGDay 2026 — Rapperswil, CH, Jun 25–26</a></strong> — the Swiss PostgreSQL conference, two tracks (EN/DE). Internals picks:<ul>
 <li><strong>Deep dive into the PostgreSQL Front/Backend protocol</strong> (Xavier Fischer, EDB) — the wire protocol every pooler, proxy, and distributed router must speak.</li>
@@ -189,7 +145,6 @@
 </ul>
 </li>
 </ul>
-<p><em>July itself is quiet for relational-DB conferences; the next program-rich events are PGDay UK (Sep 8) and PGConf.EU (Valencia, Oct 20–23).</em></p>
 <hr />
 <p><em>14 items · sources scanned: ~30 · community threads scanned: HN (postgres/database/sqlite/clickhouse queries, date-ranged) · international: ru (Habr) · filtered out as marketing/ads: ~10</em></p>]]></content:encoded>
     </item>
@@ -236,24 +191,16 @@
 <li><strong><a href="https://runharbor.com/blog/2026-05-18-building-automatic-contextual-clinical-trial-audit-logging-in-postgres-without-triggers">21 CFR Part 11 audit logging in Postgres without triggers</a></strong> — Nathan Leung walks through why Harbor rejected pgAudit (no app context) and PL/pgSQL triggers (<code>SET LOCAL</code> plumbing, per-study-DB duplication, PgBouncer transaction-pooling wariness) and instead wrapped their Drizzle ORM in a JS <code>Proxy</code> that forces <code>.withAuditLogCtx(...)</code> before any mutation, writing the data change and a signed before/after audit row in one transaction (<code>SELECT ... FOR UPDATE</code> for a consistent snapshot). Honest trade-offs section: extra round trips, weaker guarantee than a DB-level trigger, and a note on eventually moving signing into pgcrypto. <em>(Nathan Leung · runharbor.com)</em></li>
 </ul>
 <h2>Call for papers</h2>
-<p><em>Forward-looking; open as of 2026-06-20, nearest deadline first.</em></p>
 <ul>
-<li><strong><a href="https://www.postgresql.org/about/news/pgday-israel-2026-call-for-papers-is-now-open-3291/">PGDay Israel 2026</a></strong> — CFP closes <strong>Jul 1, 2026</strong>. <em>(community)</em></li>
-<li><strong><a href="https://vldb.org/2027/call-for-research-track.html">VLDB 2027 — Athens, Aug 23–27, 2027</a></strong> — rolling monthly PVLDB research deadlines; next on/around <strong>Jul 1, 2026</strong>. <em>(research)</em></li>
-<li><strong><a href="https://2027.sigmod.org/calls_papers_sigmod_research.shtml">SIGMOD 2027 — Huntington Beach, Jun 13–19, 2027</a></strong> — research-track Round 3 closes <strong>Jul 17, 2026</strong>. <em>(research)</em></li>
-<li><strong><a href="https://www.cidrdb.org/cidr2027/cfp.html">CIDR 2027 — Amsterdam, Jan 24–27, 2027</a></strong> — CFP open; deadline on the page. <em>(research)</em></li>
+<li><strong><a href="https://www.postgresql.org/about/news/pgday-israel-2026-call-for-papers-is-now-open-3291/">PGDay Israel 2026 — Tel Aviv, Oct 25</a></strong> — CfP opened this week (May 21); submissions close <strong>Jul 1, 2026</strong>. <em>(community)</em></li>
 </ul>
 <h2>Upcoming events</h2>
-<p><em>Next ~4–6 weeks. Talk picks flagged for an internals developer — ideas worth probing for our own products.</em></p>
 <ul>
-<li><strong><a href="https://2026.pgday.ch/schedule/">Swiss PGDay 2026 — Rapperswil, CH, Jun 25–26</a></strong> — the Swiss PostgreSQL conference, two tracks (EN/DE). Internals picks:<ul>
-<li><strong>Deep dive into the PostgreSQL Front/Backend protocol</strong> (Xavier Fischer, EDB) — the wire protocol every pooler, proxy, and distributed router must speak.</li>
-<li><strong>Optimizer Hints in PostgreSQL</strong> (Michael Banck, credativ) — timely against PG19's new <code>pg_plan_advice</code>.</li>
-<li><strong>Zooming in on OOM: Postgres &amp; Linux memory</strong> (Oleksii Kliukin &amp; Dimitris Sideris, Tiger Data) — backend/OOM-killer interaction and memory accounting.</li>
+<li><strong><a href="https://2026.debs.org/">DEBS 2026 — Lisbon, PT, Jun 23–26</a></strong> — the ACM conference on Distributed and Event-Based Systems; close to Postgres logical-decoding/CDC and real-time analytics. Full program still going up; one accepted paper already of note:<ul>
+<li><strong>Lean Gossip: Big Gains from Small Talk</strong> — a leaner gossip / membership-dissemination protocol; applicable to cluster membership and failure detection in distributed Postgres deployments.</li>
 </ul>
 </li>
 </ul>
-<p><em>July itself is quiet for relational-DB conferences; the next program-rich events are PGDay UK (Sep 8) and PGConf.EU (Valencia, Oct 20–23).</em></p>
 <hr />
 <p><em>12 items · sources scanned: ~30 · community threads scanned: HN (Algolia, postgres + database queries — a quiet week, no in-window thread cleared the engagement bar) · international: Habr/Qiita/Dalibo feeds checked but none reach back to the window (plain feeds only carry recent items) · filtered out as marketing/ads: ~7</em></p>]]></content:encoded>
     </item>

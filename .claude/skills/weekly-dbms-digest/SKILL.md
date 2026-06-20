@@ -79,15 +79,14 @@ Follow `community-sources.md`'s upkeep rules every run: **discover** new active 
 
 ### 5. Conferences — open CFPs and upcoming events
 
-Build the closing **Call for papers** section. Unlike the rest of the digest this is **not** bound by the 7-day window — it's forward-looking: list a CFP while its submission deadline is still in the future (as of the run date) and drop it once the deadline passes. Sort by nearest deadline.
+Two date-windowed sections, each tied to **this** week so the same item never appears in two digests.
 
-Cover two buckets:
-- **PostgreSQL community events** — conferences, PGDays, and meetups (PGConf.dev, PGConf.EU, PGConf.NYC/India, Nordic PGDay, PGDay Paris/Boston/UK/Lowlands/Israel, FOSDEM PGDay, Prague PostgreSQL Developer Day, Swiss PGDay, …). Check the Conferences & CFP trackers in `references/sources.md`, the PostgreSQL events page and news archive, and the dev.events/postgres aggregator.
-- **Applied & research DB-systems venues close to Postgres** — VLDB, SIGMOD, CIDR, ICDE, DEBS, USENIX ATC/OSDI, plus practitioner conferences (P99 CONF, HYTRADBOI). Use the venue CFP pages and WikiCFP.
+**Call for papers** — list a CFP **only in the digest for the week its call opened** (the "CfP is now open" announcement falls inside this digest's 7-day window). One announcement → one digest; never list a CFP that opened in an earlier week or that is merely "still open". Cover both buckets, but only when the call was announced in-window:
+- **PostgreSQL community events** — conferences, PGDays, meetups (PGConf.dev/EU/NYC/India, Nordic PGDay, PGDay Paris/Boston/UK/Lowlands/Israel, FOSDEM PGDay, Prague PostgreSQL Developer Day, Swiss PGDay, …). Use the PostgreSQL **news archive** ("…CfP is now open" posts carry a date), the Conferences & CFP trackers in `references/sources.md`, and dev.events/postgres.
+- **Applied & research DB-systems venues close to Postgres** — VLDB, SIGMOD, CIDR, ICDE, DEBS, USENIX ATC/OSDI, P99 CONF, HYTRADBOI (venue CFP pages, WikiCFP).
+Give the conference, location + dates, the **CFP deadline**, and the link; tag *(community)* or *(research)*. If no CFP opened this week, omit the section.
 
-For each item give the conference, location + dates, the **CFP deadline**, and the link; tag *(community)* or *(research)*. Confirm the deadline is genuinely still open before listing — a closed CFP is noise.
-
-**Upcoming events (next ~4–6 weeks)** — a separate section for events to *attend or watch*, not submit to. List conferences, PGDays, and meetups in roughly the next month that matter to a relational-DB **internals** developer. For each, open the program/schedule and pick the **1–3 talks most interesting to an internals developer** — talks with ideas you could implement or probe in your own engine/product (wire protocol, planner/optimizer, storage, MVCC, replication, memory, concurrency, indexing), **not** generic intro/ops talks. Give the event (name, location, dates, link) then a short sub-list of the picked talks with speaker and a one-line "why it matters". If a program isn't posted yet, list the event and say so. If the next month is genuinely quiet, widen to the nearest upcoming events and say the month is light — never pad. Discover events via the Conferences & CFP trackers in `references/sources.md`, the PostgreSQL events page, and dev.events.
+**Upcoming events** — a one-month heads-up with **no repeats**: list a conference/PGDay/meetup exactly once, in the digest for the week during which it **enters the 30-day horizon** — i.e. its start date is **24–30 days after the end (Sunday) of this digest's week** (an event more than 30 days out waits for a later digest; one already ≤23 days out was listed last week). For each qualifying event, open the program and pick the **1–3 talks most interesting to an internals developer** — ideas you could implement or probe in your own engine/product (wire protocol, planner/optimizer, storage, MVCC, replication, memory, concurrency, indexing), **not** generic intro/ops talks; give speaker + a one-line "why it matters". If the program isn't posted yet, list the event and say so. If nothing enters the horizon this week, omit the section. Discover events via the Conferences & CFP trackers in `references/sources.md`, the PostgreSQL events page, and dev.events.
 
 ### 6. Discover emerging sources (self-update)
 
@@ -190,8 +189,8 @@ Notes on the format:
       - PostgreSQL 18+
   ```
 - **Community pulse items** link to the discussion thread and tag the platform plus a rough engagement signal, e.g. `*(Hacker News · 240 pts, 180 comments)*` or `*(r/PostgreSQL · 95 upvotes)*`. Keep to the 3–8 most-discussed threads, deduped against the rest of the digest.
-- **Call-for-papers items** are forward-looking, not week-bound: list a conference / PGDay / meetup (and applied DB-systems venues close to Postgres) only while its CFP deadline is still in the future, sorted by nearest deadline, tagged *(community)* or *(research)*.
-- **Upcoming-events items** list each event, then a short sub-list of 1–3 talks chosen for an internals developer (implementable/probeable ideas) with speaker and a one-line why-it-matters. Widen the window and say so if the next month is quiet.
+- **Call-for-papers items** appear only in the digest for the week the CFP **opened** (announcement in-window) — never repeated across weeks; tagged *(community)* or *(research)*.
+- **Upcoming-events items** appear once, ~a month ahead — the event starts 24–30 days after this digest's week ends — then a short sub-list of 1–3 internals-relevant talks (speaker + why-it-matters), or a note that the program is TBA.
 - **Blank line before every list.** A bullet list must be preceded by a blank line (CommonMark). If a section opens with an intro sentence (e.g. the Call-for-papers "open as of …" line), leave a blank line before the first `-`, or the whole block renders as one paragraph instead of a list.
 - **Skip empty sections silently.** Omit any section that has no items — do NOT write "nothing this week", "no items found", or an apology/explanation. A missing section just means nothing qualified; the reader infers that. Never add filler narration about gaps.
 - If delivering to Telegram or another plain-text channel later, the same content works; just drop the Markdown headers to bullet groups if the target doesn't render Markdown.
