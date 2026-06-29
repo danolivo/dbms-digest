@@ -7,19 +7,82 @@
       "captured_at": "2026-06-24",
       "note": "First tracked week (baseline). Flow computed from the per-CF activity log /59/activity/; absolute total not captured (full list page skipped to save tokens). Week-over-week total deltas begin next run.",
       "created": [
-        {"id": 6918, "title": "Global temporary tables", "by": "deanr", "date": "2026-06-21"},
-        {"id": 6917, "title": "Fix PL/Python crash when a SRF is redefined mid-execution", "by": "tgl", "date": "2026-06-21"},
-        {"id": 6916, "title": "PROXY protocol support", "by": "riouj", "date": "2026-06-20"},
-        {"id": 6915, "title": "pg_dump: skip pg_init_privs entries for non-existent roles", "by": "demir", "date": "2026-06-19"},
-        {"id": 6914, "title": "Fix out of bound access on embedded null token", "by": "aytiwari", "date": "2026-06-19"},
-        {"id": 6913, "title": "Tighten pg_uhc_verifychar() to enforce CP949 lead/trail byte ranges", "by": "dogeon", "date": "2026-06-19"}
+        {
+          "id": 6918,
+          "title": "Global temporary tables",
+          "by": "deanr",
+          "date": "2026-06-21"
+        },
+        {
+          "id": 6917,
+          "title": "Fix PL/Python crash when a SRF is redefined mid-execution",
+          "by": "tgl",
+          "date": "2026-06-21"
+        },
+        {
+          "id": 6916,
+          "title": "PROXY protocol support",
+          "by": "riouj",
+          "date": "2026-06-20"
+        },
+        {
+          "id": 6915,
+          "title": "pg_dump: skip pg_init_privs entries for non-existent roles",
+          "by": "demir",
+          "date": "2026-06-19"
+        },
+        {
+          "id": 6914,
+          "title": "Fix out of bound access on embedded null token",
+          "by": "aytiwari",
+          "date": "2026-06-19"
+        },
+        {
+          "id": 6913,
+          "title": "Tighten pg_uhc_verifychar() to enforce CP949 lead/trail byte ranges",
+          "by": "dogeon",
+          "date": "2026-06-19"
+        }
       ],
       "closed": [
-        {"id": 6917, "title": "Fix PL/Python crash when a SRF is redefined mid-execution", "status": "Committed", "date": "2026-06-21"},
-        {"id": 6911, "title": "Fix publisher-side sequence permission reporting", "status": "Committed", "date": "2026-06-20"},
-        {"id": 6899, "title": "Fix pg_restore --no-globals SQL output for pg_dumpall archives", "status": "Withdrawn", "date": "2026-06-20"}
+        {
+          "id": 6917,
+          "title": "Fix PL/Python crash when a SRF is redefined mid-execution",
+          "status": "Committed",
+          "date": "2026-06-21"
+        },
+        {
+          "id": 6911,
+          "title": "Fix publisher-side sequence permission reporting",
+          "status": "Committed",
+          "date": "2026-06-20"
+        },
+        {
+          "id": 6899,
+          "title": "Fix pg_restore --no-globals SQL output for pg_dumpall archives",
+          "status": "Withdrawn",
+          "date": "2026-06-20"
+        }
       ],
       "note_window": "Activity log covered Jun 18-21 in the page fetched; earlier in-window days (Jun 15-17) not enumerated this run."
+    },
+    {
+      "week": "2026-06-22",
+      "cf": "PG20-1 (#59)",
+      "captured_at": "2026-06-29",
+      "note": "Per-CF activity log (/59/activity/) not reachable this run (search index treats #59 as future and would not seed the URL into provenance; could not chain to it without fetching the ~180KB /59/ list page). Global /activity/ served stale (newest rows 2026-05-25). No fresh window flow computed; deliberately not fabricated. queue_snapshot below is from a cached view and is NOT window-scoped (unverified for this week).",
+      "queue_snapshot_unverified": {
+        "total": 287,
+        "needs_review": 194,
+        "ready_for_committer": 32,
+        "waiting_on_author": 25,
+        "committed": 3,
+        "moved_to_next": 24,
+        "withdrawn": 9
+      },
+      "created": [],
+      "closed": [],
+      "net": null
     }
   ]
 }
