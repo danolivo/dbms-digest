@@ -21,6 +21,7 @@ from __future__ import annotations
 import datetime as dt
 import html
 import json
+import os
 import re
 from email.utils import format_datetime
 from pathlib import Path
@@ -39,6 +40,13 @@ KEYWORDS = ("PostgreSQL, Postgres, database internals, DBMS, SQL, query optimize
             "replication, MVCC, storage engine, database research, weekly digest, RSS")
 MAX_ITEMS = 26  # ~half a year of weekly digests; older ones stay in the archive
 FAVICONS = ["favicon.ico", "favicon-32.png", "apple-touch-icon.png", "icon-512.png"]
+
+# Google Analytics 4. Put your Measurement ID ("G-XXXXXXXXXX") here to turn on
+# analytics site-wide; leave it empty to emit no tracking at all (the default, so a
+# rebuild is a no-op until you opt in). The GA_MEASUREMENT_ID env var, if set, wins —
+# handy for keeping the ID out of the repo. Note: GA4 sets cookies, so if you have
+# EU/UK visitors you'll likely want a consent banner (ask and I'll add one).
+GA_MEASUREMENT_ID = os.environ.get("GA_MEASUREMENT_ID", "G-3J18B7F5NZ").strip()  # GA4; env var overrides
 
 ROOT = Path(__file__).resolve().parent.parent
 DIGESTS = ROOT / "digests"
@@ -152,6 +160,26 @@ def page_rel(monday: dt.date) -> str:
     return f"digests/{monday:%Y-%m-%d}.html"
 
 
+def ga_snippet() -> str:
+    """Google Analytics 4 (gtag.js), emitted only when GA_MEASUREMENT_ID is set.
+    Returns the empty string otherwise, so the site ships no tracking by default."""
+    gid = GA_MEASUREMENT_ID
+    if not gid:
+        return ""
+    gid = html.escape(gid, quote=True)
+    # Built without an f-string so the gtag() function body's braces stay literal.
+    return (
+        "\n  <!-- Google tag (gtag.js) -->"
+        '\n  <script async src="https://www.googletagmanager.com/gtag/js?id=' + gid + '"></script>'
+        "\n  <script>"
+        "\n    window.dataLayer = window.dataLayer || [];"
+        "\n    function gtag(){dataLayer.push(arguments);}"
+        "\n    gtag('js', new Date());"
+        "\n    gtag('config', '" + gid + "');"
+        "\n  </script>"
+    )
+
+
 def head_meta(title: str, desc: str, canonical: str, og_type: str, rel: str) -> str:
     """Shared SEO + favicon + social-card tags. `rel` prefixes asset paths
     ("" for the site root, "../" for pages under digests/)."""
@@ -175,7 +203,7 @@ def head_meta(title: str, desc: str, canonical: str, og_type: str, rel: str) -> 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{t}">
   <meta name="twitter:description" content="{d}">
-  <meta name="twitter:image" content="{SITE}/banner.jpg">"""
+  <meta name="twitter:image" content="{SITE}/banner.jpg">""" + ga_snippet()
 
 
 def jsonld(obj: dict) -> str:
