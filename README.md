@@ -10,6 +10,7 @@
 
 _Newest first._
 
+- [2026-06-22 — week of Jun 22–28](digests/2026-06-22.md)
 - [2026-06-15 — week of Jun 15–21](digests/2026-06-15.md)
 - [2026-06-08 — week of Jun 8–14](digests/2026-06-08.md)
 - [2026-06-01 — week of Jun 1–7](digests/2026-06-01.md)

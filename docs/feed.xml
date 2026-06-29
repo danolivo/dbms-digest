@@ -5,8 +5,31 @@
     <link>https://danolivo.github.io/dbms-digest/</link>
     <description>A weekly, ad-free, fact-checked roundup of PostgreSQL &amp; wider DBMS internals, news, and research. Monday → Sunday.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 24 Jun 2026 13:14:16 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 06:20:42 +0000</lastBuildDate>
     <atom:link href="https://danolivo.github.io/dbms-digest/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DBMS Weekly — 2026-06-22 (week of 2026-06-22–2026-06-28)</title>
+      <link>https://danolivo.github.io/dbms-digest/digests/2026-06-22.html</link>
+      <guid isPermaLink="false">dbms-digest-2026-06-22</guid>
+      <pubDate>Mon, 22 Jun 2026 12:00:00 +0000</pubDate>
+      <content:encoded><![CDATA[<h2>PostgreSQL mailing lists</h2>
+<ul>
+<li><strong>[hackers] <a href="http://www.mail-archive.com/pgsql-hackers@lists.postgresql.org/msg231322.html">Conflict log history table for Logical Replication — error handling and a parallel-apply race get nailed down</a></strong> — the PG20-targeted feature that records apply-time replication conflicts into a system-managed table (<code>conflict_log_destination = log | table | all</code>, living in a <code>pg_conflict</code> schema) had its most intensive review week yet (Jun 22–26), and several open design questions were resolved. Highlights:<ul>
+<li><strong>ERROR, not WARNING, on a failed conflict-log insert.</strong> Amit Kapila settled the long-running question: a failed insert into the conflict-log table now ERRORs out (attaching the conflict info as error context) instead of being silently downgraded to a WARNING — the WARNING path could spam the log on a persistent failure (e.g. disk full while writing WAL), let users miss conflicts, and required an "ugly" nested try/catch that was judged a future bug source.</li>
+<li><strong>A parallel-apply race that could lose the conflict row.</strong> Nisha Moond reproduced and fixed a race where, on an ERROR-level conflict, the leader's <code>pa_wait_for_xact_finish()</code> unblocks once <code>AbortOutOfAnyTransaction()</code> releases the worker's transaction lock, then raises "lost connection to the parallel apply worker" and SIGTERMs it <em>mid-insert</em> — losing the deferred conflict row. Fix adds a <code>PARALLEL_TRANS_ERROR</code> state plus an injection-point TAP test (<code>039_pa_conflict_log_lock_wait.pl</code>).</li>
+<li><strong>json vs jsonb, and stricter option parsing.</strong> The stored tuple uses <code>json</code> (chosen to preserve exact column order/formatting and avoid a per-conflict conversion), with the caveat that <code>json</code> has no ordering operator so <code>ORDER BY replica_identity</code> errors — flagged as needing more thought. Also tightened: drop the conflict-log table before its dependency records, and reject an empty-string <code>conflict_log_destination</code> to match every other subscription option.</li>
+</ul>
+</li>
+</ul>
+<p><em>(Nisha Moond, Amit Kapila, Dilip Kumar, vignesh C, shveta malik, Peter Smith · pgsql-hackers)</em> <code>[patch posted]</code></p>
+<h2>CommitFest (open: PG20-1, #59)</h2>
+<ul>
+<li><strong>Balance (Jun 22–28):</strong> not captured this run. The per-CF activity log (<code>/59/activity/</code>) was not reachable, and the global activity log (<code>/activity/</code>) was served from a stale cache (newest rows dated May 25), so a clean week-over-week flow for Jun 22–28 could not be computed without guessing. The open CommitFest <strong>PG20-1 (#59)</strong> is in its collection phase — open now, closes <strong>2026-06-30</strong>, in-progress Jul 1–31. Queue snapshot (cached view, <strong>not</strong> window-scoped, so <code>[unverified]</code> for this week): ~287 entries — ~194 Needs review, ~32 Ready for Committer, ~25 Waiting on Author, 3 committed, ~24 moved to next CF, ~9 withdrawn. The week-over-week baseline from last run (PG20-1) therefore carries forward unchanged; fresh per-CF flow tracking resumes once the activity log is reachable again.</li>
+</ul>
+<hr />
+<p><em>1 item · sources scanned: ~12 (Planet PostgreSQL, PostgreSQL news archive, pgsql-hackers via mail-archive.com [date pages + thread chaining], CommitFest root + global activity log, official list archive, pganalyze blog, Habr [ru] search, HN/Algolia search) · filtered out as marketing/ads: ~4 (SEO "PostgreSQL performance tuning 2026" listicles, vendor tuning guides).</em></p>
+<p><em>Honest scope note for this week: the live PostgreSQL infrastructure (specific mail-archive message pages, the news archive, the CommitFest root) is current to ~Jun 26, but two things blocked a wider scan without fabricating — (1) the general web-search index returned only pre-2025 results for 2026 queries, so it could not <strong>discover</strong> in-window blog posts, community threads, or non-English items; and (2) the index/feed pages that would enumerate the week (mail-archive's newest "by date" page, Planet PostgreSQL, the official monthly archive) were served stale-cached or as empty JS shells. The PostgreSQL news archive showed <strong>no</strong> project releases dated inside the window (newest item: postgres-lsp, Jun 21 — last week's window). Rather than invent links, engagement counts, or article content, the Community pulse, Wider DBMS, Commercial engines, Migration, Research, International, and Conferences sections are omitted this week. The one development that could be confirmed in-window from primary sources — the logical-replication conflict-log-table review on pgsql-hackers — is reported above.</em></p>]]></content:encoded>
+    </item>
     <item>
       <title>DBMS Weekly — 2026-06-15 (week of 2026-06-15–2026-06-21)</title>
       <link>https://danolivo.github.io/dbms-digest/digests/2026-06-15.html</link>
