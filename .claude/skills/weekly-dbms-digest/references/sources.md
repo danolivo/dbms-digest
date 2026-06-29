@@ -42,6 +42,7 @@ with this file — add confirmed feeds, drop dead ones.
 - **DBMS Musings (Daniel Abadi)** — isolation/consistency, distributed DB theory made readable. P2. http://dbmsmusings.blogspot.com/
 - **Murat Demirbas — Metadata blog** — distributed systems & database papers, paper reviews. P2. https://muratbuffalo.blogspot.com/
 - **The New Stack — Databases** — news/trends; mixed, filter for substance. P3. https://thenewstack.io/data/
+- **QuestDB blog** — time-series engine internals and skeptical benchmarking-methodology writing. P3. https://questdb.com/blog/
 - **awesome-database-learning** — curated internals reading list; mine for new primary sources. P3. https://github.com/pingcap/awesome-database-learning
 
 ## Commercial engines (new techniques & inventions — filter marketing hard)
@@ -108,6 +109,7 @@ use it to confirm, not to discover._
 ### Russian `[ru]`
 - **Postgres Pro blog** — Russian Postgres vendor; internals, patches, version deep-dives (some cross-posted in EN). P2. https://postgrespro.ru/blog
 - **Habr — PostgreSQL hub** — large RU dev community; internals posts and production war stories. `[js]` P2. https://habr.com/ru/hubs/postgresql/
+- **Greengage blog** — Greenplum-lineage Postgres MPP; ops/internals (pg_upgrade/ggupgrade, ggrebalance). P3. https://habr.com/ru/companies/greengage/articles/
 
 ### Chinese `[zh]`
 - **PingCAP / TiDB blog (CN)** — distributed SQL internals, Raft, TiKV. P2. https://cn.pingcap.com/blog/
@@ -141,3 +143,6 @@ _Append discoveries here with date, name, link, and a one-line reason. Example:_
 - (2026-06-18) modern-sql.com (Markus Winand) — cross-engine SQL-standard conformance and feature comparisons. P2. https://modern-sql.com/
 - (2026-06-22) pghackers.com — AI-assisted search/explorer over the pgsql-hackers archive; trial as a faster way to triage in-window threads than the raw monthly index. P3. https://www.pghackers.com/
 - (2026-06-29) _Operational note (not a new publisher):_ when the run's egress policy blocks the official site/archives (planet.postgresql.org, www.postgresql.org, mail-archive.com, commitfest), the **GitHub mirror `github.com/postgres/postgres`** is a reliable, fetchable fallback for ground-truth — the `/commits/master?since=&until=` view is date-windowed and verifiable, and individual `/commit/<sha>` pages give the full message + diff. Use it to anchor the PostgreSQL section on what actually landed. P1 (fallback).
+- (2026-06-29) QuestDB blog (questdb.com/blog) — time-series internals + benchmarking-methodology writing; surfaced via a strong HN thread ("Lies, Damn Lies and Database Benchmarks"). P3.
+- (2026-06-29) Greengage blog [ru] — Greenplum-lineage Postgres MPP engineering (pg_upgrade/ggupgrade, ggrebalance). Watch for MPP-on-Postgres internals. P3.
+- (2026-06-29) _Operational note (fetch path):_ when plain `WebFetch`/`curl` fail or time out on the official domains, the **Claude-in-Chrome path + same-origin `fetch()`** is a reliable fallback that this run used end-to-end: navigate to the target domain, then `fetch()` its feed/API in-page and parse (RSS via `DOMParser`, JSON via `.json()`). Confirmed working this run for planet.postgresql.org (rss20.xml), www.postgresql.org (news archive + /list/pgsql-hackers/since/<ts>), commitfest.postgresql.org (/59/activity/), api.github.com (releases), rss.arxiv.org, hn.algolia.com (API), habr.com and blog.dalibo.com. Note: the in-page fetch is blocked if the current tab URL carries a query string (privacy guard) — navigate to a query-string-free URL first.

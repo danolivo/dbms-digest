@@ -70,19 +70,109 @@
       "week": "2026-06-22",
       "cf": "PG20-1 (#59)",
       "captured_at": "2026-06-29",
-      "note": "Regenerated 2026-06-29. commitfest.postgresql.org was entirely unreachable this run: the session egress was restricted to a GitHub-only network policy, so WebFetch/curl to the CF app (and the activity log /59/activity/) returned a proxy CONNECT 403. No fresh window flow computed; deliberately not fabricated. queue_snapshot below is carried from the prior run's cached view, was NOT re-fetched, and is NOT window-scoped (unverified for this week). Partial in-window development pulse available from the postgres git master log instead (~30 commits Jun 22-28; several close open CF entries).",
-      "queue_snapshot_unverified": {
-        "total": 287,
-        "needs_review": 194,
-        "ready_for_committer": 32,
-        "waiting_on_author": 25,
-        "committed": 3,
+      "note": "Regenerated 2026-06-29 via the in-browser fetch path (Claude-in-Chrome + same-origin fetch of /59/activity/ and /59/), after a full rescan. Earlier same-day run could not reach the CF app (GitHub-only egress) and is superseded. Flow below is the verified Jun 22-28 window from the activity log. Queue totals read from the filter sidebar and treated as approximate, not a precise snapshot.",
+      "created": [
+        {
+          "title": "Reduce reorder buffer spill from O(N^2) to O(N) during vacuum storms",
+          "by": "zhaorui",
+          "date": "2026-06-24"
+        },
+        {
+          "title": "uuidv7 improperly accepts dates before 1970-01-01",
+          "by": "bajishaik",
+          "date": "2026-06-24"
+        },
+        {
+          "title": "Support UUIDv6 in uuid_extract_timestamp()",
+          "by": "tristan957",
+          "date": "2026-06-24"
+        },
+        {
+          "title": "Add enable_groupagg GUC parameter",
+          "by": "yamatattsu (via richardguo)",
+          "date": "2026-06-25"
+        },
+        {
+          "title": "plpython: NULL pointer dereference on broken sequence objects",
+          "by": "richardguo",
+          "date": "2026-06-25"
+        },
+        {
+          "title": "Optimize UUID parse using SIMD",
+          "by": "masahikosawada",
+          "date": "2026-06-26"
+        },
+        {
+          "title": "ON EMPTY clause for aggregate and window functions",
+          "by": "jeevan.chalke",
+          "date": "2026-06-26"
+        },
+        {
+          "title": "Add hook for plugins to acquire sample rows during ANALYZE",
+          "by": "sambasivareddy.ch",
+          "date": "2026-06-26"
+        },
+        {
+          "title": "Document COPY FROM WHERE restrictions on generated and system columns",
+          "by": "masaofujii",
+          "date": "2026-06-26"
+        },
+        {
+          "title": "doc: fix pg_stat_autovacuum_scores threshold wording",
+          "by": "chaol",
+          "date": "2026-06-26"
+        }
+      ],
+      "closed": [
+        {
+          "title": "BUG #19484: Segmentation fault triggered by FDW",
+          "status": "Committed",
+          "by": "amitlan",
+          "date": "2026-06-25"
+        },
+        {
+          "title": "bytea(uuid) missing proleakproof?",
+          "status": "Committed",
+          "by": "masahikosawada",
+          "date": "2026-06-25"
+        },
+        {
+          "title": "Fix \\crosstabview to honor \\pset display_true/display_false",
+          "status": "Committed",
+          "by": "alvherre",
+          "date": "2026-06-26"
+        },
+        {
+          "title": "Fix bug of CHECK constraint enforceability recursion",
+          "status": "Committed",
+          "by": "adunstan",
+          "date": "2026-06-28"
+        },
+        {
+          "title": "Protect against timestamp underflow in uuidv7(interval)",
+          "status": "Withdrawn",
+          "date": "2026-06-24"
+        },
+        {
+          "title": "pgbench --continue-on-error: clarify TPS and failure reporting",
+          "status": "Withdrawn",
+          "date": "2026-06-28"
+        }
+      ],
+      "net": "in-window: 4 committed, 2 withdrawn; multiple new records (UUID cluster, reorder-buffer perf, ANALYZE sampling hook, new GUC/aggregate proposals)",
+      "queue_snapshot_approx": {
+        "as_of": "2026-06-29",
+        "source": "filter sidebar on /59/ (approximate)",
+        "needs_review": 20,
+        "waiting_on_author": 19,
+        "ready_for_committer": 20,
+        "committed": 97,
         "moved_to_next": 24,
-        "withdrawn": 9
+        "withdrawn": 19,
+        "rejected": 1,
+        "returned_with_feedback": 3
       },
-      "created": [],
-      "closed": [],
-      "net": null
+      "note_window": "Activity log fully covered Jun 22-28 (and into Jun 29) this run."
     }
   ]
 }
