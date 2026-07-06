@@ -173,6 +173,96 @@
         "returned_with_feedback": 3
       },
       "note_window": "Activity log fully covered Jun 22-28 (and into Jun 29) this run."
+    },
+    {
+      "week": "2026-06-29",
+      "cf": "PG20-1 (#59)",
+      "captured_at": "2026-07-06",
+      "note": "PG20-1 flipped to In Progress on Jul 1 (review month, Jul 1-31); PG20-2 opened Jul 1 for new patches. Flow captured from the LIVE per-CF activity log via the in-browser path (plain fetch served a cache cut at Jun 24). The log keeps only its last 100 rows, reaching back to Jun 30 18:27 - the first ~1.7 days of the window (Jun 29 00:00 - Jun 30 18:27) could not be enumerated, so created/closed below slightly undercount.",
+      "coverage": "2026-06-30 18:27 - 2026-07-05 24:00",
+      "created": [
+        {
+          "id": 6974,
+          "title": "Fix typo in pg_stat_us_to_ms()",
+          "by": "croissant",
+          "date": "2026-07-02"
+        },
+        {
+          "id": 6965,
+          "title": "Prevent crash when calling pgstat functions with unregistered stats kind",
+          "by": "bertranddrouvot.pg",
+          "date": "2026-07-01"
+        },
+        {
+          "id": 6964,
+          "title": "hash joins vs. bitmap filters",
+          "by": "benmejia",
+          "date": "2026-06-30"
+        },
+        {
+          "id": 6963,
+          "title": "remove unnecessary volatile qualifiers",
+          "by": "bossartn",
+          "date": "2026-06-30"
+        },
+        {
+          "id": 6962,
+          "title": "Improving display of octal GUCs",
+          "by": "tgl",
+          "date": "2026-06-30"
+        }
+      ],
+      "closed_counts": {
+        "committed": 25,
+        "withdrawn": 1,
+        "rejected": 1
+      },
+      "closed_highlights": [
+        {
+          "id": 6838,
+          "title": "Add per-backend lock statistics",
+          "status": "Committed",
+          "date": "2026-07-01"
+        },
+        {
+          "id": 6926,
+          "title": "Add MIN/MAX aggregate support for uuid",
+          "status": "Committed",
+          "date": "2026-07-01"
+        },
+        {
+          "id": 6919,
+          "title": "Improve UNION's output rowcount estimate",
+          "status": "Committed",
+          "date": "2026-07-01"
+        },
+        {
+          "id": 6948,
+          "title": "Add a statistics view to track usage of deprecated features",
+          "status": "Withdrawn",
+          "date": "2026-07-03"
+        },
+        {
+          "title": "Auto-rollback GUC for unresolved prepared transactions (via checkpointer)",
+          "status": "Rejected",
+          "date": "2026-07-01"
+        }
+      ],
+      "net": "5 created vs 27 closed in covered span -> net -22 (queue draining as In Progress began; commit tempo ~6x last week's 4)",
+      "queue_totals": {
+        "as_of": "2026-07-06 (as served; page cache >= Jul 1)",
+        "source": "status summary on /59/ (authoritative page header, not the sidebar)",
+        "needs_review": 300,
+        "waiting_on_author": 35,
+        "ready_for_committer": 48,
+        "committed": 69,
+        "moved_to_next": 24,
+        "withdrawn": 31,
+        "rejected": 1,
+        "returned_with_feedback": 2,
+        "total": 510
+      },
+      "baseline_note": "These are the first reliable absolute totals - treat week-over-week total deltas as starting HERE. The 2026-06-22 'queue_snapshot_approx' (sidebar-derived) is inconsistent with these figures (e.g. committed 97 vs 69) and must not be used as a baseline."
     }
   ]
 }

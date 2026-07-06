@@ -73,6 +73,9 @@ Access tier tells you whether it can be scanned without an account:
 _Append new community sources here: date, name, link, access tier, one-line reason._
 - (2026-06-20) _seed list created._
 
+- (2026-07-06) hntoplinks.com — week/month views of top HN stories with live points/comments; the fastest way to rank the week's DB threads when HN's own listing pages are cache-stale. Scan aid, not a primary source; verify numbers on the item page when possible. `[public]` P2. https://www.hntoplinks.com/week
+- (2026-07-06) _Access note (this run):_ Lobsters (/t/databases and story pages), Reddit (blocked UA), and DBA SE (?tab=week) were all unreachable/empty via plain fetch — an access-path failure, not dormancy; do NOT retire them. Use the in-browser reader for these when a browser is connected.
+
 ## Retired (removed from weekly scan)
 
 _When a source goes dead/dormant/promotional, move it here with date + reason so it isn't
