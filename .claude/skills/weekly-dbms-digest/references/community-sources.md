@@ -76,6 +76,9 @@ _Append new community sources here: date, name, link, access tier, one-line reas
 - (2026-07-06) hntoplinks.com — week/month views of top HN stories with live points/comments; the fastest way to rank the week's DB threads when HN's own listing pages are cache-stale. Scan aid, not a primary source; verify numbers on the item page when possible. `[public]` P2. https://www.hntoplinks.com/week
 - (2026-07-06) _Access note (this run):_ Lobsters (/t/databases and story pages), Reddit (blocked UA), and DBA SE (?tab=week) were all unreachable/empty via plain fetch — an access-path failure, not dormancy; do NOT retire them. Use the in-browser reader for these when a browser is connected.
 
+- (2026-07-13) hckrnews.com — chronological HN front-page mirror with points/comments; fresh when hntoplinks pages ≥2 are cache-stale, but only covers the most recent ~2–3 days. Scan aid for the tail of the week. `[public]` P3. https://hckrnews.com/
+- (2026-07-13) _Access note (this run, no browser):_ live news.ycombinator.com item pages returned empty to plain fetch; scores came from hntoplinks.com/week (page 1 fresh, deeper pages stale) + hckrnews.com + earlier cached item snapshots — engagement numbers may lag finals. Lobsters, Reddit, DBA SE (unseedable via search) all unreachable again. HN /front day archives blocked; mid-week mid-size threads may be under-sampled.
+
 ## Retired (removed from weekly scan)
 
 _When a source goes dead/dormant/promotional, move it here with date + reason so it isn't

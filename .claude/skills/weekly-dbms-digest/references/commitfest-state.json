@@ -263,6 +263,80 @@
         "total": 510
       },
       "baseline_note": "These are the first reliable absolute totals - treat week-over-week total deltas as starting HERE. The 2026-06-22 'queue_snapshot_approx' (sidebar-derived) is inconsistent with these figures (e.g. committed 97 vs 69) and must not be used as a baseline."
+    },
+    {
+      "week": "2026-07-06",
+      "cf": "PG20-1 (#59), In Progress Jul 1-31; new patches land in PG20-2 (#61)",
+      "captured_at": "2026-07-13",
+      "note": "No browser this run. /59/activity/ served a stale cache cut at Jun 24 (two attempts) - per-patch CF59 flow for Jul 6-12 could NOT be enumerated; week reported via queue-total deltas instead. /61/activity/, /current/ and /open/ were live. CF numbering: #60 is the year-long PG20-Drafts CF; PG20-2 is #61.",
+      "queue_totals_59": {
+        "as_of": "2026-07-13 (as served via /current/; includes a sliver of Jul 13 morning)",
+        "source": "status summary header on /current/ (a direct /59/ fetch minutes earlier served an older snapshot - cache variance)",
+        "needs_review": 304,
+        "waiting_on_author": 34,
+        "ready_for_committer": 49,
+        "committed": 153,
+        "moved_to_next": 25,
+        "withdrawn": 40,
+        "rejected": 3,
+        "total": 613
+      },
+      "week_over_week_59": "vs 2026-07-06 baseline (NR 300 / WoA 35 / RfC 48 / committed 69 / total 510): committed +84 (review month accelerating), NR ~flat +4, total +103 (patches moving in from #61 and elsewhere).",
+      "cf61_inflow": {
+        "coverage": "/61/activity/ reaches back to 2026-07-03; full Jul 6-12 window covered",
+        "created_count": 16,
+        "created_highlights": [
+          {
+            "id": 6988,
+            "title": "pg_threads.h take II",
+            "by": "jeltef (Munro)",
+            "date": "2026-07-06"
+          },
+          {
+            "id": 6991,
+            "title": "Per-backend AIO statistics",
+            "by": "bertranddrouvot.pg",
+            "date": "2026-07-07"
+          },
+          {
+            "id": 6992,
+            "title": "Logical decoding of aborts as xact_rollback",
+            "by": "samokhvalov",
+            "date": "2026-07-08"
+          },
+          {
+            "id": 6993,
+            "title": "lazy_scan_heap skip re-vacuum",
+            "by": "vilela",
+            "date": "2026-07-08"
+          },
+          {
+            "id": 7000,
+            "title": "Batched clock sweep (cross-socket atomic contention)",
+            "by": "burd/mlodgenski",
+            "date": "2026-07-09"
+          },
+          {
+            "id": 7001,
+            "title": "Convert variables to atomics",
+            "by": "bossartn",
+            "date": "2026-07-09"
+          },
+          {
+            "id": 7004,
+            "title": "pg_xmin_horizon view",
+            "by": "ray",
+            "date": "2026-07-12"
+          }
+        ],
+        "closed": "6 entries committed after move PG20-2->PG20-1 (incl. 6970 vector8_shift, 6986 nondeterministic LIKE, 6998 log_statement_max_length); 1 RfC promotion (6993, Jul 9)"
+      },
+      "standout_new_entry": {
+        "id": 7000,
+        "title": "Batched clock sweep",
+        "by": "Greg Burd",
+        "gist": "batch clock-sweep claims on the shared nextVictimBuffer atomic to cut cross-socket CAS traffic; v5 posted Jul 11, CI green"
+      }
     }
   ]
 }

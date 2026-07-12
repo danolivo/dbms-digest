@@ -29,6 +29,7 @@ with this file — add confirmed feeds, drop dead ones.
 - **Fujitsu (Fastware) Postgres blog** — internals and feature deep-dives. P3. https://www.postgresql.fastware.com/blog
 - **Microsoft Azure for PostgreSQL blog** — sometimes solid internals; filter marketing. P3. https://techcommunity.microsoft.com/category/azuredatabases/blog/adforpostgresql
 - **Postgres.ai blog** — DBLab, database branching, performance tooling. P3. https://postgres.ai/blog
+- **PgDog blog (Lev Kokotov)** — pooler/sharding internals from the implementer. P3. https://pgdog.dev/blog
 
 ## PostgreSQL development (primary, highest trust)
 
@@ -54,6 +55,7 @@ with this file — add confirmed feeds, drop dead ones.
 - **Franck Pachot** — cross-engine internals (Oracle, Postgres, YugabyteDB, MongoDB); excellent technique-level comparisons. P2. https://dev.to/franckpachot
 - **MySQL Server Blog / engineering** — InnoDB, optimizer, replication internals. P3. https://dev.mysql.com/blog-archive/
 - **Percona blog (MySQL/Postgres/Mongo)** — often substantive engineering; filter the product posts. P3. https://www.percona.com/blog/
+- **MariaDB Foundation blog** — engine-level write-ups (e.g. the DuckDB storage-engine line of work); also a clean MariaDB release radar. P3. https://mariadb.org/blog/
 
 ## Migration experience (real-world reports — prioritise)
 
@@ -116,6 +118,7 @@ use it to confirm, not to discover._
 - **OceanBase** — distributed DB engineering write-ups (CN). P3. https://www.oceanbase.com/
 - **Alibaba Cloud developer (PolarDB / AnalyticDB)** — engine internals; huge, filter hard. `[js]` P3. https://developer.aliyun.com/
 - **modb.pro (墨天轮)** — Chinese DBA community and articles (Oracle, PG, MySQL, domestic engines). P3. https://www.modb.pro/
+- **老冯云数 / blog.vonng.com (Ruohang Feng, Pigsty)** — high-signal PG-ecosystem essays, several per week; EN mirrors at /en/. Watch for Pigsty self-promo, the engineering is real. P2. https://blog.vonng.com/
 
 ### French `[fr]`
 - **Dalibo blog** — French Postgres consultancy; substantive internals (FR, some EN). P2. https://blog.dalibo.com/ · RSS https://blog.dalibo.com/feed.xml
@@ -127,6 +130,8 @@ use it to confirm, not to discover._
 ### Japanese `[ja]`
 - **Qiita — PostgreSQL tag** — large JP dev community; how-tos and internals. `[js]` P3. https://qiita.com/tags/postgresql · RSS https://qiita.com/tags/postgresql/feed
 - **SRA OSS (JP)** — Japanese Postgres support company write-ups. P3. https://www.sraoss.co.jp/
+- **Publickey (Junichi Niino)** — Japanese DBMS/cloud journalism; server-rendered, fetches reliably. P3. https://www.publickey1.jp/
+- **gihyo.jp «OSSデータベース取り時報»** — monthly MySQL/PG/Tsurugi column, lands ~1st of each month. P3. https://gihyo.jp/
 
 _Discover more per the self-update rule — pin precise regional blogs/authors/channels
 (incl. Telegram, WeChat, Qiita) as you find keepers; retire dead ones._
@@ -148,3 +153,10 @@ _Append discoveries here with date, name, link, and a one-line reason. Example:_
 - (2026-06-29) _Operational note (fetch path):_ when plain `WebFetch`/`curl` fail or time out on the official domains, the **Claude-in-Chrome path + same-origin `fetch()`** is a reliable fallback that this run used end-to-end: navigate to the target domain, then `fetch()` its feed/API in-page and parse (RSS via `DOMParser`, JSON via `.json()`). Confirmed working this run for planet.postgresql.org (rss20.xml), www.postgresql.org (news archive + /list/pgsql-hackers/since/<ts>), commitfest.postgresql.org (/59/activity/), api.github.com (releases), rss.arxiv.org, hn.algolia.com (API), habr.com and blog.dalibo.com. Note: the in-page fetch is blocked if the current tab URL carries a query string (privacy guard) — navigate to a query-string-free URL first.
 - (2026-07-06) pduzc.com (Zhang Chen) — PostgreSQL data-recovery / file-forensics field reports (ransomware carve-out recovery, single-file-per-relation risk analysis); rare hands-on content, appears on Planet PostgreSQL. P3. https://pduzc.com/blog
 - (2026-07-06) _Operational notes (this run):_ (1) plain fetch worked for postgresql.org + planet + commitfest this run, BUT several pages were served **cache-stale**: the global CF /activity/ was ~6 weeks old, the per-CF /59/activity/ cache was cut at Jun 24, and arXiv /list/cs.DB/* listings were mid-May/mid-June snapshots — cross-check a page's newest date before trusting it; the in-browser path returned live data every time. (2) The per-CF activity log keeps only its **last 100 rows** (no pagination) — during an In Progress CF that's ~5 days of history, so capture it early in the week or accept undercounting. (3) The /59/ page header "Status summary" line carries authoritative queue totals — no need for the sidebar. (4) mail-archive.com works well for pgsql-hackers/-general, but its pgsql-performance mirror has been silent since 2026-05-11 and there is NO mail-archive mirror of pgsql-bugs in the lists.postgresql.org era; postgresql.org /list/<name>/ browse pages rendered empty to plain fetch this run — bugs coverage came via hackers cross-references. (5) Feed URLs fetched as raw XML can come back as undecoded "[binary data]" — fetch the HTML index pages instead, or use the browser.
+- (2026-07-13) pgdog.dev/blog (Lev Kokotov) — pooler/sharding internals from the implementer; strong first-party rationale posts. P3.
+- (2026-07-13) blog.vonng.com (老冯云数, Ruohang Feng) [zh] — PG-ecosystem essays, two strong in-window items this week (PG 30th-birthday commit forensics, PG18 CoW cloning). P2.
+- (2026-07-13) publickey1.jp (Junichi Niino) [ja] — DBMS/cloud journalism, server-rendered and reliably fetchable. P3.
+- (2026-07-13) mariadb.org/blog — MariaDB Foundation engine write-ups + release radar. P3.
+- (2026-07-13) gihyo.jp OSS-DB monthly column [ja] — MySQL/PG/Tsurugi roundup ~1st of month. P3.
+- (2026-07-13) _Unverified claim from this run (check before acting): dbweekly.com may be defunct (archive reportedly frozen at issue #360, 2021-06-25). Verify next run and mark [dormant] if confirmed; do NOT retire yet._
+- (2026-07-13) _Operational notes (this run, no browser connected):_ (1) plain-fetch caches widely stale — planet.postgresql.org frozen at Jul 4 (rss20.xml returned binary; reconstructed the week via Postgres Weekly issue + direct blog fetches), mail-archive maillist.html frozen at May 18 (walk the lists via per-day search `search?l=<list>&q=date:YYYYMMDD` + msg chaining instead — worked well), commitfest /59/activity/ frozen at Jun 24 while /61/activity/, /current/ and /open/ were live — during an In Progress CF report flow from queue-total deltas when the activity log is stale. (2) github.com/postgres/postgres commit pages and gitweb returned empty; the pgsql-committers mail-archive was fresh through Jul 11 and is a good commit ground-truth fallback (commitdiff links inside the mails). (3) arXiv /list/cs.DB/recent and /new were stale May caches; the month listing /list/cs.DB/2026-07 was fresh once reached by chaining from any abs page. (4) CF numbering: #60 is the year-long PG20-Drafts CF; the next regular CF (PG20-2) is #61 — don't assume consecutive numbers.
