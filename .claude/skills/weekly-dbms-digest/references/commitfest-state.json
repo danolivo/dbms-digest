@@ -337,6 +337,15 @@
         "by": "Greg Burd",
         "gist": "batch clock-sweep claims on the shared nextVictimBuffer atomic to cut cross-socket CAS traffic; v5 posted Jul 11, CI green"
       }
+    },
+    {
+      "week": "2026-07-13",
+      "cf": "PG20-1 (#59), In Progress Jul 1-31; new patches land in PG20-2 (#61)",
+      "captured_at": "2026-07-20",
+      "note": "No browser this run and the CF app served stale caches end-to-end: /59/ status summary still showed the Jul 13 snapshot (committed 153, needs-review 304, total 613), /59/activity/ still cut at Jun 24, /61/activity/ unreachable (provenance). Weekly flow NOT measurable; do not treat 153/613 as a Jul 20 reading. Commit flow continued through Beta2 week per pgsql-committers (incl. reverts of GROUP BY ALL and the sequence-refresh guard, both Jul 17). Resume deltas at next live read.",
+      "created": [],
+      "closed": [],
+      "net": null
     }
   ]
 }

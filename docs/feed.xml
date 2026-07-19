@@ -5,8 +5,59 @@
     <link>https://danolivo.github.io/dbms-digest/</link>
     <description>A weekly, ad-free, fact-checked roundup of PostgreSQL &amp; wider DBMS internals, news, and research. Monday → Sunday.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 12 Jul 2026 22:47:27 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 17:22:48 +0000</lastBuildDate>
     <atom:link href="https://danolivo.github.io/dbms-digest/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DBMS Weekly — 2026-07-13 (week of 2026-07-13–2026-07-19)</title>
+      <link>https://danolivo.github.io/dbms-digest/digests/2026-07-13.html</link>
+      <guid isPermaLink="false">dbms-digest-2026-07-13</guid>
+      <pubDate>Mon, 13 Jul 2026 12:00:00 +0000</pubDate>
+      <content:encoded><![CDATA[<p><em>Beta week: PostgreSQL 19 Beta 2 shipped Jul 16, and the price of late beta showed up two
+days later — Friday brought two reverts: GROUP BY ALL is out of PG19 entirely (wrong results
+with ORDER BY under non-default equality semantics), and the sequence-refresh concurrency
+guard was pulled pending a different fix. No browser was connected this run and most archive
+caches were stale; mailing-list coverage came via pgsql-committers (fresh) — see the source
+note at the bottom.</em></p>
+<h2>PostgreSQL</h2>
+<ul>
+<li><strong><a href="https://www.postgresql.org/about/news/postgresql-19-beta-2-released-3350/">PostgreSQL 19 Beta 2 released</a></strong> — second beta, GA still targeted around September/October. <em>(PGDG · postgresql.org, Jul 16)</em><ul>
+<li>fixes since Beta 1: <code>vacuumdb --analyze-in-stages</code> regression on partitioned tables, several <code>FOR PORTION OF</code> and SQL/PGQ property-graph fixes, <code>REPACK</code> worker not cleaned up on FATAL exit, a race in logical-decoding activation, autovacuum's multixact-age score going infinite, <code>postgres_fdw</code> imported-statistics handling</li>
+<li>reverted: non-text output formats for <code>pg_dumpall</code></li>
+</ul>
+</li>
+<li><strong><a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47406.html">GROUP BY ALL reverted from PG19</a></strong> — post-commit review (reported by Chao Li) found the new syntax missed the special handling of entries that also appear in ORDER BY, returning wrong results when ORDER BY specifies non-default equality semantics; fixing it cleanly was judged too much churn for late beta, so the feature waits for v20. <em>(Daniel Gustafsson, Tom Lane · postgres git, Jul 17)</em> <code>[reverted]</code></li>
+<li><strong><a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47413.html">Sequence-refresh concurrency guard reverted</a></strong> — the fix that made <code>ALTER SUBSCRIPTION ... REFRESH SEQUENCES</code> error out while a sequencesync worker was running (closing the stale-value race found in review two weeks ago) caused intermittent buildfarm failures and was judged too inconvenient to keep; the underlying race gets a different fix in a follow-up. <em>(Amit Kapila · postgres git, Jul 17)</em> <code>[reverted]</code></li>
+<li><strong><a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47398.html">GiST index-only scans could return misaligned column data</a></strong> — fix for a column-alignment issue in GiST index-only scans, backpatched across the stable branches. <em>(Peter Geoghegan · postgres git)</em> <code>[committed]</code></li>
+<li><strong><a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47419.html">Planner: edge case in remove_useless_result_rtes() with outer joins</a></strong> — wrong-plan edge case when removing useless RTE_RESULT rels under outer joins, fixed and backpatched; same week the grammar <a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47417.html">restored <code>|</code> and <code>-&gt;</code> as prefix operators</a> after a regression from earlier parser work. <em>(Tom Lane · postgres git)</em> <code>[committed]</code></li>
+<li><strong>Master grab-bag</strong> — <a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47364.html">pg_controldata now shows logical decoding status</a> <em>(Masahiko Sawada)</em>; <a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47415.html">REASSIGN OWNED fixed for subscriptions in other databases</a> <em>(Jeff Davis)</em>; <a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47359.html">uuidv7() rejects infinite/out-of-range interval shifts</a> <em>(Masahiko Sawada)</em>; <a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47303.html">case-insensitive LIKE prefix selectivity fixed</a> <em>(Jeff Davis)</em>; the ancient SQL function <a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47368.html">getpgusername() is gone</a> <em>(Michael Paquier)</em>; platform floors raised to <a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47346.html">Visual Studio 2022</a> and <a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47347.html">ICU 55</a> <em>(Peter Eisentraut)</em> — the matching Tcl 8.6 bump was <a href="https://mail-archive.com/pgsql-committers@lists.postgresql.org/msg47349.html">reverted the same week</a>. <code>[committed]</code></li>
+</ul>
+<h3>Reading</h3>
+<ul>
+<li><strong><a href="https://hakibenita.com/postgresql-partition-pruning">How to achieve pruning when querying by non-partitioned columns</a></strong> — if a non-key column correlates with the partition key (sequential IDs in time-partitioned data), per-partition <code>CHECK</code> constraints let the planner prune on that column too, with a BRIN-inspired trick for outliers. <em>(Haki Benita · hakibenita.com)</em> <code>[publish date unverified]</code></li>
+<li><strong><a href="https://www.cybertec-postgresql.com/en/how-sql-pgq-rewrites-to-joins-on-postgresql-19/">How SQL/PGQ rewrites to joins on PostgreSQL 19</a></strong> — behind PG19's <code>GRAPH_TABLE</code>: how graph-query syntax compiles down to plain joins — timely, given the stream of SQL/PGQ fixes still landing in beta. <em>(Hans-Jürgen Schönig · Cybertec)</em> <code>[vendor blog — substantive]</code> <code>[publish date unverified]</code></li>
+</ul>
+<h3>Ecosystem releases</h3>
+<ul>
+<li><strong><a href="https://www.postgresql.org/about/news/odyssey-151-released-3348/">Odyssey 1.5.1</a></strong> — Yandex's multi-threaded connection pooler; a large extended-protocol refactor headlines. <em>(Yandex · postgresql.org news, Jul 14)</em><ul>
+<li>extended-protocol conformance fixes: correct <code>Close</code> handling, <code>DEALLOCATE ALL</code>, correct <code>COPY</code>; pipelining performance improved</li>
+<li>new: simple shared pools, <code>pool_pin_on_listen</code> for transaction pooling, <code>cpu_affinity</code>, queue-time metrics (<code>avg_wait_time</code>/<code>total_wait_time</code>), NOTICE after configurable queue wait, <code>server_drop_on_cached_plan_error</code></li>
+<li>fixes: cancel-connection race, auth_query fixes, pool-size recheck after server creation</li>
+</ul>
+</li>
+<li><strong><a href="https://github.com/commandprompt/plx">plx: stored functions in PHP, JavaScript, Python, Ruby — even COBOL</a></strong> — transpiles other languages to PL/pgSQL rather than embedding interpreters; a curious alternative to the PL zoo. <em>(Command Prompt · via Postgres Weekly #657)</em> <code>[publish date unverified]</code></li>
+</ul>
+<h2>CommitFest (open: PG20-1, #59 — In Progress Jul 1–31)</h2>
+<ul>
+<li><strong>Balance:</strong> not reliably measurable this week — every CommitFest page this run was served from stale caches (the <code>/59/</code> status summary still showed the Jul 13 totals of 153 committed / 613 total; the per-CF activity log was still cut at Jun 24). The committers list shows review-month commit flow continued through Beta 2 week, including two feature reverts (GROUP BY ALL, sequence-refresh guard). Week-over-week deltas resume when a live read is next possible. <em>(vs last week: n/a — stale cache)</em></li>
+</ul>
+<h2>Community pulse</h2>
+<ul>
+<li><strong><a href="https://news.ycombinator.com/item?id=48928135">SQLite should have (Rust-style) editions</a></strong> — proposal to evolve SQLite's sharp edges (weak typing et al.) behind opt-in editions rather than breaking its legendary compatibility; the debate is a compact tour of why "never break anything" is both SQLite's moat and its curse. <em>(Hacker News · 355 pts, 171 comments)</em></li>
+</ul>
+<hr />
+<p><em>~14 items · sources scanned: pgsql-committers via mail-archive (thread index fresh through Jul 18; msg47258–47429 ≈ Stamp 19beta2 → week's end), postgresql.org news + events + release notes, Postgres Weekly #657, CommitFest app (all pages cache-stale this run), Hacker News via hntoplinks (pages 1–2 fresh, page 3 a months-old cache), publickey.jp <code>[ja]</code>, blog.vonng.com <code>[zh]</code>, Habr <code>[ru]</code> + Dalibo <code>[fr]</code> via native-language search (nothing DB-relevant in-window from any of the four) · filtered out as marketing/ads: ~6 · out-of-window: several (incl. malisper's "Four Horsemen" outage taxonomy and Pigsty 4.4, both ~Jul 11).</em></p>
+<p><em>Source note: no browser was connected. pgsql-hackers was effectively unreachable — mail-archive's hackers index is frozen at May 18, its per-day search is blocked to cold fetches this run, postgresql.org <code>/list/…</code> and <code>/since/…</code> browse pages render empty to plain fetch, and the postgrespro.com mirror's month index stops at May — so list coverage came from pgsql-committers commit messages (fresh) rather than thread reading; a hackers-side design debate without a commit this week may be missing. pgsql-bugs/-performance remain without a fetchable archive. The CommitFest app served stale caches end-to-end (totals frozen at the Jul 13 snapshot). arXiv listings could not be date-verified, so the research section is omitted rather than guessed. No CFPs opened in-window; no event enters the 30-day horizon (Hyderabad Postgres Days, Aug 20–21, enters next week).</em></p>]]></content:encoded>
+    </item>
     <item>
       <title>DBMS Weekly — 2026-07-06 (week of 2026-07-06–2026-07-12)</title>
       <link>https://danolivo.github.io/dbms-digest/digests/2026-07-06.html</link>

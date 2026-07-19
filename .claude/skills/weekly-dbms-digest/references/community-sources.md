@@ -84,3 +84,5 @@ _Append new community sources here: date, name, link, access tier, one-line reas
 _When a source goes dead/dormant/promotional, move it here with date + reason so it isn't
 re-added by mistake._
 - _(none yet)_
+
+- (2026-07-20) _Access note (this run, no browser):_ hntoplinks /week page 1–2 were fresh (IDs ~48.9M) but page 3 was a months-old cache (April IDs) — trust deeper pages only after checking item IDs. Lobsters, Reddit, DBA SE unreachable again without a browser; live HN item pages still empty to plain fetch (engagement numbers from hntoplinks may lag finals).
