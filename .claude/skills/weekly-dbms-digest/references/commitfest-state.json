@@ -346,6 +346,15 @@
       "created": [],
       "closed": [],
       "net": null
+    },
+    {
+      "week": "2026-07-20",
+      "cf": "PG20-1 (#59), In Progress Jul 1-31 (review month); new patches land in PG20-2 (#61)",
+      "captured_at": "2026-07-27",
+      "note": "No browser this run. CF app cache-stale again: a search-surfaced /59/ snapshot showed only 3 committed / 287 total, which is an early-July cache inconsistent with the 2026-07-13 reading (153 committed / 613 total) and must NOT be used. Weekly flow NOT measurable; resume deltas at next live read. Commit ground-truth from pgsql-committers (thread index fresh through Jul 26, msg47430-47528 in-window) shows heavy activity concentrated in logical replication (sequence sync take-two after last week's revert, subscription owner/conninfo, pre-PG19 publisher guard), nbtree SSI/predicate-lock hardening + test coverage (Peter Geoghegan), REPACK beta polish (Alvaro Herrera), and a pgstats out-of-memory hardening run (Michael Paquier). postgresql.org news posted nothing after Jul 16 (PG19 Beta 2).",
+      "created": [],
+      "closed": [],
+      "net": null
     }
   ]
 }

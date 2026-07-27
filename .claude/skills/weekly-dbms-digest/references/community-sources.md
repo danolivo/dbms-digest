@@ -86,3 +86,5 @@ re-added by mistake._
 - _(none yet)_
 
 - (2026-07-20) _Access note (this run, no browser):_ hntoplinks /week page 1–2 were fresh (IDs ~48.9M) but page 3 was a months-old cache (April IDs) — trust deeper pages only after checking item IDs. Lobsters, Reddit, DBA SE unreachable again without a browser; live HN item pages still empty to plain fetch (engagement numbers from hntoplinks may lag finals).
+
+- (2026-07-27) _Access note (this run, no browser):_ Community pulse omitted — `hntoplinks.com/week` could not be seeded into provenance this run (search returned only github/similarweb/month-archive URLs, not the live /week page), live `news.ycombinator.com/item?id=…` pages returned empty to plain fetch, and Lobsters/Reddit/DBA SE were unreachable as usual. One candidate in-window thread (HN id=48935487, "We're Building Postgres in Rust… the LLVM of Databases") was visible in search but its date and points/comments couldn't be verified without a browser, so it was NOT listed (no fabricated engagement). Reconnect a browser to restore this section.
