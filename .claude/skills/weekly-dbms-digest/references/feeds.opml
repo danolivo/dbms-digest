@@ -24,6 +24,10 @@
     <outline text="Research">
       <outline type="rss" text="arXiv cs.DB [ok]" xmlUrl="https://rss.arxiv.org/rss/cs.DB"/>
     </outline>
+    <outline text="English blogs (added 2026-08-03)">
+      <outline type="rss" text="Coroot blog [ok - browser-confirmed XML]" xmlUrl="https://coroot.com/feed/"/>
+      <outline type="rss" text="Launch by Lunch (Sehrope Sarkuni) [ok - link-rel confirmed]" xmlUrl="https://launchbylunch.com/feeds/rss.xml"/>
+    </outline>
     <outline text="Russian [ru]">
       <outline type="rss" text="Habr - PostgreSQL hub [ok]" xmlUrl="https://habr.com/ru/rss/hubs/postgresql/articles/?fl=ru"/>
     </outline>
