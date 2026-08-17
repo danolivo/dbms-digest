@@ -522,6 +522,264 @@
     "withdrawn": 4,
     "total": 381
    }
+  },
+  {
+   "week": "2026-08-10",
+   "cf": "PG20-2 (#61)",
+   "captured_at": "2026-08-17T03:35+02:00",
+   "partial": true,
+   "note": "Captured Monday 03:35 CEST. /61/activity/ live but the ~100-row cap reached back only to 2026-08-12 16:47 (global /activity/ added rows through Sun 23:38); Aug 10-12 flow rolled off. FIRST week with a prior-week queue snapshot, so week-over-week deltas are real. Reaching /61/activity/: fetch /61/?tag=<any> first (small page, authoritative Status summary line, puts activity URL into fetch provenance).",
+   "window_covered": "2026-08-12 16:47 .. 2026-08-16 23:38 (of the 2026-08-10..16 digest week)",
+   "queue_totals": {
+    "as_of": "2026-08-17 03:32 CEST",
+    "source": "Status summary line on /61/?tag=34",
+    "needs_review": 274,
+    "waiting_on_author": 27,
+    "ready_for_committer": 44,
+    "committed": 39,
+    "moved_to_next_cf": 23,
+    "withdrawn": 5,
+    "returned_with_feedback": 1,
+    "total": 413
+   },
+   "week_over_week": "vs 2026-08-10 snapshot (381 total / 269 NR / 20 WoA / 44 RfC / 21 committed / 23 moved / 4 withdrawn): total +32, committed +18, NR +5, WoA +7, RfC 0, withdrawn +1, RwF +1",
+   "created": [
+    {
+     "id": 7154,
+     "title": "Fix compilation of nodeMergejoin.c with EXEC_MERGEJOINDEBUG",
+     "by": "croissant",
+     "date": "2026-08-16"
+    },
+    {
+     "id": 7153,
+     "title": "Add memory/disk usage for Function Scan nodes in EXPLAIN",
+     "by": "croissant",
+     "date": "2026-08-16"
+    },
+    {
+     "id": 7152,
+     "title": "Implement TODOs for index operator strategy number validation",
+     "by": "arcticwolf",
+     "date": "2026-08-15"
+    },
+    {
+     "id": 7151,
+     "title": "Let OpenSSL auto-select DH parameters by default",
+     "by": "petere",
+     "date": "2026-08-15"
+    },
+    {
+     "id": 7150,
+     "title": "Consider window functions when reordering GROUP BY items",
+     "by": "smartkeyerror",
+     "date": "2026-08-15"
+    },
+    {
+     "id": 7149,
+     "title": "missing PGDLLIMPORT in utils/acl.h",
+     "by": "bossartn",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 7148,
+     "title": "Thread-safe stringToNode() / pg_strtok()",
+     "by": "mmeent",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 7147,
+     "title": "Make formatting.c use StringInfos for output buffers",
+     "by": "tgl",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7146,
+     "title": "Make tsqueryout() use a StringInfo",
+     "by": "tgl",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7145,
+     "title": "pgstat: allow a stats kind to use its own dedicated dsa/dshash",
+     "by": "simseih",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7144,
+     "title": "Disallow outer-level and WHERE-clause aggregates in GRAPH_TABLE",
+     "by": "simseih",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7143,
+     "title": "Remove dead code in pgcrypto",
+     "by": "a.alekseev",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7142,
+     "title": "enhancing pg_basebackup speeds up to ~23Gbps (small fixes + io_uring/Direct I/O)",
+     "by": "jakub.wartak",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7141,
+     "title": "Refactor remaining zero-fill relation extensions to use smgrzeroextend()",
+     "by": "yinpeipei",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7140,
+     "title": "Fire create_upper_paths_hook for UPPERREL_PARTIAL_GROUP_AGG",
+     "by": "adunstan",
+     "date": "2026-08-12"
+    },
+    {
+     "id": 7139,
+     "title": "Reduce cost of ProcArrayRemove/ProcArrayAdd",
+     "by": "(via mmeent)",
+     "date": "2026-08-12"
+    }
+   ],
+   "moved_in": [
+    {
+     "id": 6061,
+     "title": "MPTCP - multiplexing many TCP connections through one socket",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 6763,
+     "title": "Improve pg_stat_statements scalability",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7113,
+     "title": "Split index and table statistics into different types of stats (from PG20-Drafts; committed next day)",
+     "date": "2026-08-14"
+    }
+   ],
+   "closed": [
+    {
+     "id": 6990,
+     "title": "Rename EXISTS-to-ANY converted subplan to exists_to_any",
+     "status": "Committed",
+     "date": "2026-08-15"
+    },
+    {
+     "id": 6777,
+     "title": "Update docs for logging_collector and durability",
+     "status": "Committed",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 7082,
+     "title": "Implicit conversion from int64 to int32 in hash_get_num_entries",
+     "status": "Committed",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 7149,
+     "title": "missing PGDLLIMPORT in utils/acl.h",
+     "status": "Committed",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 6802,
+     "title": "retire PQfn()",
+     "status": "Committed",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 7113,
+     "title": "Split index and table statistics into different types of stats",
+     "status": "Committed",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 7014,
+     "title": "Avoid crash on malformed CREATE_REPLICATION_SLOT reply",
+     "status": "Committed",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 6663,
+     "title": "Allow a condition string in an injection point",
+     "status": "Committed",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 7127,
+     "title": "Redundant qualifier elimination",
+     "status": "Returned with feedback",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 6251,
+     "title": "Use ROLERECURSE_PRIVS in is_admin_of_role()",
+     "status": "Committed",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7051,
+     "title": "Should CLUSTER (ANALYZE) work?",
+     "status": "Committed",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7143,
+     "title": "Remove dead code in pgcrypto",
+     "status": "Committed",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7135,
+     "title": "Fix contradictory comment for pgstat_slru_flush_cb()",
+     "status": "Committed",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 7109,
+     "title": "DOCS - ALTER PUBLICATION - description has confusing slash-list",
+     "status": "Committed",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 6801,
+     "title": "REPLICA IDENTITY USING INDEX accepts column with invalid NOT NULL",
+     "status": "Committed",
+     "date": "2026-08-12"
+    },
+    {
+     "id": 6655,
+     "title": "Return DSA area for hash table from GetNamedDSHash() (PG20-1)",
+     "status": "Committed",
+     "date": "2026-08-13"
+    },
+    {
+     "id": 6820,
+     "title": "pg_stat_lock: add blocker mode dimension (PG20-1)",
+     "status": "Withdrawn",
+     "date": "2026-08-13"
+    }
+   ],
+   "rfc_promotions": [
+    {
+     "id": 7052,
+     "title": "Add a pg_wal_preallocate() SQL function to eagerly create future WAL segments",
+     "date": "2026-08-16"
+    },
+    {
+     "id": 7114,
+     "title": "Define MXID acronym in documentation",
+     "date": "2026-08-14"
+    },
+    {
+     "id": 6843,
+     "title": "Clarify that ssl_groups is for any key exchange groups",
+     "date": "2026-08-12"
+    }
+   ],
+   "standout": "enhancing pg_basebackup speeds up to ~23Gbps (#7142, Jakub Wartak) - keeps single-threaded single-connection design; ~1.85x on AWS (1610 -> ~2900 MB/s) from fewer syscalls + eliminated libpq copies + client-side io_uring/Direct I/O; MPTCP #6061 moved in alongside"
   }
  ]
 }

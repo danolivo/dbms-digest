@@ -10,6 +10,7 @@
 
 _Newest first._
 
+- [2026-08-10 — week of Aug 10–16](digests/2026-08-10.md)
 - [2026-08-03 — week of Aug 3–9](digests/2026-08-03.md)
 - [2026-07-27 — week of Jul 27–Aug 2](digests/2026-07-27.md)
 - [2026-07-20 — week of Jul 20–26](digests/2026-07-20.md)
