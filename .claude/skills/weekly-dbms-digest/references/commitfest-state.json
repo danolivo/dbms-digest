@@ -780,6 +780,210 @@
     }
    ],
    "standout": "enhancing pg_basebackup speeds up to ~23Gbps (#7142, Jakub Wartak) - keeps single-threaded single-connection design; ~1.85x on AWS (1610 -> ~2900 MB/s) from fewer syscalls + eliminated libpq copies + client-side io_uring/Direct I/O; MPTCP #6061 moved in alongside"
+  },
+  {
+   "week": "2026-08-17",
+   "cf": "PG20-2 (#61)",
+   "captured_at": "2026-08-24T03:40+02:00",
+   "partial": true,
+   "note": "Captured Monday ~03:40 CEST. /61/activity/ reachable via /61/?tag=34 -> Activity log link. The ~100-row cap left the window covered only from 2026-08-17 15:24 to 2026-08-21 03:48 - both the Mon morning rows and the whole Fri-Sun tail are missing (the log's newest row was Friday 03:48). Queue totals from the authoritative Status summary line are the more reliable week-over-week signal.",
+   "window_covered": "2026-08-17 15:24 .. 2026-08-21 03:48 (of the 2026-08-17..23 digest week)",
+   "queue_totals": {
+    "as_of": "2026-08-24 03:35 CEST",
+    "source": "Status summary line on /61/?tag=34",
+    "needs_review": 292,
+    "waiting_on_author": 23,
+    "ready_for_committer": 54,
+    "committed": 50,
+    "moved_to_next_cf": 23,
+    "withdrawn": 9,
+    "rejected": 1,
+    "returned_with_feedback": 1,
+    "total": 453
+   },
+   "week_over_week": "vs 2026-08-17 snapshot (413 total / 274 NR / 27 WoA / 44 RfC / 39 committed / 23 moved / 5 withdrawn / 1 RwF): total +40, NR +18, WoA -4, RfC +10, committed +11, moved 0, withdrawn +4, rejected +1",
+   "created": [
+    {
+     "id": 7173,
+     "title": "Fix GRAPH TABLE label and property error reporting",
+     "by": "simseih",
+     "date": "2026-08-20"
+    },
+    {
+     "id": 7172,
+     "title": "SQL/PGQ: Support multi-pattern path matching in GRAPH_TABLE",
+     "by": "assam258",
+     "date": "2026-08-20"
+    },
+    {
+     "id": 7171,
+     "title": "Write Combining",
+     "by": "melanieplageman",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7170,
+     "title": "Remove FCINFO from statistics update internal functions",
+     "by": "coreyh",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7169,
+     "title": "Dropping a composite attribute causes data integrity violations",
+     "by": "nsontakke",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7168,
+     "title": "autovacuum: automatically propagate updated parameters",
+     "by": "zsolt.parragi",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7167,
+     "title": "Unlogged materialized views",
+     "by": "zsolt.parragi",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7166,
+     "title": "aio: Don't silently drop wait_event_info",
+     "by": "nbyavuz",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7165,
+     "title": "pgcrypto: Ensure debug handler is reset on error in PGP functions",
+     "by": "smartkeyerror",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7164,
+     "title": "Several refactorings for pg_dump",
+     "by": "a.alekseev",
+     "date": "2026-08-18"
+    },
+    {
+     "id": 7163,
+     "title": "pgbench: \\gset and \\aset should store SQL NULL as the null value",
+     "by": "shinyakato",
+     "date": "2026-08-18"
+    },
+    {
+     "id": 7162,
+     "title": "Add contrib module pg_stat_log: cumulative statistics about server log messages",
+     "by": "fabriziomello",
+     "date": "2026-08-18"
+    },
+    {
+     "id": 7161,
+     "title": "Apply extended statistics to join clause during parameterized path costing",
+     "by": "ilidock95",
+     "date": "2026-08-18"
+    },
+    {
+     "id": 7160,
+     "title": "Remove obsolete tupDesc assignment in extended statistics",
+     "by": "denjasan",
+     "date": "2026-08-18"
+    },
+    {
+     "id": 7159,
+     "title": "Fix flaky ORDER BY in foreign_key regression test",
+     "by": "tanzeelk",
+     "date": "2026-08-18"
+    },
+    {
+     "id": 7158,
+     "title": "apply worker misses closing partition leaves",
+     "by": "ha-kun",
+     "date": "2026-08-18"
+    },
+    {
+     "id": 7157,
+     "title": "BgBufferSync reusable_buffers variable usage simplification",
+     "by": "ashutoshbapat",
+     "date": "2026-08-17"
+    }
+   ],
+   "closed": [
+    {
+     "id": 7029,
+     "title": "Document \"getdatabaseencoding()\"",
+     "status": "Committed",
+     "date": "2026-08-21"
+    },
+    {
+     "id": 7147,
+     "title": "Make formatting.c use StringInfos for output buffers",
+     "status": "Committed",
+     "date": "2026-08-20"
+    },
+    {
+     "id": 7146,
+     "title": "Make tsqueryout() use a StringInfo",
+     "status": "Committed",
+     "date": "2026-08-20"
+    },
+    {
+     "id": 6831,
+     "title": "Add docs of autoanalyze corner case",
+     "status": "Committed",
+     "date": "2026-08-20"
+    },
+    {
+     "id": 7050,
+     "title": "DELETE FOR PORTION OF bypasses view WITH CHECK OPTION for leftover rows",
+     "status": "Committed",
+     "date": "2026-08-20"
+    },
+    {
+     "id": 6855,
+     "title": "Doc: Mention OFF as an alias for EXPLAIN SERIALIZE NONE",
+     "status": "Withdrawn",
+     "date": "2026-08-20"
+    },
+    {
+     "id": 7096,
+     "title": "Tighten ACL check in repack_is_permitted_for_relation()",
+     "status": "Committed",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7099,
+     "title": "Omit virtual generated columns from test_decoding output",
+     "status": "Committed",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7100,
+     "title": "Infinite Autovacuum loop caused by failing virtual generated column expression",
+     "status": "Withdrawn",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7037,
+     "title": "injection_points: canceled or terminated waiters leak their wait slots",
+     "status": "Committed",
+     "date": "2026-08-19"
+    },
+    {
+     "id": 7042,
+     "title": "Logical Replication - revisit is_table_publication function implementation",
+     "status": "Withdrawn",
+     "date": "2026-08-19"
+    }
+   ],
+   "ready_for_committer_promotions": [
+    7036,
+    6913,
+    6761,
+    6705,
+    6953,
+    7069,
+    7112
+   ],
+   "net": 6
   }
  ]
 }
