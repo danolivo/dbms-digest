@@ -87,7 +87,22 @@ Scan the four key lists for the current time window. Use the PostgreSQL list arc
 high-signal and almost always have in-window activity; an empty mailing-list section means you
 didn't look, not that the list was quiet. Use whichever of these works this run:
 
-- **mail-archive.com (most reliable for full text + dates).** Seed once with
+- **Official archive in a BROWSER — try this FIRST; it is the highest-yield path by far.**
+  `https://www.postgresql.org/list/<listname>/<YYYY-MM>/` renders fully in a real browser and
+  returns an empty shell to plain `web_fetch` — do not mistake the empty fetch for a dead source.
+  The page carries a "Jump to day" strip of `/list/<listname>/since/YYYYMMDD0000/` links; from
+  that tab, same-origin `fetch()` each day in the window and parse with `DOMParser`.
+  **Parsing trap:** the subject anchor lives in `th[scope="row"]`, *not* a `td` — select
+  `th a[href*="/message-id/"]` for subject+href, then `td[0]` = author, `td[1]` = time; a trailing
+  📎 means an attachment (usually a patch). Each `since/` page spans several days, so parse under
+  the `<h2>Mon. N, YYYY</h2>` headers and dedupe. New threads = subjects not starting with `Re:`.
+  Then read the ones that matter via `https://www.postgresql.org/message-id/flat/<id>` (whole
+  thread) or `/message-id/<id>` (single message, body in `.message-content`) — characterise a
+  thread from its text, never from its subject alone. Works identically for `pgsql-hackers`,
+  `pgsql-bugs`, `pgsql-performance` and `pgsql-general`. A typical -hackers week is ~600 messages
+  and ~90 new threads; if you got fewer, your parser is wrong, not the week.
+- **mail-archive.com (fallback; good for full text + dates, and the only fresh source for
+  `pgsql-committers`).** Seed once with
   `WebSearch` for `mail-archive.com pgsql-hackers <topic>`, then fetch
   `http://www.mail-archive.com/pgsql-hackers@lists.postgresql.org/maillist.html` (and the
   `mail2.html`, `mail3.html`… "Earlier messages" pages) for a date-ordered list. Each message
