@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DBMS Weekly — 2026-08-24 (week of 2026-08-24–2026-08-30) · fable edition · DBMS Digest</title>
+  <meta name="description" content="PostgreSQL &amp; DBMS internals digest for the week of Aug 24–Aug 30, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.">
+  <meta name="keywords" content="PostgreSQL, Postgres, database internals, DBMS, SQL, query optimizer, replication, MVCC, storage engine, database research, weekly digest, RSS">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#0d1b2e">
+  <link rel="canonical" href="https://danolivo.github.io/dbms-digest/digests/2026-08-24.html">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="DBMS Digest" href="../feed.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DBMS Digest">
+  <meta property="og:title" content="DBMS Weekly — 2026-08-24 (week of 2026-08-24–2026-08-30) · fable edition">
+  <meta property="og:description" content="PostgreSQL &amp; DBMS internals digest for the week of Aug 24–Aug 30, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.">
+  <meta property="og:url" content="https://danolivo.github.io/dbms-digest/digests/2026-08-24.html">
+  <meta property="og:image" content="https://danolivo.github.io/dbms-digest/banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DBMS Weekly — 2026-08-24 (week of 2026-08-24–2026-08-30) · fable edition">
+  <meta name="twitter:description" content="PostgreSQL &amp; DBMS internals digest for the week of Aug 24–Aug 30, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.">
+  <meta name="twitter:image" content="https://danolivo.github.io/dbms-digest/banner.jpg">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3J18B7F5NZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3J18B7F5NZ');
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "DBMS Weekly — 2026-08-24 (week of 2026-08-24–2026-08-30) · fable edition", "description": "PostgreSQL & DBMS internals digest for the week of Aug 24–Aug 30, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.", "inLanguage": "en", "url": "https://danolivo.github.io/dbms-digest/digests/2026-08-24.html", "mainEntityOfPage": "https://danolivo.github.io/dbms-digest/digests/2026-08-24.html", "datePublished": "2026-08-24T12:00:00+00:00", "dateModified": "2026-08-24T12:00:00+00:00", "author": {"@type": "Organization", "name": "DBMS Digest", "logo": {"@type": "ImageObject", "url": "https://danolivo.github.io/dbms-digest/icon-512.png"}}, "publisher": {"@type": "Organization", "name": "DBMS Digest", "logo": {"@type": "ImageObject", "url": "https://danolivo.github.io/dbms-digest/icon-512.png"}}, "image": "https://danolivo.github.io/dbms-digest/banner.jpg"}</script>
+  <style>
+    :root { --navy:#0d1b2e; --navy2:#13243a; --blue:#5a8bd4; --amber:#f5a623; --ink:#e7eef7; --mut:#8aa0bd; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--navy); color:var(--ink);
+      font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+    a { color:var(--blue); }
+    .wrap { max-width:760px; margin:0 auto; padding:24px 20px 64px; }
+    .wrap.wide { max-width:1060px; }
+    .banner img { width:100%; height:auto; border-radius:12px; display:block; }
+    .site-title { font-size:1.6rem; margin:26px 0 8px; color:var(--ink); }
+    .intro { color:var(--mut); margin:0 0 6px; font-size:1.02rem; line-height:1.6; }
+    .sublabel { font-size:1.05rem; letter-spacing:.18em; text-transform:uppercase; color:var(--mut); margin:28px 0 4px; }
+    p.lead { color:var(--ink); margin:0 0 20px; }
+    .sub { display:inline-flex; align-items:center; gap:8px; background:var(--amber); color:var(--navy);
+      font-weight:700; text-decoration:none; padding:11px 18px; border-radius:999px; }
+    .sub:active { opacity:.85; }
+    .feedurl { display:block; margin:14px 0 0; color:var(--mut); font-size:.85rem; word-break:break-all; }
+    .feedurl code { color:var(--blue); }
+    .index-h { font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--mut);
+      border-top:1px solid var(--navy2); padding-top:24px; margin-top:36px; }
+    ul.index { list-style:none; padding:0; margin:0; }
+    ul.index li { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 10px; border-bottom:1px solid var(--navy2); padding:13px 4px; }
+    ul.index li a.entry { display:flex; gap:12px; align-items:baseline; text-decoration:none; color:var(--ink); }
+    ul.index li a.entry:hover { color:var(--amber); }
+    .date { color:var(--blue); font-variant-numeric:tabular-nums; font-weight:600; }
+    .week { color:var(--mut); }
+    .alt { color:var(--mut); font-size:.9rem; }
+    .alt a { color:var(--blue); text-decoration:none; }
+    .alt a:hover { color:var(--amber); }
+    .backlink { display:inline-block; margin:18px 0 8px; color:var(--blue); text-decoration:none; font-size:.9rem; }
+    .backlink:hover { color:var(--amber); }
+    footer { margin-top:40px; color:var(--mut); font-size:.85rem; border-top:1px solid var(--navy2); padding-top:18px; }
+    footer a { color:var(--blue); }
+    .layout { display:block; }
+    nav.toc { display:none; }
+    @media (min-width:980px) {
+      .layout { display:grid; grid-template-columns:220px minmax(0,1fr); gap:44px; align-items:start; }
+      nav.toc { display:block; position:sticky; top:24px; font-size:.85rem; }
+    }
+    nav.toc .toc-title { text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--mut); margin:0 0 10px; }
+    nav.toc ul { list-style:none; padding:0; margin:0; }
+    nav.toc li { margin:2px 0; border:0; }
+    nav.toc a { display:block; padding:4px 10px; color:var(--mut); text-decoration:none;
+      border-left:2px solid var(--navy2); line-height:1.35; }
+    nav.toc a:hover { color:var(--amber); border-left-color:var(--amber); }
+    .prose h1 { font-size:1.5rem; line-height:1.25; margin:8px 0 18px; color:var(--ink); }
+    .prose h2 { font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:var(--amber);
+      border-top:1px solid var(--navy2); padding-top:22px; margin:34px 0 12px; scroll-margin-top:20px; }
+    .prose p { margin:.5em 0 1em; }
+    .prose ul { padding-left:1.2em; margin:.4em 0 1.2em; }
+    .prose li { margin:.5em 0; }
+    .prose li::marker { color:var(--mut); }
+    .prose a { text-decoration:none; border-bottom:1px solid transparent; }
+    .prose a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+    .prose strong { color:var(--ink); }
+    .prose em { color:var(--mut); }
+    .prose code { background:var(--navy2); color:#cfe0f5; padding:1px 5px; border-radius:4px; font-size:.92em; }
+    .prose hr { border:0; border-top:1px solid var(--navy2); margin:28px 0; }
+    .prose blockquote { margin:1em 0; padding:.4em 1em; border-left:3px solid var(--amber); color:var(--mut); }
+</style>
+</head>
+<body>
+  <div class="wrap wide">
+    <a class="backlink" href="../index.html">← All digests</a>
+    <div class="layout">
+    <nav class="toc"><p class="toc-title">Sections</p>
+      <ul>
+        <li><a href="#postgresql">PostgreSQL</a></li>
+        <li><a href="#postgresql-mailing-lists">PostgreSQL mailing lists</a></li>
+        <li><a href="#commitfest-open-pg20-2-61-collection-month-ended-2026-08-31">CommitFest (open: PG20-2, #61 — collection month ended 2026-08-31)</a></li>
+        <li><a href="#community-pulse">Community pulse</a></li>
+        <li><a href="#wider-dbms-distributed-data">Wider DBMS &amp;amp; distributed data</a></li>
+        <li><a href="#commercial-engines-sql-server-oracle-mysql">Commercial engines (SQL Server, Oracle, MySQL, …)</a></li>
+        <li><a href="#migration-experience">Migration experience</a></li>
+        <li><a href="#research-cutting-edge">Research &amp;amp; cutting edge</a></li>
+        <li><a href="#international-non-english-sources">International (non-English sources)</a></li>
+      </ul>
+    </nav>
+      <article class="prose">
+<h1 id="dbms-weekly-2026-08-24-week-of-2026-08-242026-08-30-fable-edition">DBMS Weekly — 2026-08-24 (week of 2026-08-24–2026-08-30) · fable edition</h1>
+<p><em>Regenerated edition of <a href="2026-08-24.md">2026-08-24</a>, produced by Claude Fable 5 from a full
+independent rescan of the window (browser + archive-walk path; every item below verified against
+its primary source on 2026-08-31).</em></p>
+<p><em>The week the v19 hangover was named out loud. Robert Haas asked an LLM to rank the release's
+scariest post-freeze patches — RI fast-path FK checks, REPACK, online checksums — and then asked
+-hackers whether any should be reverted before 19 ships; Nathan Bossart and Bharath Rupireddy
+spent three days filing a dozen fresh REPACK defects as if to prove the point, and Noah Misch
+concluded <code>pg_get_*_ddl()</code> needs a redesign, not a review. Outside the tree, the biggest database
+story of the year so far: AWS is acquiring DuckLabs, with DuckDB staying MIT under the DuckDB
+Foundation. The PG20-2 CommitFest closed its collection month at 512 patches.</em></p>
+<h2 id="postgresql">PostgreSQL</h2>
+<ul>
+<li><strong><a href="https://thebuild.com/blog/the-sixth-execution/">The Sixth Execution</a></strong> — the definitive walkthrough of <code>plancache.c</code>: why a prepared statement's sixth execution can silently swap in a generic plan built on blind estimates, why the decision is sticky and never consults actual runtimes, and who (PL/pgSQL, JDBC, psycopg 3, PgBouncer 1.21+) is using the plan cache without telling you. <em>(Christophe Pettus · thebuild.com)</em></li>
+<li><strong><a href="https://clickhouse.com/blog/postgresql-19-wait-for-read-your-writes">Read your writes: WAIT FOR in PostgreSQL 19</a></strong> — the new <code>WAIT FOR LSN</code> command gives read-your-writes on async replicas without <code>remote_apply</code>'s per-commit tax; includes the ten-year history (three reverts) and why snapshot self-deadlock forces it to be a top-level utility command. <em>(Gülçin Yıldırım Jelínek · clickhouse.com)</em> [vendor blog — substantive]</li>
+<li><strong><a href="https://andyatkinson.com/postgresql-18-uuidv7">PostgreSQL 18: 23x faster inserts with UUID v7</a></strong> — production numbers, not a synthetic bench: switching PK defaults to <code>uuidv7()</code> on an 18.4 fleet cut a 12,000-calls/min multi-row insert from 0.7ms to 0.03ms on a billions-row table; the real war story is retrying the <code>ACCESS EXCLUSIVE</code> column-default change under load with jittered-backoff loops. <em>(Andrew Atkinson · andyatkinson.com)</em></li>
+<li><strong><a href="https://www.depesz.com/2026/08/25/new-things-for-regular-expressions-in-postgresql-pg_tre-and-pg_re2/">New things for regular expressions in PostgreSQL: pg_tre and pg_re2</a></strong> — measured on a 33 GB corpus: pg_tre's index took 7 hours to build and 21 GB but does built-in fuzzy (Levenshtein) matching; pg_re2 beat the built-in <code>~</code> even unindexed (23s vs 41s) and beat pg_trgm with its GIN opclass, at the price of re2's no-lookbehind semantics. <em>(Hubert 'depesz' Lubaczewski · depesz.com)</em></li>
+<li><strong><a href="http://okbob.blogspot.com/2026/08/integration-lua-to-psql-iii.html">Integration of Lua into psql</a></strong> — Pavel Stehule's <a href="https://github.com/okbob/lua-psql">lua-psql</a> patch series lets you script your own backslash commands (his demos: a <code>\dt</code> sorted by size — ending a decade-old syntax stalemate — and a <code>VACUUM</code> wrapper with live <code>pg_stat_progress_vacuum</code> output); interest-gauging thread "<a href="https://www.postgresql.org/message-id/flat/CAFj8pRDHBpnAhynXHoNkEU%3D4SsPYm1Pz%2BC%2BvzwW2gkf8qUfztQ%40mail.gmail.com">extendable psql?</a>" opened on -hackers. <em>(Pavel Stehule)</em></li>
+<li><strong><a href="https://seedfa.st/blog/pg-dump-data-only-restore">The Dump That Breaks Its Own Restore</a></strong> — pg_dump's own <code>search_path=''</code> preamble makes a data-only restore fail on any trigger that names tables unqualified, the failed <code>COPY</code> leaves the table empty while <code>setval</code> runs anyway, and psql exits 0 through all of it; reproduced step by step on 18.6. <em>(Mikhail Shytsko · seedfa.st)</em></li>
+<li><strong><a href="https://www.postgresql.org/about/news/pg_statviz-12-released-with-postgresql-19-support-and-new-features-3369/">pg_statviz 1.2</a></strong> — the minimalist stats time-series extension gets PG19 support and a locking module. <em>(Jimmy Angelakos)</em><ul>
+<li>captures PG19's new <code>wal_fpi_bytes</code> counter and the I/O-worker / autovacuum-scoring settings</li>
+<li>new blocking-locks module built on <code>pg_blocking_pids()</code> — counts soft blocks (lock-queue waiters), not just hard conflicts</li>
+<li><code>--ai openai</code> provider flag works with any OpenAI-compatible endpoint; AI analysis stays opt-in</li>
+<li>tested across PostgreSQL 13–19beta3</li>
+</ul>
+</li>
+<li><strong><a href="https://www.cybertec-postgresql.com/en/pgwatch-v6-prometheus-becomes-a-source-not-just-a-sink/">pgwatch v6.0.0-beta</a></strong> — biggest release since v5: Prometheus exporters become first-class <em>sources</em>. <em>(Pavlo Golub · Cybertec)</em><ul>
+<li>scrape Patroni/node_exporter endpoints next to SQL sources (built-in <code>patroni</code> preset, 12 metric families) — cluster-manager truth alongside <code>pg_stat_*</code> truth</li>
+<li><code>custom_tags</code> per source for cluster/node grouping; no double-<code>pgwatch_</code> prefixing when the sink is Prometheus too</li>
+<li>part 2 (Grafana v13 schema, hardened reaper) still to come</li>
+</ul>
+</li>
+<li><strong><a href="https://postgis.net/2026/08/PostGIS-3.7.0rc1/">PostGIS 3.7.0rc1</a></strong> — release candidate targeting PostgreSQL 19 beta3; bug fixes ahead of GA. <em>(Regina Obe · PostGIS)</em></li>
+</ul>
+<h2 id="postgresql-mailing-lists">PostgreSQL mailing lists</h2>
+<ul>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/flat/CA%2BTgmob9NY6m0YNFTQ4nFH2d0iC9SQRruDYxfndGKKzh8OC80w%40mail.gmail.com">scary patch contest</a></strong> — Robert Haas had Claude rank v19's features by post-freeze bug count — RI fast-path FK batching (~16 fixes incl. an OOB write and five classes of wrong FK enforcement), REPACK (28 fixes incl. data loss, prerequisite reverted), online checksums (~25 state-machine holes), <code>FOR PORTION OF</code> (17, three security) — and asked which deserve reverting before 19.0; 40+ messages with Tom Lane, Andres Freund, Kapila, Rowley and Vondra weighing in. <em>(Robert Haas)</em> <code>[open]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/flat/apBCEl4hBHlq0axm%40nathan">REPACK (CONCURRENTLY) beta shakedown</a></strong> — Nathan Bossart and Bharath Rupireddy filed roughly a dozen distinct REPACK defect threads in three days: segfault under <code>REPACK (ANALYZE)</code> in a transaction block, rewriting <code>user_catalog_table</code> relations, <code>ONLY</code> accepted but ignored, no table-AM check, indefinite hang when the decoding worker fails to start, wrong errors for matviews — systematic hardening of scary-patch #2 in real time. <em>(Nathan Bossart, Bharath Rupireddy)</em> <code>[open]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/flat/20260827015242.54.noahmisch%40microsoft.com">pg_get_*_ddl() needs a redesign</a></strong> — Noah Misch's review of the v19 DDL-reconstruction functions: password hashes silently omitted, no dependency ordering ("the word 'depend' appears nowhere on the threads"), and a standing objection to carrying two independent catalog→SQL implementations next to pg_dump; defect tests attached. <em>(Noah Misch)</em> <code>[open]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/flat/CADzfLwUJovFcnknCC9wjZKECX9xecgnGzC2r2TMV8h4QDD_jwQ%40mail.gmail.com">Logical replication can lose an update after concurrent index invalidation</a></strong> — REINDEX/DROP INDEX CONCURRENTLY racing the apply worker makes <code>RelationFindReplTupleByIndex()</code> re-derive the wrong answer, report <code>update_missing</code>, and let the subscriber silently diverge; affects v16+ (bisected to 89e46da5e51), patches for all branches posted. <em>(Mihail Nikalayeu)</em> <code>[patch posted]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/flat/CAD21AoCvzerscfU8o4ARQ793yAGHpQ72r2x5apeC_W2-k%3DSLCQ%40mail.gmail.com">pg_upgrade silently truncates nextMultiOffset to 32 bits</a></strong> — first fallout of v19's 64-bit MultiXactOffset widening: pg_upgrade still parses the control-file value with <code>str2uint()</code>; Heikki Linnakangas engaged same-day, fix plus a <code>pg_control_checkpoint()</code> reporting correction posted. <em>(Masahiko Sawada)</em> <code>[patch posted]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/flat/CAPsk3_ATBnTeFo2NM6bHm82oNWrpEQDCL-08z6kNQ8MLbC0jrg%40mail.gmail.com">Allow aggressive VACUUM to freeze without a cleanup lock</a></strong> — anti-wraparound VACUUM starved of a cleanup lock by overlapping buffer pins (real production case) gets a narrow escape hatch: one freeze-only pass under a plain exclusive content lock before falling back to waiting; Melanie Plageman and Peter Geoghegan reviewing. <em>(Jingtang Zhang · Alibaba)</em> <code>[patch posted]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/flat/4BE33B3F-8E83-40EF-94BE-24467212D0D8%40yandex-team.ru">Open SSI correctness issues</a></strong> — Andrey Borodin catalogs seven reproducible SERIALIZABLE bugs (duplicate PKs via SnapshotDirty, serialization failures swallowed by <code>ROLLBACK TO SAVEPOINT</code>, TID-range scans taking no SIREAD lock…), most with reproducers and fixes waiting on an invariant decision — pitched as a bounded deep-dive for a prospective committer. <em>(Andrey Borodin)</em> <code>[open]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/flat/be6ca231-f824-41e6-ad52-01fc962a665b%40dunslane.net">Allow tuple visibility checks without hint-bit maintenance</a></strong> — table AMs that keep heap-format tuples under generic WAL corrupt standby pages when visibility checks opportunistically write hint bits between WAL operations; <code>*NoHints()</code> wrappers proposed, Andres Freund responded. <em>(Andrew Dunstan)</em> <code>[patch posted]</code></li>
+<li><strong>[bugs] <a href="https://www.postgresql.org/message-id/flat/19640-3003103a974cd7dc%40postgresql.org">BUG #19640: Standby permanently stuck re-requesting old timeline after promotion</a></strong> — with <code>recovery_target_timeline='latest'</code> a restarted ex-primary can loop forever requesting its old timeline (repro'd 5x on 17.6 and 18.0, matching a CloudNativePG report); reporter traces it to <code>expectedTLEs</code> being seeded from <code>receiveTLI</code>, the same race Dilip Kumar analyzed years ago. <em>(Harshit Singh)</em> <code>[open]</code></li>
+<li><strong>[performance] <a href="https://www.postgresql.org/message-id/flat/CACj4BHcXW0i7tOfDBghnP11Ez3L9dnY0UnMs-yzSEt4e%2BL7g-w%40mail.gmail.com">Traced PostgreSQL 18's io_uring with eBPF</a></strong> — cold seq scan: <code>io_uring</code> 1.60s vs <code>worker</code> (the default) 1.88s vs <code>sync</code> 2.65s, measured on a VM; comes with uringscope, the author's eBPF tool for watching what Postgres actually submits to the ring. <em>(Rajarshi Chowdhury)</em> <code>[tool author's own numbers]</code></li>
+</ul>
+<h2 id="commitfest-open-pg20-2-61-collection-month-ended-2026-08-31">CommitFest (open: PG20-2, #61 — collection month ended 2026-08-31)</h2>
+<ul>
+<li><strong>Balance (Mon–Sun, from queue totals 08-24 → 08-31):</strong> total 453 → 512 (+59) · committed 50 → 69 (+19) · Needs Review 292 → 311 · Ready for Committer 54 → 62 · withdrawn 9 → 16. <em>(vs last week: commit tempo up — +19 committed vs +11; the ~100-row activity log only covered Fri–Sun by capture time, so per-entry flow below is the partial tail: 17 new records, 11 committed, 4 withdrawn.)</em></li>
+<li><strong>New this week:</strong> <strong><a href="https://commitfest.postgresql.org/61/7225/">Make pgbench functions available server-side</a></strong> <em>(Hannu Krosing)</em> — extract pgbench's client-side function library and expose it as a server extension; also SSI: ON CONFLICT DO SELECT predicate-lock fix (#7213), hint-bit-free visibility checks (#7212, since withdrawn for rework), a pg_rewind hardening pair (#7220/#7221), SCRAM iteration-parsing bounds in libpq (#7217), and a <code>hashbulkdelete()</code> interrupt-latency fix (#7216).</li>
+<li><strong>Closed:</strong> Perform join removal by editing the query's jointree (#7059, committed — Tom Lane landing a significant planner restructure), Fix exported snapshot xmin handoff race (#7089, committed · Geoghegan), autovacuum: propagate updated parameters (#7168, committed · Gustafsson), Thread-safe <code>stringToNode()</code> (#7148, committed), apply worker misses closing partition leaves (#7158, committed), walreceiver temp-slot duplication on timeline switch (#7182, committed).</li>
+</ul>
+<h2 id="community-pulse">Community pulse</h2>
+<ul>
+<li><strong><a href="https://news.ycombinator.com/item?id=49415271">Your executable is a SQLite database</a></strong> — Farid Zakaria's SELF prototype replaces ELF outright: the file you <code>chmod +x</code> <em>is</em> a SQLite database (<code>strip</code> = <code>DELETE</code>+<code>VACUUM</code>, <code>ldd</code> = a <code>JOIN</code>, atomic <code>LD_PRELOAD</code> via transaction), and a whole 723-binary userland packed as one closure comes out <em>smaller</em> than the ELF originals; the thread argues loaders, page-sharing costs, and whether ELF was a database all along. <em>(Hacker News · 563 pts, 109 comments; 25 more on Lobsters)</em></li>
+<li><strong><a href="https://news.ycombinator.com/item?id=49437049">Show HN: LatticeDB — like SQLite but for graph databases</a></strong> — an embedded, in-process graph engine drew the week's liveliest storage-engine design thread. <em>(Hacker News · 188 pts, 54 comments)</em></li>
+<li><strong><a href="https://news.ycombinator.com/item?id=49432786">Solving the 1+N Query Problem</a></strong> — acadia.engineering's Datalog-flavored project drives a cross-platform argument for the second week running (also 29 comments on Lobsters) over whether the ORM N+1 problem is a language problem or a schema problem. <em>(Hacker News · 59 pts, 54 comments)</em></li>
+<li><strong><a href="https://www.reddit.com/r/dataengineering/comments/1w0khin/moving_away_from_fivetran_due_to_cost_massive/">Moving away from Fivetran due to cost</a></strong> — massive Salesforce→Snowflake ingestion priced off the managed connector; the week's biggest ingestion-replatforming argument, trading real alternatives and their engineering costs. <em>(r/dataengineering · 99 upvotes, 127 comments)</em></li>
+<li><strong><a href="https://www.reddit.com/r/PostgreSQL/comments/1vyemr3/i_put_a_wireprotocol_proxy_in_front_of/">Scale-to-zero Postgres via a wire-protocol proxy</a></strong> — a proxy in front of containerized Postgres 18 that fully shuts down idle databases and cold-starts them on the first packet; thread digs into the startup-latency and connection-state tradeoffs. <em>(r/PostgreSQL · 49 upvotes, 21 comments)</em></li>
+</ul>
+<h2 id="wider-dbms-distributed-data">Wider DBMS &amp; distributed data</h2>
+<ul>
+<li><strong><a href="https://ducklabs.com/news/2026/08/26/ducklabs-to-join-aws">DuckLabs to join AWS; DuckDB stays MIT under the DuckDB Foundation</a></strong> — the bootstrapped Amsterdam team behind DuckDB/DuckLake/Quack (30 people, 1M+ downloads/day) is acquired; announced plans include a Foundation technical advisory board and opening the extension stack to third-party signing. The <a href="https://news.ycombinator.com/item?id=49448321">HN thread</a> (1102 pts, 316 comments) is equal parts congratulation and "remember what happened to the last N acquired OSS databases". <em>(Raasveldt &amp; Mühleisen · ducklabs.com)</em></li>
+<li><strong><a href="https://www.reddit.com/r/PostgreSQL/comments/1w2nsh0/ducklake_was_41x_faster_than_iceberg_for_our/">DuckLake was 41x faster than Iceberg for our Postgres CDC workload</a></strong> — small-batch CDC commits (1M rows, 100k updates, flush=1000) hit Iceberg's copy-on-write metadata amplification hard: 269s vs 6.6s with a DuckDB catalog; author's own tool and workload, so treat the ratio as the finding. <em>(ex-Cloudflare Postgres lead · r/PostgreSQL)</em> <code>[self-reported]</code></li>
+</ul>
+<h2 id="commercial-engines-sql-server-oracle-mysql">Commercial engines (SQL Server, Oracle, MySQL, …)</h2>
+<ul>
+<li><strong><a href="https://www.arxiv.org/abs/2608.27758">Real-time SQL Plan Management in Oracle</a></strong> — Oracle's engineers on detecting and repairing plan regressions automatically at execution time, instead of DBA-curated baselines — the same "plans get pinned, but nothing watches them" gap a fresh -hackers thread raised about v19's pg_plan_advice this week. <em>(Oracle · arXiv)</em> <em>[paper]</em></li>
+</ul>
+<h2 id="migration-experience">Migration experience</h2>
+<ul>
+<li><strong><a href="https://blog.elis.cc/articles/a-safe-mysql-upgrade-that-wasnt-so-safe/">A safe MySQL upgrade that wasn't so safe</a></strong> — an EOL-driven upgrade via replica switchover shipped divergent data: <code>ALTER TABLE … ADD COLUMN AUTO_INCREMENT</code> may assign different IDs on source and replica, and <code>binlog_format=MIXED</code> replicated five referencing tables by statement (correct) and one by row (stale IDs) — the kind of silent divergence you find an hour after cutover. <em>(Elis K. · blog.elis.cc)</em></li>
+</ul>
+<h2 id="research-cutting-edge">Research &amp; cutting edge</h2>
+<ul>
+<li><strong><a href="https://www.arxiv.org/abs/2608.23402">EXPLAIN Yourself! Finding Query Planner Stalls Across DBMSes</a></strong> — planners are assumed fast; this hunts the inputs where planning <em>itself</em> stalls, across engines. <em>(arXiv cs.DB)</em> <em>[paper]</em></li>
+<li><strong><a href="https://www.arxiv.org/abs/2608.23307">Teach Your DBMS to LIKE Strings</a></strong> — fast, general pattern matching for wildcard joins and filters — a good companion read to this week's pg_tre/pg_re2 measurements. <em>(arXiv cs.DB)</em> <em>[paper]</em></li>
+<li><strong><a href="https://www.arxiv.org/abs/2608.28352">No Silver Bullet: Boosting GaussDB Performance on the 30TB TPC-H Workload</a></strong> — Huawei's account of what it actually took, optimization by optimization, to move a distributed shared-nothing engine on a 30TB benchmark. <em>(Huawei · arXiv)</em> <em>[paper]</em></li>
+<li><strong><a href="https://www.arxiv.org/abs/2608.27822">DBRepro: Automated Database Synthesis for Reproducing Slow Queries</a></strong> — hybrid constraint solving to synthesize a database that reproduces a production slow query offline, so you can diagnose without poking the live system. <em>(arXiv cs.DB)</em> <em>[paper]</em></li>
+</ul>
+<h2 id="international-non-english-sources">International (non-English sources)</h2>
+<ul>
+<li><strong><a href="https://habr.com/ru/articles/1074552/">Oracle → PostgreSQL with zero downtime: moving a terabyte of banking data, and everywhere it broke</a></strong> — 70+ tables, 500–3000 read RPS, no maintenance window; written as a checklist of failures ordered from "everyone knows and steps on it anyway" to "we learned this a week before cutover". <em>(i_alakey · Habr)</em> [ru] <em>(orig: Oracle → PostgreSQL без даунтайма: как мы перевозили терабайт банковской базы и где всё ломалось)</em></li>
+<li><strong><a href="https://habr.com/ru/articles/1074534/">They laughed at my answer about VIEWs — so I benchmarked MySQL 8.4 and PostgreSQL 17</a></strong> — interview grudge turned measurement: identical data, scenario-by-scenario comparison of view performance on both engines; 86-comment argument in the thread. <em>(FrolovAlexander · Habr)</em> [ru] <em>(orig: Меня подняли на смех за ответ про VIEW. Я поднял MySQL 8.4 и PostgreSQL 17 и померил)</em></li>
+<li><strong><a href="https://habr.com/ru/articles/1073924/">Oracle to PostgreSQL in one INSERT: DuckDB as an ETL engine, no Oracle client needed</a></strong> — DuckDB's Oracle and Postgres extensions join source and target in one SQL plan, with parallel sharded reads off a single consistent SCN — timely, given who just bought the duck. <em>(Rudy6885 · Habr)</em> [ru] <em>(orig: Из Oracle в PostgreSQL одним INSERT: DuckDB как ETL без Oracle-клиента)</em></li>
+<li><strong><a href="https://blog.vonng.com/db/catalog-bullshit/">Catalog Bullshit: unbundle the database, then rent you back a PostgreSQL table</a></strong> — argues Snowflake's lakehouse-governance framing inflates what an Iceberg catalog is (a metadata-pointer CAS) into a new pay layer, and that the real governance gap is the split between control plane and data path. <em>(Ruohang Feng · blog.vonng.com)</em> [zh] <em>(orig: Catalog Bullshit：把数据库拆开，再租给你一张 PostgreSQL 表)</em></li>
+<li><strong><a href="https://www.publickey1.jp/blog/26/olap_dbduckdb_20variantio.html">Publickey's rundown of the DuckDB 2.0 preview</a></strong> — Japan's enterprise-IT press digests the 2.0 preview for practitioners — client/server mode promoted to stable, schemaless VARIANT type, triggers, async I/O — days before the AWS news recontextualized all of it. <em>(Junichi Niino · publickey1.jp)</em> [ja] <em>(orig: シングルバイナリなOLAP DBの次期版「DuckDB 2.0」プレビュー)</em></li>
+</ul>
+<hr />
+<p><em>37 items · yield — mailing lists: 823 messages (721 -hackers / 93 -bugs / 8 -general / 1 -performance) → 18 threads read → 10 published · blogs: ~40 in-window posts (Planet 28 + news/newsletters) → 16 → 12 · community: ~100 threads viewed (HN 51, Reddit ~35, Lobsters 20, DBA SE 10) → 9 → 5 (+1 folded into Wider DBMS) · research: 33 cs.DB preprints → 6 → 5 (one filed under Commercial engines) · international: ru 20→4→3, zh 6→2→1, ja 10→2→1, fr 15→0→0 (Dalibo/dbi quiet or English-only this week; de not worked)</em></p>
+      </article>
+    </div>
+    <footer>
+      <a href="../index.html">← All digests</a> ·
+      <a href="../feed.xml">RSS feed</a> ·
+      <a href="https://github.com/danolivo/dbms-digest/blob/main/digests/2026-08-24-fable.md">View source on GitHub</a>
+    </footer>
+  </div>
+</body>
+</html>
