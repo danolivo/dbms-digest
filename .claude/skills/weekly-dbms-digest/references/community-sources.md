@@ -79,12 +79,6 @@ _Append new community sources here: date, name, link, access tier, one-line reas
 - (2026-07-13) hckrnews.com — chronological HN front-page mirror with points/comments; fresh when hntoplinks pages ≥2 are cache-stale, but only covers the most recent ~2–3 days. Scan aid for the tail of the week. `[public]` P3. https://hckrnews.com/
 - (2026-07-13) _Access note (this run, no browser):_ live news.ycombinator.com item pages returned empty to plain fetch; scores came from hntoplinks.com/week (page 1 fresh, deeper pages stale) + hckrnews.com + earlier cached item snapshots — engagement numbers may lag finals. Lobsters, Reddit, DBA SE (unseedable via search) all unreachable again. HN /front day archives blocked; mid-week mid-size threads may be under-sampled.
 
-## Retired (removed from weekly scan)
-
-_When a source goes dead/dormant/promotional, move it here with date + reason so it isn't
-re-added by mistake._
-- _(none yet)_
-
 - (2026-07-20) _Access note (this run, no browser):_ hntoplinks /week page 1–2 were fresh (IDs ~48.9M) but page 3 was a months-old cache (April IDs) — trust deeper pages only after checking item IDs. Lobsters, Reddit, DBA SE unreachable again without a browser; live HN item pages still empty to plain fetch (engagement numbers from hntoplinks may lag finals).
 
 - (2026-07-27) _Access note (this run, no browser):_ Community pulse omitted — `hntoplinks.com/week` could not be seeded into provenance this run (search returned only github/similarweb/month-archive URLs, not the live /week page), live `news.ycombinator.com/item?id=…` pages returned empty to plain fetch, and Lobsters/Reddit/DBA SE were unreachable as usual. One candidate in-window thread (HN id=48935487, "We're Building Postgres in Rust… the LLVM of Databases") was visible in search but its date and points/comments couldn't be verified without a browser, so it was NOT listed (no fabricated engagement). Reconnect a browser to restore this section.
@@ -107,3 +101,13 @@ re-added by mistake._
 - (2026-08-24) _Access note (this run, browser via Control_Chrome):_ HN Algolia (8 keywords, epoch-windowed, points>10) verified engagement directly — a thin DB week on HN (only three threads over 250 points, all article reactions). **Reddit sorted by comment count was again the differentiator**: the two most substantive Postgres threads of the week ("what after the free tier", "leaving Cloud SQL") sat at 0 and 1 points respectively with 27 and 9 comments, and would have been invisible ranked by score. Lobsters `/t/databases` rendered fine and was the best *article discovery* feed of the run (PlanetScale poisoned pools, CedarDB encoding-vs-compression, the DuckDB PEG-parser post, the sporks.space query-language wish list) — engagement there stays too low for pulse slots. DBA SE API scanned: top question 3 points, but a genuinely interesting `ORDER BY … LIMIT` planner question at 2 points made the cut, and PolarDB-for-PostgreSQL questions cluster there for a fourth straight week. **modb.pro [zh] not retried this run** — carry over the mobile-site / XHR-endpoint idea. **Discovery:** no new community source added; searches for public Telegram/Matrix DB channels again returned only marketing aggregators, so the `[public]` Telegram slot stays empty.
 
 - (2026-08-31) _Access note (this run):_ HN Algolia (8 keywords, epoch-windowed, points>10) queried via the in-app browser pane. **Reddit sorted by comment count remained the differentiator again** — the top r/PostgreSQL thread this week ("wire-protocol proxy for cold-start Postgres containers") sat at 47 points/21 comments, comfortably above bar, but the DuckLake-vs-Iceberg benchmark thread (37/5) needed the `[unverified]` flag once the comment thread disputed the methodology. **Browser split:** the in-app `mcp__Claude_Browser__*` pane refuses `old.reddit.com` outright ("blocked by policy"); `Control_Chrome` (real host Chrome) reached the same `old.reddit.com/r/<sub>/top.json?t=week&limit=40` endpoints fine and was used for the full seven-sub sweep, Lobsters `/t/databases`, and the DBA Stack Exchange API this run. Discovery: acadia.engineering (Evan Czaplicki's Datalog-flavored query-language project) drove the week's biggest r/programming database thread (128 pts/94 comments) and a smaller HN one — added to sources.md as a publisher, cross-referenced here since its threads are also a community-pulse item most weeks. modb.pro [zh] not retried — carry over the mobile-site/XHR-endpoint idea yet again.
+
+---
+
+## Retired (removed from weekly scan)
+
+_When a source goes dead/dormant/promotional, move it here with date + reason so it isn't
+re-added by mistake. Populated by the quarterly source review in SKILL.md ("Keeping the skill
+healthy") once an outlet reaches `[dormant]`, or immediately when a source is confirmed
+dead/gone outside that cycle._
+- _(none yet)_

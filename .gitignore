@@ -3,3 +3,7 @@
 
 # digest owner exclusion — keep the owner's identity out of the public repo
 .claude/skills/weekly-dbms-digest/references/exclude.md
+
+# source-yield ledger — per-item detail (URLs, reason codes) stays local;
+# the committed aggregate is references/yield-stats.tsv
+.claude/skills/weekly-dbms-digest/references/ledger.tsv

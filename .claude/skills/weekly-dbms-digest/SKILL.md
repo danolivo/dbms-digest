@@ -175,7 +175,9 @@ Give the conference, location + dates, the **CFP deadline**, and the link; tag *
 
 Each run, spend a little effort looking for **new, high-quality sources** that aren't yet in `references/sources.md`: a new independent engineering blog, a fresh research group page, a newly active newsletter, a conference that just posted proceedings. Good signals are: cited by sources you already trust, written by known contributors, deep technical content with no sales pitch.
 
-When you find a keeper, **append it to `references/sources.md`** under the right section with a one-line note on why it's worth watching. This is how the skill stays current instead of going stale. Conversely, if a listed source has gone dormant or turned into pure marketing, mark it accordingly.
+When you find a keeper, **append it to `references/sources.md`** under the right section with a one-line note on why it's worth watching, **and give it an outlet class** (`[solo]`/`[org]`/`[pipe]` — see the "Outlet key" note near the top of that file). This is how the skill stays current instead of going stale. Conversely, if a listed source has gone dormant or turned into pure marketing, mark it accordingly.
+
+**Reconcile `references/feeds.opml` against `references/sources.md`, every run, at the end of this step.** The two lists drift apart silently otherwise — feeds.opml only tracks confirmed-fetchable feed URLs while sources.md is the full outlet list, so they will never be identical, but a source that's been P1/P2 for months with no feed entry and no noted reason ("no feed exists," "renders JS, browser-only") is a gap worth closing. Spend a minute: skim sources.md for a P1/P2 outlet missing from feeds.opml, try to find its feed, and add it (or add a one-line note in feeds.opml explaining why it can't have one). This is a cheap check, not a full feed-discovery pass.
 
 ### 7. Filter out marketing, ads, and promotion
 
@@ -196,6 +198,43 @@ This is the core value of the digest. **Exclude** an item (or flag it clearly if
 **Release posts get a changes summary.** When an item is the release of an extension or utility (e.g. "pg_kpart 1.0", "powa-archivist 5.1.2", "pgBackRest 2.x"), don't just say "new release" — read the changelog/release notes and summarise *what actually changed*: the headline new features, notable fixes, breaking changes, and the minimum/target server version. This is the one place to relax the strict one-line limit — a release item may use a short sub-bullet list of the key changes when that's clearer. Skip pure version-bump posts with no meaningful changes, and still drop release posts whose "changes" are entirely marketing.
 
 **Migration experience.** Actively look for real-world migration experience reports — moving to/from Postgres, Oracle→Postgres, MySQL→Postgres, cross-cloud, version upgrades at scale — where the author shares what actually happened (pitfalls, downtime, data discrepancies, tooling, rollback). These are high-value; prioritise them. Generic "why you should migrate to our product" posts are marketing — cut them.
+
+### 7b. Record the ledger
+
+This step exists to answer one question over a quarter: which outlets systematically give nothing back, so the weekly scan can stop wasting time on them. It does **not** change what gets filtered — steps 7 and 8 above are untouched — it only records, per candidate, the verdict those steps already reached.
+
+**What's a candidate.** A candidate is anything that reached this point: it fell inside the Mon–Sun window and is on-topic for DBMS, so it survived the date and relevance triage that happens *before* filtering. Do not log items dropped purely for being out-of-window or off-domain before you ever considered them — that would make the denominator drift run to run. A candidate is logged exactly once, whether step 7/8 kept it (→ published) or cut it (→ dropped), across all five funnel categories: PostgreSQL mailing lists, blogs (the `## PostgreSQL`, `## Wider DBMS`, `## Commercial engines`, `## Migration experience` sections), community pulse, research, and international.
+
+**Outlet key.** Normalize per the "Outlet key" rule in `references/sources.md`: lower-case, no `www.`, no trailing slash, no `utm-*`; domain, or domain+path for a shared platform (`dev.to/franckpachot`, `habr.com/ru/companies/postgrespro`). The same post reached via an aggregator and via the author's own site is one candidate keyed to the personal site.
+
+**Outlet class.** Look up `[solo]`/`[org]`/`[pipe]` in `references/sources.md`. Mailing lists and community-pulse platforms (pgsql-hackers, pgsql-committers, Hacker News, Lobsters, Reddit, DBA Stack Exchange, a Habr *hub* scanned as a whole) are `pipe` by definition — don't look those up, just tag them `pipe`. If an outlet has no class recorded yet (e.g. it's only in the sources.md "New sources added" log), default the row to `org` and add a real class to sources.md this same run — see the note there.
+
+**Two files, one per candidate row, written together:**
+
+- `references/ledger.tsv` — git-ignored (alongside `exclude.md`), full detail, local diagnostic only:
+  `run_date  url  outlet  outlet_class  verdict  reason_code`
+  (`verdict` is `published` or `dropped`.) This is what lets a future run tell "this outlet gives nothing" apart from "the pipeline missed it."
+- `references/yield-stats.tsv` — **committed with the digest**, the aggregate:
+  `run_date  outlet  outlet_class  candidates  published`
+  No URLs, no author names, no reason codes — just two counts per outlet per run; the drop count is `candidates - published`, not stored separately. This file carries no judgment calls, so it's fine to publish.
+
+Append rows to both files as you work through steps 7–8, in the same run — don't reconstruct them afterward from memory.
+
+**Reason codes (`ledger.tsv` only — closed list, edit SKILL.md to add one, never invent one mid-run):**
+
+| Code | Meaning |
+|---|---|
+| `PRODUCT` | Product/pricing/funding/GA announcement, no technical substance |
+| `CASE` | Vendor case study written for the logo and the CTA |
+| `HYPE` | Superlatives with no numbers behind them |
+| `SEO` | Listicle, press-release reprint, or SEO bait |
+| `REHASH` | Feature explainer with no first-hand authority (the step 7 authority gate) |
+| `DUPE` | Same story already in this issue |
+| `OFFTOPIC` | Keyword match, not actually about DBMS |
+| `THIN` | On-topic but below the bar — no method, no finding |
+| `UNVERIF` | Key claim couldn't be substantiated (step 8) |
+
+`DUPE` and `OFFTOPIC` are reasons on *our* side (dedup, query precision), not the outlet's — that distinction is exactly what the quarterly review below uses to avoid punishing a source for our own noise.
 
 ### 8. Fact-check before including
 
@@ -262,7 +301,7 @@ Use the exact format below. Keep each line to roughly one sentence — the value
 
 ---
 
-_<N> items · sources scanned: <count> · filtered out as marketing/ads: <count>_
+_<N> items · yield — mailing lists: <messages in window> → <shortlist> → <published> · blogs: <posts in window> → <shortlist> → <published> · community: <threads viewed> → <shortlist> → <published> · research: <preprints in window> → <shortlist> → <published> · international: ru <a>→<b>→<c>, zh <a>→<b>→<c>, fr …, ja … (only the languages actually worked this run)_
 ```
 
 Notes on the format:
@@ -280,7 +319,8 @@ Notes on the format:
 - **Call-for-papers items** appear only in the digest for the week the CFP **opened** (announcement in-window) — never repeated across weeks; tagged *(community)* or *(research)*.
 - **Upcoming-events items** appear once, ~a month ahead — the event starts 24–30 days after this digest's week ends — then a short sub-list of 1–3 internals-relevant talks (speaker + why-it-matters), or a note that the program is TBA.
 - **Blank line before every list.** A bullet list must be preceded by a blank line (CommonMark). If a section opens with an intro sentence (e.g. the Call-for-papers "open as of …" line), leave a blank line before the first `-`, or the whole block renders as one paragraph instead of a list.
-- **Never name what was filtered.** The stats line carries only *counts* (items dropped as marketing/ads, and optionally an out-of-window count). Never list the specific blogs, companies, people, or products you excluded — no "incl. X, Y …" enumerations and no "excluded: …" notes anywhere in the digest. (Listing the sources you *scanned* is fine — that's coverage stats.)
+- **The stats line is a funnel, not a single filtered-count.** Give each of the five candidate categories — mailing lists, blogs, community, research, international — its own three numbers: how many turned up in the window, how many made the shortlist (survived date/relevance triage — the ledger's "candidates"), how many actually ran. International breaks the same three numbers out per language, listing only the languages this run actually worked; omit a category's numbers if that category was skipped entirely rather than printing zeros that imply it was scanned. These numbers must match what you wrote to `references/yield-stats.tsv` this run (step 7b) — they're the same counts, just re-summed by category instead of by outlet.
+- **Never name what was filtered — in the issue.** Never list the specific blogs, companies, people, or products you excluded — no "incl. X, Y …" enumerations and no "excluded: …" notes anywhere in a digest, and therefore nowhere on the published site (`build_feed.py` only reads `digests/*.md`). (Listing the sources you *scanned* is fine — that's coverage stats.) This is item-level privacy, and it's absolute. Outlet-level yield is a different thing and is tracked openly in the repo: `references/yield-stats.tsv` is committed, and a source in `references/sources.md` already carries a public verdict once it's been reviewed — `[low-yield]`, `[dormant]` — the same way DB Weekly already carries `[dormant]` there. Publisher-level accounting is public; which specific piece got cut, and why, stays local to `references/ledger.tsv`.
 - **Owner privacy.** Never include a post **authored by** the digest's owner, and never print the owner's name or personal handles anywhere in the digest. The owner's names/handles live in `references/exclude.md` (git-ignored); skip anything authored by or naming them. Posts about the owner's employer written by *other* people are fine.
 - **Skip empty sections silently.** Omit any section that has no items — do NOT write "nothing this week", "no items found", or an apology/explanation. A missing section just means nothing qualified; the reader infers that. Never add filler narration about gaps.
 - If delivering to Telegram or another plain-text channel later, the same content works; just drop the Markdown headers to bullet groups if the target doesn't render Markdown.
@@ -304,3 +344,15 @@ Notes on the format:
 ## Keeping the skill healthy
 
 The source list is the skill's memory. Treat `references/sources.md` as a living file: add what proves valuable, demote what turns into a billboard. Over a few months this should converge on a personal, high-trust set of sources tuned to what the reader actually finds worth reading.
+
+**Quarterly source review (every 13 weeks, from `references/yield-stats.tsv`).** This is the mechanical counterpart to the paragraph above — it turns "demote what turns into a billboard" from a vibe into a number. Sum each outlet's `candidates` and `published` across the last 13 weekly rows.
+
+Skip every `[pipe]` outlet entirely — a pipe's conversion measures the width of the entrance, not the quality of what's behind it, so it has nothing to say here.
+
+Before marking anything, pull that outlet's rows from the local `references/ledger.tsv` and check the `reason_code` mix. If `DUPE` or `OFFTOPIC` dominate, the problem is on our side — a dedup gap or an imprecise query — fix that instead of touching the outlet's standing.
+
+For `[solo]` outlets: 5+ candidates and 0 published over the quarter → tag `[low-yield]` and drop its scan priority one step (P1→P2, P2→P3). A second consecutive quarter at `[low-yield]` → tag `[dormant]` and remove it from the weekly scan. 0 candidates at all, for the whole quarter → straight to `[dormant]`.
+
+For `[org]` outlets the bar is higher and the outcome is different, because there's no single editorial policy behind a multi-author blog to demote — judging the substance, not the domain (step 7) still applies post by post. 12+ candidates and ≤1 published over the quarter → tag `[low-yield]` — never `[dormant]`, an org outlet is never fully retired by this review. Note in the entry that scanning the whole blog isn't worth it, and: if the rare published items trace back to one or two regular authors, give those authors their own line in `references/sources.md` and their own feed in `references/feeds.opml`, and drop the corporate blog's own priority to P3.
+
+`[low-yield]` and `[dormant]` are observations, not verdicts — don't invent other labels, and don't rewrite one already sitting on an entry from an earlier review.
