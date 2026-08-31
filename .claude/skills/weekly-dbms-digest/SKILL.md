@@ -36,6 +36,11 @@ deliberately, every run:
    on the host, not in the sandbox mount, so you usually can't open it. Prefer fetching a
    narrower URL (a single thread, a single month) over a giant index.
 
+For the concrete, target-by-target recipes (which browser reaches which domain, the pgsql-hackers
+`/since/<ts>` walk, the CommitFest ~100-row cap, HN/Reddit/Lobsters/DBA-SE specifics, and so on),
+see `references/fetching.md` — don't duplicate them here; this section is the general principle
+only.
+
 ### 1. Establish the time window
 
 The digest covers the **last 7 days** by default (or the span since the previous digest if the user gives one). Compute the date range with `date` so you don't rely on a guessed "today". Items published outside the window are excluded, even if interesting — note them only if genuinely seminal.
@@ -144,6 +149,11 @@ development is heading, and it must not be skipped. **Do NOT fetch the full CF l
    `{week, cf, captured_at, created:[{id,title,by}], closed:[{id,title,status}], net}`).
    Each run, diff against the previous week's object so the digest can state how the balance
    moved week over week. Commit this file with the digest.
+   **Retention:** only the current run's snapshot and the one still needed to compute this
+   week's delta stay full; anything older than two weeks is collapsed to one summary line —
+   `{week, cf, created_n, closed_n, net}` under a `weeks_summary` array in the same file — and
+   its full object moves to `references/archive/commitfest-2026.json` (history only, never read
+   at runtime). Do this collapse as part of this step, every run, not as a separate cleanup pass.
 5. Pick the **single most interesting new entry** and summarise its gist in one line — read its
    linked mail thread if the title isn't self-explanatory. Prefer internals features
    (planner, storage, replication, executor) over trivial doc/typo patches.
@@ -356,3 +366,15 @@ For `[solo]` outlets: 5+ candidates and 0 published over the quarter → tag `[l
 For `[org]` outlets the bar is higher and the outcome is different, because there's no single editorial policy behind a multi-author blog to demote — judging the substance, not the domain (step 7) still applies post by post. 12+ candidates and ≤1 published over the quarter → tag `[low-yield]` — never `[dormant]`, an org outlet is never fully retired by this review. Note in the entry that scanning the whole blog isn't worth it, and: if the rare published items trace back to one or two regular authors, give those authors their own line in `references/sources.md` and their own feed in `references/feeds.opml`, and drop the corporate blog's own priority to P3.
 
 `[low-yield]` and `[dormant]` are observations, not verdicts — don't invent other labels, and don't rewrite one already sitting on an entry from an earlier review.
+
+**Logs are fixed-size; lists are not.** The source list and the source-yield ledger are the
+skill's memory and grow as long as they're earning their keep — never trim those to save space.
+Run-history logs are a different thing: they exist to unblock the *next* run, not to accumulate
+forever, so cap them and let git carry the rest.
+- `references/fetching.md` — 60 lines max. A new recipe replaces the stale one it supersedes,
+  it doesn't get appended below it, and a run that learned nothing new about access writes
+  nothing there.
+- `references/community-sources.md`'s Discovery log — the 15 most recent real source finds;
+  older entries roll off (git history has them).
+- `references/yield-stats.tsv` collapses after every quarterly review: the 13 weekly rows for
+  an outlet become one quarterly row. Chronology lives in `git log`, not in the run's context.
