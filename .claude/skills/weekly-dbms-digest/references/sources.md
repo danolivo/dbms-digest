@@ -38,7 +38,7 @@ fallback in SKILL.md step 7b to fall back on.
 - **Planet PostgreSQL** `[pipe]` — official community blog aggregator; the firehose of core contributors, vendors, and independents. P1. https://planet.postgresql.org/
 - **Postgres Weekly** `[pipe]` — curated weekly Postgres newsletter (Cooperpress). Good signal, light on fluff. P1. https://postgresweekly.com/
 - **DB Weekly** `[pipe]` — broader weekly database newsletter (Cooperpress). `[dormant]` — confirmed 2026-08-03: site banner says "360 issues – archives only", no longer published. Archive still browsable; do not re-add. https://dbweekly.com/
-- **pganalyze "5mins of Postgres"** `[solo]` — weekly walkthrough of interesting Postgres content from the prior 7 days; effectively a pre-filtered digest. P1. https://pganalyze.com/blog
+- **pganalyze "5mins of Postgres"** `[solo]` — was a weekly walkthrough of interesting Postgres content from the prior 7 days; effectively a pre-filtered digest, and for months the most reliable single blog-discovery aid here. **Appears to have ended**: checked 2026-09-07, the series looks rebranded to the "Postgres in Production" deep-dive series (Parts 2–6, May→Aug 2026), newest post 2026-08-13, and no weekly episode has landed since. Keep at P1 and re-check each run — if it stays silent through September, mark `[dormant]` and note that the weekly scan lost its best fan-out aid, which raises the effort owed to step 2's direct blog sweep. https://pganalyze.com/blog
 - **PostgreSQL News Archive** `[pipe]` — official project announcements (releases, CVEs). P1. https://www.postgresql.org/about/newsarchive/
 - **Hacker News (front page, db filter)** `[pipe]` — sample for database/systems threads with real discussion. P2. https://hn.algolia.com/?query=postgres
 

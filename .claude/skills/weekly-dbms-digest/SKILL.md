@@ -9,6 +9,34 @@ Produce a short, high-signal weekly digest of what actually happened in the Post
 
 The output is deliberately terse: each item is a **headline + one line** with a link. The reader wants to scan 15–30 items in two minutes and click into the 3–4 that matter.
 
+## What this digest is actually for (read before deciding what to publish)
+
+**The reader already reads pgsql-hackers.** He does not need the digest to tell him what happened
+on the list — he was there. Mailing-list volume is therefore **not** a measure of a good issue, and
+a week with 30 list items is not better than a week with 8. What the reader cannot do himself is
+read forty blogs, in five languages, in a week. **Finding the blogs is the job.** That is the part
+of this skill that produces value he can't get any other way.
+
+Concretely:
+
+- **The blog bar is absolute, not relative.** Never let it rise because the mailing-list section
+  already filled the issue, and never let it fall to pad a quiet week. Judge each post on its own
+  merits (step 7), with no reference to how the rest of the issue is going. A run that publishes
+  28 list items and 7 blog items has probably mis-weighted the effort, even if every individual
+  call was defensible.
+- **Mailing-list items earn their place by being things a list reader would still have missed** —
+  a thread that resolved, a claim that turned out wrong, a bug whose blast radius wasn't obvious
+  from the subject line, a design debate whose outcome is the news. Skim value, not coverage.
+  When in doubt, cut a list item and spend the effort on one more blog instead.
+- **Spend the marginal hour on discovery, not on the archives.** Enumerating `-hackers` for the
+  week is mechanical and finishes fast; finding a blog nobody has heard of does not. If a run has
+  to choose, it works another blog source, another language, or step 6 (discover emerging sources)
+  — never a fifth pass over the list archive.
+- **Blog coverage is a reportable number.** The funnel line already carries `blogs: N in window →
+  shortlisted → published`; treat a low *in-window* count as a scanning failure to investigate,
+  not as a quiet week to accept. Aggregators go dormant silently (pganalyze's "5mins of Postgres"
+  did, mid-2026), so a source that stops appearing is a signal to chase, not to ignore.
+
 ## Workflow
 
 Follow these steps in order. Don't skip the filtering and fact-check steps — they are the whole point.
@@ -47,7 +75,20 @@ The digest covers the **last 7 days** by default (or the span since the previous
 
 ### 2. Gather candidate items from known sources
 
+**This is the highest-value step in the skill — budget effort accordingly.** Blogs are what the
+reader cannot cover himself (see "What this digest is actually for"), so this step and step 6
+deserve more of the run than the archive walks do.
+
 Read `references/sources.md` for the curated source list, grouped into Postgres, broad DBMS, research venues, and aggregators/newsletters. Work through the high-priority sources first. Prefer aggregators (Planet PostgreSQL, DB Weekly) to fan out quickly, then go direct to primary blogs for anything promising.
+
+**Do not stop at Planet PostgreSQL.** Planet is a floor, not a ceiling: it only carries blogs whose
+authors registered a feed with it, so the independent and cross-engine writing that makes an issue
+worth reading is largely invisible there. Every run, go past it — walk the P1/P2 entries in
+`sources.md` directly, sweep `feeds.opml`, and check the outlets that have never appeared on Planet
+at all (malisper.me, cedardb.com, shopify.engineering, planetscale.com, the commercial-engine list).
+Live HN Algolia is a discovery tool as much as a Community-pulse one — it is how malisper.me was
+found. If a week's blog candidates came almost entirely from Planet's RSS, the scan was too shallow,
+whatever the item count says.
 
 **Feed-first ingestion (all languages).** The fastest, most reliable, language-agnostic scan is the curated feed list in `references/feeds.opml` — an OPML list of RSS/Atom feeds. Each run, fetch every feed and keep items whose publish date falls in the window; RSS/Atom is plain XML, so a normal fetch works — no browser, no language barrier. Three cases need the **Claude-in-Chrome** browser instead: feeds blocklisted for plain fetch (Reddit's `.rss` is — confirmed), live feeds that come back empty/unparseable through plain fetch (Lobsters' tag feed and Cybertec's WordPress feed do — they're fine in a real reader), and sources with no feed yet (several Chinese aggregators). Maintain `feeds.opml` like the other source lists: add a feed when you find/confirm one (discover the URL in the browser if the site doesn't advertise it), and drop a feed only when it's genuinely dead (404 / gone) — not when plain fetch merely returns empty (read those via the browser instead). It's also importable into any reader.
 
@@ -105,7 +146,10 @@ didn't look, not that the list was quiet. Use whichever of these works this run:
   thread) or `/message-id/<id>` (single message, body in `.message-content`) — characterise a
   thread from its text, never from its subject alone. Works identically for `pgsql-hackers`,
   `pgsql-bugs`, `pgsql-performance` and `pgsql-general`. A typical -hackers week is ~600 messages
-  and ~90 new threads; if you got fewer, your parser is wrong, not the week.
+  and ~90 new threads; if you *enumerated* fewer, your parser is wrong, not the week. That check is
+  about scan coverage only — it says nothing about how many of those threads belong in the issue.
+  Per "What this digest is actually for", the reader already read the list: publish the handful he
+  would still have missed, and don't let a well-enumerated week turn into a long section.
 - **mail-archive.com (fallback; good for full text + dates, and the only fresh source for
   `pgsql-committers`).** Seed once with
   `WebSearch` for `mail-archive.com pgsql-hackers <topic>`, then fetch
