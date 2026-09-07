@@ -28,6 +28,17 @@
       <outline type="rss" text="Coroot blog [ok - browser-confirmed XML]" xmlUrl="https://coroot.com/feed/"/>
       <outline type="rss" text="Launch by Lunch (Sehrope Sarkuni) [ok - link-rel confirmed]" xmlUrl="https://launchbylunch.com/feeds/rss.xml"/>
     </outline>
+    <outline text="English blogs (added 2026-09-07)">
+      <outline type="rss" text="tapoueh.org (Dimitri Fontaine)" xmlUrl="https://tapoueh.org/index.xml"/>
+      <outline type="rss" text="thebuild.com (Christophe Pettus) - near-daily, P2" xmlUrl="https://thebuild.com/blog/feed/"/>
+      <outline type="rss" text="boringsql.com (Radim Marek)" xmlUrl="https://boringsql.com/rss.xml"/>
+      <outline type="rss" text="MariaDB Foundation blog" xmlUrl="https://mariadb.org/feed/"/>
+      <!-- blogs.oracle.com/mysql replaces dev.mysql.com/blog-archive, dead since 2025-03. -->
+      <outline type="rss" text="Oracle MySQL blog" xmlUrl="https://blogs.oracle.com/mysql/rss"/>
+      <!-- Feed URLs above are advertised by each site but were NOT byte-verified this run
+           (cross-origin fetch from the browser pane is CORS-blocked, and plain fetch needs
+           provenance). Confirm on first use and correct here rather than dropping. -->
+    </outline>
     <outline text="Russian [ru]">
       <outline type="rss" text="Habr - PostgreSQL hub [ok]" xmlUrl="https://habr.com/ru/rss/hubs/postgresql/articles/?fl=ru"/>
     </outline>
@@ -38,10 +49,15 @@
       <outline type="rss" text="Dalibo blog [ok]" xmlUrl="https://blog.dalibo.com/feed.xml"/>
     </outline>
     <outline text="German [de]">
-      <!-- /de/feed/ redirects to a non-feed page (/en/de/feed/); real German feed URL unresolved.
-           Browse the /de/ blog with the browser to discover it, or rely on the EN Cybertec feed
-           (same team, mostly mirrored content). -->
-      <outline type="link" text="Cybertec (DE) [browser - discover feed; EN mirror exists]" htmlUrl="https://www.cybertec-postgresql.com/de/"/>
+      <!-- RETIRED 2026-09-07: Cybertec's German blog no longer exists. /de/ returns 200 but
+           redirects to /en/; /de/postgresql-blog-de/ and /de/category/blog-de/ both 404.
+           No live German-language DBMS outlet is currently pinned - finding one is an open
+           discovery target (see sources.md, German section). -->
+    </outline>
+    <outline text="Japanese [ja] (added 2026-09-07)">
+      <!-- Monthly pgsql-hackers digest by a Postgres contributor; highest-value [ja] source.
+           Feed URL unverified this run - confirm on first use. -->
+      <outline type="rss" text="SRA OSS tech blog (pgsql-hackers watch)" xmlUrl="https://www.sraoss.co.jp/tech-blog/feed/"/>
     </outline>
     <outline text="Chinese [zh] - browser-rendered; no clean RSS, heavy vendor-PR (filter hard)">
       <!-- Browser-confirmed 2026-06-20: modb.pro renders fine via Claude-in-Chrome.

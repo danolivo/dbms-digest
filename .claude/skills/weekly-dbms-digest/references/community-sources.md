@@ -46,6 +46,12 @@ Access tier tells you whether it can be scanned without an account:
   https://www.reddit.com/r/Database/top/?t=week . P3.
 - **r/dataengineering** — pipelines/warehouses; lots of vendor noise, occasional gold. `[js]`
   https://www.reddit.com/r/dataengineering/top/?t=week . P3.
+- **r/vectordatabase** — small, but the most active vector-DB-specific forum found so far; practitioner
+  comparison chatter that never reaches HN. `[js]` https://old.reddit.com/r/vectordatabase/ . P3.
+- **r/mariadb** — effectively an official channel: the MariaDB Foundation posts its monthly newsletter
+  and community polls there. Low volume, high signal per post. `[js]` https://old.reddit.com/r/mariadb/ . P3.
+- **r/DuckDB** — steady on-topic posting, low comment counts; a discovery feed rather than a discussion
+  source. `[js]` https://old.reddit.com/r/DuckDB/ . P3.
 
 ## Q&A
 
@@ -75,6 +81,11 @@ most-recent entries; older ones roll off (git history has the rest)._
 - (2026-06-20) _seed list created._
 - hntoplinks.com — week/month views of top HN stories with live points/comments; a scan aid, not a primary source, for when HN's own listing pages are cache-stale. `[public]` P2. https://www.hntoplinks.com/week
 - hckrnews.com — chronological HN front-page mirror with points/comments; covers only the most recent ~2–3 days, useful for the tail of the week. `[public]` P3. https://hckrnews.com/
+- (2026-09-07) r/vectordatabase, r/mariadb, r/DuckDB added to the weekly sweep — see Forums above.
+- (2026-09-07) **Caveat learned this run:** several of the highest-comment r/SQL threads in a week can
+  share a template (lowercase philosophical title, "Postgres 15, X downstream" framing, abstract hook),
+  one author, and accounts registered the day they post. The *comments* are real practitioners. Report
+  the discussion, never attribute the framing to "the community."
 - acadia.engineering (Evan Czaplicki's Datalog-flavored query-language project) — also a recurring Community-pulse driver (its posts have twice driven the week's biggest r/programming or HN database thread); listed as a publisher in sources.md, cross-referenced here.
 
 ## Retired (removed from weekly scan)

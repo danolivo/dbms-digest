@@ -67,6 +67,8 @@ fallback in SKILL.md step 7b to fall back on.
 - **planetscale.com/blog (Engineering)** `[org]` — vendor (Postgres + Vitess host) but the engineering posts are substantive Postgres internals: Jan Nidzwetzki's MVCC/bloat deep-dive with runnable psql, planner-goes-rogue postmortems, sharding write-ups. Filter the product/Traffic-Control posts; keep the internals ones. Atom feed at planetscale.com/blog/feed.atom. P3. https://planetscale.com/blog
 - **coroot.com/blog** `[org]` — infra-observability vendor; Postgres posts reproduce failure modes (e.g. "Let's Break Autovacuum") rather than listing metrics. P3. https://coroot.com/blog/
 - **thebuild.com (Christophe Pettus)** `[solo]` — near-daily GUC-internals series and cross-engine planner deep-dives. P2. https://thebuild.com/blog/
+- **tapoueh.org (Dimitri Fontaine)** `[solo]` — infrequent but long-form, with every claim verified against a real build; the "Getting Ready for PostgreSQL 19" survey independently reproduced four of the five design problems behind the MERGE/SPLIT PARTITION revert. P2. https://tapoueh.org/blog/
+- **richyen.com (Richard Yen)** `[solo]` — catalog archaeology and version-portability tooling (pg-catalog-almanac: a `pg_catalog` diff across 9.6→19); original datasets, no product attached. P3. https://richyen.com/
 
 ## PostgreSQL development (primary, highest trust)
 
@@ -94,7 +96,7 @@ fallback in SKILL.md step 7b to fall back on.
 - **Oracle Optimizer blog** `[org]` — CBO internals and new optimizer features straight from the team. P2. https://blogs.oracle.com/optimizer/
 - **Oracle Database Insider / Maria Colgan** `[org]` — In-Memory, new-version internals. P3. https://blogs.oracle.com/database/
 - **Franck Pachot** `[solo]` — cross-engine internals (Oracle, Postgres, YugabyteDB, MongoDB); excellent technique-level comparisons. P2. https://dev.to/franckpachot
-- **MySQL Server Blog / engineering** `[org]` — InnoDB, optimizer, replication internals. P3. https://dev.mysql.com/blog-archive/
+- **MySQL Server Blog / engineering** `[org]` — `[dormant]` — confirmed 2026-09-07: last post 2025-03-06, and the page now redirects readers elsewhere. Use **blogs.oracle.com/mysql** `[org]` (RSS https://blogs.oracle.com/mysql/rss) instead. P3. https://dev.mysql.com/blog-archive/
 - **Percona blog (MySQL/Postgres/Mongo)** `[org]` — often substantive engineering; filter the product posts. P3. https://www.percona.com/blog/
 - **MariaDB Foundation blog** `[org]` — engine-level write-ups (e.g. the DuckDB storage-engine line of work); also a clean MariaDB release radar. P3. https://mariadb.org/blog/
 - **modern-sql.com (Markus Winand)** `[solo]` — cross-engine SQL-standard conformance and feature comparisons. P2. https://modern-sql.com/
@@ -158,6 +160,7 @@ use it to confirm, not to discover._
 
 ### Chinese `[zh]`
 - **PingCAP / TiDB blog (CN)** `[org]` — distributed SQL internals, Raft, TiKV. P2. https://cn.pingcap.com/blog/
+- **tidb.net (TiDB 社区)** `[pipe]` — the TiDB user-community blog (redirects to pingkai.cn). Heavily padded with certification diaries and 架构选型 solution pages, but the tuning post-mortems and index deep-dives are real and dated. Currently the most reliably *readable* Chinese DB source — mine it, don't subscribe. P3. https://tidb.net/blog
 - **OceanBase** `[org]` — distributed DB engineering write-ups (CN). P3. https://www.oceanbase.com/
 - **Alibaba Cloud developer (PolarDB / AnalyticDB)** `[pipe]` — engine internals; huge, filter hard. `[js]` P3. https://developer.aliyun.com/
 - **modb.pro (墨天轮)** `[pipe]` — Chinese DBA community and articles (Oracle, PG, MySQL, domestic engines). P3. https://www.modb.pro/
@@ -168,11 +171,12 @@ use it to confirm, not to discover._
 - **dbi-services blog** `[org]` — Swiss; PG/Oracle/SQL Server ops (FR + EN). P3. https://www.dbi-services.com/blog/
 
 ### German `[de]`
-- **Cybertec (DE)** `[org]` — German-language posts from the Cybertec team (the EN edition is listed above). P3. https://www.cybertec-postgresql.com/de/
+- **Cybertec (DE)** `[org]` — `[dormant]` — confirmed gone 2026-09-07: `/de/` returns 200 but redirects to `/en/`, and both `/de/postgresql-blog-de/` and `/de/category/blog-de/` 404. No German-language Cybertec blog exists any more; use the EN edition. Do not re-add. https://www.cybertec-postgresql.com/de/
+- _No live German-language Postgres/DBMS outlet is currently pinned. dbi-services publishes in English despite the Swiss base. **Discovery target:** find one (a DE consultancy blog, a Heise/iX database column, a DOAG/PGConf.DE speaker's blog) rather than letting `[de]` default to "quiet" every week._
 
 ### Japanese `[ja]`
 - **Qiita — PostgreSQL tag** `[pipe]` — large JP dev community; how-tos and internals. `[js]` P3. https://qiita.com/tags/postgresql · RSS https://qiita.com/tags/postgresql/feed
-- **SRA OSS (JP)** `[org]` — Japanese Postgres support company write-ups. P3. https://www.sraoss.co.jp/
+- **SRA OSS (JP) — «pgsql-hackersウォッチ»** `[org]` — a monthly pgsql-hackers digest written by a Postgres contributor (Yugo Nagata); the single most useful non-English source for tracking upstream discussion, and it lands in the first week of each month. The rest of the site is minor-version release notes. P2. https://www.sraoss.co.jp/tech-blog/postgresql-development-trends/
 - **Publickey (Junichi Niino)** `[solo]` — Japanese DBMS/cloud journalism; server-rendered, fetches reliably. P3. https://www.publickey1.jp/
 - **gihyo.jp «OSSデータベース取り時報»** `[org]` — monthly MySQL/PG/Tsurugi column, lands ~1st of each month. P3. https://gihyo.jp/
 
