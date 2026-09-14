@@ -28,6 +28,15 @@
       <outline type="rss" text="Coroot blog [ok - browser-confirmed XML]" xmlUrl="https://coroot.com/feed/"/>
       <outline type="rss" text="Launch by Lunch (Sehrope Sarkuni) [ok - link-rel confirmed]" xmlUrl="https://launchbylunch.com/feeds/rss.xml"/>
     </outline>
+    <outline text="English blogs (added 2026-09-14)">
+      <!-- pganalyze's blog feed (pganalyze.com/blog/rss.xml) 404s as of 2026-09-14 and the
+           "5mins of Postgres" series is confirmed ended - see sources.md. Not listed here. -->
+      <outline type="rss" text="Valkey project blog" xmlUrl="https://valkey.io/feed.xml"/>
+      <outline type="rss" text="PGXN dev log (David E. Wheeler)" xmlUrl="https://blog.pgxn.org/rss"/>
+      <outline type="rss" text="Tiger Data blog (ex-Timescale) - check byline/method per post" xmlUrl="https://www.tigerdata.com/blog/rss.xml"/>
+      <!-- Feed URLs in this group are advertised by each site but were not byte-verified this run;
+           confirm on first use and correct here rather than dropping. -->
+    </outline>
     <outline text="English blogs (added 2026-09-07)">
       <outline type="rss" text="tapoueh.org (Dimitri Fontaine)" xmlUrl="https://tapoueh.org/index.xml"/>
       <outline type="rss" text="thebuild.com (Christophe Pettus) - near-daily, P2" xmlUrl="https://thebuild.com/blog/feed/"/>
@@ -49,14 +58,22 @@
       <outline type="rss" text="Dalibo blog [ok]" xmlUrl="https://blog.dalibo.com/feed.xml"/>
     </outline>
     <outline text="German [de]">
-      <!-- RETIRED 2026-09-07: Cybertec's German blog no longer exists. /de/ returns 200 but
-           redirects to /en/; /de/postgresql-blog-de/ and /de/category/blog-de/ both 404.
-           No live German-language DBMS outlet is currently pinned - finding one is an open
-           discovery target (see sources.md, German section). -->
+      <!-- RETIRED 2026-09-07: Cybertec's German blog no longer exists (/de/ redirects to /en/,
+           /de/postgresql-blog-de/ and /de/category/blog-de/ both 404). credativ.de/blog likewise
+           redirects to /en/blog/ - the German edition is gone and the English one is stale.
+           REPLACED 2026-09-14: heise online's database topic pages are server-rendered and dated,
+           and are the first live [de] outlet this list has had. Feed URLs below follow heise's
+           documented /rss/ scheme but were NOT byte-verified - the topic HTML pages enumerate
+           fine with a plain fetch, so fall back to those if a feed 404s. -->
+      <outline type="rss" text="heise - Datenbanken [unverified feed; HTML page enumerates fine]" xmlUrl="https://www.heise.de/thema/Datenbanken/rss.xml"/>
+      <outline type="link" text="heise - PostgreSQL topic page [ok - plain fetch, dated]" htmlUrl="https://www.heise.de/thema/PostgreSQL"/>
     </outline>
     <outline text="Japanese [ja] (added 2026-09-07)">
       <!-- Monthly pgsql-hackers digest by a Postgres contributor; highest-value [ja] source.
            Feed URL unverified this run - confirm on first use. -->
+      <!-- 2026-09-14: the category URL in sources.md (/tech-blog/postgresql-development-trends/)
+           404s; the posts live under the PostgreSQL開発動向 category on /tech-blog/. Monthly,
+           lands ~4th-7th, so it normally falls in the FIRST week's digest of a month. -->
       <outline type="rss" text="SRA OSS tech blog (pgsql-hackers watch)" xmlUrl="https://www.sraoss.co.jp/tech-blog/feed/"/>
     </outline>
     <outline text="Chinese [zh] - browser-rendered; no clean RSS, heavy vendor-PR (filter hard)">
@@ -65,7 +82,11 @@
            use read_page (screenshot) or modb instead. Chinese DB media is dense vendor PR
            (Dameng, Kingbase, GoldenDB, Highgo, ...) - drop it; mine OceanBase/TiDB/PolarDB
            research and genuine internals posts. -->
-      <outline type="link" text="modb.pro - 墨天轮 DB news [browser - confirmed]" htmlUrl="https://www.modb.pro/dbNews"/>
+      <!-- modb.pro RETIRED 2026-09-14 after a third failed enumeration: the page loads but every
+           listing view is a client-rendered shell with no extractable dated article list, even in a
+           real browser. Do not re-add without a working enumeration path. -->
+      <outline type="link" text="TiDB community blog [ok - plain fetch, dated; tidb.net redirects here]" htmlUrl="https://pingkai.cn/tidbcommunity/blog"/>
+      <outline type="link" text="老冯云数 / Ruohang Feng - highest-yield zh source [ok]" htmlUrl="https://blog.vonng.com/"/>
       <outline type="link" text="PingCAP/TiDB CN blog [browser - slow; use read_page]" htmlUrl="https://cn.pingcap.com/blog/"/>
     </outline>
   </body>

@@ -1191,5 +1191,272 @@
    7112
   ],
   "net": 6
+ },
+ {
+  "week": "2026-08-31",
+  "cf": "PG20-3 (#62) became OPEN during this window; PG20-2 (#61) moved to In Progress (Sep 1-30)",
+  "captured_at": "2026-09-07T04:30+02:00",
+  "partial": true,
+  "note": "Both per-CF activity logs cap at ~100 rows: #62 reaches back only to 2026-09-01 16:26 and #61 to 2026-09-01 20:22, so Aug 31 and Sep 1 morning are invisible on both. Queue totals from the Status summary line on /<n>/?tag=zzz are the reliable week-over-week signal. NOTE the CF rollover: from this week, new patch records are created in #62, not #61.",
+  "window_covered": "2026-09-01 16:26 .. 2026-09-06 22:21 (of the 2026-08-31..09-06 digest week)",
+  "queue_totals": {
+   "as_of": "2026-09-07 04:30 CEST",
+   "source": "Status summary line on /61/?tag=zzz and /62/?tag=zzz",
+   "cf61_PG20_2": {
+    "needs_review": 287,
+    "waiting_on_author": 26,
+    "ready_for_committer": 70,
+    "committed": 81,
+    "moved_to_next_cf": 34,
+    "withdrawn": 20,
+    "rejected": 1,
+    "returned_with_feedback": 1,
+    "total": 520
+   },
+   "cf62_PG20_3": {
+    "needs_review": 32,
+    "waiting_on_author": 1,
+    "ready_for_committer": 7,
+    "moved_to_next_cf": 3,
+    "withdrawn": 1,
+    "total": 44
+   }
+  },
+  "week_over_week": "#61 vs 2026-08-24 snapshot (506 total / 312 NR / 29 WoA / 56 RfC / 68 committed / 23 moved / 16 withdrawn / 1 rejected / 1 RwF): total +14, NR -25, WoA -3, RfC +14, committed +13, moved +11, withdrawn +4. #62 is a new baseline (44).",
+  "created": [
+   {
+    "id": null,
+    "title": "REPACK (CONCURRENTLY) decoding worker is canceled by lock_timeout",
+    "by": "zhong950419",
+    "cf": 62,
+    "date": "2026-09-06"
+   },
+   {
+    "id": null,
+    "title": "postgres_fdw: push down FETCH FIRST .. WITH TIES when server version allows",
+    "by": "sdshedge",
+    "cf": 62,
+    "date": "2026-09-06"
+   },
+   {
+    "id": null,
+    "title": "Direct TOAST v2, faster, smaller and no migration needed",
+    "by": "hannukrosing",
+    "cf": 62,
+    "date": "2026-09-05"
+   },
+   {
+    "id": null,
+    "title": "pg_surgery: check the page header and line pointers",
+    "by": "zhong950419",
+    "cf": 62,
+    "date": "2026-09-05"
+   },
+   {
+    "id": null,
+    "title": "logical decoding: skip unnecessary snapshot distribution",
+    "by": "zhong950419",
+    "cf": 62,
+    "date": "2026-09-05"
+   },
+   {
+    "id": null,
+    "title": "[DOC] pg_database_size/pg_tablespace_size error on a missing OID",
+    "by": "zhong950419",
+    "cf": 62,
+    "date": "2026-09-05"
+   },
+   {
+    "id": null,
+    "title": "add missed tests for gist index",
+    "by": "zhong950419",
+    "cf": 62,
+    "date": "2026-09-05"
+   },
+   {
+    "id": null,
+    "title": "Native planner and executor for SQL/PGQ",
+    "by": "henri.gasc",
+    "cf": 62,
+    "date": "2026-09-04"
+   },
+   {
+    "id": null,
+    "title": "Teach pg_upgrade to deal with invalid databases",
+    "by": "bharathrupireddy",
+    "cf": 62,
+    "date": "2026-09-04"
+   },
+   {
+    "id": null,
+    "title": "Fix getopt_long() argument handling and add tests",
+    "by": "bossartn",
+    "cf": 62,
+    "date": "2026-09-04"
+   },
+   {
+    "id": null,
+    "title": "libpq: Add PQpassfileLookup()",
+    "by": "galponcio",
+    "cf": 62,
+    "date": "2026-09-04"
+   },
+   {
+    "id": null,
+    "title": "Fix WAL block image length diagnostic",
+    "by": "aytiwari",
+    "cf": 62,
+    "date": "2026-09-04"
+   },
+   {
+    "id": null,
+    "title": "Stabilize recovery conflict stats checks in 031_recovery_conflict.pl",
+    "by": "aytiwari",
+    "cf": 62,
+    "date": "2026-09-04"
+   },
+   {
+    "id": null,
+    "title": "Fix use-after-free after failed pg_checksum_init",
+    "by": "ju.grigorev",
+    "cf": 62,
+    "date": "2026-09-04"
+   },
+   {
+    "id": null,
+    "title": "Avoid checksumming extra files in the datadir",
+    "by": "jchampion",
+    "cf": 62,
+    "date": "2026-09-03"
+   },
+   {
+    "id": null,
+    "title": "Fix races in Windows pthread emulation",
+    "by": "nbyavuz",
+    "cf": 62,
+    "date": "2026-09-03"
+   },
+   {
+    "id": null,
+    "title": "Allow bare library names for non-superuser LOAD",
+    "by": "chenchangao",
+    "cf": 62,
+    "date": "2026-09-03"
+   },
+   {
+    "id": null,
+    "title": "Avoid carrying self lock-only xmax to updated tuple",
+    "by": "chee.wooson",
+    "cf": 62,
+    "date": "2026-09-03"
+   },
+   {
+    "id": null,
+    "title": "Honor WAL insertion clamp in XLogBackgroundFlush",
+    "by": "mok03127",
+    "cf": 62,
+    "date": "2026-09-03"
+   },
+   {
+    "id": null,
+    "title": "auto-vectorize varbit bitwise operators",
+    "by": "bossartn",
+    "cf": 62,
+    "date": "2026-09-02"
+   },
+   {
+    "id": null,
+    "title": "glist: _Generic wrapper for selective dlist/dclist usage",
+    "by": "mmeent",
+    "cf": 62,
+    "date": "2026-09-02"
+   },
+   {
+    "id": null,
+    "title": "Remove redundant path_null checks in setPathObject/Array",
+    "by": "ilya.gladysev",
+    "cf": 62,
+    "date": "2026-09-02"
+   },
+   {
+    "id": null,
+    "title": "Fix a typo in EnableLogicalDecoding()",
+    "by": "zhong950419",
+    "cf": 62,
+    "date": "2026-09-02"
+   },
+   {
+    "id": null,
+    "title": "035_standby_logical_decoding might fail due to FATAL message lost inside libpq",
+    "by": "ha-kun",
+    "cf": 62,
+    "date": "2026-09-02"
+   },
+   {
+    "id": null,
+    "title": "pg_dump: Don't emit OVERRIDING SYSTEM VALUE for dropped identity columns",
+    "by": "wjb-fwx",
+    "cf": 62,
+    "date": "2026-09-01"
+   }
+  ],
+  "closed": [
+   {
+    "title": "Fix WAL block image length diagnostic",
+    "status": "Committed",
+    "date": "2026-09-05"
+   },
+   {
+    "title": "Backup manifests accept out-of-range LSNs",
+    "status": "Committed",
+    "date": "2026-09-04"
+   },
+   {
+    "title": "Unsafe qual pushdown through DISTINCT with simple CASE expressions",
+    "status": "Committed",
+    "date": "2026-09-04"
+   },
+   {
+    "title": "auto-vectorize varbit bitwise operators",
+    "status": "Committed",
+    "date": "2026-09-03"
+   },
+   {
+    "title": "Test coverage for pg_clear_attribute_stats() null arguments",
+    "status": "Committed",
+    "date": "2026-09-03"
+   },
+   {
+    "title": "LockHasWaiters() crashes on fast-path locks",
+    "status": "Withdrawn",
+    "date": "2026-09-03"
+   },
+   {
+    "title": "Fix autovacuum freeze bug where weight can lower a table's freeze score",
+    "status": "Withdrawn",
+    "date": "2026-09-03"
+   },
+   {
+    "title": "initdb: Pad rewritten GUC lines with spaces, not tabs.",
+    "status": "Committed",
+    "date": "2026-09-02"
+   },
+   {
+    "title": "re-add redundant filter clause to stats query",
+    "status": "Committed",
+    "date": "2026-09-01"
+   },
+   {
+    "title": "fix autovacuum scoring corner case",
+    "status": "Committed",
+    "date": "2026-09-01"
+   },
+   {
+    "title": "Remove dead code in pg_dump",
+    "status": "Committed",
+    "date": "2026-09-01"
+   }
+  ],
+  "net": "visible portion only: 25 created (all in #62) vs 11 closed (9 committed / 2 withdrawn) -> net +14"
  }
 ]

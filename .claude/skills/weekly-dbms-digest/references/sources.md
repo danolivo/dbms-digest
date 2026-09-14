@@ -38,7 +38,7 @@ fallback in SKILL.md step 7b to fall back on.
 - **Planet PostgreSQL** `[pipe]` — official community blog aggregator; the firehose of core contributors, vendors, and independents. P1. https://planet.postgresql.org/
 - **Postgres Weekly** `[pipe]` — curated weekly Postgres newsletter (Cooperpress). Good signal, light on fluff. P1. https://postgresweekly.com/
 - **DB Weekly** `[pipe]` — broader weekly database newsletter (Cooperpress). `[dormant]` — confirmed 2026-08-03: site banner says "360 issues – archives only", no longer published. Archive still browsable; do not re-add. https://dbweekly.com/
-- **pganalyze "5mins of Postgres"** `[solo]` — was a weekly walkthrough of interesting Postgres content from the prior 7 days; effectively a pre-filtered digest, and for months the most reliable single blog-discovery aid here. **Appears to have ended**: checked 2026-09-07, the series looks rebranded to the "Postgres in Production" deep-dive series (Parts 2–6, May→Aug 2026), newest post 2026-08-13, and no weekly episode has landed since. Keep at P1 and re-check each run — if it stays silent through September, mark `[dormant]` and note that the weekly scan lost its best fan-out aid, which raises the effort owed to step 2's direct blog sweep. https://pganalyze.com/blog
+- **pganalyze "5mins of Postgres"** `[solo]` — was a weekly walkthrough of interesting Postgres content from the prior 7 days; effectively a pre-filtered digest, and for months the most reliable single blog-discovery aid here. `[dormant]` — confirmed 2026-09-14: the series has ended. Rebranded to the "Postgres in Production" deep-dive series (Parts 2–6, May→Aug 2026); newest dated post is still 2026-08-13 and no weekly episode landed in September, which is the condition the previous entry set for this call. `pganalyze.com/blog/rss.xml` now 404s — the feed URL needs rediscovering if the main blog is kept. **The weekly scan has lost its best fan-out aid**: step 2's direct blog sweep and step 6 discovery now carry that load. Demoted P1→P3 for the blog itself. https://pganalyze.com/blog
 - **PostgreSQL News Archive** `[pipe]` — official project announcements (releases, CVEs). P1. https://www.postgresql.org/about/newsarchive/
 - **Hacker News (front page, db filter)** `[pipe]` — sample for database/systems threads with real discussion. P2. https://hn.algolia.com/?query=postgres
 
@@ -51,14 +51,14 @@ fallback in SKILL.md step 7b to fall back on.
 - **Timescale blog** `[org]` — time-series / analytics on Postgres; good patterns, watch for product push. P3. https://www.timescale.com/blog
 - **Fujitsu (Fastware) Postgres blog** `[org]` — internals and feature deep-dives. P3. https://www.postgresql.fastware.com/blog
 - **Microsoft Azure for PostgreSQL blog** `[org]` — sometimes solid internals; filter marketing. P3. https://techcommunity.microsoft.com/category/azuredatabases/blog/adforpostgresql
-- **Postgres.ai blog** `[solo]` — DBLab, database branching, performance tooling. P3. https://postgres.ai/blog
+- **Postgres.ai blog** `[dormant]` `[solo]` — DBLab, database branching, performance tooling. Confirmed 2026-09-14: nothing since **2026-04-08**, five months. P3. https://postgres.ai/blog
 - **PgDog blog (Lev Kokotov)** `[solo]` — pooler/sharding internals from the implementer; strong first-party rationale posts. P3. https://pgdog.dev/blog
 - **boringsql.com (Radim Marek)** `[solo]` — reproducible Postgres internals deep-dives. P3 `[prio-unset]`. https://boringsql.com/
 - **justatheory.com (David Wheeler)** `[solo]` — PGXN/extensions + Postgres↔ClickHouse interop. P3 `[prio-unset]`. https://justatheory.com/
 - **event-driven.io (Oskar Dudycz)** `[solo]` — event sourcing / Postgres-as-event-store engineering. P3. https://event-driven.io/
 - **pduzc.com (Zhang Chen)** `[solo]` — PostgreSQL data-recovery / file-forensics field reports (ransomware carve-out recovery, single-file-per-relation risk analysis); rare hands-on content, appears on Planet PostgreSQL. P3. https://pduzc.com/blog
 - **launchbylunch.com (Sehrope Sarkuni)** `[solo]` — pgjdbc maintainer's blog; primary source for the new pg-java JVM driver (repo under the pgjdbc org). P3. https://launchbylunch.com/
-- **vvka-141.github.io/pgmi/articles/ (Alexey Evlampiev)** `[solo]` — schema-migration mechanics: lock queues, transaction boundaries, `CREATE INDEX CONCURRENTLY`'s two different refusals. Tool-adjacent (pgmi) but the reasoning is about Postgres. P3. https://vvka-141.github.io/pgmi/articles/
+- **vvka-141.github.io/pgmi/articles/ (Alexey Evlampiev)** `[solo]` — schema-migration mechanics: lock queues, transaction boundaries, `CREATE INDEX CONCURRENTLY`'s two different refusals. Tool-adjacent (pgmi) but the reasoning is about Postgres. **Caveat (2026-09-14): none of the nine articles carries a publication date anywhere on the index or the article pages**, so this source cannot be placed in a week’s window — it is effectively unusable for a dated digest until that changes. P3. https://vvka-141.github.io/pgmi/articles/
 - **byteofdev.com (Jacob Jackson)** `[solo]` — occasional but high-effort systems stunts (this week: an LLM behind the Postgres wire protocol, with real storage APIs underneath). Sample, don't subscribe blindly. P3. https://byteofdev.com/
 - **malisper.me (Michael Malis)** `[solo]` — the pgrust series: Postgres reimplemented in Rust, with per-optimisation measurements and disclosed benchmark setups (Volcano → batching → operator fusion → SIMD, each timed). Headline multipliers are self-reported; the engineering is first-rate. Surfaced only via live HN Algolia, not via Planet or any newsletter. P2. https://malisper.me/
 - **brandur.org/fragments (Brandur Leach)** `[solo]` — short, high-signal Postgres-in-production fragments (pgtestdb template cloning). P3. https://brandur.org/
@@ -80,7 +80,7 @@ fallback in SKILL.md step 7b to fall back on.
 ## Wider DBMS & distributed data
 
 - **Andy Pavlo / CMU DB Group blog** `[solo]` — industry analysis, annual "Databases in <year>" retrospective, seminar series. P1. https://www.cs.cmu.edu/~pavlo/blog/ and https://db.cs.cmu.edu/
-- **DBMS Musings (Daniel Abadi)** `[solo]` — isolation/consistency, distributed DB theory made readable. P2. http://dbmsmusings.blogspot.com/
+- **DBMS Musings (Daniel Abadi)** `[dormant]` `[solo]` — isolation/consistency, distributed DB theory made readable. Confirmed 2026-09-14: newest post is **2021-03-25**, five years silent. Dropped from the weekly scan; kept here so it is not re-added. P3. http://dbmsmusings.blogspot.com/
 - **Murat Demirbas — Metadata blog** `[solo]` — distributed systems & database papers, paper reviews. P2. https://muratbuffalo.blogspot.com/
 - **The New Stack — Databases** `[org]` — news/trends; mixed, filter for substance. P3. https://thenewstack.io/data/
 - **QuestDB blog** `[org]` — time-series engine internals and skeptical benchmarking-methodology writing; surfaced via a strong HN thread ("Lies, Damn Lies and Database Benchmarks"). P3. https://questdb.com/blog/
@@ -93,14 +93,14 @@ fallback in SKILL.md step 7b to fall back on.
 
 - **SQL Server — Microsoft engineering blogs & docs** `[org]` — "What's new" + engine internals; mine for real optimizer/storage/columnstore/Hekaton-style techniques, not feature sheets. P2. https://techcommunity.microsoft.com/category/sql-server/blog/sqlserver
 - **Bob Ward / SQL Server team deep-dives** `[solo]` — internals talks and write-ups. P3. https://learn.microsoft.com/en-us/sql/
-- **Oracle Optimizer blog** `[org]` — CBO internals and new optimizer features straight from the team. P2. https://blogs.oracle.com/optimizer/
+- **Oracle Optimizer blog** `[org]` — CBO internals and new optimizer features straight from the team. Checked 2026-09-14: newest post **2026-05-06**, four months quiet — the team has essentially stopped publishing. Still worth a monthly look because the content is first-party when it comes; demoted P2→P3. https://blogs.oracle.com/optimizer/
 - **Oracle Database Insider / Maria Colgan** `[org]` — In-Memory, new-version internals. P3. https://blogs.oracle.com/database/
 - **Franck Pachot** `[solo]` — cross-engine internals (Oracle, Postgres, YugabyteDB, MongoDB); excellent technique-level comparisons. P2. https://dev.to/franckpachot
 - **MySQL Server Blog / engineering** `[org]` — `[dormant]` — confirmed 2026-09-07: last post 2025-03-06, and the page now redirects readers elsewhere. Use **blogs.oracle.com/mysql** `[org]` (RSS https://blogs.oracle.com/mysql/rss) instead. P3. https://dev.mysql.com/blog-archive/
 - **Percona blog (MySQL/Postgres/Mongo)** `[org]` — often substantive engineering; filter the product posts. P3. https://www.percona.com/blog/
 - **MariaDB Foundation blog** `[org]` — engine-level write-ups (e.g. the DuckDB storage-engine line of work); also a clean MariaDB release radar. P3. https://mariadb.org/blog/
-- **modern-sql.com (Markus Winand)** `[solo]` — cross-engine SQL-standard conformance and feature comparisons. P2. https://modern-sql.com/
-- **shopify.engineering** `[org]` — applied MySQL/InnoDB engineering at scale (SKIP LOCKED reservation pools, composite-PK lock counts, connection-hold-time attribution). Worth a monthly skim for the Commercial-engines section. P3. https://shopify.engineering/
+- **modern-sql.com (Markus Winand)** `[solo]` — cross-engine SQL-standard conformance and feature comparisons. Site is alive (the feature-support matrix was current to 2026-09-01) but `/blog` **404s** and no blog index or feed URL has been located — so the outlet cannot currently be window-filtered. **Open: find the real index/feed URL.** P2. https://modern-sql.com/
+- **shopify.engineering** `[org]` — applied MySQL/InnoDB engineering at scale (SKIP LOCKED reservation pools, composite-PK lock counts, connection-hold-time attribution). Worth a monthly skim for the Commercial-engines section. Index is at the site root — `/blog` 404s (corrected 2026-09-14). P3. https://shopify.engineering/
 
 ## Migration experience (real-world reports — prioritise)
 
@@ -163,7 +163,7 @@ use it to confirm, not to discover._
 - **tidb.net (TiDB 社区)** `[pipe]` — the TiDB user-community blog (redirects to pingkai.cn). Heavily padded with certification diaries and 架构选型 solution pages, but the tuning post-mortems and index deep-dives are real and dated. Currently the most reliably *readable* Chinese DB source — mine it, don't subscribe. P3. https://tidb.net/blog
 - **OceanBase** `[org]` — distributed DB engineering write-ups (CN). P3. https://www.oceanbase.com/
 - **Alibaba Cloud developer (PolarDB / AnalyticDB)** `[pipe]` — engine internals; huge, filter hard. `[js]` P3. https://developer.aliyun.com/
-- **modb.pro (墨天轮)** `[pipe]` — Chinese DBA community and articles (Oracle, PG, MySQL, domestic engines). P3. https://www.modb.pro/
+- **modb.pro (墨天轮)** `[dormant]` `[pipe]` — Chinese DBA community and articles. **Retired from the weekly scan 2026-09-14 after a third consecutive failure to enumerate it**: the page loads (title 控制台 - 墨天轮) but every listing view is a client-rendered shell from which no dated article list can be extracted, even in a real browser. Not dead as a site — unusable as a source. Do not re-add without a working enumeration path (untried: its XHR endpoints, `m.modb.pro`). https://www.modb.pro/
 - **老冯云数 / blog.vonng.com (Ruohang Feng, Pigsty)** `[solo]` — high-signal PG-ecosystem essays, several per week; EN mirrors at /en/. Watch for Pigsty self-promo, the engineering is real. P2. https://blog.vonng.com/
 
 ### French `[fr]`
@@ -172,11 +172,12 @@ use it to confirm, not to discover._
 
 ### German `[de]`
 - **Cybertec (DE)** `[org]` — `[dormant]` — confirmed gone 2026-09-07: `/de/` returns 200 but redirects to `/en/`, and both `/de/postgresql-blog-de/` and `/de/category/blog-de/` 404. No German-language Cybertec blog exists any more; use the EN edition. Do not re-add. https://www.cybertec-postgresql.com/de/
-- _No live German-language Postgres/DBMS outlet is currently pinned. dbi-services publishes in English despite the Swiss base. **Discovery target:** find one (a DE consultancy blog, a Heise/iX database column, a DOAG/PGConf.DE speaker's blog) rather than letting `[de]` default to "quiet" every week._
+- **heise online — Datenbanken / PostgreSQL topic pages** `[org]` — **the `[de]` gap is closed (2026-09-14).** Edited German IT press with a live database beat: server-rendered, dated via `<time datetime>`, enumerable with a plain fetch. Mix of product news (drop it) and genuine `hintergrund` features (keep) — some behind the heise+ paywall. P2. https://www.heise.de/thema/Datenbanken · https://www.heise.de/thema/PostgreSQL
+- _Also checked and rejected for `[de]`: **credativ.de/blog** redirects to `/en/blog/` (German edition retired, same failure mode as Cybertec DE) and the English blog is itself stale, newest post 2026-07-17; **dbi-services** publishes in English despite the Swiss base._
 
 ### Japanese `[ja]`
 - **Qiita — PostgreSQL tag** `[pipe]` — large JP dev community; how-tos and internals. `[js]` P3. https://qiita.com/tags/postgresql · RSS https://qiita.com/tags/postgresql/feed
-- **SRA OSS (JP) — «pgsql-hackersウォッチ»** `[org]` — a monthly pgsql-hackers digest written by a Postgres contributor (Yugo Nagata); the single most useful non-English source for tracking upstream discussion, and it lands in the first week of each month. The rest of the site is minor-version release notes. P2. https://www.sraoss.co.jp/tech-blog/postgresql-development-trends/
+- **SRA OSS (JP) — «pgsql-hackersウォッチ»** `[org]` — a monthly pgsql-hackers digest written by a Postgres contributor (Yugo Nagata); the single most useful non-English source for tracking upstream discussion, and it lands in the first week of each month. The rest of the site is minor-version release notes. **URL corrected 2026-09-14**: `/tech-blog/postgresql-development-trends/` 404s; the posts live under the **PostgreSQL開発動向** category on the tech-blog index. Cadence confirmed — it lands ~4th–7th of the month, so it normally falls in the *first* week’s digest. P2. https://www.sraoss.co.jp/tech-blog/
 - **Publickey (Junichi Niino)** `[solo]` — Japanese DBMS/cloud journalism; server-rendered, fetches reliably. P3. https://www.publickey1.jp/
 - **gihyo.jp «OSSデータベース取り時報»** `[org]` — monthly MySQL/PG/Tsurugi column, lands ~1st of each month. P3. https://gihyo.jp/
 
@@ -190,5 +191,12 @@ wait on the owner rather than being guessed. Once classed, promote to the sectio
 remove the line here._
 - hexacluster.ai/blog (Avi Vallarapu) — benchmark-backed Postgres tuning write-ups (HammerDB TPROC-C on HOT updates / fillfactor); numbers, not checklists. Appears on Planet PostgreSQL. P3. https://hexacluster.ai/blog
 - exobench.ai/blog (Alexander Ioffe) — benchmark write-ups with disclosed builds and plans; the PG19 SQL/PGQ series measures `GRAPH_TABLE` against hand-written joins and recursive CTEs on a 19beta1 build. Tool-adjacent (ExoBench) and the headlines lean clickbait, but the numbers and plans are shown. P3. https://exobench.ai/blog
-- seedfa.st/blog (Mikhail Shytsko) — short, reproduced-against-a-real-version Postgres failure-mode posts (sequence-out-of-sync after a fixture load, run on 18.6 with pasted output). Appears on Planet PostgreSQL. P3. https://seedfa.st/blog
+- seedfa.st/blog (Mikhail Shytsko) — short, reproduced-against-a-real-version Postgres failure-mode posts (sequence-out-of-sync after a fixture load on 18.6; the USERSET `statement_timeout` kill-switch escape, with the cancel timed at 2.060s). Appears on Planet PostgreSQL. Second published item in a month. P3. https://seedfa.st/blog
 - acadia.engineering/blog (Evan Czaplicki) — Datalog-inspired relational query-language project; two substantive posts in consecutive weeks ("Rethinking Database Programming," "Solving the 1+N Query Problem"), each driving genuine cross-platform HN/Reddit debate. P3. https://acadia.engineering/blog
+
+_Added 2026-09-14, classed on entry:_
+- **valkey.io/blog** `[org]` — the Valkey project’s own blog; the "Technical Deep Dive" category is actually technical (cluster-wide big-key discovery without offline RDB parsing) and it publishes roughly weekly. Fills a Redis-lineage gap the list had entirely open. P3. https://valkey.io/blog/
+- **vyruss.org (Jimmy Angelakos)** `[solo]` — Postgres backup internals from someone rebuilding the tooling in Go after pgBackRest lost corporate backing and the maintainer archived the repo in April 2026. Low volume; worth a standing watch as that story develops. P3. https://vyruss.org/blog/
+- **tigerdata.com/blog** `[org]` — the ex-Timescale blog, publishing plain Postgres-internals material again under the Tiger Data name (WAL write amplification measured with `pg_stat_wal`, table bloat). **Caveat:** several posts carry an agency byline ("NanoHertz Communications") rather than a named engineer, and the tail of each is a funnel — check the method every time, and cite the post’s own measured numbers rather than its conclusion. P3. https://www.tigerdata.com/blog
+- **blog.pgxn.org (David E. Wheeler)** `[solo]` — PGXN development log; low volume, high signal on extension *distribution* infrastructure (doc/image link resolution, reindexing). Where Wheeler’s output moved after justatheory.com went quiet. P3. https://blog.pgxn.org/
+- **heise.de Datenbanken / PostgreSQL** `[org]` — see the German section above; promoted straight in rather than parked here, because it closes a gap that had been open for weeks.

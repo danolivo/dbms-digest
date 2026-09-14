@@ -52,6 +52,11 @@ Access tier tells you whether it can be scanned without an account:
   and community polls there. Low volume, high signal per post. `[js]` https://old.reddit.com/r/mariadb/ . P3.
 - **r/DuckDB** — steady on-topic posting, low comment counts; a discovery feed rather than a discussion
   source. `[js]` https://old.reddit.com/r/DuckDB/ . P3.
+- **r/ClickHouse** — 3.6k subscribers but consistently on-topic practitioner chatter (ingestion patterns,
+  Postgres↔ClickHouse), and the only place ClickHouse discussion is visible outside HN. `[js]`
+  https://old.reddit.com/r/ClickHouse/ . P3.
+- **r/MySQL** — 49k subscribers; thin weeks are normal, but the list otherwise covers MariaDB and has no
+  MySQL-proper community at all. `[js]` https://old.reddit.com/r/MySQL/ . P3.
 
 ## Q&A
 
@@ -66,6 +71,15 @@ Access tier tells you whether it can be scanned without an account:
 - **PostgreSQL community Slack** — postgresteam.slack.com (join via https://postgres-slack.org).
   High-signal real-time talk. `[auth]` — needs invite; not auto-scannable yet. P-.
 - **PostgreSQL Discord** — public server but reading history needs membership/bot. `[auth]`. P-.
+- **MariaDB Foundation Zulip — `general`** — **publicly readable without login** (verified 2026-09-14 by
+  reading a day's traffic). A live feed of MariaDB/InnoDB *development* — MDEV tickets, force-pushed PRs,
+  JIRA bot filings — which is the register this digest wants and which no subreddit provides. Only a
+  subset of channels is browsable logged-out; `general`, `Buildbot`, `JIRA` and `GitHub - MariaDB Server`
+  are. `[js]` https://mariadb.zulipchat.com/#narrow/channel/118759-general . P2.
+- **`t.me/clickhouse_ru`** — 11,237 members, clearly the most active Russian-language ClickHouse venue,
+  but it is a **group, not a channel**: `t.me/s/` redirects to the join page, so content is unreadable
+  without membership. `[auth]` — listed so it is not re-discovered every run. Never fabricate its
+  content. P-.
 - **#postgresql on Libera.Chat (IRC)** — public channel, but no reliable public web archive.
   `[auth]` (effectively). P-.
 - **Public Telegram channels** — readable without login via the web preview
@@ -87,6 +101,17 @@ most-recent entries; older ones roll off (git history has the rest)._
   one author, and accounts registered the day they post. The *comments* are real practitioners. Report
   the discussion, never attribute the framing to "the community."
 - acadia.engineering (Evan Czaplicki's Datalog-flavored query-language project) — also a recurring Community-pulse driver (its posts have twice driven the week's biggest r/programming or HN database thread); listed as a publisher in sources.md, cross-referenced here.
+- (2026-09-14) r/ClickHouse and r/MySQL added to the weekly sweep; **MariaDB Foundation Zulip** added as the
+  first genuinely readable development-chat source (see Chat & messengers).
+- (2026-09-14) **Access notes worth keeping:** `api.stackexchange.com` is CORS-blocked from a `lobste.rs`
+  origin despite being CORS-open generally — navigate a tab directly to the API URL and parse
+  `document.body.innerText`. `t.me/s/<channel>` is CORS-blocked from any other origin and must be loaded
+  as a page. `lobste.rs/t/databases.json` returns the tag feed as JSON with `score`, `comment_count` and
+  `created_at` — cleaner than scraping `a.u-url`.
+- (2026-09-14) **Telegram searches keep returning aggregators, not sources.** `t.me/sqlhub` (36k subs) is a
+  cross-promotion channel whose bio is a list of other channels; its top post that week was a game ad.
+  Rejected on the anti-marketing filter — do not add.
+
 
 ## Retired (removed from weekly scan)
 
@@ -94,4 +119,10 @@ _When a source goes dead/dormant/promotional, move it here with date + reason so
 re-added by mistake. Populated by the quarterly source review in SKILL.md ("Keeping the skill
 healthy") once an outlet reaches `[dormant]`, or immediately when a source is confirmed
 dead/gone outside that cycle._
-- _(none yet)_
+- **(2026-09-14) r/CockroachDB** — zero posts in the trailing week; `top.json?t=week` returned an empty
+  listing. Dormant; dropped from the sweep.
+- **(2026-09-14) r/dbt** — zero posts in the trailing week. Dormant; dropped from the sweep.
+- **(2026-09-14) `t.me/tantorlabs`** — created 2022-11-11, **2 subscribers, zero posts ever**. Recorded so
+  it is not "discovered" again.
+- **(2026-09-14) Checked, too quiet to justify a weekly slot (not retired, just not added):** r/sqlite
+  (11 posts/week, max 7 comments), r/cassandra (2 posts all week), r/mongodb (5 posts, max 5 comments).
