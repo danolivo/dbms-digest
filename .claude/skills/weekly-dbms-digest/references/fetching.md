@@ -4,7 +4,7 @@ Cap: 60 lines. Knowledge, not a log — no dates, no "this run" narrative. A new
 a target replaces the old one here, it doesn't get appended below it. Nothing new about
 access this run → write nothing here.
 ## Provenance (web_fetch)
-- Cold `web_fetch` only works on a URL already in provenance (a search result, or a link on a page already fetched). Seed with `WebSearch`, then chain through fetched pages.
+- Cold `web_fetch` only works on a URL already in provenance (a search result, or a link on a page already fetched). Seed with `WebSearch`, then chain through fetched pages. **Chaining is unreliable in some runs** — link-on-a-fetched-page provenance did not propagate at all during the 2026-09-21 sweep, so every outlet needed its own seed search. Batch several domains into one `WebSearch` via `allowed_domains` when that happens; it's the main cost driver for the blog step.
 - Official domains often serve cache-stale content to plain fetch — check the newest date on the page before trusting a listing.
 - A feed fetched as raw XML can come back as undecoded "[binary data]" — fetch the HTML index page instead, or use a browser.
 - Same-origin in-page `fetch()` is blocked if the current tab URL carries a query string — navigate to a clean URL first.
@@ -37,9 +37,12 @@ access this run → write nothing here.
 - Use the API, not the HTML: `api.stackexchange.com/2.3/questions?site=dba&fromdate=<epoch>&todate=<epoch>&order=desc&sort=votes&pagesize=15&filter=!nNPvSNdWme` — CORS-open, no key needed, already windowed. Usually low-signal for Postgres specifically (traffic skews SQL Server/Informix) — cheap to scan, rarely contributes.
 ## arXiv cs.DB
 - Reachable cold via `www.arxiv.org` (the bare host sometimes doesn't surface in search). Day-bucketed; use `/list/cs.DB/<month>` if `/recent` is stale. `/abs/<id>` gives `[Submitted on …]` plus `blockquote.abstract` for the gist.
+- Listing **pagination needs an in-page fetch**: `?skip=50&show=50` is stripped on redirect by both `web_fetch` and browser `navigate`, so every request serves page 1 — run `fetch()`+`DOMParser` from inside the already-loaded listing page. `export.arxiv.org/api/query` returned zero bytes (no error) — don't rely on it. No announcements Sat/Sun, so the last two days of a Mon–Sun window are structurally under-covered.
 ## Habr hub
 - `habr.com/ru/hubs/postgresql/` ("Статьи" tab) plain-fetches the live chronological list with dates — no browser needed. Never fetch `/articles/top/alltime/` (all-time list, wastes tokens). In a browser: `document.querySelectorAll('article')` → `time[datetime]` + `.tm-title__link` (+ vote counter) per item.
 ## Misc
+- PGConf.EU: `2026.pgconf.eu/schedule/` overflows the fetch limit (~56 KB) — the overflow file the tool reports is readable with the host `Read` tool, which is cheaper than a browser pass.
+- Browser-only despite looking plain: `heise.de/thema/*` (consent shell), `pingkai.cn/tidbcommunity/blog`, `stormatics.tech/blogs/*` (all return empty bodies to `web_fetch`).
 - Conference schedules (confbase.io) are a JS iframe embed; navigate the browser straight to the iframe src `https://confbase.io/embed/<slug>/<year>/schedule?theme=dark` and `get_page_text` — the WordPress page itself fetches but the talk list needs the browser.
 - `postgresweekly.com/latest` redirects to the real issue; `/issues/latest` errors. `api.github.com` works same-origin from any page (CORS *) for release dates, but is CSP-blocked from some vendor pages (e.g. planetscale.com).
 ## Open

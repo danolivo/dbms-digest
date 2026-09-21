@@ -77,101 +77,195 @@
    "created_n": null,
    "closed_n": null,
    "net": "partial log (Sep 1 16:26 .. Sep 6 22:21); queue totals #62=44, #61=520"
+  },
+  {
+   "week": "2026-09-07",
+   "cf": "PG20-3 (#62) OPEN (to 2026-10-31); PG20-2 (#61) In Progress (to 2026-09-30)",
+   "created_n": 20,
+   "closed_n": 17,
+   "net": 3
   }
  ],
  "weeks": [
   {
-   "week": "2026-09-07",
-   "cf": "PG20-3 (#62) OPEN (to 2026-10-31); PG20-2 (#61) In Progress (to 2026-09-30)",
-   "captured_at": "2026-09-14T07:10+02:00",
-   "partial": true,
-   "note": "Both /62/activity/ and /61/activity/ return the SAME global 100-row log (identical head and tail rows), hard-capped, no pagination. Merged+deduped they give 162 distinct rows reaching back only to 2026-09-08 14:59 - so all of Sep 7 and most of Sep 8 are invisible. Flow numbers below are LOWER BOUNDS. The Status-summary queue totals on /<n>/?tag=zzz remain the reliable week-over-week signal. Also unresolved: whether either activity log is genuinely CF-scoped.",
-   "window_covered": "2026-09-08 14:59 .. 2026-09-13 23:59 (of the 2026-09-07..09-13 digest week)",
-   "queue_totals": {
-    "as_of": "2026-09-14",
-    "cf62": {
-     "needs_review": 56,
-     "waiting_on_author": 4,
-     "ready_for_committer": 8,
-     "moved_to_next": 8,
-     "withdrawn": 3,
-     "total": 79,
-     "wow_total": "+35 (44 -> 79)"
-    },
-    "cf61": {
-     "needs_review": 264,
-     "waiting_on_author": 30,
-     "ready_for_committer": 72,
-     "committed": 90,
-     "moved_to_next": 40,
-     "returned_with_feedback": 4,
-     "rejected": 1,
-     "withdrawn": 24,
-     "total": 525,
-     "wow_total": "+5 (520 -> 525)",
-     "wow_committed": "+9 (81 -> 90)"
-    }
+   "week": "2026-09-14",
+   "cf": "PG20-3 (#62)",
+   "captured_at": "2026-09-21",
+   "window": "2026-09-14 .. 2026-09-20",
+   "truncated": "per-CF activity log caps at 100 rows; oldest row 2026-09-14 02:15:49, so 00:00-02:15 of Sep 14 is clipped. Counts are LOWER BOUNDS.",
+   "queue_at_scan": {
+    "needs_review": 74,
+    "waiting_on_author": 7,
+    "ready_for_committer": 10,
+    "total": 91
    },
    "created": [
     {
-     "id": "7281",
-     "title": "Improve Hash/Merge Join estimate accuracy when all predicates are Hash/Merge clauses",
-     "by": "Ilia Evdokimov"
+     "id": "7305",
+     "title": "Add get_actual_variable_range index page read limit (complements existing VISITED_PAGES_LIMIT)",
+     "by": "Peter Geoghegan"
     },
     {
-     "id": "7283",
-     "title": "Allow subquery pull-up past inlineable CTEs",
-     "by": "Andrey Kazarinov"
+     "id": null,
+     "title": "Report pruning statistics in pg_stat_all_tables",
+     "by": "zhong950419"
     },
     {
-     "id": "7280",
-     "title": "Use maintenance_io_concurrency for parallel index builds",
-     "by": "Jingtang Zhang"
+     "id": null,
+     "title": "Avoid emitting core dumps when not needed",
+     "by": "aytiwari"
+    },
+    {
+     "id": null,
+     "title": "meson: pass OpenSSL/ICU include dirs to extensions",
+     "by": "gipergeek"
+    },
+    {
+     "id": null,
+     "title": "Combine qual-based and NOT NULL proofs when reducing outer joins",
+     "by": "smartkeyerror"
+    },
+    {
+     "id": null,
+     "title": "Optimize MCV stats for sortable types and utilize sorted-order properties",
+     "by": "liuzizhuan"
+    },
+    {
+     "id": null,
+     "title": "FIX: BUG #19687: ALTER SEQUENCE missing lock",
+     "by": "afelipe"
+    },
+    {
+     "id": null,
+     "title": "Discard aborted updaters when expanding a multixact",
+     "by": "chee.wooson"
+    },
+    {
+     "id": null,
+     "title": "Remove unused PageIsPredicateLocked()",
+     "by": "a.alekseev"
+    },
+    {
+     "id": null,
+     "title": "ANSI SQL proposal: SELECT DISTINCT ON (... ORDER BY ...)",
+     "by": "hannukrosing"
+    },
+    {
+     "id": null,
+     "title": "Optimize truncation logic to reduce AccessExclusive lock impact",
+     "by": "zhong950419"
+    },
+    {
+     "id": null,
+     "title": "Doc: clarify pg_locks descriptions of classid/objid/objsubid",
+     "by": "masaofujii"
+    },
+    {
+     "id": null,
+     "title": "Improve hash aggregate spilling by writing only the needed columns",
+     "by": "mkaruza"
+    },
+    {
+     "id": null,
+     "title": "tuplesort_putdatum() does not account for tuple memory",
+     "by": "mkaruza"
+    },
+    {
+     "id": null,
+     "title": "BUG #19686: Rolling back SET TABLESPACE",
+     "by": "afelipe"
+    },
+    {
+     "id": null,
+     "title": "Row contention in regress/parallel_schedule, adding multi-line test groups",
+     "by": "afelipe"
+    },
+    {
+     "id": null,
+     "title": "pgoutput: schema cache cleanup after streamed 2PC",
+     "by": "aytiwari"
+    },
+    {
+     "id": null,
+     "title": "pg_walinspect: add functions to locate and list WAL by time and LSN",
+     "by": "chaol"
+    },
+    {
+     "id": null,
+     "title": "SHMEM_ATTACH_UNKNOWN_SIZE reaches InitShmemIndexEntry()",
+     "by": "ashutoshbapat"
+    },
+    {
+     "id": null,
+     "title": "pg_rewind does not rewind diverging timelines",
+     "by": "mkindahl"
+    },
+    {
+     "id": null,
+     "title": "psql single-step mode woes",
+     "by": "heikki"
+    },
+    {
+     "id": null,
+     "title": "postgres_fdw: Fix cost estimation for semi join pushdown",
+     "by": "torenzhang"
+    },
+    {
+     "id": null,
+     "title": "Two remaining shmem attachment issues in single-user mode",
+     "by": "aytiwari"
+    },
+    {
+     "id": "7321",
+     "title": "Temp schema drop leaves an inconsistent state behind",
+     "by": "gruuya"
+    },
+    {
+     "id": null,
+     "title": "Cache invalidation for I/O Workers",
+     "by": "afelipe"
+    },
+    {
+     "id": null,
+     "title": "Use bounded GIN pending-list cleanup in parallel autovacuum",
+     "by": "mrdrivingduck"
     }
    ],
-   "created_n": 20,
+   "created_n": 26,
    "closed": [
     {
-     "title": "Fix GRAPH TABLE label and property error reporting",
-     "status": "Withdrawn"
-    },
-    {
-     "title": "Disallow outer-level and WHERE-clause aggregates in GRAPH_TABLE",
-     "status": "Withdrawn"
-    },
-    {
-     "title": "Add support for label conjunction (&) in SQL/PGQ",
-     "status": "Returned with feedback"
-    },
-    {
-     "title": "Rewrite undirected edge patterns in GRAPH_TABLE using UNION ALL",
-     "status": "Returned with feedback"
-    },
-    {
-     "title": "Batched clock sweep to reduce cross-socket atomic contention",
-     "status": "Withdrawn"
-    },
-    {
-     "title": "REPACK (CONCURRENTLY) doesn't handle invalid indexes",
-     "status": "Returned with feedback"
-    },
-    {
-     "title": "Fix getopt_long() argument handling and add tests",
+     "title": "Fixes for a few GUC descriptions",
      "status": "Committed"
     },
     {
-     "title": "Fix hangs in COPY FROM (FORMAT text)",
+     "title": "[DOC] pg_database_size/pg_tablespace_size error on a missing OID",
      "status": "Committed"
     },
     {
-     "title": "Concurrent DROP TABLESPACE can miss a shared dependency",
+     "title": "REPACK (CONCURRENTLY) decoding worker is canceled by lock_timeout",
+     "status": "Committed"
+    },
+    {
+     "title": "Improve WAIT FOR read-your-writes consistency doc",
+     "status": "Committed"
+    },
+    {
+     "title": "Reject WAIT FOR earlier in transaction-snapshot mode",
+     "status": "Committed"
+    },
+    {
+     "title": "pgoutput: schema cache cleanup after streamed 2PC",
+     "status": "Committed"
+    },
+    {
+     "title": "SHMEM_ATTACH_UNKNOWN_SIZE reaches InitShmemIndexEntry()",
      "status": "Committed"
     }
    ],
-   "closed_n": 17,
-   "ready_for_committer_n": 8,
-   "net": 3,
-   "highlight": "The four SQL/PGQ follow-on entries all died within three days of the Sep 7 revert - the CommitFest is where the revert's blast radius is visible. Separately, 'Support for 8-byte TOAST values, round two' went Ready for Committer on Sep 11, the same week the OID8 widening and the toast_value_type reloption landed in master."
+   "closed_n": 7,
+   "ready_for_committer_n": 3,
+   "net": 19,
+   "highlight": "Flow reverses sharply against last week: -14 net on 2026-09-07 (20 created / 17 closed after the SQL/PGQ cull... recorded net 3) versus >= +19 now, as PG20-3 fills up while PG20-2 is the in-progress CF absorbing the commits. All 7 closures were 'Closed in commitfest PG20-2 with status: Committed' after being moved out of PG20-3; two of them (pgoutput streamed-2PC cleanup, SHMEM_ATTACH_UNKNOWN_SIZE) were created AND committed inside the same week. Standout new entry is Peter Geoghegan's INDEX_PAGES_LIMIT split out of the VISITED_PAGES_LIMIT thread."
   }
  ]
 }

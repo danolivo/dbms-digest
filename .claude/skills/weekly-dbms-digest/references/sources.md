@@ -45,7 +45,12 @@ fallback in SKILL.md step 7b to fall back on.
 ## PostgreSQL blogs (primary)
 
 - **Bruce Momjian** `[solo]` — core team; internals, community direction. P2. https://momjian.us/main/blogs/
-- **Crunchy Data blog** `[org]` — frequently substantive engineering (e.g. Elizabeth Christensen, Craig Kerstiens). Judge per-post; skip the pure product posts. P2. https://www.crunchydata.com/blog
+- **Crunchy Data blog** `[org]` — frequently substantive engineering (e.g. Elizabeth Christensen, Craig Kerstiens). Judge per-post; skip the pure product posts. **Slowing (2026-09-21): newest post 2026-09-02, and the site footer's privacy link now points at snowflake.com — the Postgres engineering output has largely moved to the Snowflake engineering blog (see below).** P3. https://www.crunchydata.com/blog
+- **snowflake.com — engineering, Open Source** `[org]` — where the ex-Crunchy Postgres writing landed post-acquisition (Elizabeth Garrett Christensen's Tom Lane interview, the PG19 release-status pieces). Filter the Core Platform / Gen AI categories out; the Open Source category is the Postgres one. Added 2026-09-21. P2. https://www.snowflake.com/en/blog/engineering/
+- **commandprompt.com/blog (Joshua Drake)** `[solo]` — publishes a **weekly commit-level ledger** of REL_19_STABLE and master (commit counts, revert counts, the closing commit hash) plus real release notes for pgColumnar. The cheapest way to fact-check any "PG19 lost feature X" claim; best find of the 2026-09-21 run. P2. https://www.commandprompt.com/blog/
+- **markwkm.blogspot.com (Mark Wong)** `[solo]` — TPC-E / DBT-5 benchmark work with published harnesses and result repositories (scale-factor sweeps on EC2). Appears on Planet but was never pinned here. Added 2026-09-21. P3. https://markwkm.blogspot.com/
+- **vondra.me (Tomas Vondra)** `[solo]` — committer's own blog; low volume, but the posts are measurement-led (28 years of pgsql-hackers/commit-activity charts). Added 2026-09-21. P2. https://vondra.me/
+- **hdombrovskaya.wordpress.com (Henrietta Dombrovskaya)** `[solo]` — low volume; the `pg_acm` author. Watch. Added 2026-09-21. P3. https://hdombrovskaya.wordpress.com/
 - **pganalyze blog** `[org]` — query performance, planner, internals. P2. https://pganalyze.com/blog
 - **EDB blog** `[org]` — enterprise Postgres, HA, migrations; filter heavily for marketing. P3. https://www.enterprisedb.com/blog
 - **Timescale blog** `[org]` — time-series / analytics on Postgres; good patterns, watch for product push. P3. https://www.timescale.com/blog
@@ -79,7 +84,8 @@ fallback in SKILL.md step 7b to fall back on.
 
 ## Wider DBMS & distributed data
 
-- **Andy Pavlo / CMU DB Group blog** `[solo]` — industry analysis, annual "Databases in <year>" retrospective, seminar series. P1. https://www.cs.cmu.edu/~pavlo/blog/ and https://db.cs.cmu.edu/
+- **Andy Pavlo / CMU DB Group blog** `[solo]` — industry analysis, annual "Databases in <year>" retrospective, seminar series. **Demoted P1→P3 2026-09-21:** newest post is 2026-01-04 ("Databases in 2025"), and db.cs.cmu.edu's newest news item is 2026-05-15 — this is effectively an annual publication, not a weekly one. P3. https://www.cs.cmu.edu/~pavlo/blog/ and https://db.cs.cmu.edu/
+- **clickhouse.com/blog** `[org]` — Gülçin Yıldırım Jelínek and Sai Srirampur publish real Postgres-adjacent engineering here (physical-WAL-to-ClickHouse replication with architecture + benchmarks). Heavy product mix; filtered watch. Added 2026-09-21. P3. https://clickhouse.com/blog
 - **DBMS Musings (Daniel Abadi)** `[dormant]` `[solo]` — isolation/consistency, distributed DB theory made readable. Confirmed 2026-09-14: newest post is **2021-03-25**, five years silent. Dropped from the weekly scan; kept here so it is not re-added. P3. http://dbmsmusings.blogspot.com/
 - **Murat Demirbas — Metadata blog** `[solo]` — distributed systems & database papers, paper reviews. P2. https://muratbuffalo.blogspot.com/
 - **The New Stack — Databases** `[org]` — news/trends; mixed, filter for substance. P3. https://thenewstack.io/data/
@@ -105,7 +111,8 @@ fallback in SKILL.md step 7b to fall back on.
 ## Migration experience (real-world reports — prioritise)
 
 - **AWS Database Blog — migrations** `[org]` — Oracle/SQL Server → Postgres/Aurora war stories; technical, watch for product push. P2. https://aws.amazon.com/blogs/database/
-- **Stormatics** `[org]` — incident/migration field reports. P2. https://stormatics.tech/
+- **Stormatics** `[org]` — incident/migration field reports. **Access correction 2026-09-21:** the `/our-blogs` index is a dead archive (newest entry July 2024); real posts live at `stormatics.tech/blogs/<slug>` and a plain fetch of an article returns an empty body — render it in a browser. P2. https://stormatics.tech/
+- **fljd.in (Florent Jardin, Dalibo)** `[solo]` — Oracle→Postgres migration mechanics from one of the three authors of PostgreSQL Migrator; writes in FR with an `/en/` mirror. Added 2026-09-21. P3. https://fljd.in/en/
 - **pgEdge / Crunchy / EDB migration write-ups** `[no-ledger]` — judge per-post for real lessons vs. pitch; not one outlet — key ledger rows by the post's actual domain instead (pgedge.com, crunchydata.com, enterprisedb.com; the latter two already classed above). P3.
 - _Also surface migration posts that appear via Planet PostgreSQL and DB Weekly — they show up there regularly._
 
@@ -160,7 +167,7 @@ use it to confirm, not to discover._
 
 ### Chinese `[zh]`
 - **PingCAP / TiDB blog (CN)** `[org]` — distributed SQL internals, Raft, TiKV. P2. https://cn.pingcap.com/blog/
-- **tidb.net (TiDB 社区)** `[pipe]` — the TiDB user-community blog (redirects to pingkai.cn). Heavily padded with certification diaries and 架构选型 solution pages, but the tuning post-mortems and index deep-dives are real and dated. Currently the most reliably *readable* Chinese DB source — mine it, don't subscribe. P3. https://tidb.net/blog
+- **tidb.net (TiDB 社区)** `[pipe]` — the TiDB user-community blog (redirects to pingkai.cn). Heavily padded with certification diaries and 架构选型 solution pages, but the tuning post-mortems and index deep-dives are real and dated. Currently the most reliably *readable* Chinese DB source — mine it, don't subscribe. **Access correction 2026-09-21: browser only** — plain fetch of `pingkai.cn/tidbcommunity/blog` returns an empty body. Authors worth following: **拍脑袋小助手**, **TiDBer_wangwenjing** (both `[solo]`, reproducible lab write-ups with version/topology/SQL); the "TiDB官方" account is pure PR. P3. https://tidb.net/blog
 - **OceanBase** `[org]` — distributed DB engineering write-ups (CN). P3. https://www.oceanbase.com/
 - **Alibaba Cloud developer (PolarDB / AnalyticDB)** `[pipe]` — engine internals; huge, filter hard. `[js]` P3. https://developer.aliyun.com/
 - **modb.pro (墨天轮)** `[dormant]` `[pipe]` — Chinese DBA community and articles. **Retired from the weekly scan 2026-09-14 after a third consecutive failure to enumerate it**: the page loads (title 控制台 - 墨天轮) but every listing view is a client-rendered shell from which no dated article list can be extracted, even in a real browser. Not dead as a site — unusable as a source. Do not re-add without a working enumeration path (untried: its XHR endpoints, `m.modb.pro`). https://www.modb.pro/
@@ -192,7 +199,7 @@ remove the line here._
 - hexacluster.ai/blog (Avi Vallarapu) — benchmark-backed Postgres tuning write-ups (HammerDB TPROC-C on HOT updates / fillfactor); numbers, not checklists. Appears on Planet PostgreSQL. P3. https://hexacluster.ai/blog
 - exobench.ai/blog (Alexander Ioffe) — benchmark write-ups with disclosed builds and plans; the PG19 SQL/PGQ series measures `GRAPH_TABLE` against hand-written joins and recursive CTEs on a 19beta1 build. Tool-adjacent (ExoBench) and the headlines lean clickbait, but the numbers and plans are shown. P3. https://exobench.ai/blog
 - seedfa.st/blog (Mikhail Shytsko) — short, reproduced-against-a-real-version Postgres failure-mode posts (sequence-out-of-sync after a fixture load on 18.6; the USERSET `statement_timeout` kill-switch escape, with the cancel timed at 2.060s). Appears on Planet PostgreSQL. Second published item in a month. P3. https://seedfa.st/blog
-- acadia.engineering/blog (Evan Czaplicki) — Datalog-inspired relational query-language project; two substantive posts in consecutive weeks ("Rethinking Database Programming," "Solving the 1+N Query Problem"), each driving genuine cross-platform HN/Reddit debate. P3. https://acadia.engineering/blog
+- acadia.engineering/blog (Evan Czaplicki) — Datalog-inspired relational query-language project; two substantive posts in consecutive weeks ("Rethinking Database Programming," "Solving the 1+N Query Problem"), each driving genuine cross-platform HN/Reddit debate. **2026-09-21: could not be reached this run — the URL needs re-confirming before the next sweep. Note it is NOT `acadia.io`, which is an unrelated retail-media marketing agency.** P3. https://acadia.engineering/blog
 
 _Added 2026-09-14, classed on entry:_
 - **valkey.io/blog** `[org]` — the Valkey project’s own blog; the "Technical Deep Dive" category is actually technical (cluster-wide big-key discovery without offline RDB parsing) and it publishes roughly weekly. Fills a Redis-lineage gap the list had entirely open. P3. https://valkey.io/blog/
@@ -200,3 +207,6 @@ _Added 2026-09-14, classed on entry:_
 - **tigerdata.com/blog** `[org]` — the ex-Timescale blog, publishing plain Postgres-internals material again under the Tiger Data name (WAL write amplification measured with `pg_stat_wal`, table bloat). **Caveat:** several posts carry an agency byline ("NanoHertz Communications") rather than a named engineer, and the tail of each is a funnel — check the method every time, and cite the post’s own measured numbers rather than its conclusion. P3. https://www.tigerdata.com/blog
 - **blog.pgxn.org (David E. Wheeler)** `[solo]` — PGXN development log; low volume, high signal on extension *distribution* infrastructure (doc/image link resolution, reindexing). Where Wheeler’s output moved after justatheory.com went quiet. P3. https://blog.pgxn.org/
 - **heise.de Datenbanken / PostgreSQL** `[org]` — see the German section above; promoted straight in rather than parked here, because it closes a gap that had been open for weeks.
+
+_Added 2026-09-21, classed on entry (all promoted straight into the sections above):_ commandprompt.com/blog `[solo]`, snowflake.com engineering `[org]`, markwkm.blogspot.com `[solo]`, vondra.me `[solo]`, clickhouse.com/blog `[org]`, hdombrovskaya.wordpress.com `[solo]`, fljd.in `[solo]`.
+- **babel.postgresql.org** `[pipe]` — not a news source: the PostgreSQL NLS translation-status dashboard. Standing reference for translation/community items (it is the primary artefact behind the zh_CN catalog story of 2026-09-14). P3. https://babel.postgresql.org/

@@ -48,6 +48,15 @@
            (cross-origin fetch from the browser pane is CORS-blocked, and plain fetch needs
            provenance). Confirm on first use and correct here rather than dropping. -->
     </outline>
+    <outline text="English blogs (added 2026-09-21)">
+      <!-- All four discovered during the 2026-09-14 sweep; feed URLs follow each platform's
+           standard scheme and are advertised by the site, but were not byte-verified this run.
+           Confirm on first use and correct here rather than dropping. -->
+      <outline type="rss" text="Command Prompt (Joshua Drake) - weekly PG commit-level ledger" xmlUrl="https://www.commandprompt.com/blog/rss.xml"/>
+      <outline type="rss" text="vondra.me (Tomas Vondra, committer)" xmlUrl="https://vondra.me/index.xml"/>
+      <outline type="rss" text="markwkm (Mark Wong) - TPC-E/DBT-5 benchmarks" xmlUrl="https://markwkm.blogspot.com/feeds/posts/default"/>
+      <outline type="link" text="Snowflake engineering - Open Source (ex-Crunchy PG writing)" htmlUrl="https://www.snowflake.com/en/blog/engineering/"/>
+    </outline>
     <outline text="Russian [ru]">
       <outline type="rss" text="Habr - PostgreSQL hub [ok]" xmlUrl="https://habr.com/ru/rss/hubs/postgresql/articles/?fl=ru"/>
     </outline>
@@ -75,6 +84,10 @@
            404s; the posts live under the PostgreSQL開発動向 category on /tech-blog/. Monthly,
            lands ~4th-7th, so it normally falls in the FIRST week's digest of a month. -->
       <outline type="rss" text="SRA OSS tech blog (pgsql-hackers watch)" xmlUrl="https://www.sraoss.co.jp/tech-blog/feed/"/>
+      <!-- 2026-09-21: Publickey's Atom feed found; the HTML index fetches fine but the feed is
+           cheaper and carries clean dates. Publickey was the only [ja] outlet with real DBMS
+           news in the 09-14 week. -->
+      <outline type="rss" text="Publickey (Junichi Niino)" xmlUrl="https://www.publickey1.jp/atom.xml"/>
     </outline>
     <outline text="Chinese [zh] - browser-rendered; no clean RSS, heavy vendor-PR (filter hard)">
       <!-- Browser-confirmed 2026-06-20: modb.pro renders fine via Claude-in-Chrome.
@@ -85,8 +98,12 @@
       <!-- modb.pro RETIRED 2026-09-14 after a third failed enumeration: the page loads but every
            listing view is a client-rendered shell with no extractable dated article list, even in a
            real browser. Do not re-add without a working enumeration path. -->
-      <outline type="link" text="TiDB community blog [ok - plain fetch, dated; tidb.net redirects here]" htmlUrl="https://pingkai.cn/tidbcommunity/blog"/>
-      <outline type="link" text="老冯云数 / Ruohang Feng - highest-yield zh source [ok]" htmlUrl="https://blog.vonng.com/"/>
+      <!-- 2026-09-21: correction - pingkai.cn does NOT plain-fetch; it returns an empty body.
+           Browser only. tidb.net still redirects here. -->
+      <outline type="link" text="TiDB community blog [browser only - plain fetch returns empty]" htmlUrl="https://pingkai.cn/tidbcommunity/blog"/>
+      <!-- 2026-09-21: working RSS found for the highest-yield zh source; fetches cold as clean
+           XML with full dates, much cheaper than scraping the HTML index. -->
+      <outline type="rss" text="老冯云数 / Ruohang Feng - highest-yield zh source [ok - cold XML]" xmlUrl="https://blog.vonng.com/index.xml"/>
       <outline type="link" text="PingCAP/TiDB CN blog [browser - slow; use read_page]" htmlUrl="https://cn.pingcap.com/blog/"/>
     </outline>
   </body>

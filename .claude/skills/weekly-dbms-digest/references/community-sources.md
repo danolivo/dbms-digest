@@ -39,7 +39,9 @@ Access tier tells you whether it can be scanned without an account:
 - **r/PostgreSQL** — the main Postgres subreddit; sort Top / This Week. `[js]`
   https://www.reddit.com/r/PostgreSQL/top/?t=week . P1.
 - **r/databasedevelopment** — DB *internals* community (storage engines, query processing);
-  exactly the reader's wheelhouse. `[js]` https://www.reddit.com/r/databasedevelopment/ . P1.
+  exactly the reader's wheelhouse — but **link discovery only, not Community pulse** (2026-09-21: 3 posts
+  in the window, **0 comments on all three**; second consecutive week with no debate). `[js]`
+  https://www.reddit.com/r/databasedevelopment/ . P1 for discovery, skip for the pulse.
 - **r/SQL** — broader SQL Q&A and discussion; filter heavily. `[js]`
   https://www.reddit.com/r/SQL/top/?t=week . P2.
 - **r/Database** — general DB talk; smaller, noisier. `[js]`
@@ -111,6 +113,15 @@ most-recent entries; older ones roll off (git history has the rest)._
 - (2026-09-14) **Telegram searches keep returning aggregators, not sources.** `t.me/sqlhub` (36k subs) is a
   cross-promotion channel whose bio is a list of other channels; its top post that week was a game ad.
   Rejected on the anti-marketing filter — do not add.
+- (2026-09-21) **Two more Telegram candidates rejected on the same `t.me/s/` test:** `t.me/pgsql` (13,792
+  members, 1,912 online — large and clearly active, but a *group*, so `t.me/s/` renders only the
+  description) and its English sibling `t.me/pg_sql`; `t.me/pgdaily` exists but has had zero posts since
+  2024-02-24. Not scrapeable / not alive — do not re-discover.
+- (2026-09-21) **DBA SE watch-tag `polardb`:** six PolarDB/IMCI questions landed 09-14→09-20 (IDs 350768,
+  350769, 350771, 350775, 350777, 350778), all from 21–31-reputation accounts, all zero answers. Reads as
+  a seeding campaign rather than organic traffic — track the tag precisely so it can be filtered out.
+- (2026-09-21) **Reddit access note:** batching subreddit `.json` calls with `credentials:'omit'` fails
+  wholesale ("Failed to fetch"); same-origin relative-path fetches with a ~900 ms gap between them work.
 
 
 ## Retired (removed from weekly scan)
