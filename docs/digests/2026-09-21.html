@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DBMS Weekly — 2026-09-21 (week of Sep 21–27) · DBMS Digest</title>
+  <meta name="description" content="PostgreSQL &amp; DBMS internals digest for the week of Sep 21–Sep 27, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.">
+  <meta name="keywords" content="PostgreSQL, Postgres, database internals, DBMS, SQL, query optimizer, replication, MVCC, storage engine, database research, weekly digest, RSS">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#0d1b2e">
+  <link rel="canonical" href="https://danolivo.github.io/dbms-digest/digests/2026-09-21.html">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="DBMS Digest" href="../feed.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DBMS Digest">
+  <meta property="og:title" content="DBMS Weekly — 2026-09-21 (week of Sep 21–27)">
+  <meta property="og:description" content="PostgreSQL &amp; DBMS internals digest for the week of Sep 21–Sep 27, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.">
+  <meta property="og:url" content="https://danolivo.github.io/dbms-digest/digests/2026-09-21.html">
+  <meta property="og:image" content="https://danolivo.github.io/dbms-digest/banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DBMS Weekly — 2026-09-21 (week of Sep 21–27)">
+  <meta name="twitter:description" content="PostgreSQL &amp; DBMS internals digest for the week of Sep 21–Sep 27, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.">
+  <meta name="twitter:image" content="https://danolivo.github.io/dbms-digest/banner.jpg">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3J18B7F5NZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3J18B7F5NZ');
+  </script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "DBMS Weekly — 2026-09-21 (week of Sep 21–27)", "description": "PostgreSQL & DBMS internals digest for the week of Sep 21–Sep 27, 2026: news, mailing lists, community pulse, commercial engines, international sources, research, and conferences.", "inLanguage": "en", "url": "https://danolivo.github.io/dbms-digest/digests/2026-09-21.html", "mainEntityOfPage": "https://danolivo.github.io/dbms-digest/digests/2026-09-21.html", "datePublished": "2026-09-21T12:00:00+00:00", "dateModified": "2026-09-21T12:00:00+00:00", "author": {"@type": "Organization", "name": "DBMS Digest", "logo": {"@type": "ImageObject", "url": "https://danolivo.github.io/dbms-digest/icon-512.png"}}, "publisher": {"@type": "Organization", "name": "DBMS Digest", "logo": {"@type": "ImageObject", "url": "https://danolivo.github.io/dbms-digest/icon-512.png"}}, "image": "https://danolivo.github.io/dbms-digest/banner.jpg"}</script>
+  <style>
+    :root { --navy:#0d1b2e; --navy2:#13243a; --blue:#5a8bd4; --amber:#f5a623; --ink:#e7eef7; --mut:#8aa0bd; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--navy); color:var(--ink);
+      font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+    a { color:var(--blue); }
+    .wrap { max-width:760px; margin:0 auto; padding:24px 20px 64px; }
+    .wrap.wide { max-width:1060px; }
+    .banner img { width:100%; height:auto; border-radius:12px; display:block; }
+    .site-title { font-size:1.6rem; margin:26px 0 8px; color:var(--ink); }
+    .intro { color:var(--mut); margin:0 0 6px; font-size:1.02rem; line-height:1.6; }
+    .sublabel { font-size:1.05rem; letter-spacing:.18em; text-transform:uppercase; color:var(--mut); margin:28px 0 4px; }
+    p.lead { color:var(--ink); margin:0 0 20px; }
+    .sub { display:inline-flex; align-items:center; gap:8px; background:var(--amber); color:var(--navy);
+      font-weight:700; text-decoration:none; padding:11px 18px; border-radius:999px; }
+    .sub:active { opacity:.85; }
+    .feedurl { display:block; margin:14px 0 0; color:var(--mut); font-size:.85rem; word-break:break-all; }
+    .feedurl code { color:var(--blue); }
+    .index-h { font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--mut);
+      border-top:1px solid var(--navy2); padding-top:24px; margin-top:36px; }
+    ul.index { list-style:none; padding:0; margin:0; }
+    ul.index li { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 10px; border-bottom:1px solid var(--navy2); padding:13px 4px; }
+    ul.index li a.entry { display:flex; gap:12px; align-items:baseline; text-decoration:none; color:var(--ink); }
+    ul.index li a.entry:hover { color:var(--amber); }
+    .date { color:var(--blue); font-variant-numeric:tabular-nums; font-weight:600; }
+    .week { color:var(--mut); }
+    .alt { color:var(--mut); font-size:.9rem; }
+    .alt a { color:var(--blue); text-decoration:none; }
+    .alt a:hover { color:var(--amber); }
+    .backlink { display:inline-block; margin:18px 0 8px; color:var(--blue); text-decoration:none; font-size:.9rem; }
+    .backlink:hover { color:var(--amber); }
+    footer { margin-top:40px; color:var(--mut); font-size:.85rem; border-top:1px solid var(--navy2); padding-top:18px; }
+    footer a { color:var(--blue); }
+    .layout { display:block; }
+    nav.toc { display:none; }
+    @media (min-width:980px) {
+      .layout { display:grid; grid-template-columns:220px minmax(0,1fr); gap:44px; align-items:start; }
+      nav.toc { display:block; position:sticky; top:24px; font-size:.85rem; }
+    }
+    nav.toc .toc-title { text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--mut); margin:0 0 10px; }
+    nav.toc ul { list-style:none; padding:0; margin:0; }
+    nav.toc li { margin:2px 0; border:0; }
+    nav.toc a { display:block; padding:4px 10px; color:var(--mut); text-decoration:none;
+      border-left:2px solid var(--navy2); line-height:1.35; }
+    nav.toc a:hover { color:var(--amber); border-left-color:var(--amber); }
+    .prose h1 { font-size:1.5rem; line-height:1.25; margin:8px 0 18px; color:var(--ink); }
+    .prose h2 { font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:var(--amber);
+      border-top:1px solid var(--navy2); padding-top:22px; margin:34px 0 12px; scroll-margin-top:20px; }
+    .prose p { margin:.5em 0 1em; }
+    .prose ul { padding-left:1.2em; margin:.4em 0 1.2em; }
+    .prose li { margin:.5em 0; }
+    .prose li::marker { color:var(--mut); }
+    .prose a { text-decoration:none; border-bottom:1px solid transparent; }
+    .prose a:hover { color:var(--amber); border-bottom-color:var(--amber); }
+    .prose strong { color:var(--ink); }
+    .prose em { color:var(--mut); }
+    .prose code { background:var(--navy2); color:#cfe0f5; padding:1px 5px; border-radius:4px; font-size:.92em; }
+    .prose hr { border:0; border-top:1px solid var(--navy2); margin:28px 0; }
+    .prose blockquote { margin:1em 0; padding:.4em 1em; border-left:3px solid var(--amber); color:var(--mut); }
+</style>
+</head>
+<body>
+  <div class="wrap wide">
+    <a class="backlink" href="../index.html">← All digests</a>
+    <div class="layout">
+    <nav class="toc"><p class="toc-title">Sections</p>
+      <ul>
+        <li><a href="#postgresql">PostgreSQL</a></li>
+        <li><a href="#postgresql-mailing-lists">PostgreSQL mailing lists</a></li>
+        <li><a href="#commitfest-open-pg20-3-62">CommitFest (open: PG20-3, #62)</a></li>
+        <li><a href="#community-pulse">Community pulse</a></li>
+        <li><a href="#wider-dbms-distributed-data">Wider DBMS &amp;amp; distributed data</a></li>
+        <li><a href="#commercial-engines-sql-server-oracle-mysql">Commercial engines (SQL Server, Oracle, MySQL, …)</a></li>
+        <li><a href="#research-cutting-edge">Research &amp;amp; cutting edge</a></li>
+        <li><a href="#international-non-english-sources">International (non-English sources)</a></li>
+        <li><a href="#upcoming-events">Upcoming events</a></li>
+        <li><a href="#new-sources-added-this-week">New sources added this week</a></li>
+      </ul>
+    </nav>
+      <article class="prose">
+<h1 id="dbms-weekly-2026-09-21-week-of-sep-2127">DBMS Weekly — 2026-09-21 (week of Sep 21–27)</h1>
+<p><em>The week PostgreSQL 19 Beta 4 shipped, and the new features went through their first real stress test.
+Beta 4 was stamped on 21 September and announced on the 24th. It confirmed the reverts of SQL/PGQ, online
+checksums, <code>FOR PORTION OF</code> and MERGE/SPLIT PARTITIONS, and targets an RC in early October. The feature that
+survived, <strong>REPACK (CONCURRENTLY)</strong>, took most of the testing. Thom Brown made it silently discard committed
+updates to a TOASTed column; Sami Imseih showed it could store NULL in a NOT NULL column (fixed and pushed
+on 25 Sep); Radim Marek found a hard catch-up ceiling at about 105M concurrent updates/deletes. The most
+important result came out of the same testing: Álvaro Herrera committed a fix, <strong>back-patched to 14</strong>, for
+initial logical-decoding snapshots that could set hint bits as if a committed transaction had aborted.
+Serializable isolation got the same treatment. Four separate threads showed SSI missing a conflict: TID
+range scans, TID scans, index-only scans racing <code>heap_delete()</code>, and the new <code>ON CONFLICT DO SELECT</code>. On the
+stable branches, 18.6 and 17.11 turned out to carry a standby-restart PANIC after visibility-map
+truncation. Outside the tree, PlanetScale wrote the clearest explanation yet of why vanilla Postgres lets
+you promote past unsynced logical slots, and Christophe Pettus took ClickHouse's physical-WAL replicator
+apart as a reimplementation of <code>snapbuild.c</code>.</em></p>
+<h2 id="postgresql">PostgreSQL</h2>
+<ul>
+<li><strong><a href="https://boringsql.com/posts/repack-concurrently-costs/">What REPACK (CONCURRENTLY) costs while it runs</a></strong> — the benchmark the new feature needed: on a 90M-row, 27.8 GB table under 19beta4, REPACK matches VACUUM FULL on time (107 s) and writes less WAL than pg_repack (18.8 GB vs 33.5 GB). It also holds back the vacuum horizon cluster-wide through its slot, and it aborts once more than ~105M rows are updated or deleted during the run, because the combo-CID array keeps doubling. The author gives a rule of thumb, <code>max (upd+del)/s ≈ 29,000 / REPACK hours</code>, and reported the limit upstream (see mailing lists). <em>(Radim Marek · boringsql.com)</em></li>
+<li><strong><a href="https://thebuild.com/blog/the-shadow-knows/">The Shadow Knows</a></strong> — reads ClickHouse's physical-WAL→ClickHouse replicator as a from-scratch reimplementation of <code>snapbuild.c</code>/<code>reorderbuffer.c</code>. It still needs <code>wal_level=logical</code> and replica identity, it can silently diverge when an unchanged TOAST pointer is reused, and it ties your major-version upgrades to a vendor's audit of the WAL format. The proof offered is the 7 Sep <code>varatt_external</code> → <code>varatt_external_oid</code> rename: the physical format is not a contract. <em>(Christophe Pettus · thebuild.com)</em></li>
+<li><strong><a href="https://thebuild.com/blog/all-your-gucs-in-a-row-max_pred_locks_per_transaction/">All your GUCs in a row: max_pred_locks_per_transaction</a></strong> and <strong><a href="https://thebuild.com/blog/all-your-gucs-in-a-row-max_pred_locks_per_page-and-max_pred_locks_per_relation/">…per_page / per_relation</a></strong> — SSI internals with pgbench numbers. The default of 64 sizes an 8,704-target lock table for the whole cluster, and a separate 6,800-entry RWConflictPool has no GUC at all. On 18.6 at defaults, 75.6% of transactions failed with <code>40001</code>; raising <code>max_pred_locks_per_relation</code> to 1000 cut that to 0.08% at about 4× the throughput. Raising the page threshold alone makes things worse. <em>(Christophe Pettus · thebuild.com)</em></li>
+<li><strong><a href="https://seedfa.st/blog/postgres-backfill-large-table">Our interleaved backfill wrote three times the WAL</a></strong> — backfilling 1M rows: range batches got 0% HOT and doubled the heap (269 → 548 MB). <code>id % 10 = r</code> interleaving at fillfactor 90 reached 96.1% HOT and kept the indexes flat. But with <code>full_page_writes</code> on and a checkpoint after each batch, interleaving dirtied every heap page every time: 3,022 MB of WAL vs 1,025 MB. Interleaving within an id range keeps HOT and caps WAL at 544 MB. Traced through <code>heap_update</code>/<code>hio.c</code>. <em>(Mikhail Shytsko · seedfa.st)</em></li>
+<li><strong><a href="https://seedfa.st/blog/pg-stat-statements-missing-queries">Forty deletes vanished from pg_stat_statements</a></strong> — three reproduced blind spots that agent-generated SQL hits at once: the 5,000-entry cap evicts one-off statements; PG18 collapses two same-named tenant-schema tables into one <code>queryid</code> where PG17 kept them apart; and <code>track=top</code> hides everything inside PL/pgSQL and DO blocks. <em>(Mikhail Shytsko · seedfa.st)</em></li>
+<li><strong><a href="https://planetscale.com/blog/how-to-make-a-replication-slot-survive-a-cutover">Blocking cutovers to save replication slots</a></strong> — why stock Postgres will promote a standby whose logical slots were never synced, which is a data-loss event for every CDC consumer. The fix is <code>failover=true</code> on the slot, <code>sync_replication_slots=on</code> and <code>hot_standby_feedback=on</code>, and the post explains why each defaults to off (they pin the vacuum horizon). <em>(Simeon Griggs · planetscale.com)</em> <code>[vendor blog — substantive]</code></li>
+<li><strong><a href="https://planetscale.com/blog/anatomy-of-a-postgres-search-engine">Anatomy of a (Postgres) search engine</a></strong> — the TIN implementers' own walk through inverted-index internals: term dictionary, postings compression, BM25 top-k block skipping, segment merges, tombstones. Then what Postgres specifically demands of one: a WAL-logged index relation, ctid mapping, VACUUM and visibility, and planner hookup through CustomScan. A general companion to last week's TIN post, not a product pitch. <em>(Patrick Reynolds, Eric Ridge · planetscale.com)</em> <code>[vendor blog — substantive]</code></li>
+<li><strong><a href="https://pgstef.github.io/2026/09/23/pgbackrest_and_postgresql_failover_why_archive_mode_matters.html">pgBackRest and PostgreSQL failover: why archive_mode matters</a></strong> — reproduces an incident where a standby was promoted with <code>archive_mode=off</code>. <code>archive-mode-check=n</code> does not bypass the check, and even a patched pgBackRest that forces the backup leaves the archive missing the timeline-switch segments and the <code>.history</code> file, so PITR across the promotion is impossible. Three-node cascading setup on PG18. <em>(Stefan Fercot · pgstef.github.io)</em></li>
+<li><strong><a href="https://stormatics.tech/blogs/postgresql-storage-bottleneck-azure-disk-caching">Your Postgres database is slow, and it isn't Postgres</a></strong> — a field report: after a week of tuning <code>shared_buffers</code> and <code>work_mem</code>, the cause was that Azure disables host caching on managed disks of 4 TiB or more. The portal still lets you select "ReadOnly cache" on such a disk, and it has no effect. <em>(Umair Shahid · stormatics.tech)</em></li>
+<li><strong><a href="https://tapoueh.org/blog/2026/09/ten-years-of-postgres-logical-replication/">Ten years of Postgres logical replication</a></strong> — part one of three: a release-by-release table of what logical replication absorbed from Londiste, PgQ and pglogical (row/column filters in 15, partitions in 13, streaming and parallel apply in 14/16, <code>origin=none</code> in 16, conflict counters in 18, sequences in 19), then a hub-and-workers architecture rebuilt from core features only. <em>(Dimitri Fontaine · tapoueh.org)</em></li>
+<li><strong><a href="https://vondra.me/posts/being-considerate-of-other-peoples-time/">Being considerate of other people's time</a></strong> — a committer on what makes a patch cheap to review: finish the mechanical fixes before posting, label WIP with its known gaps, split big patches along the natural path (infrastructure → MVP with limits → relaxations) or by area. He also warns about vibe-coded patches whose authors can't explain them. It reads well next to this week's review-driven bug harvest. <em>(Tomas Vondra · vondra.me)</em> <code>[by committer]</code></li>
+<li><strong><a href="https://mehmetince.net/part-2-6-breaking-the-superuser-guardrails-attacking-security-hardening-extensions-systemic-risks-in-the-managed-postgresql-industry/">Breaking the Postgres superuser guardrails (part 2/6)</a></strong> — attacks on the hardening extensions that managed providers use to fake a restricted superuser. Techniques include <code>CREATE FOREIGN DATA WRAPPER</code> validator OIDs left unchecked during the superuser window, a <code>$user</code> search_path OID swap, and rewriting <code>pg_proc.prosrc</code> on a <code>LANGUAGE internal</code> function to bring back a blocked <code>lo_export</code> (→ RCE). The author reports 76 findings across providers. <em>(Mehmet Ince · mehmetince.net)</em> <code>[unverified: provider-by-provider counts are the author's own]</code></li>
+<li><strong><a href="https://now-next.nl/en/insights/invoice-numbers-per-tenant-postgresql-without-gaps/">Invoice numbers per tenant in PostgreSQL, without gaps</a></strong> — five approaches measured on 17.10 with 8 sessions, 1,000 tenants and 10% rollbacks. Only a per-tenant counter row updated with <code>UPDATE … RETURNING</code> gives zero gaps and zero duplicates. When the number is taken also matters: taking it last gives 746 invoices/s, taking it first gives 94/s, with the same guarantees. <em>(Chris van Eijk · now-next.nl)</em></li>
+<li><strong><a href="https://www.postgresql.org/about/news/postgresql-19-beta-4-released-3386/">PostgreSQL 19 Beta 4</a></strong> — <em>(PGDG · postgresql.org)</em><ul>
+<li>reverted since Beta 3: SQL/PGQ property graphs, online enabling/disabling of data checksums, <code>FOR PORTION OF</code> temporal UPDATE/DELETE, <code>ALTER TABLE MERGE/SPLIT PARTITIONS</code></li>
+<li>fixes to REPACK, WAIT FOR, the RI fast-path FK check, autovacuum scoring and logical-replication conflict detection</li>
+<li>RC planned for early October; GA "may also occur in October"</li>
+</ul>
+</li>
+<li><strong><a href="https://www.postgresql.org/about/news/pgbouncer-1260-released-fixes-three-cves-3385/">PgBouncer 1.26.0</a></strong> — security release. <em>(PgBouncer project · postgresql.org)</em><ul>
+<li>CVE-2026-19888: unauthenticated crash via a SCRAM client-final-message with no nonce (present since 1.11.0)</li>
+<li>CVE-2026-6668: unauthenticated infinite loop from an integer overflow in packet-buffer growth</li>
+<li>CVE-2026-6669: unbounded login work from a malicious server's SCRAM iteration count</li>
+<li>also: tracks <code>search_path</code> by default, adds <code>pool_idle_timeout</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="postgresql-mailing-lists">PostgreSQL mailing lists</h2>
+<ul>
+<li><strong>[committers] <a href="https://www.postgresql.org/message-id/E1x9gdq-000000012w0-2tQC%40gemulon.postgresql.org">Wait for transactions of an initial decoding snapshot to commit</a></strong> — the most important fix of the week, and it applies to every supported branch. <code>SnapBuildInitialSnapshot()</code> turned the builder's committed-xid list into an MVCC snapshot that could capture a transaction after its commit record but before its CLOG update, and then set hint bits as if it had aborted. That is real data corruption. The initial snapshot now waits for such transactions to leave the procarray. Found by stress-testing REPACK (CONCURRENTLY), but the bug is older than REPACK. <em>(Álvaro Herrera; Antonin Houska, Rui Zhao; reported by Mihail Nikalayeu)</em> <code>[committed]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/CAA-aLv5MF6BLL%2BBWvix2Yw%2BCBardtH43AofPReQunhDZPNBtuA%40mail.gmail.com">REPACK (CONCURRENTLY) can silently lose updates when the TOAST table is rewritten</a></strong> — the decoding worker takes the TOAST relfilenode and drops its lock, but the backend doesn't lock the TOAST table until <code>copy_table_data()</code>. <code>get_initial_snapshot()</code> waits in between, so an ordinary open transaction is enough to open the window, and a <code>VACUUM FULL</code> of the TOAST table during it loses committed updates while <code>verify_heapam()</code> and <code>bt_index_check()</code> report nothing. Five patch versions in four days settled on Herrera's design of locking the TOAST relation up front in <code>cluster_rel()</code>. It is a PG19 open item. Its sibling bug, <a href="https://www.postgresql.org/message-id/CAN12%2BY%2BNJwr5EqKVrHpPD%3D5%2Bb_NRAOzU9fhrVDO3H46x2WRxoA%40mail.gmail.com">NULLs in NOT NULL columns added without a rewrite</a>, was pushed on 25 Sep. The report that <a href="https://www.postgresql.org/message-id/CAA-aLv57B5g3aiGodzkuePa8-7KSQz7_5rspbPDY-7XPCBz0Tw%40mail.gmail.com">pg_dump can dump a table being repacked as empty</a> was ruled expected behaviour, since REPACK (CONCURRENTLY) is not MVCC-safe until Antonin Houska's v20 series lands. <em>(Thom Brown / shihao zhong / Álvaro Herrera · pgsql-hackers)</em> <code>[patch posted]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/CAJgoLk%2BdodrwuwCuXERGYwgjQzSwrKd%2BxgitYrL32oWDt39zvA%40mail.gmail.com">REPACK (CONCURRENTLY) can't complete after ~105M concurrent updates/deletes</a></strong> — 75+ hostile runs found no showstopper, only a hard ceiling from combo CIDs during catch-up (about 106 MB per 2M replayed UPDATEs). The v20 fix replays changes with their original XIDs. For 19 it gets a doc note, and Antonin Houska argues the note should say that wraparound emergencies need failsafe VACUUM, not REPACK. <em>(Radim Marek / Antonin Houska · pgsql-hackers)</em> <code>[patch posted]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/CAHWVJhFfP6YmMmQwuUb%3Da5w%2BNcSOv1Aw%2BZN5Z%2BN_yUGeyG7kHw%40mail.gmail.com">SSI can miss conflicts between index-only scans and heap writes</a></strong> — <code>heap_delete()</code>/<code>heap_update()</code> check for serializable conflicts before clearing the VM bit, on the assumption that the buffer lock keeps readers out. An index-only scan reads the old index entry while the VM bit is still set and never takes that lock, so two SERIALIZABLE transactions both commit. One of four SSI holes reported this week: <a href="https://www.postgresql.org/message-id/3670DAB7-E3BE-48AC-8DF9-884509775F78%40yandex-team.ru">TID range and TID scans allowing write skew</a> (the fix takes a relation-level SIREAD lock, which reopens the false-positive trade-off <code>cb5b28613d5</code> made in 2020), and <a href="https://www.postgresql.org/message-id/A53779F4-748C-42C1-B968-8B3B321B95E4%40yandex-team.ru"><code>ON CONFLICT DO SELECT</code> returning a row covered by no SIREAD lock</a>. <em>(Rui Zhao; Andrey Borodin, Aleksander Alekseev, Zsolt Parragi, Dean Rasheed · pgsql-hackers)</em> <code>[patch posted]</code></li>
+<li><strong>[bugs] <a href="https://www.postgresql.org/message-id/CAL4mQLAp562c1rCgg2Dqx6TBSdOk6vOvaLFjwFG9E6k4uwvJJw%40mail.gmail.com">PostgreSQL 18.6/17.11: standby PANIC on restart after VM truncation</a></strong> — a regression in the current minor releases. A standby that has replayed a heap/VM truncation dies on restart with <code>WAL contains references to invalid pages</code>. 20 of 20 TAP runs fail on 18.6 and pass on 18.4 and 17.10; the original symptom was a three-node streaming cluster after a switchover. The follow-up says it doesn't need a switchover (with <code>full_page_writes=off</code> a plain restart hits it) and that a change already under review in Melanie Plageman's VM-clear thread fixes it. <em>(Jacky Nguyen / Kirill Reshke · pgsql-bugs)</em> <code>[patch posted]</code></li>
+<li><strong>[committers] <a href="https://www.postgresql.org/message-id/E1x98tP-00000000pQh-3l3h%40gemulon.postgresql.org">Avoid replay cleanup locks for freeze-only and VM-only records</a></strong> — since 17 combined pruning and freezing into one WAL record, redo has always asked for a cleanup lock, and 19 extended that to VM-only updates. Freezing moves no tuple storage, so standbys were waiting on buffer pins, and cancelling queries, for nothing. The fix is one line, back-patched to 17. <em>(Melanie Plageman · pgsql-committers)</em> <code>[committed]</code></li>
+<li><strong>[bugs] <a href="https://www.postgresql.org/message-id/19720-b3e83f5e99c485c5%40postgresql.org">BUG #19720: pg_trgm GiST index corruption from gtrgm_union() dropping SIGNKEY</a></strong> — when a union signature becomes all-true, the flag is set to <code>ALLISTRUE</code> without <code>SIGNKEY</code>. <code>unionkey</code> then treats it as an empty array, and a later insert writes a downlink carrying only the new value's bits, so searches can miss rows. Seen in production on 18.6; Kirill Reshke traced it to an oversight in <code>911e7020</code>. <em>(Nate Clark / Kirill Reshke · pgsql-bugs)</em> <code>[open]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/CAHyXU0yDwOYkWpRi%3DgtpDwjBxVqeaezgkgZLRWm2p1_FgaiPFQ%40mail.gmail.com">Up to 50x degradation in dblink performance when receiving notice traffic, 19 vs 18</a></strong> — bisected to <code>112faf1378ee</code>, which logs remote NOTICEs through <code>ereport()</code>. LOG passes the default <code>log_min_error_statement</code>, so every remote message repeated the full text of the running local query into the server log. With <code>errhidestmt()</code>/<code>errhidecontext()</code> the timings are back to v18. <em>(Merlin Moncure / Tom Lane / vignesh C · pgsql-hackers)</em> <code>[patch posted]</code></li>
+<li><strong>[committers] <a href="https://www.postgresql.org/message-id/E1xAHva-00000001I0W-2ExK%40gemulon.postgresql.org">Check EXECUTE privilege on functions invoked by the RI fast path</a></strong> — PG19's new FK-check fast path called the equality operator's function and any implicit cast without the EXECUTE checks the SPI path gets from <code>ExecInitFunc()</code>. Closed before GA, with tests showing the fast path and the partitioned SPI path now behave the same. <em>(Amit Langote; reported by Nikolay Samokhvalov · pgsql-committers)</em> <code>[committed]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/b18df008-65b9-4276-ab61-b99a24ad9599%40iki.fi">Catversion bumps during beta</a></strong> — renaming <code>pg_get_multixact_stats()</code> before RC1 (it reports state, not stats) led Andrey Borodin to run an LLM review over every PG18→19 catalog addition for similar naming slips. Heikki Linnakangas then questioned the policy itself: avoiding late catversion bumps spares beta testers a <code>pg_upgrade</code>, and he calls that "a poor tradeoff". Also this week, master reverted the JSON_TABLE ON ERROR propagation <a href="https://www.postgresql.org/message-id/E1x9lfy-000000014xI-0b7I%40gemulon.postgresql.org">over a pg_dump/pg_upgrade problem</a>. <em>(Heikki Linnakangas / Michael Paquier / Nathan Bossart · pgsql-hackers)</em> <code>[open]</code></li>
+<li><strong>[bugs] <a href="https://www.postgresql.org/message-id/19722-1b775eae8675c158%40postgresql.org">BUG #19722: window PARTITION BY numeric treats equal values with different scales as separate</a></strong> — the item is the reply: Tom Lane calls it "a near-duplicate of many recent reports" (five linked) and asks whether anyone has a real use case for testing <code>scale()</code> of a grouped numeric. In the same week, <a href="https://www.postgresql.org/message-id/19712-6b44bbf7f67d98e5%40postgresql.org">BUG #19712</a> arrived as an openly AI-written analysis of a multixact recovery deadlock already fixed in 15.19. Automated bug-finding now costs triage time as well as producing finds. <em>(Tom Lane · pgsql-bugs)</em> <code>[open]</code></li>
+<li><strong>[hackers] <a href="https://www.postgresql.org/message-id/20260922175449.23.noahmisch%40microsoft.com">Becoming a committer: form for tracking readiness</a></strong> — the committers are trying out a fillable form that summarises a candidate's most relevant work, for their own discussions of who to add. It is published so aspiring committers can fill it in themselves and plan against the long-standing criteria. <em>(Noah Misch, on behalf of the committers · pgsql-hackers)</em></li>
+</ul>
+<h2 id="commitfest-open-pg20-3-62">CommitFest (open: PG20-3, #62)</h2>
+<ul>
+<li><strong>Balance (Sep 22 09:52 – Sep 27 18:37):</strong> ≥20 new · ≥5 closed (all committed) → net <strong>≥ +15</strong>. <em>(vs last week's ≥ +19: about −4. The per-CF activity log caps at 100 rows and its oldest row is 22 Sep 09:52, so all of Monday and Tuesday morning are clipped; both counts are lower bounds. One closure, "Reject WAIT FOR earlier…", is a second record for a patch already counted last week.)</em> 8 entries moved to Ready for Committer. Queue at scan time: 90 needs review · 10 waiting on author · 19 ready for committer (119 active, up from 91).</li>
+<li><strong>New this week:</strong> <strong><a href="https://commitfest.postgresql.org/patch/7339/">Parameterized append subpaths</a></strong> <em>(Alexander Pyhalov, Gleb Kashkin)</em> — <code>add_path()</code> can discard a child's parameterized path that costs the same as an unparameterized path with pathkeys. With one child missing a parameterized path, no parameterized Append can be built, and the planner falls back to a hash join over foreign partitions. The choice then comes from a missing path, not a cost comparison: 1.7 s instead of ~2 ms in the repro. WIP proposal: keep all differently parameterized paths. Also new: <em>Fix SSI conflicts between index-only scans and heap writes</em> (#7344), <em>Validate GIN posting lists before decoding them</em> (#7352), <em>Speed up lpad()/rpad()</em>, <em>BUG: pg_class.relchecks overflow</em> (committed on 27 Sep as a 32,767 limit), <em>Clear FatalError earlier during crash restart</em>, <em>pg_dump: fetch sequence data only for sequences being dumped</em>.</li>
+<li><strong>Closed (all committed):</strong> <em>REPACK (CONCURRENTLY) loses missing values of columns added without a rewrite</em> (→ Herrera), <em>Use bounded GIN pending-list cleanup in parallel autovacuum</em> (→ Sawada), <em>Assertion in pg_get_shmem_pagesize() in single-user mode</em> (→ Linnakangas), <em>DSA_ALLOC_NO_OOM vs dsm_create ERROR leaving a half-initialized pgstats hash entry</em> (→ Paquier).</li>
+</ul>
+<h2 id="community-pulse">Community pulse</h2>
+<ul>
+<li><strong><a href="https://news.ycombinator.com/item?id=49854161">Is your Postgres migration safe or not safe?</a></strong> — a browser-only migration classifier from a former Cloudflare Postgres platform lead. The thread's main point: rule-based DDL checks can't be complete, because whether <code>ALTER COLUMN TYPE</code> is a no-op or a full rewrite depends on the current column type, not the statement. A commenter got <code>ADD COLUMN status text NOT NULL</code> with no default rated "safe". The most upvoted practical advice was about lock queuing, not DDL: an instant <code>ADD COLUMN</code> stuck behind a long read blocks everything behind it, and <code>lock_timeout</code> plus retry beat every tool. <em>(Hacker News · 132 pts, 44 comments)</em></li>
+<li><strong><a href="https://news.ycombinator.com/item?id=49835096">Postgres SELECT DISTINCT does not scale</a></strong> — DBOS's August post on DISTINCT walking every matching index entry, fixed with a recursive-CTE "loose scan", resurfaced. Commenters split between "DISTINCT is a code smell" and the real point: MySQL has loose index scan, PG18's skip scan doesn't cover this case, and the <a href="https://commitfest.postgresql.org/patch/1741/">2018 CommitFest attempt</a> was abandoned after four years. The top structural reply: if the fix is a manual plan-forcing rewrite, it belongs in the planner. <em>(Hacker News · 102 pts, 28 comments)</em></li>
+<li><strong><a href="https://old.reddit.com/r/programming/comments/1wrc4sh/postgres_at_time_zone_utc_does_not_do_what_you/">Postgres AT TIME ZONE 'UTC' does not do what you think it does</a></strong> — the second most upvoted reply corrected the article's opening premise: <code>timestamptz</code> stores no time zone either, since both types are the same 8 bytes. The useful model from the thread is that <code>AT TIME ZONE</code> converts in <em>opposite directions</em> depending on its input type, with the same syntax. Most agreed it's a footgun; a few said it's what you'd expect once the types are clear. <em>(r/programming · 207 pts, 75 comments)</em></li>
+<li><strong><a href="https://old.reddit.com/r/Database/comments/1wp5ef6/redis_is_a_database_got_caught_off_guard_in_an/">"Redis is a database?!"</a></strong> — the week's highest-comment database thread, a definitional argument started by an interview question. It sided against the poster: an in-memory cache is something you do <em>with</em> Redis, not what it is. The more interesting sub-thread tied the everyday meaning of "real database" to ACID, and asked where that leaves key-value stores that only promise eventual consistency. <em>(r/Database · 283 pts, 310 comments)</em></li>
+<li><strong><a href="https://old.reddit.com/r/PostgreSQL/comments/1wpvlwd/delete_billion_of_records_while_taking_care_of/">Deleting 5 billion rows across 30 tables without drowning in bloat</a></strong> — PG17, a 150M-row delete from a table that is ⅓ heap, ⅓ TOAST, ⅓ index. Answers split between CTAS-and-swap in one transaction, batched deletes sized against the autovacuum scale factor and threshold, and pg_repack afterwards; one reply warned that partitioning is too late once you are at this point. <em>(r/PostgreSQL · 21 pts, 28 comments)</em></li>
+</ul>
+<h2 id="wider-dbms-distributed-data">Wider DBMS &amp; distributed data</h2>
+<ul>
+<li><strong><a href="https://clickhouse.com/blog/postgres-on-nvme">Postgres on NVMe: performance and the convergence of transactions and analytics</a></strong> — 8 identical <code>m6id.4xlarge</code> clusters on PG18.3 with pgbench at scale 33,000 (482 GiB, about 30× RAM). Local NVMe gave 9.2× the throughput of gp3 EBS (16,030 vs 1,734 TPS), 4.0 vs 36.9 ms per UPDATE, and VACUUM in 366 s vs 964 s. On EBS, 89% of wall time was spent off-CPU waiting on I/O, measured with Parca/eBPF and <code>pg_stat_activity</code> sampling. The second half is a CDC-to-ClickHouse pitch; the benchmark is the part worth reading. <em>(Kaushik Iska · clickhouse.com)</em> <code>[vendor blog — substantive]</code></li>
+<li><strong><a href="https://planetscale.com/blog/when-to-choose-x86-64-vs-aarch64">When to choose x86-64 vs aarch64</a></strong> — Postgres-relevant ISA differences: a hyperthreaded x86 vCPU is half a core while a Graviton/Axion vCPU is a whole one, and AVX2/AVX-512 are 256/512 bits against Graviton's 128-bit vectors (which matters for pgvector distance kernels and bitmap intersection). It also covers the <code>pg_trgm</code> signed-vs-unsigned <code>char</code> corruption across architectures fixed in PG18, which is why indexes aren't byte-portable and an architecture switch means a logical-replication migration. <em>(Ahmed Darwich · planetscale.com)</em> <code>[vendor blog — substantive]</code></li>
+<li><strong><a href="https://muratdemirbas.substack.com/p/what-happens-when-the-model-eats">What happens when the model eats the stack?</a></strong> — review of the Berkeley/Stanford data-agents paper: a plain coding agent on a frontier model beats hand-built data agents on accuracy and tokens (turns fall from 23.2 to 6.0), and over 60% of the remaining failures are semantic (schema, join keys, business definitions). The paper's claim is that persistent semantic context is the research problem that will last. <em>(Murat Demirbas)</em></li>
+<li><strong><a href="https://emptysqua.re/blog/review-what-happens-when-the-model-eats-the-stack/">The Humanoid Lesson, or, will AI leave anything for database researchers to do?</a></strong> — a skeptical counter-review of the same paper: "persistent semantic context" is tribal knowledge, a decades-old problem, so keep the docs in git next to the code. His rule for predicting where an LLM struggles is to ask where a person would. <em>(A. Jesse Jiryu Davis · emptysqua.re)</em></li>
+</ul>
+<h2 id="commercial-engines-sql-server-oracle-mysql">Commercial engines (SQL Server, Oracle, MySQL, …)</h2>
+<ul>
+<li><strong><a href="https://arxiv.org/abs/2609.22781">io_uring in Oracle Database: a hybrid storage I/O architecture at production scale</a></strong> — Oracle's own account of replacing libaio: per-process rings and shared buffer registration (now in mainline Linux), with libaio kept as a fallback. TPC-C throughput is unchanged with server CPU down 1.2 points, TPC-H CPU per query is down 8.5% (geomean), and the write path alone uses 29% less CPU per write with 34% more throughput. Synchronous reads gain nothing, and CPU rises for very large I/Os, so the conclusion is <code>pread</code>/<code>pwrite</code> for sync I/O and io_uring only for async batches. That maps directly onto Postgres's AIO design choices. <em>(Chowdhury, Shah, Susairaj, Agrawal)</em> <em>[paper]</em> <em>(submitted 19 Sep, announced 22 Sep)</em></li>
+<li><strong><a href="https://mariadb.org/tidesql-5-and-mariadb-the-tides-are-moving-fast/">TideSQL 5 and MariaDB: the tides are moving fast</a></strong> — an LSM storage engine (TidesDB 10) for MariaDB, now with MVCC, secondary indexes, FKs, XA and Galera. The post reads the vendor's own sysbench critically: the "60× InnoDB" headline ran InnoDB with a 128 MB buffer pool on a 3 GB dataset, and with 4 GB caches InnoDB wins point selects by about 2.9× while TideSQL stays ahead on write-heavy runs. It also flags that optimistic-conflict retries surface as MariaDB error 1180, not the 1213 applications retry on. <em>(Frédéric Descamps · mariadb.org)</em></li>
+</ul>
+<h2 id="research-cutting-edge">Research &amp; cutting edge</h2>
+<ul>
+<li><strong><a href="https://arxiv.org/abs/2609.30493">Batched feedback and the random-access wall in search-based graph construction</a></strong> — splits ANN graph build time into distance-evaluation count and cost per evaluation. A batch builder whose graph changes in B synchronous blocks does 0.88× Vamana's distance work but takes 1.55× the wall-clock time, and every search-based builder runs 20–27× below a dense kernel at d ≈ 100. The gap grows as d^0.4, and batching the beam search afterwards recovers only 2–3%. It explains why vector index builds are memory-bound. <em>(Chávez)</em> <em>[paper]</em></li>
+<li><strong><a href="https://arxiv.org/abs/2609.23032">Same pattern, different answer: GQL and SQL/PGQ path-pattern divergence</a></strong> — an executable reference semantics for the path-pattern core shared by GQL and SQL/PGQ, run as a 17-construct suite against 6 releases of 5 engines (Kuzu, DuckPGQ, Neo4j, Memgraph, Apache AGE). 9 of 17 constructs get more than one answer across engines, and 15 of the 26 disagreements are <em>silent</em>: no error, just a different result. Useful background for when SQL/PGQ comes back to Postgres. <em>(Mandarapu, Kunkunuru)</em> <em>[paper]</em> <em>(submitted 19 Sep, announced 22 Sep)</em></li>
+<li><strong><a href="https://arxiv.org/abs/2609.31246">Provenance of HAVING queries in semirings with monus</a></strong> — provenance for aggregate-condition queries in any commutative semiring with monus, with no extra operators, matching the provenance of the aggregation-free self-join rewrite of <code>HAVING COUNT(*)</code>. Implemented in ProvSQL, a PostgreSQL extension. The abstract gives no numbers. <em>(Sen, Karmakar, Maniu, Saadeh, Senellart)</em> <em>[paper]</em></li>
+<li><strong><a href="https://arxiv.org/abs/2609.30956">Attacking Diophantus: special cases of bag containment</a></strong> — proves bag-semantics containment of conjunctive queries decidable when the contained query is "join-uniform", with the containing query arbitrary. That covers both previously known decidable cases, via a Diophantine inequality system over a canonical model built from all unifications of the contained query. The theory behind which bag-semantics rewrites are safe. <em>(Konstantinidis, Li, Mogavero)</em> <em>[paper]</em></li>
+<li><strong><a href="https://arxiv.org/abs/2609.24513">Pierce: GPU ray tracing for spatial joins over complex 3D data</a></strong> — recasts 3D polyhedral spatial joins as ray tracing on RT cores: rays cast along one mesh's edges against a hierarchy built over the other, with ray–node tests for pruning and ray–triangle tests for refinement. Reports "more than two orders of magnitude" over the state of the art on digital-pathology data. <em>(Hackl, Zacharatou · SIGSPATIAL 2026)</em> <em>[paper]</em></li>
+<li><strong><a href="https://arxiv.org/abs/2609.24236">QUIVER: dense vector search inside a SPARQL engine</a></strong> — native vector search in QLever. Parsing JSON vectors once at load time instead of per query gives median speedups of up to 41.9× (BSBM) and 20× (DBpedia); an ANN index exposed as a virtual SERVICE raises that to 355× and 97.8×. Cross-modal vector joins that time out everywhere else finish in seconds. The general lesson is where to parse and where to index a vector column. <em>(Kantz, Schreck, Silvello)</em> <em>[paper]</em></li>
+<li><strong><a href="https://arxiv.org/abs/2609.23036">Exploiting residual reachability for cross-model migration of graph-based ANN indexes</a></strong> — when the embedding model changes, build the new graph from the old one (shallow expansion with sign-code-screened second-hop candidates, or a hop-bounded beam search) instead of from scratch. Up to 17.43× faster than the fastest degree-matched rebuild across eight migrations, "while keeping competitive recalls". <em>(Gu, Zhong, Jin, Cheng, Ni, Li, Song, Shen)</em> <em>[paper]</em> <em>(submitted 19 Sep, announced 22 Sep)</em></li>
+<li><strong><a href="https://arxiv.org/abs/2609.28761">KathDB-FAO: synthesized query plans in a multimodal DBMS</a></strong> — compiles a natural-language query into atomic actions with input/output contracts, groups them, and synthesizes code per group at execution time instead of calling an LLM per tuple. 58.8% lower execution cost than the next best system on SemBench at equal or better quality. <em>(Xiao, Brown, Borycki, Balazinska)</em> <em>[paper]</em></li>
+</ul>
+<h2 id="international-non-english-sources">International (non-English sources)</h2>
+<ul>
+<li><strong><a href="https://habr.com/ru/companies/postgrespro/articles/1086788/">Why an ultra-fast COMMIT is dangerous, and how to check that WAL really reaches disk</a></strong> — single-client pgbench shows COMMIT at 0.223 ms with a real fsync against 0.060 ms when the sync is skipped (~1,370 vs ~1,920 TPS per client). A known ~135 µs flush on an Intel P3700 shows 60 µs can't include one. Four checks follow: strace for missing <code>fdatasync</code>, iostat f/s stuck at 0, a FUSE layer that logs syncs, and a <code>sysrq b</code> crash test, which on a failing system loses committed rows and gives <code>invalid magic number 0000</code> on the replica. The system tested is never named. <em>(slonik_pg · Postgres Professional on Habr)</em> [ru] <em>(orig: Почему сверхбыстрый COMMIT опасен для СУБД и как проверить надёжность сохранения данных)</em></li>
+<li><strong><a href="https://habr.com/ru/companies/softpoint/articles/1085598/">1C optimizer's notes, part 20: how much Huge Pages actually buy Postgres</a></strong> — PG17 on a Proxmox VM with 8 vCPU, 100 GB RAM and 40 GB <code>shared_buffers</code>, a 180M-row table prewarmed, pgbench with 8 clients, <code>perf stat</code> system-wide. Index lookups went 54,263 → 58,564 TPS (+7.93%) and page faults over 25 s fell from 1,397,551 to 1,044; a join/aggregate query gained 4.57%. 1 GB pages were slightly <em>worse</em> than 2 MB (57.6k vs 58.5k TPS). <em>(gallam · SOFTPOINT on Habr)</em> [ru] <em>(orig: Записки оптимизатора 1С (ч.20). На сколько реально настройки Huge Pages для Postgres могут ускорить запросы 1С)</em></li>
+<li><strong><a href="https://habr.com/ru/articles/1086100/">I explained an ora2pg bug wrong twice</a></strong> — a migration war story. ora2pg drops foreign keys when migrating MySQL/MSSQL schemas because a nested Perl <code>exists()</code> in <code>create_unique_keys()</code> autovivifies a fake <code>partitions_list</code> entry for every table with a PK/UNIQUE key. <code>create_foreign_keys()</code> then skips the FK whenever <code>pg_version &lt;= 12</code>, and an unset <code>PG_VERSION</code> defaults to 11. Setting <code>PG_VERSION</code> ≥ 13 fixes it; AUTO_INCREMENT start values are only read from a live database. <em>(Lunch418 · Habr)</em> [ru] <em>(orig: Я дважды неправильно объяснил один баг в ora2pg)</em></li>
+</ul>
+<h2 id="upcoming-events">Upcoming events</h2>
+<ul>
+<li><strong><a href="https://pgday.org.il/2026">PGDay Israel 2026 — Tel Aviv, 25 October</a></strong> — free one-day community event; the program is published. Internals picks:<ul>
+<li><strong>REPACK In Core</strong> (Robert Treat) — arrives the week after REPACK (CONCURRENTLY)'s first stress test turned up lost updates, a catch-up ceiling and an MVCC-safety gap; worth hearing what the design promises against what the list found.</li>
+<li><strong>My experience with AI for Postgres core development</strong> (Andrey Borodin) — from someone who filed LLM-found SSI and catalog-naming issues this very week.</li>
+<li><strong>PostgreSQL I/O: from synchronous to modern asynchronous I/O</strong> (Lior Friedler) — read alongside Oracle's io_uring paper above: which I/O paths gain from async and which don't.</li>
+</ul>
+</li>
+</ul>
+<h2 id="new-sources-added-this-week">New sources added this week</h2>
+<ul>
+<li><strong><a href="https://pgstef.github.io/">pgstef.github.io</a></strong> — pgBackRest failure modes reproduced end to end on real multi-node setups. <em>(Stefan Fercot)</em></li>
+<li><strong><a href="https://now-next.nl/en/insights/">now-next.nl/en/insights</a></strong> — a measured multi-tenant Postgres series (indexes, gapless numbering, RLS, partitioning), each post benchmarked on PG17. <em>(Chris van Eijk)</em></li>
+<li><strong><a href="https://emptysqua.re/blog/">emptysqua.re</a></strong> — sharp DB-research paper reviews and TLA+ writing; a natural companion to Murat Demirbas. <em>(A. Jesse Jiryu Davis)</em></li>
+<li><strong><a href="https://www.dbos.dev/blog">dbos.dev/blog</a></strong> — Postgres postmortems from running a durable-execution engine on it (DISTINCT scaling, MVCC delete locality); product mix, judge per post. <em>(Peter Kraft, Qian Li)</em></li>
+<li><strong><a href="https://habr.com/ru/companies/softpoint/articles/">SOFTPOINT on Habr — «Записки оптимизатора 1С»</a></strong> — 20+ parts of measured 1C-on-PostgreSQL work with perf counters and stated methodology.</li>
+</ul>
+<hr />
+<p><em>58 items · yield — mailing lists: 926 messages in window (790 hackers / 116 bugs / 0 performance / 20 general, plus 133 pgsql-committers) → 22 shortlisted → 12 published · blogs: 46 posts in window → 39 shortlisted → 20 published · community: ~215 threads viewed → 10 shortlisted → 5 published · research: 32 cs.DB preprints announced in window (20 submitted in window) → 13 shortlisted → 9 published · international: ru 27→7→3, zh 1→1→0, ja 5→2→0, fr 1→1→0.</em></p>
+      </article>
+    </div>
+    <footer>
+      <a href="../index.html">← All digests</a> ·
+      <a href="../feed.xml">RSS feed</a> ·
+      <a href="https://github.com/danolivo/dbms-digest/blob/main/digests/2026-09-21.md">View source on GitHub</a>
+    </footer>
+  </div>
+</body>
+</html>

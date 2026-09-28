@@ -266,6 +266,151 @@
    "ready_for_committer_n": 3,
    "net": 19,
    "highlight": "Flow reverses sharply against last week: -14 net on 2026-09-07 (20 created / 17 closed after the SQL/PGQ cull... recorded net 3) versus >= +19 now, as PG20-3 fills up while PG20-2 is the in-progress CF absorbing the commits. All 7 closures were 'Closed in commitfest PG20-2 with status: Committed' after being moved out of PG20-3; two of them (pgoutput streamed-2PC cleanup, SHMEM_ATTACH_UNKNOWN_SIZE) were created AND committed inside the same week. Standout new entry is Peter Geoghegan's INDEX_PAGES_LIMIT split out of the VISITED_PAGES_LIMIT thread."
+  },
+  {
+   "week": "2026-09-21",
+   "cf": "PG20-3 (#62)",
+   "captured_at": "2026-09-28",
+   "window": "2026-09-21 .. 2026-09-27",
+   "truncated": "per-CF activity log caps at 100 rows; oldest row 2026-09-22 09:52:42, so Sep 21 and Sep 22 00:00-09:52 are clipped. Counts are LOWER BOUNDS.",
+   "queue_at_scan": {
+    "needs_review": 90,
+    "waiting_on_author": 10,
+    "ready_for_committer": 19,
+    "moved_to_next_cf": 18,
+    "withdrawn": 3,
+    "total": 140
+   },
+   "created": [
+    {
+     "id": "7339",
+     "title": "Parameterized append subpaths",
+     "by": "a.pyhalov / glebka"
+    },
+    {
+     "id": "7344",
+     "title": "Fix SSI conflicts between index-only scans and heap writes",
+     "by": "zhaorui"
+    },
+    {
+     "id": "7352",
+     "title": "Validate GIN posting lists before decoding them",
+     "by": "sehrope"
+    },
+    {
+     "id": null,
+     "title": "Crashes on a partition whose concurrent detach never finished",
+     "by": "mihailnikalayeu"
+    },
+    {
+     "id": null,
+     "title": "pg_dump: Fetch sequence data only for sequences being dumped",
+     "by": "krylosov-aa"
+    },
+    {
+     "id": null,
+     "title": "Fix integer overflow in time and timetz interval arithmetic",
+     "by": "rhyadav"
+    },
+    {
+     "id": null,
+     "title": "Table sync race with REFRESH PUBLICATION",
+     "by": "aytiwari"
+    },
+    {
+     "id": null,
+     "title": "Temporary slot leak when creation fails in a subtransaction",
+     "by": "bharathrupireddy"
+    },
+    {
+     "id": null,
+     "title": "parallel autovacuum: Propagate track_cost_delay_timing to parallel workers",
+     "by": "simseih"
+    },
+    {
+     "id": null,
+     "title": "Clear FatalError earlier during crash restart",
+     "by": "aytiwari"
+    },
+    {
+     "id": null,
+     "title": "BUG: pg_class.relchecks overflow, making table undroppable",
+     "by": "mmeent"
+    },
+    {
+     "id": null,
+     "title": "Report no unpinned buffers as insufficient resources",
+     "by": "ma0831"
+    },
+    {
+     "id": null,
+     "title": "Reset waitStart when a lock wait fails",
+     "by": "zhong950419"
+    },
+    {
+     "id": null,
+     "title": "Speed up lpad() and rpad()",
+     "by": "bossartn"
+    },
+    {
+     "id": null,
+     "title": "Use C11 alignas instead of palloc/malloc for alignment",
+     "by": "petere"
+    },
+    {
+     "id": null,
+     "title": "pg_walinspect: fix LSN validation messages and empty range handling",
+     "by": "chaol"
+    },
+    {
+     "id": null,
+     "title": "pg_combinebackup: make the OID range check in parse_oid() effective",
+     "by": "e-ivkov"
+    },
+    {
+     "id": null,
+     "title": "REPACK (CONCURRENTLY) loses missing values of columns added without a rewrite",
+     "by": "simseih"
+    },
+    {
+     "id": null,
+     "title": "Set calcSumX2 = true in numeric_(poly_)deserialize",
+     "by": "mschoema"
+    },
+    {
+     "id": null,
+     "title": "Proposal: Supporting URI SAN in Certificate Authentication",
+     "by": "irionr"
+    }
+   ],
+   "created_n": 20,
+   "closed": [
+    {
+     "title": "Reject WAIT FOR earlier in transaction-snapshot mode",
+     "status": "Committed",
+     "note": "second record; already counted 2026-09-14"
+    },
+    {
+     "title": "REPACK (CONCURRENTLY) loses missing values of columns added without a rewrite",
+     "status": "Committed"
+    },
+    {
+     "title": "Use bounded GIN pending-list cleanup in parallel autovacuum",
+     "status": "Committed"
+    },
+    {
+     "title": "Assertion in pg_get_shmem_pagesize() in single-user mode",
+     "status": "Committed"
+    },
+    {
+     "title": "DSA_ALLOC_NO_OOM vs dsm_create ERROR leaving a half-initialized pgstats hash entry",
+     "status": "Committed"
+    }
+   ],
+   "closed_n": 5,
+   "ready_for_committer_n": 8,
+   "net": 15,
+   "highlight": "Net >= +15 vs >= +19 last week (both lower bounds). Active queue 119 (90/10/19) vs 91 (74/7/10) a week earlier. Standout new entry: Pyhalov/Kashkin 'Parameterized append subpaths' (add_path discards an equal-cost parameterized child path, so no parameterized Append can be built)."
   }
  ]
 }

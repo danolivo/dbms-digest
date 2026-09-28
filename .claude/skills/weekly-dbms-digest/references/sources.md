@@ -210,3 +210,11 @@ _Added 2026-09-14, classed on entry:_
 
 _Added 2026-09-21, classed on entry (all promoted straight into the sections above):_ commandprompt.com/blog `[solo]`, snowflake.com engineering `[org]`, markwkm.blogspot.com `[solo]`, vondra.me `[solo]`, clickhouse.com/blog `[org]`, hdombrovskaya.wordpress.com `[solo]`, fljd.in `[solo]`.
 - **babel.postgresql.org** `[pipe]` — not a news source: the PostgreSQL NLS translation-status dashboard. Standing reference for translation/community items (it is the primary artefact behind the zh_CN catalog story of 2026-09-14). P3. https://babel.postgresql.org/
+
+_Added 2026-09-28, classed on entry:_
+- **pgstef.github.io (Stefan Fercot)** `[solo]` — pgBackRest failure modes reproduced end to end on real multi-node setups (archive_mode on a promoted standby). Appears on Planet. P3. https://pgstef.github.io/
+- **now-next.nl/en/insights (Chris van Eijk)** `[solo]` — measured multi-tenant Postgres series (indexes, gapless per-tenant numbering, RLS, partitioning) benchmarked on PG17; several posts per week — publish only the measured ones, the index/overview posts are thin. P3. https://now-next.nl/en/insights/
+- **emptysqua.re (A. Jesse Jiryu Davis)** `[solo]` — DB-research paper reviews and TLA+ writing; pairs with Murat Demirbas. P3. https://emptysqua.re/blog/
+- **dbos.dev/blog** `[org]` — Postgres postmortems from a durable-execution engine built on it (SELECT DISTINCT scaling, MVCC delete locality); product mix, judge per post. P3. https://www.dbos.dev/blog
+- **SOFTPOINT on Habr («Записки оптимизатора 1С»)** `[org]` — 20+ parts of measured 1C-on-PostgreSQL work (Huge Pages, memory, parallelism) with perf counters; last section of each post plugs their monitoring product. Reached via the Habr hub, so ledger rows key to the hub. P3. https://habr.com/ru/companies/softpoint/articles/
+- _Access notes (2026-09-28):_ **Murat Demirbas** now publishes at **muratdemirbas.substack.com** (the 2026-09-23 review was found there, not on muratbuffalo.blogspot.com) — confirm and move the entry's URL next run. **tapoueh.org/blog/** index 404s (GitHub Pages); posts live at `/blog/YYYY/MM/<slug>/` and are on Planet. vondra.me and tapoueh.org article bodies come back empty to plain fetch — take text from Planet's page or the real browser.

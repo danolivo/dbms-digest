@@ -123,6 +123,7 @@ most-recent entries; older ones roll off (git history has the rest)._
 - (2026-09-21) **Reddit access note:** batching subreddit `.json` calls with `credentials:'omit'` fails
   wholesale ("Failed to fetch"); same-origin relative-path fetches with a ~900 ms gap between them work.
 
+- (2026-09-28) **r/databasedevelopment went silent** — zero posts in the Sep 21–27 window (third thin week running). Keep for discovery one more month; retire if October stays empty.
 
 ## Retired (removed from weekly scan)
 
