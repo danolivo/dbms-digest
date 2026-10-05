@@ -12,6 +12,7 @@ access this run → write nothing here.
 ## Two browsers
 - Claude Browser (`mcp__Claude_Browser__*`, in-app pane) and `Control_Chrome` (real host Chrome, AppleScript) cover different domains — when one refuses a domain outright, try the other before concluding it's unreachable. Claude Browser hard-blocks `old.reddit.com` ("blocked by policy"); `Control_Chrome` reaches it fine, plus Lobsters, DBA SE, and the non-English sources.
 - `Control_Chrome` prereq: Chrome → View → Developer → "Allow JavaScript from Apple Events" — otherwise `get_page_content`/`execute_javascript` fail with a misleading "Google Chrome is not running" (`list_tabs`/`open_url` still work). Its `execute_javascript` is synchronous — wrap in an IIFE: kick off with `window.__x={done:false}; (async()=>{…; window.__x.done=true;})(); 'started'`, then poll `window.__x.done ? JSON.stringify(window.__x.out) : 'pending'`; return one JSON string.
+- `Control_Chrome` is shared with parallel subagents: capture your own tab id from `list_tabs` and pass `tab_id` on every call — `open_url(new_tab:false)` and unpinned `execute_javascript` hit whichever tab is active. After navigating, check `location.href` before reading (first read often returns the old page). Feed XML in Chrome: parse `document.documentElement.outerHTML` with `DOMParser(…,'text/xml')`.
 - Claude Browser asks for per-site permission on first visit (e.g. vondra.me); in an unattended run nobody can grant it, so go straight to `Control_Chrome` for any blog domain not yet allowed. Planet's HTML page carries the real post URLs (its RSS only has `postgr.es/p/` short links).
 - Claude Browser's `javascript_tool` returns `undefined` on a top-level `return` — end with a bare expression. `get_page_text` lags one step right after `navigate` inside a `browser_batch` — read it in a separate call.
 ## pgsql-hackers / -bugs / -performance / -general
@@ -25,7 +26,7 @@ access this run → write nothing here.
 - The pgsql-performance mirror has been silent since 2026-05-11; no pgsql-bugs mirror exists at all. Fetch one message per call — batched fetch+regex can trip a cookie/query-string guard.
 ## CommitFest
 - Never fetch the bare `/<n>/` list (~180KB, overflows, no totals anyway). Fetch `/<n>/?tag=<anything>` instead (small) — its "Activity log" link puts `/<n>/activity/` into provenance, and its header "Status summary" line gives authoritative queue totals.
-- Both the global and per-CF activity logs cap at ~100 rows with no pagination — a Monday capture already misses the prior Mon–Tue; capture mid-week or accept a partial count. Either log can be the stale one on a given run — check the newest timestamp before trusting either. CF numbers aren't consecutive (a year-long Drafts CF can sit between two regular ones).
+- The activity logs cap at ~100 rows (a Monday capture misses Mon–Thu), so don't count from them. **Complete counts:** patch IDs are sequential — walk `/patch/<id>/` from last week's max until 404 (each shows a Created timestamp + full History); for closures/RfC promotions, in-page `fetch`+`DOMParser` the CF list (`a[href*="/patch/"]`, status in `td[2]`) and read each patch's History. ~530 patches ≈ 2 min with 8 parallel fetches; run as async IIFE + poll (javascript_tool times out at 45 s). CF numbers aren't consecutive.
 ## HN — Algolia, hntoplinks, hckrnews
 - Prefer HN Algolia: `hn.algolia.com/api/v1/search_by_date?tags=story&query=<kw>&numericFilters=created_at_i>LO,created_at_i<HI,points>N&hitsPerPage=50`, ~8 keywords, dedupe by objectID. CORS-blocked direct from news.ycombinator.com; works same-origin from hn.algolia.com, or from any origin via `Control_Chrome`. Finds items below the general-interest cutoff that hntoplinks misses.
 - Fallback only: `hntoplinks.com/week` (page 1 usually fresh, page 3+ can be months-old — check item IDs first) and `hckrnews.com` (fresh but only the last ~2–3 days). Live `news.ycombinator.com/item?id=…` pages return empty to plain fetch.
@@ -37,8 +38,11 @@ access this run → write nothing here.
 ## DBA Stack Exchange
 - Use the API, not the HTML: `api.stackexchange.com/2.3/questions?site=dba&fromdate=<epoch>&todate=<epoch>&order=desc&sort=votes&pagesize=15&filter=!nNPvSNdWme` — CORS-open, no key needed, already windowed. Usually low-signal for Postgres specifically (traffic skews SQL Server/Informix) — cheap to scan, rarely contributes.
 ## arXiv cs.DB
+- `/catchup/cs.DB/YYYY-MM-DD` returns exactly one announcement day incl. cross-lists — closes the Monday gap of `pastweek`.
 - Reachable cold via `www.arxiv.org` (the bare host sometimes doesn't surface in search). Day-bucketed; use `/list/cs.DB/<month>` if `/recent` is stale. `/abs/<id>` gives `[Submitted on …]` plus `blockquote.abstract` for the gist.
 - Listing **pagination needs an in-page fetch**: `?skip=50&show=50` is stripped on redirect by both `web_fetch` and browser `navigate`, so every request serves page 1 — run `fetch()`+`DOMParser` from inside the already-loaded listing page. `export.arxiv.org/api/query` returned zero bytes (no error) — don't rely on it. No announcements Sat/Sun, so the last two days of a Mon–Sun window are structurally under-covered.
+## Qiita
+- From any qiita.com tab, same-origin `fetch('/api/v2/tags/postgresql/items?per_page=60')` returns JSON (created_at, title, url, user, likes, markdown body) — windowable; the tag Atom feed only carries ~4 items.
 ## Habr hub
 - `habr.com/ru/hubs/postgresql/` ("Статьи" tab) plain-fetches the live chronological list with dates — no browser needed. Never fetch `/articles/top/alltime/` (all-time list, wastes tokens). In a browser: `document.querySelectorAll('article')` → `time[datetime]` + `.tm-title__link` (+ vote counter) per item.
 ## Misc

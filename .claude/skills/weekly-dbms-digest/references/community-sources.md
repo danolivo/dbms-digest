@@ -55,8 +55,10 @@ Access tier tells you whether it can be scanned without an account:
 - **r/DuckDB** — steady on-topic posting, low comment counts; a discovery feed rather than a discussion
   source. `[js]` https://old.reddit.com/r/DuckDB/ . P3.
 - **r/ClickHouse** — 3.6k subscribers but consistently on-topic practitioner chatter (ingestion patterns,
-  Postgres↔ClickHouse), and the only place ClickHouse discussion is visible outside HN. `[js]`
-  https://old.reddit.com/r/ClickHouse/ . P3.
+  Postgres↔ClickHouse), and the only place ClickHouse discussion is visible outside HN. **Drifting promotional
+  (2026-10-05):** 4 of 8 in-window posts were ClickHouse's own blog posts reposted by staff accounts, and a
+  moderator conceded spam is a problem in an "Is this an advertising sub?" thread. Retire in November if no
+  organic discussion appears. `[js]` https://old.reddit.com/r/ClickHouse/ . P3.
 - **r/MySQL** — 49k subscribers; thin weeks are normal, but the list otherwise covers MariaDB and has no
   MySQL-proper community at all. `[js]` https://old.reddit.com/r/MySQL/ . P3.
 
@@ -78,6 +80,9 @@ Access tier tells you whether it can be scanned without an account:
   JIRA bot filings — which is the register this digest wants and which no subreddit provides. Only a
   subset of channels is browsable logged-out; `general`, `Buildbot`, `JIRA` and `GitHub - MariaDB Server`
   are. `[js]` https://mariadb.zulipchat.com/#narrow/channel/118759-general . P2.
+- **MariaDB JIRA REST** — `jira.mariadb.org/rest/api/2/search?jql=…`, readable without login; exact `created`
+  timestamps, reporters and components for the MDEV numbers the Zulip bot mentions. Companion to the Zulip feed
+  (2026-10-05: six optimizer wrong-result reports from one reporter in one night). `[public]` P3.
 - **`t.me/clickhouse_ru`** — 11,237 members, clearly the most active Russian-language ClickHouse venue,
   but it is a **group, not a channel**: `t.me/s/` redirects to the join page, so content is unreadable
   without membership. `[auth]` — listed so it is not re-discovered every run. Never fabricate its
@@ -124,6 +129,7 @@ most-recent entries; older ones roll off (git history has the rest)._
   wholesale ("Failed to fetch"); same-origin relative-path fetches with a ~900 ms gap between them work.
 
 - (2026-09-28) **r/databasedevelopment went silent** — zero posts in the Sep 21–27 window (third thin week running). Keep for discovery one more month; retire if October stays empty.
+- (2026-10-05) **r/databasedevelopment retirement watch cancelled** — 9 posts in the Sep 28–Oct 4 window (SQL Server columnstore internals series, a join-ordering post, a Postgres WAL decoder), ≤1 comment each. Discovery P1, still no pulse value. MariaDB JIRA REST added (see Chat & messengers). DBA SE `polardb` seeding did not recur (0 questions).
 
 ## Retired (removed from weekly scan)
 

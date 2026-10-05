@@ -31,19 +31,19 @@
     <outline text="English blogs (added 2026-09-14)">
       <!-- pganalyze's blog feed (pganalyze.com/blog/rss.xml) 404s as of 2026-09-14 and the
            "5mins of Postgres" series is confirmed ended - see sources.md. Not listed here. -->
-      <outline type="rss" text="Valkey project blog" xmlUrl="https://valkey.io/feed.xml"/>
+      <outline type="rss" text="Valkey project blog" xmlUrl="https://valkey.io/atom.xml"/>
       <outline type="rss" text="PGXN dev log (David E. Wheeler)" xmlUrl="https://blog.pgxn.org/rss"/>
-      <outline type="rss" text="Tiger Data blog (ex-Timescale) - check byline/method per post" xmlUrl="https://www.tigerdata.com/blog/rss.xml"/>
+      <!-- tigerdata.com: /blog/rss.xml 404s (2026-10-05) and /blog advertises no feed (client-rendered) - browser-only, not dead. -->
       <!-- Feed URLs in this group are advertised by each site but were not byte-verified this run;
            confirm on first use and correct here rather than dropping. -->
     </outline>
     <outline text="English blogs (added 2026-09-07)">
       <outline type="rss" text="tapoueh.org (Dimitri Fontaine)" xmlUrl="https://tapoueh.org/index.xml"/>
       <outline type="rss" text="thebuild.com (Christophe Pettus) - near-daily, P2" xmlUrl="https://thebuild.com/blog/feed/"/>
-      <outline type="rss" text="boringsql.com (Radim Marek)" xmlUrl="https://boringsql.com/rss.xml"/>
+      <outline type="rss" text="boringsql.com (Radim Marek)" xmlUrl="https://boringsql.com/atom.xml"/>
       <outline type="rss" text="MariaDB Foundation blog" xmlUrl="https://mariadb.org/feed/"/>
       <!-- blogs.oracle.com/mysql replaces dev.mysql.com/blog-archive, dead since 2025-03. -->
-      <outline type="rss" text="Oracle MySQL blog" xmlUrl="https://blogs.oracle.com/mysql/rss"/>
+      <outline type="rss" text="Oracle MySQL blog" xmlUrl="https://blogs.oracle.com/mysql/feed"/>
       <!-- Feed URLs above are advertised by each site but were NOT byte-verified this run
            (cross-origin fetch from the browser pane is CORS-blocked, and plain fetch needs
            provenance). Confirm on first use and correct here rather than dropping. -->
@@ -52,7 +52,7 @@
       <!-- All four discovered during the 2026-09-14 sweep; feed URLs follow each platform's
            standard scheme and are advertised by the site, but were not byte-verified this run.
            Confirm on first use and correct here rather than dropping. -->
-      <outline type="rss" text="Command Prompt (Joshua Drake) - weekly PG commit-level ledger" xmlUrl="https://www.commandprompt.com/blog/rss.xml"/>
+      <!-- commandprompt.com: /blog/rss.xml 404s (2026-10-05); no feed exists - read /blog.md or the HTML index. -->
       <outline type="rss" text="vondra.me (Tomas Vondra, committer)" xmlUrl="https://vondra.me/index.xml"/>
       <outline type="rss" text="markwkm (Mark Wong) - TPC-E/DBT-5 benchmarks" xmlUrl="https://markwkm.blogspot.com/feeds/posts/default"/>
       <outline type="link" text="Snowflake engineering - Open Source (ex-Crunchy PG writing)" htmlUrl="https://www.snowflake.com/en/blog/engineering/"/>
@@ -105,6 +105,33 @@
            XML with full dates, much cheaper than scraping the HTML index. -->
       <outline type="rss" text="老冯云数 / Ruohang Feng - highest-yield zh source [ok - cold XML]" xmlUrl="https://blog.vonng.com/index.xml"/>
       <outline type="link" text="PingCAP/TiDB CN blog [browser - slow; use read_page]" htmlUrl="https://cn.pingcap.com/blog/"/>
+    </outline>
+    <outline text="English blogs (added 2026-10-05 - feed reconciliation; [ok] unless noted)">
+      <outline type="rss" text="PlanetScale blog" xmlUrl="https://planetscale.com/blog/feed.atom" htmlUrl="https://planetscale.com/blog"/>
+      <outline type="rss" text="ClickHouse blog" xmlUrl="https://clickhouse.com/rss.xml" htmlUrl="https://clickhouse.com/blog"/>
+      <outline type="rss" text="Franck Pachot (dev.to)" xmlUrl="https://dev.to/feed/franckpachot" htmlUrl="https://dev.to/franckpachot"/>
+      <outline type="rss" text="Murat Demirbas (Substack)" xmlUrl="https://muratdemirbas.substack.com/feed" htmlUrl="https://muratdemirbas.substack.com/"/>
+      <outline type="rss" text="emptysqua.re (A. Jesse Jiryu Davis)" xmlUrl="https://emptysqua.re/blog/index.xml" htmlUrl="https://emptysqua.re/blog/"/>
+      <outline type="rss" text="malisper.me (Michael Malis)" xmlUrl="https://malisper.me/feed/" htmlUrl="https://malisper.me/"/>
+      <outline type="rss" text="ardentperf (Jeremy Schneider)" xmlUrl="https://ardentperf.com/feed/" htmlUrl="https://ardentperf.com/"/>
+      <outline type="rss" text="pgstef.github.io (Stefan Fercot)" xmlUrl="https://pgstef.github.io/feed.xml" htmlUrl="https://pgstef.github.io/"/>
+      <outline type="rss" text="AWS Database Blog" xmlUrl="https://aws.amazon.com/blogs/database/feed/" htmlUrl="https://aws.amazon.com/blogs/database/"/>
+      <outline type="rss" text="Percona blog" xmlUrl="https://www.percona.com/blog/feed/" htmlUrl="https://www.percona.com/blog/"/>
+      <outline type="rss" text="Cybertec (EN) [browser]" xmlUrl="https://www.cybertec-postgresql.com/en/feed/" htmlUrl="https://www.cybertec-postgresql.com/en/"/>
+      <outline type="rss" text="EDB blog" xmlUrl="https://www.enterprisedb.com/blog/rss.xml" htmlUrl="https://www.enterprisedb.com/blog"/>
+      <outline type="rss" text="Neon blog" xmlUrl="https://neon.com/blog/rss.xml" htmlUrl="https://neon.com/blog"/>
+      <outline type="rss" text="Supabase blog" xmlUrl="https://supabase.com/rss.xml" htmlUrl="https://supabase.com/blog"/>
+      <outline type="rss" text="Shopify Engineering" xmlUrl="https://shopify.engineering/blog.atom" htmlUrl="https://shopify.engineering/"/>
+      <outline type="rss" text="Bruce Momjian" xmlUrl="https://momjian.us/main/rss/pgblog.xml" htmlUrl="https://momjian.us/main/blogs/"/>
+      <outline type="rss" text="Oracle Optimizer blog" xmlUrl="https://blogs.oracle.com/optimizer/feed" htmlUrl="https://blogs.oracle.com/optimizer/"/>
+      <outline type="rss" text="Oracle Database Insider" xmlUrl="https://blogs.oracle.com/database/feed" htmlUrl="https://blogs.oracle.com/database/"/>
+      <outline type="rss" text="mehmetince.net" xmlUrl="https://mehmetince.net/feed/" htmlUrl="https://mehmetince.net/"/>
+      <outline type="rss" text="The Gresql Post (Vik Fearing)" xmlUrl="https://thegresqlpost.org/rss.xml" htmlUrl="https://thegresqlpost.org/"/>
+      <outline type="rss" text="deferworks.org" xmlUrl="https://deferworks.org/rss.xml" htmlUrl="https://deferworks.org/"/>
+      <outline type="rss" text="seedfa.st [advertised, unfetched]" xmlUrl="https://seedfa.st/feed.xml" htmlUrl="https://seedfa.st/blog"/>
+      <outline type="rss" text="PgDog blog [advertised, unfetched]" xmlUrl="https://pgdog.dev/feed.xml" htmlUrl="https://pgdog.dev/blog"/>
+      <outline type="rss" text="DuckDB [advertised, unfetched]" xmlUrl="https://duckdb.org/feed.xml" htmlUrl="https://duckdb.org/news/"/>
+      <!-- No usable feed: questdb.com/blog (JS-rendered), techcommunity SQL Server (use HTML category page), snowflake.com engineering, stormatics.tech (browser index). -->
     </outline>
   </body>
 </opml>

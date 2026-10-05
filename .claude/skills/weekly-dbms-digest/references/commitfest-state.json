@@ -84,189 +84,16 @@
    "created_n": 20,
    "closed_n": 17,
    "net": 3
-  }
- ],
- "weeks": [
+  },
   {
    "week": "2026-09-14",
    "cf": "PG20-3 (#62)",
-   "captured_at": "2026-09-21",
-   "window": "2026-09-14 .. 2026-09-20",
-   "truncated": "per-CF activity log caps at 100 rows; oldest row 2026-09-14 02:15:49, so 00:00-02:15 of Sep 14 is clipped. Counts are LOWER BOUNDS.",
-   "queue_at_scan": {
-    "needs_review": 74,
-    "waiting_on_author": 7,
-    "ready_for_committer": 10,
-    "total": 91
-   },
-   "created": [
-    {
-     "id": "7305",
-     "title": "Add get_actual_variable_range index page read limit (complements existing VISITED_PAGES_LIMIT)",
-     "by": "Peter Geoghegan"
-    },
-    {
-     "id": null,
-     "title": "Report pruning statistics in pg_stat_all_tables",
-     "by": "zhong950419"
-    },
-    {
-     "id": null,
-     "title": "Avoid emitting core dumps when not needed",
-     "by": "aytiwari"
-    },
-    {
-     "id": null,
-     "title": "meson: pass OpenSSL/ICU include dirs to extensions",
-     "by": "gipergeek"
-    },
-    {
-     "id": null,
-     "title": "Combine qual-based and NOT NULL proofs when reducing outer joins",
-     "by": "smartkeyerror"
-    },
-    {
-     "id": null,
-     "title": "Optimize MCV stats for sortable types and utilize sorted-order properties",
-     "by": "liuzizhuan"
-    },
-    {
-     "id": null,
-     "title": "FIX: BUG #19687: ALTER SEQUENCE missing lock",
-     "by": "afelipe"
-    },
-    {
-     "id": null,
-     "title": "Discard aborted updaters when expanding a multixact",
-     "by": "chee.wooson"
-    },
-    {
-     "id": null,
-     "title": "Remove unused PageIsPredicateLocked()",
-     "by": "a.alekseev"
-    },
-    {
-     "id": null,
-     "title": "ANSI SQL proposal: SELECT DISTINCT ON (... ORDER BY ...)",
-     "by": "hannukrosing"
-    },
-    {
-     "id": null,
-     "title": "Optimize truncation logic to reduce AccessExclusive lock impact",
-     "by": "zhong950419"
-    },
-    {
-     "id": null,
-     "title": "Doc: clarify pg_locks descriptions of classid/objid/objsubid",
-     "by": "masaofujii"
-    },
-    {
-     "id": null,
-     "title": "Improve hash aggregate spilling by writing only the needed columns",
-     "by": "mkaruza"
-    },
-    {
-     "id": null,
-     "title": "tuplesort_putdatum() does not account for tuple memory",
-     "by": "mkaruza"
-    },
-    {
-     "id": null,
-     "title": "BUG #19686: Rolling back SET TABLESPACE",
-     "by": "afelipe"
-    },
-    {
-     "id": null,
-     "title": "Row contention in regress/parallel_schedule, adding multi-line test groups",
-     "by": "afelipe"
-    },
-    {
-     "id": null,
-     "title": "pgoutput: schema cache cleanup after streamed 2PC",
-     "by": "aytiwari"
-    },
-    {
-     "id": null,
-     "title": "pg_walinspect: add functions to locate and list WAL by time and LSN",
-     "by": "chaol"
-    },
-    {
-     "id": null,
-     "title": "SHMEM_ATTACH_UNKNOWN_SIZE reaches InitShmemIndexEntry()",
-     "by": "ashutoshbapat"
-    },
-    {
-     "id": null,
-     "title": "pg_rewind does not rewind diverging timelines",
-     "by": "mkindahl"
-    },
-    {
-     "id": null,
-     "title": "psql single-step mode woes",
-     "by": "heikki"
-    },
-    {
-     "id": null,
-     "title": "postgres_fdw: Fix cost estimation for semi join pushdown",
-     "by": "torenzhang"
-    },
-    {
-     "id": null,
-     "title": "Two remaining shmem attachment issues in single-user mode",
-     "by": "aytiwari"
-    },
-    {
-     "id": "7321",
-     "title": "Temp schema drop leaves an inconsistent state behind",
-     "by": "gruuya"
-    },
-    {
-     "id": null,
-     "title": "Cache invalidation for I/O Workers",
-     "by": "afelipe"
-    },
-    {
-     "id": null,
-     "title": "Use bounded GIN pending-list cleanup in parallel autovacuum",
-     "by": "mrdrivingduck"
-    }
-   ],
    "created_n": 26,
-   "closed": [
-    {
-     "title": "Fixes for a few GUC descriptions",
-     "status": "Committed"
-    },
-    {
-     "title": "[DOC] pg_database_size/pg_tablespace_size error on a missing OID",
-     "status": "Committed"
-    },
-    {
-     "title": "REPACK (CONCURRENTLY) decoding worker is canceled by lock_timeout",
-     "status": "Committed"
-    },
-    {
-     "title": "Improve WAIT FOR read-your-writes consistency doc",
-     "status": "Committed"
-    },
-    {
-     "title": "Reject WAIT FOR earlier in transaction-snapshot mode",
-     "status": "Committed"
-    },
-    {
-     "title": "pgoutput: schema cache cleanup after streamed 2PC",
-     "status": "Committed"
-    },
-    {
-     "title": "SHMEM_ATTACH_UNKNOWN_SIZE reaches InitShmemIndexEntry()",
-     "status": "Committed"
-    }
-   ],
    "closed_n": 7,
-   "ready_for_committer_n": 3,
-   "net": 19,
-   "highlight": "Flow reverses sharply against last week: -14 net on 2026-09-07 (20 created / 17 closed after the SQL/PGQ cull... recorded net 3) versus >= +19 now, as PG20-3 fills up while PG20-2 is the in-progress CF absorbing the commits. All 7 closures were 'Closed in commitfest PG20-2 with status: Committed' after being moved out of PG20-3; two of them (pgoutput streamed-2PC cleanup, SHMEM_ATTACH_UNKNOWN_SIZE) were created AND committed inside the same week. Standout new entry is Peter Geoghegan's INDEX_PAGES_LIMIT split out of the VISITED_PAGES_LIMIT thread."
-  },
+   "net": 19
+  }
+ ],
+ "weeks": [
   {
    "week": "2026-09-21",
    "cf": "PG20-3 (#62)",
@@ -411,6 +238,317 @@
    "ready_for_committer_n": 8,
    "net": 15,
    "highlight": "Net >= +15 vs >= +19 last week (both lower bounds). Active queue 119 (90/10/19) vs 91 (74/7/10) a week earlier. Standout new entry: Pyhalov/Kashkin 'Parameterized append subpaths' (add_path discards an equal-cost parameterized child path, so no parameterized Append can be built)."
+  },
+  {
+   "week": "2026-09-28",
+   "cf": "PG20-3 (#62)",
+   "captured_at": "2026-10-05",
+   "window": "2026-09-28 .. 2026-10-04",
+   "truncated": "Per-CF activity log capped at 100 rows (oldest 2026-10-02 03:00:29), so it was NOT used for counts. created = complete enumeration of sequential patch IDs 7353-7393 (all created in window, all in PG20-3; 7394 is Oct 5). closed/RfC = per-patch History of every patch listed in #61 and #62. Closures recorded under other CFs (PG19-Final, Drafts) not counted. Counts are complete for #61/#62, not lower bounds.",
+   "queue_at_scan": {
+    "needs_review": 303,
+    "waiting_on_author": 37,
+    "ready_for_committer": 93,
+    "moved_to_next_cf": 22,
+    "withdrawn": 8,
+    "committed": 1,
+    "rejected": 1,
+    "total": 465
+   },
+   "created": [
+    {
+     "id": "7353",
+     "title": "BUG #19723: CREATE INDEX racing with ALTER INDEX ATTACH PARTITION triggers unexpected internal error",
+     "by": "aytiwari"
+    },
+    {
+     "id": "7354",
+     "title": "Use instr_time for pg_stat_database block read/write time counters",
+     "by": "berndreiss"
+    },
+    {
+     "id": "7355",
+     "title": "SQL/JSON DEFAULT ON ERROR/ON EMPTY evaluation fail should rethrow error unconditionally",
+     "by": "stayreal"
+    },
+    {
+     "id": "7356",
+     "title": "Fix for Bug#19724 - ALTER TYPE ... ALTER ATTRIBUTE internal error for base type of domain with check",
+     "by": "nitinmotiani"
+    },
+    {
+     "id": "7357",
+     "title": "postgres_fdw: Fix costing of remote sorts without remote estimates",
+     "by": "jeltef"
+    },
+    {
+     "id": "7358",
+     "title": "pg_resetwal: refuse to run when backup_label exists",
+     "by": "zhong950419"
+    },
+    {
+     "id": "7359",
+     "title": "addFkRecurseReferencing use unassigned fkconstraint->fk_with_period value",
+     "by": "billyean"
+    },
+    {
+     "id": "7360",
+     "title": "Skip LEFT/ANTI joins to a provably empty inner rel",
+     "by": "ilidock95"
+    },
+    {
+     "id": "7361",
+     "title": "Protocol Compression (fourth attempt)",
+     "by": "bonnefoa"
+    },
+    {
+     "id": "7362",
+     "title": "Halve peak memory allocation for toast_flatten_tuple",
+     "by": "pborisov"
+    },
+    {
+     "id": "7363",
+     "title": "Don't reprocess PHV copies within outer level agg",
+     "by": "aytiwari"
+    },
+    {
+     "id": "7364",
+     "title": "Costing for parallel scans with few/single row produced in the outer side",
+     "by": "mmeent"
+    },
+    {
+     "id": "7365",
+     "title": "ATTACH PARTITION cost grows linearly with pg_constraint size (PG 18)",
+     "by": "manu15"
+    },
+    {
+     "id": "7366",
+     "title": "ReplicationSlotRelease() clobbers another backend's statusFlags entry",
+     "by": "vlesin"
+    },
+    {
+     "id": "7367",
+     "title": "intXshr, intXshl: return error on shift count out of range",
+     "by": "e-ivkov"
+    },
+    {
+     "id": "7368",
+     "title": "Two fixes for parallel query cleanup: DSM detach order and a stray statement timeout",
+     "by": "zhong950419"
+    },
+    {
+     "id": "7369",
+     "title": "REPACK (CONCURRENTLY): do not block the table while waiting for the final lock",
+     "by": "zhong950419"
+    },
+    {
+     "id": "7370",
+     "title": "BUG #19705: One NaN box makes BRIN and GiST box indexes omit unrelated rows",
+     "by": "reshke / zhong950419"
+    },
+    {
+     "id": "7371",
+     "title": "Corruption Issue: Fix missing tts_tid in ExecForceStoreHeapTuple",
+     "by": "gregburd / vksingla"
+    },
+    {
+     "id": "7372",
+     "title": "Deadlock detector fails to activate on a hot standby replica",
+     "by": "vitprof / dylanzhou"
+    },
+    {
+     "id": "7373",
+     "title": "synchronized_standby_slots behavior inconsistent with quorum-based synchronous replication",
+     "by": "ashu_coek"
+    },
+    {
+     "id": "7374",
+     "title": "psql: avoid CREATE command completion after GRANT/REVOKE CREATE",
+     "by": "miwa-h"
+    },
+    {
+     "id": "7375",
+     "title": "Wrong LSN in WAL decoding error messages",
+     "by": "rhyadav"
+    },
+    {
+     "id": "7376",
+     "title": "Reduce LWLockWaitListLock() cache-line contention with adaptive spin reads",
+     "by": "andrewk1 / minbaohong"
+    },
+    {
+     "id": "7377",
+     "title": "postgres_fdw: Emit message when batch_size is reduced",
+     "by": "rafia.sabih"
+    },
+    {
+     "id": "7378",
+     "title": "GROUP BY ALL",
+     "by": "davidchristensen"
+    },
+    {
+     "id": "7379",
+     "title": "CREATE TABLE .. LIKE copies comments to an unrelated table",
+     "by": "jimus"
+    },
+    {
+     "id": "7380",
+     "title": "Parallel autovacuum: leader crashes when no DSM segment can be created",
+     "by": "aytiwari"
+    },
+    {
+     "id": "7381",
+     "title": "doc: Document Linux cgroup memory limits",
+     "by": "joaodetomini"
+    },
+    {
+     "id": "7382",
+     "title": "pg_trgm: don't lose rows in index scans with a zero similarity threshold",
+     "by": "manu15"
+    },
+    {
+     "id": "7383",
+     "title": "Throwing away unnecessary spin-locks",
+     "by": "afelipe"
+    },
+    {
+     "id": "7384",
+     "title": "Fix reuse of stale hash tables by duplicated hashed SubPlans",
+     "by": "rhyadav"
+    },
+    {
+     "id": "7385",
+     "title": "Fix pg_trgm GiST union dropping SIGNKEY from all-true keys",
+     "by": "natec"
+    },
+    {
+     "id": "7386",
+     "title": "standby PANIC on restart after VM truncation",
+     "by": "zhong950419 / rhyadav"
+    },
+    {
+     "id": "7387",
+     "title": "Refactor pgbench to make future improvements easier",
+     "by": "hannukrosing"
+    },
+    {
+     "id": "7388",
+     "title": "Add ASCII fast path to Unicode normalization functions",
+     "by": "adunstan"
+    },
+    {
+     "id": "7389",
+     "title": "UNDO with constant time recovery (CTR)",
+     "by": "gregburd"
+    },
+    {
+     "id": "7390",
+     "title": "Enlarge the syslogger pipe on Linux (F_SETPIPE_SZ)",
+     "by": "sehrope"
+    },
+    {
+     "id": "7391",
+     "title": "Table Function Scan can report incorrect \"Maximum Storage\" in EXPLAIN",
+     "by": "croissant"
+    },
+    {
+     "id": "7392",
+     "title": "Let an ordering index scan hand its ORDER BY value to the target list",
+     "by": "gregburd"
+    },
+    {
+     "id": "7393",
+     "title": "Planning time quadratic in the IN-list length for \"c = X AND (a, b) IN (...)\" with BitmapOr",
+     "by": "manu15"
+    }
+   ],
+   "created_n": 41,
+   "closed": [
+    {
+     "id": "6734",
+     "title": "small cleanup for s_lock.h",
+     "status": "Committed"
+    },
+    {
+     "id": "7140",
+     "title": "Fire create_upper_paths_hook for UPPERREL_PARTIAL_GROUP_AGG",
+     "status": "Committed"
+    },
+    {
+     "id": "7343",
+     "title": "BUG: pg_class.relchecks overflow, making table undroppable",
+     "status": "Committed"
+    },
+    {
+     "id": "7334",
+     "title": "Set calcSumX2 = true in numeric_(poly_)deserialize",
+     "status": "Committed"
+    },
+    {
+     "id": "7341",
+     "title": "Reset waitStart when a lock wait fails",
+     "status": "Committed"
+    },
+    {
+     "id": "7320",
+     "title": "Two remaining shmem attachment issues in single-user mode",
+     "status": "Committed"
+    },
+    {
+     "id": "7095",
+     "title": "Report index currently being vacuumed in pg_stat_progress_vacuum",
+     "status": "Committed"
+    },
+    {
+     "id": "7070",
+     "title": "Restore idempotency of pg_enable_data_checksums()",
+     "status": "Rejected"
+    },
+    {
+     "id": "7367",
+     "title": "intXshr, intXshl: return error on shift count out of range",
+     "status": "Rejected"
+    },
+    {
+     "id": "7118",
+     "title": "Reduce WAL volume for heap tuple hint bits",
+     "status": "Returned with feedback"
+    },
+    {
+     "id": "7185",
+     "title": "doc: a restore executes code chosen by any dumped object's owner",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "5783",
+     "title": "Fix Protocol documentation",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "6445",
+     "title": "Set 1s WaitLatch timeout if standby limit has expired in ResolveRecoveryConflictWithBufferPin",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "6601",
+     "title": "pg_dump: fix NOT NULL constraint name comparison using makeObjectName",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "7317",
+     "title": "pg_rewind does not rewind diverging timelines",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "7359",
+     "title": "addFkRecurseReferencing use unassigned fkconstraint->fk_with_period value",
+     "status": "Withdrawn"
+    }
+   ],
+   "closed_n": 16,
+   "ready_for_committer_n": 10,
+   "net": 25,
+   "highlight": "Net +25 (41 created / 16 closed: 7 committed, 6 withdrawn, 2 rejected, 1 RwF) vs >= +15 last week (lower bound); counts now complete via patch-ID enumeration and per-patch history. PG20-2 closed 2026-10-01 with 539 entries / 116 committed; 140 active entries auto-moved and 58 Bugfix entries carried into PG20-3, so the active queue jumped 119 -> 433 (303/37/93). Standout: Greg Burd's generic UNDO subsystem (#7389)."
   }
  ]
 }
