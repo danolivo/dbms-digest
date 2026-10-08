@@ -11,7 +11,7 @@ or `[mostly-marketing]` rather than deleting it, so it isn't re-added next week.
 with this file — add confirmed feeds, drop dead ones.
 
 **Outlet key.** For the source-yield ledger (SKILL.md step 7b), every outlet is identified by a
-normalized key: the domain (`thebuild.com`), or domain + path for a shared platform
+normalized key: the domain (`vondra.me`), or domain + path for a shared platform
 (`dev.to/franckpachot`, `habr.com/ru/companies/postgrespro`). Normalize to lower-case, strip
 `www.`, strip a trailing slash, strip `utm-*` params. The same post reached via an aggregator and
 via its own site is one candidate keyed to the personal site, not the aggregator.
@@ -71,7 +71,6 @@ fallback in SKILL.md step 7b to fall back on.
 - **ardentperf.com (Jeremy Schneider)** `[solo]` — Postgres-on-Kubernetes and storage/memory measurement work with reproduction repos; this week's cgroup-v2 `container_memory_working_set_bytes` piece is the best explanation of why that metric misleads for Postgres. P2. https://ardentperf.com
 - **planetscale.com/blog (Engineering)** `[org]` — vendor (Postgres + Vitess host) but the engineering posts are substantive Postgres internals: Jan Nidzwetzki's MVCC/bloat deep-dive with runnable psql, planner-goes-rogue postmortems, sharding write-ups. Filter the product/Traffic-Control posts; keep the internals ones. Atom feed at planetscale.com/blog/feed.atom. P3. https://planetscale.com/blog
 - **coroot.com/blog** `[org]` — infra-observability vendor; Postgres posts reproduce failure modes (e.g. "Let's Break Autovacuum") rather than listing metrics. P3. https://coroot.com/blog/
-- **thebuild.com (Christophe Pettus)** `[solo]` — near-daily GUC-internals series and cross-engine planner deep-dives. P2. https://thebuild.com/blog/
 - **tapoueh.org (Dimitri Fontaine)** `[solo]` — infrequent but long-form, with every claim verified against a real build; the "Getting Ready for PostgreSQL 19" survey independently reproduced four of the five design problems behind the MERGE/SPLIT PARTITION revert. P2. https://tapoueh.org/blog/
 - **richyen.com (Richard Yen)** `[solo]` — catalog archaeology and version-portability tooling (pg-catalog-almanac: a `pg_catalog` diff across 9.6→19); original datasets, no product attached. P3. https://richyen.com/
 

@@ -39,7 +39,6 @@
     </outline>
     <outline text="English blogs (added 2026-09-07)">
       <outline type="rss" text="tapoueh.org (Dimitri Fontaine)" xmlUrl="https://tapoueh.org/index.xml"/>
-      <outline type="rss" text="thebuild.com (Christophe Pettus) - near-daily, P2" xmlUrl="https://thebuild.com/blog/feed/"/>
       <outline type="rss" text="boringsql.com (Radim Marek)" xmlUrl="https://boringsql.com/atom.xml"/>
       <outline type="rss" text="MariaDB Foundation blog" xmlUrl="https://mariadb.org/feed/"/>
       <!-- blogs.oracle.com/mysql replaces dev.mysql.com/blog-archive, dead since 2025-03. -->
