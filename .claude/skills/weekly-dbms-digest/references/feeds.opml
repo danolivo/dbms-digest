@@ -51,7 +51,7 @@
       <!-- All four discovered during the 2026-09-14 sweep; feed URLs follow each platform's
            standard scheme and are advertised by the site, but were not byte-verified this run.
            Confirm on first use and correct here rather than dropping. -->
-      <!-- commandprompt.com: /blog/rss.xml 404s (2026-10-05); no feed exists - read /blog.md or the HTML index. -->
+      <!-- commandprompt.com: /blog/rss.xml 404s, but a per-author feed exists (browser-confirmed 2026-10-12, 57 items) - see the 2026-10-12 group below. -->
       <outline type="rss" text="vondra.me (Tomas Vondra, committer)" xmlUrl="https://vondra.me/index.xml"/>
       <outline type="rss" text="markwkm (Mark Wong) - TPC-E/DBT-5 benchmarks" xmlUrl="https://markwkm.blogspot.com/feeds/posts/default"/>
       <outline type="link" text="Snowflake engineering - Open Source (ex-Crunchy PG writing)" htmlUrl="https://www.snowflake.com/en/blog/engineering/"/>
@@ -131,6 +131,22 @@
       <outline type="rss" text="PgDog blog [advertised, unfetched]" xmlUrl="https://pgdog.dev/feed.xml" htmlUrl="https://pgdog.dev/blog"/>
       <outline type="rss" text="DuckDB [advertised, unfetched]" xmlUrl="https://duckdb.org/feed.xml" htmlUrl="https://duckdb.org/news/"/>
       <!-- No usable feed: questdb.com/blog (JS-rendered), techcommunity SQL Server (use HTML category page), snowflake.com engineering, stormatics.tech (browser index). -->
+    </outline>
+    <outline text="English blogs (added 2026-10-12)">
+      <outline type="rss" text="Command Prompt - Joshua Drake, Postgres category [browser-confirmed]" xmlUrl="https://www.commandprompt.com/rss/author/jd/category/postgres/" htmlUrl="https://www.commandprompt.com/blog/"/>
+      <outline type="rss" text="Sorted Runs - Renato Cron (LSM / object storage) [advertised via link rel]" xmlUrl="https://blog.renatocron.com/rss.xml" htmlUrl="https://blog.renatocron.com/"/>
+      <outline type="rss" text="Turso blog [advertised]" xmlUrl="https://turso.tech/blog/feed.xml" htmlUrl="https://turso.tech/blog"/>
+      <outline type="rss" text="Marco Bambini (SQLite) [substack /feed]" xmlUrl="https://marcobambini.substack.com/feed" htmlUrl="https://marcobambini.substack.com/"/>
+      <!-- Planet PostgreSQL's per-author feeds (seen on Planet's poster list, not fetched by us yet):
+           now-next.nl/en/feed/postgresql.xml, vyruss.org/blog/feeds/all.atom.xml, exobench.ai/planet-postgresql.xml,
+           boringsql.com/tags/planet-postgresql/atom.xml, seedfa.st/planet-postgresql/feed.xml,
+           tapoueh.org/categories/postgresql/index.xml. Verify and promote next run.
+           New this run with feed URLs not yet captured: peter.eisentraut.org, kmoppel.github.io,
+           prateek-arora.github.io (has RSS), igor-suhorukov.github.io, incident.io/blog, stackgres.io/blog. -->
+    </outline>
+    <outline text="Japanese [ja] (added 2026-10-12)">
+      <!-- Zenn has no per-topic RSS worth using; read the JSON topic API in a browser tab:
+           https://zenn.dev/api/articles?topicname=postgresql&amp;order=latest&amp;count=48 (dated, windowable). -->
     </outline>
   </body>
 </opml>

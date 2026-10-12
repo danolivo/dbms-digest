@@ -5,7 +5,7 @@ a target replaces the old one here, it doesn't get appended below it. Nothing ne
 access this run → write nothing here.
 ## Provenance (web_fetch)
 - Cold `web_fetch` only works on a URL already in provenance (a search result, or a link on a page already fetched). Seed with `WebSearch`, then chain through fetched pages. **Chaining is unreliable in some runs** — link-on-a-fetched-page provenance did not propagate at all during the 2026-09-21 sweep, so every outlet needed its own seed search. Batch several domains into one `WebSearch` via `allowed_domains` when that happens; it's the main cost driver for the blog step.
-- Official domains often serve cache-stale content to plain fetch — check the newest date on the page before trusting a listing.
+- Official domains often serve cache-stale content to plain fetch — check the newest date on the page before trusting a listing. Planet PostgreSQL also re-syndicates old posts under a new date — always take the date from the post page itself.
 - A feed fetched as raw XML can come back as undecoded "[binary data]" — fetch the HTML index page instead, or use a browser.
 - Same-origin in-page `fetch()` is blocked if the current tab URL carries a query string — navigate to a clean URL first.
 - `github.com/postgres/postgres` (`/commits/master?since=&until=`, `/commit/<sha>`) is a ground-truth fallback when postgresql.org/mail-archive/commitfest are blocked — but it can itself come back empty; don't rely on it alone.
@@ -28,7 +28,7 @@ access this run → write nothing here.
 - Never fetch the bare `/<n>/` list (~180KB, overflows, no totals anyway). Fetch `/<n>/?tag=<anything>` instead (small) — its "Activity log" link puts `/<n>/activity/` into provenance, and its header "Status summary" line gives authoritative queue totals.
 - The activity logs cap at ~100 rows (a Monday capture misses Mon–Thu), so don't count from them. **Complete counts:** patch IDs are sequential — walk `/patch/<id>/` from last week's max until 404 (each shows a Created timestamp + full History); for closures/RfC promotions, in-page `fetch`+`DOMParser` the CF list (`a[href*="/patch/"]`, status in `td[2]`) and read each patch's History. ~530 patches ≈ 2 min with 8 parallel fetches; run as async IIFE + poll (javascript_tool times out at 45 s). CF numbers aren't consecutive.
 ## HN — Algolia, hntoplinks, hckrnews
-- Prefer HN Algolia: `hn.algolia.com/api/v1/search_by_date?tags=story&query=<kw>&numericFilters=created_at_i>LO,created_at_i<HI,points>N&hitsPerPage=50`, ~8 keywords, dedupe by objectID. CORS-blocked direct from news.ycombinator.com; works same-origin from hn.algolia.com, or from any origin via `Control_Chrome`. Finds items below the general-interest cutoff that hntoplinks misses.
+- Prefer HN Algolia: `hn.algolia.com/api/v1/search_by_date?tags=story&query=<kw>&numericFilters=created_at_i>LO,created_at_i<HI,points>N&hitsPerPage=50`, ~8 keywords, dedupe by objectID. CORS-blocked direct from news.ycombinator.com; works same-origin from hn.algolia.com, or from any origin via `Control_Chrome`. Finds items below the general-interest cutoff that hntoplinks misses. Add `&restrictSearchableAttributes=title,url&typoTolerance=false` — the default fuzzy match is mostly noise.
 - Fallback only: `hntoplinks.com/week` (page 1 usually fresh, page 3+ can be months-old — check item IDs first) and `hckrnews.com` (fresh but only the last ~2–3 days). Live `news.ycombinator.com/item?id=…` pages return empty to plain fetch.
 ## Reddit
 - `old.reddit.com/r/<sub>/top.json?t=week&limit=40` — read-only JSON, no login, no banner; `old.reddit.com<permalink>.json?limit=6` for the post + top comments. The HTML `top/?t=week` redirects to a login wall — always use `.json`.
@@ -44,8 +44,10 @@ access this run → write nothing here.
 ## Qiita
 - From any qiita.com tab, same-origin `fetch('/api/v2/tags/postgresql/items?per_page=60')` returns JSON (created_at, title, url, user, likes, markdown body) — windowable; the tag Atom feed only carries ~4 items.
 ## Habr hub
-- `habr.com/ru/hubs/postgresql/` ("Статьи" tab) plain-fetches the live chronological list with dates — no browser needed. Never fetch `/articles/top/alltime/` (all-time list, wastes tokens). In a browser: `document.querySelectorAll('article')` → `time[datetime]` + `.tm-title__link` (+ vote counter) per item.
+- `habr.com/ru/hubs/postgresql/` ("Статьи" tab) carries the live chronological list with dates; plain fetch works only once the URL is in provenance (refused cold in some runs) — a Control_Chrome tab always works. Never fetch `/articles/top/alltime/` (all-time list, wastes tokens). In a browser: `document.querySelectorAll('article')` → `time[datetime]` + `.tm-title__link` (+ vote counter) per item.
 ## Misc
+- pgsql-committers commit hashes per branch: in-page `fetch()` each `/message-id/<id>` and regex `Branch\s*-+\s*(\S+)` / `commitdiff/([0-9a-f]{10})` — ~150 messages a minute.
+- Zenn [ja]: `zenn.dev/api/articles?topicname=postgresql&order=latest&count=48` (browser). OceanBase blog [zh]: exact date via same-origin `openwebapi.oceanbase.com/api/web/content/getBlogByUid?uid=<id>` → `publishTime` (`createTime` is the draft date).
 - PGConf.EU: `2026.pgconf.eu/schedule/` overflows the fetch limit (~56 KB) — the overflow file the tool reports is readable with the host `Read` tool, which is cheaper than a browser pass.
 - Browser-only despite looking plain: `heise.de/thema/*` (consent shell), `pingkai.cn/tidbcommunity/blog`, `stormatics.tech/blogs/*` (all return empty bodies to `web_fetch`).
 - Conference schedules (confbase.io) are a JS iframe embed; navigate the browser straight to the iframe src `https://confbase.io/embed/<slug>/<year>/schedule?theme=dark` and `get_page_text` — the WordPress page itself fetches but the talk list needs the browser.
