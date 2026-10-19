@@ -48,8 +48,6 @@ Access tier tells you whether it can be scanned without an account:
   https://www.reddit.com/r/Database/top/?t=week . P3.
 - **r/dataengineering** — pipelines/warehouses; lots of vendor noise, occasional gold. `[js]`
   https://www.reddit.com/r/dataengineering/top/?t=week . P3.
-- **r/vectordatabase** — small, but the most active vector-DB-specific forum found so far; practitioner
-  comparison chatter that never reaches HN. `[js]` https://old.reddit.com/r/vectordatabase/ . P3.
 - **r/mariadb** — effectively an official channel: the MariaDB Foundation posts its monthly newsletter
   and community polls there. Low volume, high signal per post. `[js]` https://old.reddit.com/r/mariadb/ . P3.
 - **r/DuckDB** — steady on-topic posting, low comment counts; mostly a discovery feed, but produced its first
@@ -132,6 +130,7 @@ most-recent entries; older ones roll off (git history has the rest)._
 - (2026-09-28) **r/databasedevelopment went silent** — zero posts in the Sep 21–27 window (third thin week running). Keep for discovery one more month; retire if October stays empty.
 - (2026-10-05) **r/databasedevelopment retirement watch cancelled** — 9 posts in the Sep 28–Oct 4 window (SQL Server columnstore internals series, a join-ordering post, a Postgres WAL decoder), ≤1 comment each. Discovery P1, still no pulse value. MariaDB JIRA REST added (see Chat & messengers). DBA SE `polardb` seeding did not recur (0 questions).
 - (2026-10-12) Thin week for Postgres on HN (no Postgres story above 6 pts); the pulse came from Reddit. **r/vectordatabase** on retirement watch: ≤1 comment per post, mostly crossposts and vendor releases — retire in November if unchanged. Noted one account posting the same templated question to three subs and low-history accounts pushing "use MariaDB instead" in r/PostgreSQL — report discussions, not framing. MariaDB Zulip logged-out view showed only the last ~2 days (message API hung). No new communities found.
+- (2026-10-19) Biggest DB threads came from HN (local NVMe vs network storage; The Register's PG19-delay piece) plus one r/Database war story. Checked and not added: r/SQLServer (SQL-Server-only, AI-themed top thread), r/Supabase (product support), r/oracle (ERP), r/learnSQL (beginners), r/dbadmin (empty). r/ClickHouse still drifting promotional (2 of 6 posts are staff reposts) — recheck in November.
 
 ## Retired (removed from weekly scan)
 
@@ -146,3 +145,5 @@ dead/gone outside that cycle._
   it is not "discovered" again.
 - **(2026-09-14) Checked, too quiet to justify a weekly slot (not retired, just not added):** r/sqlite
   (11 posts/week, max 7 comments), r/cassandra (2 posts all week), r/mongodb (5 posts, max 5 comments).
+- **(2026-10-19) r/vectordatabase** — second consecutive week at ≤4 comments per post (13 posts, mostly vendor
+  releases, crossposts and a repeated vendor question). Promotional/low-signal; dropped from the sweep.

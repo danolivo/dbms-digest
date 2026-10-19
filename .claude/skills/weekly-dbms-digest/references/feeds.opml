@@ -144,6 +144,13 @@
            New this run with feed URLs not yet captured: peter.eisentraut.org, kmoppel.github.io,
            prateek-arora.github.io (has RSS), igor-suhorukov.github.io, incident.io/blog, stackgres.io/blog. -->
     </outline>
+    <outline text="Added 2026-10-19">
+      <outline type="rss" text="Materialize blog" xmlUrl="https://materialize.com/rss.xml" htmlUrl="https://materialize.com/blog/"/>
+      <outline type="rss" text="Daniel Lemire" xmlUrl="https://lemire.me/blog/feed/" htmlUrl="https://lemire.me/blog/"/>
+      <outline type="rss" text="YugabyteDB blog" xmlUrl="https://www.yugabyte.com/blog/feed/" htmlUrl="https://www.yugabyte.com/blog/"/>
+      <outline type="rss" text="depesz [unverified feed URL]" xmlUrl="https://www.depesz.com/feed/" htmlUrl="https://www.depesz.com/"/>
+      <!-- blog.cloudflare.com/rss/ exists but is CORS-blocked cross-origin; read it from a blog.cloudflare.com tab. -->
+    </outline>
     <outline text="Japanese [ja] (added 2026-10-12)">
       <!-- Zenn has no per-topic RSS worth using; read the JSON topic API in a browser tab:
            https://zenn.dev/api/articles?topicname=postgresql&amp;order=latest&amp;count=48 (dated, windowable). -->
