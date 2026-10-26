@@ -1,5 +1,5 @@
 {
- "_comment": "Weekly snapshots of the OPEN CommitFest, used to compute week-over-week deltas. Only the MOST RECENT week is kept in full (needed to track the fate of a patch flagged a week ago); every earlier week is collapsed to {week, cf, created_n, closed_n, net}. Full history lives in references/archive/commitfest-2026.json (not read at runtime).",
+ "_comment": "Weekly snapshots of the OPEN CommitFest, used to compute week-over-week deltas. Only the current run's week and the previous week are kept in full (the previous one is needed for the delta and to track the fate of a patch flagged a week ago); every earlier week is collapsed to {week, cf, created_n, closed_n, net} in weeks_summary. Full history lives in references/archive/commitfest-2026.json (not read at runtime).",
  "weeks_summary": [
   {
    "week": "2026-06-15",
@@ -105,339 +105,16 @@
    "created_n": 41,
    "closed_n": 16,
    "net": 25
-  }
- ],
- "weeks": [
+  },
   {
    "week": "2026-10-05",
    "cf": "PG20-3 (#62)",
-   "captured_at": "2026-10-12",
-   "window": "2026-10-05 .. 2026-10-11",
-   "truncated": "Complete, not lower bounds. created = sequential patch-ID walk 7394-7433 (all 40 created in window, all in PG20-3; 7434+ 404 at scan time). closed/RfC = History of every one of the 755 unique patches listed in #61 and #62, all fetched OK, filtered to events dated 2026-10-05..10-11. Closures recorded only under other CFs (Drafts, Final) are not counted. The per-CF activity log was not used.",
-   "queue_at_scan": {
-    "needs_review": 339,
-    "waiting_on_author": 38,
-    "ready_for_committer": 92,
-    "committed": 19,
-    "moved_to_next_cf": 23,
-    "rejected": 1,
-    "withdrawn": 8,
-    "total": 520,
-    "active": 469,
-    "note": "#61 summary at scan: NR 58 / WoA 13 / RfC 9 / Committed 116 / Moved 305 / RwF 5 / Rejected 2 / Withdrawn 31 / total 539. 15 more entries were moved from PG20-2 (14) or PG20-1 (1) into PG20-3 during the window; 1 was moved from PG20-3 to Drafts (7172)."
-   },
-   "created": [
-    {
-     "id": "7394",
-     "title": "pg_resetwal: add --cluster-state option",
-     "by": "zhong950419"
-    },
-    {
-     "id": "7395",
-     "title": "COPY FROM ... WHERE fails for negated operators",
-     "by": "bossartn"
-    },
-    {
-     "id": "7396",
-     "title": "BUG #17545: Incorrect selectivity for IS NOT DISTINCT FROM and NULLs",
-     "by": "zhong950419"
-    },
-    {
-     "id": "7397",
-     "title": "plpgsql: SELECT INTO sets FOUND wrongly after a function becomes a SRF",
-     "by": "zhong950419"
-    },
-    {
-     "id": "7398",
-     "title": "[PG19]pg_verifybackup never finishes on a gzip-compressed tar backup",
-     "by": "zhong950419"
-    },
-    {
-     "id": "7399",
-     "title": "[PG19]eager aggregation gives wrong results because of bpchar_ops",
-     "by": "zhong950419"
-    },
-    {
-     "id": "7400",
-     "title": "[PG19]Wrong results from NOT NULL-based expression simplification",
-     "by": "zhong950419"
-    },
-    {
-     "id": "7401",
-     "title": "gist_trgm_ops '=' operator: planner picks it over btree, ~300x slower",
-     "by": "vaibhavdalvi"
-    },
-    {
-     "id": "7402",
-     "title": "Reduce SyncRepLock contention on the commit path",
-     "by": "funny_falcon / vbp1"
-    },
-    {
-     "id": "7403",
-     "title": "RLS bypass: ON CONFLICT DO UPDATE/SELECT evaluates WHERE before RLS check",
-     "by": "joaodetomini"
-    },
-    {
-     "id": "7404",
-     "title": "Streaming decoding fails with \"unexpected table_index_fetch_tuple call during logical decoding\" when a relation has a TOASTed conbin",
-     "by": "ha-kun"
-    },
-    {
-     "id": "7405",
-     "title": "Expand OR clauses in joins to UNION ALL paths",
-     "by": "kaz"
-    },
-    {
-     "id": "7406",
-     "title": "Reset unlogged relations before syncing the data directory?",
-     "by": "aytiwari"
-    },
-    {
-     "id": "7407",
-     "title": "Doc Fix :incorrect explanation when an OOM killer terminates postgres",
-     "by": "t_ideriha"
-    },
-    {
-     "id": "7408",
-     "title": "Fix PGTYPESdate_fmt_asc overflow when a year does not fit \"yyyy\"",
-     "by": "a.rachitskiy"
-    },
-    {
-     "id": "7409",
-     "title": "to_char/jsonpath format cache serves a format tree parsed in the wrong strict-mode",
-     "by": "a.rachitskiy"
-    },
-    {
-     "id": "7410",
-     "title": "Planner chooses an index-only scan for an index AM without amcanreturn, and execution fails",
-     "by": "a.rachitskiy"
-    },
-    {
-     "id": "7411",
-     "title": "to_date()/to_timestamp() silently truncate 4+-digit day-of-year input to the first three digits",
-     "by": "a.rachitskiy"
-    },
-    {
-     "id": "7412",
-     "title": "first_value/last_value/nth_value return NULL with EXCLUDE TIES when the current row is outside its frame",
-     "by": "a.rachitskiy"
-    },
-    {
-     "id": "7413",
-     "title": "Backend crash (signal 11) in pg_trgm makesign() after ALTER TABLE ... SET STORAGE on a column with a gist_trgm_ops index",
-     "by": "a.rachitskiy"
-    },
-    {
-     "id": "7414",
-     "title": "Unexpected results of JSON_VALUE with DEFAULT ON EMPTY",
-     "by": "a.rachitskiy"
-    },
-    {
-     "id": "7415",
-     "title": "Extensible ReadyForQuery wire protocol message and C hook, for connection pools and WAIT FOR LSN",
-     "by": "hannukrosing"
-    },
-    {
-     "id": "7416",
-     "title": "to_date/to_timestamp \"Y,YYY\" accepts out-of-range values",
-     "by": "a.rachitskiy"
-    },
-    {
-     "id": "7417",
-     "title": "pgcrypto crypt() can return text with invalid encoding",
-     "by": "a.rachitskiy"
-    },
-    {
-     "id": "7418",
-     "title": "Remove redundant MultiXactIdIsRunning() check in HeapTupleSatisfiesUpdate()",
-     "by": "pg.zs"
-    },
-    {
-     "id": "7419",
-     "title": "Skip a redundant singleton GROUP BY node",
-     "by": "xiangxin-zeng"
-    },
-    {
-     "id": "7420",
-     "title": "psql: avoid over-reading unterminated prompt escapes",
-     "by": "chaol"
-    },
-    {
-     "id": "7421",
-     "title": "[PG19]Wrong results from Memoize with a nondeterministic collation",
-     "by": "zhong950419"
-    },
-    {
-     "id": "7422",
-     "title": "Batch TIDBitmap insertions in index scans",
-     "by": "geidav"
-    },
-    {
-     "id": "7423",
-     "title": "Detoast a column once per row instead of once per reference",
-     "by": "jedmeier"
-    },
-    {
-     "id": "7424",
-     "title": "Fix out-of-bounds access in pg_bsd_indent's parser stack",
-     "by": "vadimshakirov"
-    },
-    {
-     "id": "7425",
-     "title": "Unlocked path for GetSnapshotDataReuse",
-     "by": "mmeent"
-    },
-    {
-     "id": "7426",
-     "title": "[PG19]Three bugs with a CHECK constraint that only the child enforces",
-     "by": "zhong950419"
-    },
-    {
-     "id": "7427",
-     "title": "[RFC PATCH v1] On-demand WAL replay: accept connections before crash recovery has applied the WAL",
-     "by": "srinath-reddy-sadipiralla"
-    },
-    {
-     "id": "7428",
-     "title": "numeric: canonicalize wide digit accumulation",
-     "by": "xiangxin-zeng"
-    },
-    {
-     "id": "7429",
-     "title": "LWLock granular partition lock memory layout",
-     "by": "afelipe"
-    },
-    {
-     "id": "7430",
-     "title": "bufmgr Half state CAS",
-     "by": "afelipe"
-    },
-    {
-     "id": "7431",
-     "title": "Clear walsender reader pointers after cleanup",
-     "by": "aytiwari"
-    },
-    {
-     "id": "7432",
-     "title": "Fix leak when a plpgsql exception block catches an error from CALL",
-     "by": "muzzammil242"
-    },
-    {
-     "id": "7433",
-     "title": "Fix two GIN JSONPath bugs",
-     "by": "tgl"
-    }
-   ],
    "created_n": 40,
-   "closed": [
-    {
-     "id": "7028",
-     "title": "amcheck: Allow interrupting the child-level rightlink walk",
-     "status": "Committed"
-    },
-    {
-     "id": "7124",
-     "title": "Move vacuum_delay_point out of locked regions in ginInsertCleanup",
-     "status": "Committed"
-    },
-    {
-     "id": "7216",
-     "title": "Check for interrupts between hash index vacuum buckets in hashbulkdelete()",
-     "status": "Committed"
-    },
-    {
-     "id": "7228",
-     "title": "Report relation extension blockers within parallel lock groups",
-     "status": "Committed"
-    },
-    {
-     "id": "7259",
-     "title": "Stabilize recovery conflict stats checks in 031_recovery_conflict.pl",
-     "status": "Committed"
-    },
-    {
-     "id": "7292",
-     "title": "Reject zero resource kinds in test_resowner_many()",
-     "status": "Committed"
-    },
-    {
-     "id": "7311",
-     "title": "tuplesort_putdatum() does not account for tuple memory",
-     "status": "Committed"
-    },
-    {
-     "id": "7327",
-     "title": "back-patch initial test in TAS_SPIN for AArch64",
-     "status": "Committed"
-    },
-    {
-     "id": "7328",
-     "title": "WAL segment file descriptor leak on read errors can PANIC the server",
-     "status": "Committed"
-    },
-    {
-     "id": "7345",
-     "title": "Clear FatalError earlier during crash restart",
-     "status": "Committed"
-    },
-    {
-     "id": "7346",
-     "title": "parallel autovacuum: Propagate track_cost_delay_timing to parallel workers",
-     "status": "Committed"
-    },
-    {
-     "id": "7363",
-     "title": "Don't reprocess PHV copies within outer level agg",
-     "status": "Committed"
-    },
-    {
-     "id": "7391",
-     "title": "Table Function Scan can report incorrect \"Maximum Storage\" in EXPLAIN",
-     "status": "Committed"
-    },
-    {
-     "id": "7395",
-     "title": "COPY FROM ... WHERE fails for negated operators",
-     "status": "Committed"
-    },
-    {
-     "id": "7397",
-     "title": "plpgsql: SELECT INTO sets FOUND wrongly after a function becomes a SRF",
-     "status": "Committed"
-    },
-    {
-     "id": "7398",
-     "title": "[PG19]pg_verifybackup never finishes on a gzip-compressed tar backup",
-     "status": "Committed"
-    },
-    {
-     "id": "7399",
-     "title": "[PG19]eager aggregation gives wrong results because of bpchar_ops",
-     "status": "Committed"
-    },
-    {
-     "id": "7419",
-     "title": "Skip a redundant singleton GROUP BY node",
-     "status": "Withdrawn"
-    },
-    {
-     "id": "6946",
-     "title": "Use wait_classes.h in pg_prewarm",
-     "status": "Withdrawn",
-     "note": "closed in PG20-2"
-    },
-    {
-     "id": "6987",
-     "title": "Remove unused include from analyze.c",
-     "status": "Withdrawn",
-     "note": "closed in PG20-2"
-    }
-   ],
    "closed_n": 20,
-   "ready_for_committer_n": 6,
-   "net": 20,
-   "highlight": "Net +20 (40 created / 20 closed: 17 committed, 3 withdrawn; 0 rejected, 0 RwF) vs +25 last week; both weeks complete counts. Active PG20-3 queue 469 (339 NR / 38 WoA / 92 RfC) vs 433 (303/37/93) a week earlier: +36 NR, RfC flat. Commit tempo up (17 vs 7). Two filers produced 18 of the 40 new entries (10 bug-report entries from one filer on Oct 8, 8 from another, 4 of those already committed). Standout: Ayoub Kazar's planner OR-to-UNION ALL expansion (#7405)."
-  },
+   "net": 20
+  }
+ ],
+ "weeks": [
   {
    "week": "2026-10-12",
    "cf": "PG20-3 (#62)",
@@ -816,6 +493,341 @@
      "title": "PSQL schema \"describe\" \\dn is not escaping quotes"
     }
    ]
+  },
+  {
+   "week": "2026-10-19",
+   "cf": "PG20-3 (#62)",
+   "captured_at": "2026-10-26",
+   "window": "2026-10-19 .. 2026-10-25",
+   "truncated": "Complete, not lower bounds. created = sequential patch-ID walk 7480-7513 (7514-7525 all 404 at scan time); 7480-7510 (31) created in window: 30 in PG20-3, 1 filed directly into PG20-Drafts (7493, not counted); 7511-7513 created 2026-10-26, excluded. closed/RfC = History of every one of the 839 unique patches listed in #61 (539) and #62 (620) plus the new IDs, all fetched OK, filtered to events dated 2026-10-19..10-25 (CF timestamps as shown on the site; 7446's withdrawal at 2026-10-19 00:04:53 falls in this window). Closures recorded only under other CFs (Drafts, Final) are not counted. Cross-check: #62 committed 32->48 (+16), withdrawn 10->12 (+2, 7446 was already in last scan), #61 rejected 2->3; total 578->620 = 31 new IDs in PG20-3 since last scan (7482-7513 minus 7493) + 11 moved in. The per-CF activity log was not used.",
+   "queue_at_scan": {
+    "needs_review": 383,
+    "waiting_on_author": 45,
+    "ready_for_committer": 107,
+    "committed": 48,
+    "moved_to_next_cf": 24,
+    "rejected": 1,
+    "withdrawn": 12,
+    "total": 620,
+    "active": 535,
+    "note": "#61 summary at scan: NR 43 / WoA 11 / RfC 7 / Committed 116 / Moved 322 / RwF 5 / Rejected 3 / Withdrawn 32 / total 539. During the window 11 entries were moved into PG20-3 (9 from PG20-2: 4460, 5680, 6012, 6155, 6363, 6384, 7102, 7104, 7105; 2 from PG20-1: 6024, 6730); none moved out. Scan-time #62 totals also include 7511-7513 (created Oct 26)."
+   },
+   "created_n": 30,
+   "closed_n": 20,
+   "ready_for_committer_n": 11,
+   "net": 10,
+   "highlight": "Net +10 (30 created / 20 closed: 16 committed, 3 withdrawn, 1 rejected [in PG20-2]; 0 RwF) vs +31 last week; both weeks complete counts. Active PG20-3 queue 535 (383 NR / 45 WoA / 107 RfC) vs 511 (366/43/102). 11 RfC promotions (7371 back to RfC after a brief Needs review). Last week's burst got worked off: 3 of the 4 ruleutils deparse fixes (7441, 7442, 7451) and 3 of the [PG19] bug entries (7447, 7449, 7450) were committed, the 4th [PG19] one (7446) withdrawn. Standout: David Geier's RelationData shrink (#7483), 488->256 bytes per relcache entry (496->248 in v4), ~53 MiB / ~10% of CacheMemoryContext saved on a 39k-table/148k-index schema. Last week's standout #7468 unchanged (Needs review, no thread activity in window); #7422 still Ready for Committer.",
+   "created": [
+    {
+     "id": "7480",
+     "title": "walreceiver: stale hot_standby_feedback xmin on primary when wal_receiver_status_interval = 0 (PG16 and later)",
+     "by": "vaibhavdalvi"
+    },
+    {
+     "id": "7481",
+     "title": "Fix leaked hash scans in pg_listening_channels()",
+     "by": "joeljacobson"
+    },
+    {
+     "id": "7482",
+     "title": "DOCS - CREATE PUBLICATION wording re 'ONLY' for partitioned tables.",
+     "by": "smithpb2250"
+    },
+    {
+     "id": "7483",
+     "title": "Reducing relcache memory usage 2: shrink sizeof(RelationData)",
+     "by": "geidav"
+    },
+    {
+     "id": "7484",
+     "title": "two small tab-completion patches (ALTER CONSTRAINT, CHECK modifiers)",
+     "by": "bajishaik"
+    },
+    {
+     "id": "7485",
+     "title": "[PATCH v1] Fix tab completion for DROP INDEX CONCURRENTLY",
+     "by": "sean0628"
+    },
+    {
+     "id": "7486",
+     "title": "EXPLAIN prints another ModifyTable's RETURNING aliases in a SubPlan",
+     "by": "assam258.gmail.com"
+    },
+    {
+     "id": "7487",
+     "title": "Fix recovery connection detail in EXEC_BACKEND builds",
+     "by": "nitinjadhav11"
+    },
+    {
+     "id": "7488",
+     "title": "Reporting WAL replay progress during pre-consistency standby reovery",
+     "by": "nitinjadhav11"
+    },
+    {
+     "id": "7489",
+     "title": "GIN jsonb_ops misses root strings in strict jsonpath queries",
+     "by": "zhaorui"
+    },
+    {
+     "id": "7490",
+     "title": "Check XID wraparound failsafe between indexes in parallel vacuum",
+     "by": "bharathrupireddy"
+    },
+    {
+     "id": "7491",
+     "title": "AT TIME ZONE and similar as a function in FROM do not read back",
+     "by": "assam258.gmail.com"
+    },
+    {
+     "id": "7492",
+     "title": "A COLLATE clause in the URI of XMLNAMESPACES does not read back",
+     "by": "assam258.gmail.com"
+    },
+    {
+     "id": "7494",
+     "title": "Wrong result for whole-row IS NOT NULL with dropped columns",
+     "by": "matheus.alcantara"
+    },
+    {
+     "id": "7495",
+     "title": "START_REPLICATION silently truncates an overlong LSN component",
+     "by": "ha-kun"
+    },
+    {
+     "id": "7496",
+     "title": "[PATCH 0/3] Improve UNION de-duplication",
+     "by": "xiangxin-zeng"
+    },
+    {
+     "id": "7497",
+     "title": "pg_stat_statements: fix SQL/JSON behavior keywords and JSON_TABLE query jumbling",
+     "by": "ilyastar"
+    },
+    {
+     "id": "7498",
+     "title": "Use-after-free of a shared Path in add_path()/add_partial_path()",
+     "by": "jeevan.chalke"
+    },
+    {
+     "id": "7499",
+     "title": "Optimize mergejoinscansel() by avoiding redundant computations",
+     "by": "liuzizhuan"
+    },
+    {
+     "id": "7500",
+     "title": "Deparsing of unary operators applied to const",
+     "by": "nitinmotiani"
+    },
+    {
+     "id": "7501",
+     "title": "BUG #19772: ERROR: corrupt MVNDistinct entry for GROUP BY c0, ROLLUP (abs(c0)) with ndistinct statistics",
+     "by": "matheus.alcantara"
+    },
+    {
+     "id": "7502",
+     "title": "Fix rescan costing of single-batch hash joins",
+     "by": "bajishaik"
+    },
+    {
+     "id": "7503",
+     "title": "Reject incompatible options specified with VACUUM ONLY_DATABASE_STATS",
+     "by": "chaol"
+    },
+    {
+     "id": "7504",
+     "title": "Remove obsolete locking comment from AddBufferToRing()",
+     "by": "chaol"
+    },
+    {
+     "id": "7505",
+     "title": "Fix the language for new CREATE SUBSCRIPTION features",
+     "by": "thom"
+    },
+    {
+     "id": "7506",
+     "title": "Fix whole-row type errors in postgres_fdw UPDATE joins",
+     "by": "torenzhang"
+    },
+    {
+     "id": "7507",
+     "title": "pgcrypto: Fix sha-crypt rounds= values that do not fit in int (BUG #19743)",
+     "by": "prashantelephant2"
+    },
+    {
+     "id": "7508",
+     "title": "[PATCH v1] Fix tab completion for REINDEX SYSTEM",
+     "by": "sean0628"
+    },
+    {
+     "id": "7509",
+     "title": "Avoid truncated or zero-padded copies of replaced files in backups.",
+     "by": "dsteele"
+    },
+    {
+     "id": "7510",
+     "title": "Add compiler option -fstrict-flex-arrays=1",
+     "by": "petere"
+    }
+   ],
+   "closed": [
+    {
+     "id": "7332",
+     "title": "fix more casting away of qualifiers",
+     "status": "Committed"
+    },
+    {
+     "id": "7473",
+     "title": "Fix stale allocChunkLimit when recycling AllocSet",
+     "status": "Committed"
+    },
+    {
+     "id": "7447",
+     "title": "[PG19]btree_gin misses rows for a timestamptz bound in the repeated DST hour",
+     "status": "Committed"
+    },
+    {
+     "id": "7449",
+     "title": "[PG19]jsonb_object_agg as a window function returns stale values",
+     "status": "Committed"
+    },
+    {
+     "id": "7450",
+     "title": "[PG19]Stale state after the join removal restart gives wrong results",
+     "status": "Committed"
+    },
+    {
+     "id": "7451",
+     "title": "IS DOCUMENT as an operand loses needed parentheses",
+     "status": "Committed"
+    },
+    {
+     "id": "7441",
+     "title": "Pretty-printed sublink test expressions lose needed parentheses",
+     "status": "Committed"
+    },
+    {
+     "id": "7442",
+     "title": "An alias named 'set' on an UPDATE, DELETE or MERGE target does not read back",
+     "status": "Committed"
+    },
+    {
+     "id": "7486",
+     "title": "EXPLAIN prints another ModifyTable's RETURNING aliases in a SubPlan",
+     "status": "Committed"
+    },
+    {
+     "id": "7342",
+     "title": "Report no unpinned buffers as insufficient resources",
+     "status": "Committed"
+    },
+    {
+     "id": "7445",
+     "title": "[PG19] psql backslash commands fail with translated messages and a non UTF-8 client encoding",
+     "status": "Committed"
+    },
+    {
+     "id": "7247",
+     "title": "035_standby_logical_decoding might fail due to FATAL message lost inside libpq",
+     "status": "Committed"
+    },
+    {
+     "id": "7485",
+     "title": "[PATCH v1] Fix tab completion for DROP INDEX CONCURRENTLY",
+     "status": "Committed"
+    },
+    {
+     "id": "7469",
+     "title": "Reject COPY TO of unlogged relations during recovery",
+     "status": "Committed"
+    },
+    {
+     "id": "7463",
+     "title": "Fix WITHOUT OVERLAPS multirange with logical replication",
+     "status": "Committed"
+    },
+    {
+     "id": "7481",
+     "title": "Fix leaked hash scans in pg_listening_channels()",
+     "status": "Committed"
+    },
+    {
+     "id": "7446",
+     "title": "[PG19]pg_dump --statistics restores extended statistics by attribute number",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "4105",
+     "title": "pgbench - adding pl/pgsql versions of tests",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "7225",
+     "title": "makes pgbench functions available on server side - Common Library Extraction (patch 1 - refactoring only) & Server Extension (patch 2 adds extension)",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "5396",
+     "title": "Add Option to Check All Addresses For Matching target_session_attr",
+     "status": "Rejected (closed in PG20-2)"
+    }
+   ],
+   "rfc": [
+    {
+     "id": "6442",
+     "title": "tablecmds: fix Deadlock caused by Attach Partition"
+    },
+    {
+     "id": "7296",
+     "title": "BUG #19684: Assertion in tuplesort_begin_heap() falsified by parallel plan with sort"
+    },
+    {
+     "id": "7451",
+     "title": "IS DOCUMENT as an operand loses needed parentheses"
+    },
+    {
+     "id": "7484",
+     "title": "two small tab-completion patches (ALTER CONSTRAINT, CHECK modifiers)"
+    },
+    {
+     "id": "7452",
+     "title": "Operators on ROW() constructors read back as row comparisons"
+    },
+    {
+     "id": "7481",
+     "title": "Fix leaked hash scans in pg_listening_channels()"
+    },
+    {
+     "id": "7371",
+     "title": "Corruption Issue: Fix missing tts_tid in ExecForceStoreHeapTuple"
+    },
+    {
+     "id": "7492",
+     "title": "A COLLATE clause in the URI of XMLNAMESPACES does not read back"
+    },
+    {
+     "id": "7488",
+     "title": "Reporting WAL replay progress during pre-consistency standby reovery"
+    },
+    {
+     "id": "7290",
+     "title": "BUG #19599: RestoreBlockImage: the decode cross-checks never bound hole_offset + hole_length against BLCKSZ"
+    },
+    {
+     "id": "7384",
+     "title": "Fix reuse of stale hash tables by duplicated hashed SubPlans"
+    }
+   ],
+   "filed_to_drafts": [
+    {
+     "id": "7493",
+     "title": "[PATCH] Unify duplicate-option handling across utility commands",
+     "by": "bajishaik"
+    }
+   ],
+   "fate_of_prior": {
+    "7468": "Needs review, no CF or thread activity in window",
+    "7422": "Ready for Committer since 2026-10-15; reviewer added 2026-10-19; not committed"
+   }
   }
  ]
 }

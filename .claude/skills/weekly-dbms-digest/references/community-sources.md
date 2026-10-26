@@ -39,8 +39,8 @@ Access tier tells you whether it can be scanned without an account:
 - **r/PostgreSQL** — the main Postgres subreddit; sort Top / This Week. `[js]`
   https://www.reddit.com/r/PostgreSQL/top/?t=week . P1.
 - **r/databasedevelopment** — DB *internals* community (storage engines, query processing);
-  exactly the reader's wheelhouse — but **link discovery only, not Community pulse** (2026-09-21: 3 posts
-  in the window, **0 comments on all three**; second consecutive week with no debate). `[js]`
+  exactly the reader's wheelhouse — but **link discovery only, not Community pulse** (2026-10-26: zero posts
+  Oct 19–25, newest 10-17; the 10-05 recovery did not last — retire if November stays empty). `[js]`
   https://www.reddit.com/r/databasedevelopment/ . P1 for discovery, skip for the pulse.
 - **r/SQL** — broader SQL Q&A and discussion; filter heavily. `[js]`
   https://www.reddit.com/r/SQL/top/?t=week . P2.
@@ -98,8 +98,6 @@ Access tier tells you whether it can be scanned without an account:
 
 _Real source finds only — access technique lives in references/fetching.md instead. Cap: 15
 most-recent entries; older ones roll off (git history has the rest)._
-- (2026-06-20) _seed list created._
-- hntoplinks.com — week/month views of top HN stories with live points/comments; a scan aid, not a primary source, for when HN's own listing pages are cache-stale. `[public]` P2. https://www.hntoplinks.com/week
 - hckrnews.com — chronological HN front-page mirror with points/comments; covers only the most recent ~2–3 days, useful for the tail of the week. `[public]` P3. https://hckrnews.com/
 - (2026-09-07) r/vectordatabase, r/mariadb, r/DuckDB added to the weekly sweep — see Forums above.
 - (2026-09-07) **Caveat learned this run:** several of the highest-comment r/SQL threads in a week can
@@ -131,6 +129,7 @@ most-recent entries; older ones roll off (git history has the rest)._
 - (2026-10-05) **r/databasedevelopment retirement watch cancelled** — 9 posts in the Sep 28–Oct 4 window (SQL Server columnstore internals series, a join-ordering post, a Postgres WAL decoder), ≤1 comment each. Discovery P1, still no pulse value. MariaDB JIRA REST added (see Chat & messengers). DBA SE `polardb` seeding did not recur (0 questions).
 - (2026-10-12) Thin week for Postgres on HN (no Postgres story above 6 pts); the pulse came from Reddit. **r/vectordatabase** on retirement watch: ≤1 comment per post, mostly crossposts and vendor releases — retire in November if unchanged. Noted one account posting the same templated question to three subs and low-history accounts pushing "use MariaDB instead" in r/PostgreSQL — report discussions, not framing. MariaDB Zulip logged-out view showed only the last ~2 days (message API hung). No new communities found.
 - (2026-10-19) Biggest DB threads came from HN (local NVMe vs network storage; The Register's PG19-delay piece) plus one r/Database war story. Checked and not added: r/SQLServer (SQL-Server-only, AI-themed top thread), r/Supabase (product support), r/oracle (ERP), r/learnSQL (beginners), r/dbadmin (empty). r/ClickHouse still drifting promotional (2 of 6 posts are staff reposts) — recheck in November.
+- (2026-10-26) Window Oct 19–25. The week's DB debate was HN's pgrust/ClickBench thread (193 pts, 160 comments); DuckDB 2.0 and rqlite's history also passed 60 comments. Reddit was thin: apart from a resubmission of last week's Register story, no Postgres thread passed 22 comments. **r/databasedevelopment had zero posts in the window** (newest 10-17) — retire if November stays empty. r/ClickHouse: 1 of 6 posts a staff repost (improving; November recheck stands). The same few accounts posted long templated replies within minutes across r/PostgreSQL, r/mysql and r/Database, and HN users flagged bot comments on the recovery_prefetch thread — report substance, don't count them as independent practitioners. HN Algolia returned only ~25 `postgres` title/url hits; cross-check hntoplinks (documented in fetching.md) when a week looks this thin. No new communities found.
 
 ## Retired (removed from weekly scan)
 

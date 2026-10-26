@@ -151,6 +151,18 @@
       <outline type="rss" text="depesz [unverified feed URL]" xmlUrl="https://www.depesz.com/feed/" htmlUrl="https://www.depesz.com/"/>
       <!-- blog.cloudflare.com/rss/ exists but is CORS-blocked cross-origin; read it from a blog.cloudflare.com tab. -->
     </outline>
+    <outline text="Added 2026-10-26">
+      <outline type="rss" text="now-next.nl (Chris van Eijk) [confirmed]" xmlUrl="https://now-next.nl/en/feed/postgresql.xml" htmlUrl="https://now-next.nl/en/insights/"/>
+      <outline type="rss" text="Marc Brooker [confirmed]" xmlUrl="https://brooker.co.za/blog/rss.xml" htmlUrl="https://brooker.co.za/blog/"/>
+      <outline type="rss" text="Apache DataFusion blog [confirmed]" xmlUrl="https://datafusion.apache.org/blog/feed.xml" htmlUrl="https://datafusion.apache.org/blog/"/>
+      <outline type="rss" text="philipotoole.com (rqlite) [confirmed]" xmlUrl="https://philipotoole.com/feed/" htmlUrl="https://philipotoole.com/"/>
+      <outline type="rss" text="Database Drops - Mats Kindahl [unverified feed URL]" xmlUrl="https://dbmsdrops.kindahl.net/feed/" htmlUrl="https://dbmsdrops.kindahl.net/"/>
+      <outline type="rss" text="Planet MySQL [unverified feed URL]" xmlUrl="https://planet.mysql.com/rss20.xml" htmlUrl="https://planet.mysql.com/"/>
+      <!-- No feed found: awide.tech/blog, villagesql.com/blog, starburst.io/blog, jepsen.io (/analyses.rss empty).
+           404 this run (do not add): igor-suhorukov.github.io/feed.xml, peter.eisentraut.org/atom.xml.
+           blog.pgxn.org/rss returned 0 items; event-driven.io/rss.xml items carry no dates.
+           modb.pro has no feed: use /api/knowledges/find/v2 from a modb.pro tab (see fetching.md). -->
+    </outline>
     <outline text="Japanese [ja] (added 2026-10-12)">
       <!-- Zenn has no per-topic RSS worth using; read the JSON topic API in a browser tab:
            https://zenn.dev/api/articles?topicname=postgresql&amp;order=latest&amp;count=48 (dated, windowable). -->
