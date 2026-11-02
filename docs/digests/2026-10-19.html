@@ -162,7 +162,7 @@ its source published. DuckDB 2.0 shipped, and the CommitFest grew by a net +10.<
 <li>postmaster limits (oom_score_adj, rlimits, cgroup v1/v2 limits and OOM counters), kernel PSI, memory events and vmstat counters sar doesn't report; THP <code>shmem_enabled</code> and per-device readahead collected</li>
 </ul>
 </li>
-<li><strong><a href="https://www.postgresql.org/message-id/179266137231.369661.12817209530776168679%40wrigleys.postgresql.org">pgrecon 0.7.3</a></strong> — first public release of an Apache-2.0 Oracle→PostgreSQL assessor/converter that works fully offline from a read-only SQL*Plus dump. <em>(DevCrafterAI LLC · pgsql-announce)</em> <code>[unverified: self-reported benchmark]</code><ul>
+<li><strong><a href="https://www.postgresql.org/message-id/179266137231.369661.12817209530776168679%40wrigleys.postgresql.org">pgrecon 0.7.3</a></strong> — first public release of an Apache-2.0 Oracle→PostgreSQL assessor/converter that works fully offline from a read-only SQL<em>Plus dump. </em>(DevCrafterAI LLC · pgsql-announce)* <code>[unverified: self-reported benchmark]</code><ul>
 <li>80 rules with line-level evidence; PL/SQL parsed with a full grammar; converts only what it can prove (CONNECT BY → WITH RECURSIVE, ROWNUM top-N → LIMIT, MERGE, partitions) and sends the rest to a "residue report" instead of emitting DDL</li>
 <li>extraction tested nightly against Oracle XE 11g/21c and Free 23ai; output applied to PG 16–18 on every commit</li>
 </ul>

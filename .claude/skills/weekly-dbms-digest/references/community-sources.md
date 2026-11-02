@@ -40,7 +40,8 @@ Access tier tells you whether it can be scanned without an account:
   https://www.reddit.com/r/PostgreSQL/top/?t=week . P1.
 - **r/databasedevelopment** — DB *internals* community (storage engines, query processing);
   exactly the reader's wheelhouse — but **link discovery only, not Community pulse** (2026-10-26: zero posts
-  Oct 19–25, newest 10-17; the 10-05 recovery did not last — retire if November stays empty). `[js]`
+  Oct 19–25; 2026-11-02: 3 posts Oct 26–Nov 1 incl. the Jepsen ParticleDB thread at 20 pts / 5 comments — not
+  empty, retirement watch continues, recheck December). `[js]`
   https://www.reddit.com/r/databasedevelopment/ . P1 for discovery, skip for the pulse.
 - **r/SQL** — broader SQL Q&A and discussion; filter heavily. `[js]`
   https://www.reddit.com/r/SQL/top/?t=week . P2.
@@ -98,8 +99,6 @@ Access tier tells you whether it can be scanned without an account:
 
 _Real source finds only — access technique lives in references/fetching.md instead. Cap: 15
 most-recent entries; older ones roll off (git history has the rest)._
-- hckrnews.com — chronological HN front-page mirror with points/comments; covers only the most recent ~2–3 days, useful for the tail of the week. `[public]` P3. https://hckrnews.com/
-- (2026-09-07) r/vectordatabase, r/mariadb, r/DuckDB added to the weekly sweep — see Forums above.
 - (2026-09-07) **Caveat learned this run:** several of the highest-comment r/SQL threads in a week can
   share a template (lowercase philosophical title, "Postgres 15, X downstream" framing, abstract hook),
   one author, and accounts registered the day they post. The *comments* are real practitioners. Report
@@ -130,6 +129,7 @@ most-recent entries; older ones roll off (git history has the rest)._
 - (2026-10-12) Thin week for Postgres on HN (no Postgres story above 6 pts); the pulse came from Reddit. **r/vectordatabase** on retirement watch: ≤1 comment per post, mostly crossposts and vendor releases — retire in November if unchanged. Noted one account posting the same templated question to three subs and low-history accounts pushing "use MariaDB instead" in r/PostgreSQL — report discussions, not framing. MariaDB Zulip logged-out view showed only the last ~2 days (message API hung). No new communities found.
 - (2026-10-19) Biggest DB threads came from HN (local NVMe vs network storage; The Register's PG19-delay piece) plus one r/Database war story. Checked and not added: r/SQLServer (SQL-Server-only, AI-themed top thread), r/Supabase (product support), r/oracle (ERP), r/learnSQL (beginners), r/dbadmin (empty). r/ClickHouse still drifting promotional (2 of 6 posts are staff reposts) — recheck in November.
 - (2026-10-26) Window Oct 19–25. The week's DB debate was HN's pgrust/ClickBench thread (193 pts, 160 comments); DuckDB 2.0 and rqlite's history also passed 60 comments. Reddit was thin: apart from a resubmission of last week's Register story, no Postgres thread passed 22 comments. **r/databasedevelopment had zero posts in the window** (newest 10-17) — retire if November stays empty. r/ClickHouse: 1 of 6 posts a staff repost (improving; November recheck stands). The same few accounts posted long templated replies within minutes across r/PostgreSQL, r/mysql and r/Database, and HN users flagged bot comments on the recovery_prefetch thread — report substance, don't count them as independent practitioners. HN Algolia returned only ~25 `postgres` title/url hits; cross-check hntoplinks (documented in fetching.md) when a week looks this thin. No new communities found.
+- (2026-11-02) Window Oct 26–Nov 1. The week's two DB debates were Robert Haas's "Postgres 19 is late" repost on HN (297 pts, 196 comments by Monday; an AI-assisted bug hunter listed seven wrong-result/serializability threads he filed this summer) and **Jepsen's ParticleDB report on Lobsters (147 pts, 42 comments — the biggest Lobsters DB thread this list has seen; aphyr answered questions in-thread)**. Everything else was thin: no other HN DB story passed 40 comments, no Postgres Reddit thread passed 28, and DBA SE had **12 questions in the whole week**. r/ClickHouse: 5 posts, 0 staff blog reposts but 4 of 5 tool/vendor launches and no discussion — still no organic practitioner thread; keep on watch. One account (`diagraphic`) posted templated "when did X stop being enough / what's painful about sync" prompts to r/PostgreSQL and r/mysql the same day (28 and 37 comments); another (`drrtuy-b`) cross-posted one MariaDB article to three subs — report substance, not framing. **DBA SE seeding moved from `polardb` to `dolphindb`**: three zero-answer questions from reputation-1 accounts (350929, 350935, 350951) — track the tag. Checked and not added: **programming.dev/c/postgresql (Lemmy)** — 2,280 subscribers, ~40 monthly actives, ~2 link posts a month with ≤3 comments; lemmy.ml/lemm.ee postgresql communities are dead. Access: a Lobsters story's `.json` can't be fetched from the `/t/databases.json` page — read the story page DOM; HN item pages render fine in Control_Chrome for point/comment counts.
 
 ## Retired (removed from weekly scan)
 

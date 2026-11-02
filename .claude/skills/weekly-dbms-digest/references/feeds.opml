@@ -102,7 +102,7 @@
       <outline type="link" text="TiDB community blog [browser only - plain fetch returns empty]" htmlUrl="https://pingkai.cn/tidbcommunity/blog"/>
       <!-- 2026-09-21: working RSS found for the highest-yield zh source; fetches cold as clean
            XML with full dates, much cheaper than scraping the HTML index. -->
-      <outline type="rss" text="老冯云数 / Ruohang Feng - highest-yield zh source [ok - cold XML]" xmlUrl="https://blog.vonng.com/index.xml"/>
+      <outline type="rss" text="老冯云数 / Ruohang Feng - highest-yield zh source [browser; cold web_fetch refused it 2026-11-02 (provenance)]" xmlUrl="https://blog.vonng.com/index.xml"/>
       <outline type="link" text="PingCAP/TiDB CN blog [browser - slow; use read_page]" htmlUrl="https://cn.pingcap.com/blog/"/>
     </outline>
     <outline text="English blogs (added 2026-10-05 - feed reconciliation; [ok] unless noted)">
@@ -127,8 +127,8 @@
       <outline type="rss" text="mehmetince.net" xmlUrl="https://mehmetince.net/feed/" htmlUrl="https://mehmetince.net/"/>
       <outline type="rss" text="The Gresql Post (Vik Fearing)" xmlUrl="https://thegresqlpost.org/rss.xml" htmlUrl="https://thegresqlpost.org/"/>
       <outline type="rss" text="deferworks.org" xmlUrl="https://deferworks.org/rss.xml" htmlUrl="https://deferworks.org/"/>
-      <outline type="rss" text="seedfa.st [advertised, unfetched]" xmlUrl="https://seedfa.st/feed.xml" htmlUrl="https://seedfa.st/blog"/>
-      <outline type="rss" text="PgDog blog [advertised, unfetched]" xmlUrl="https://pgdog.dev/feed.xml" htmlUrl="https://pgdog.dev/blog"/>
+      <outline type="rss" text="seedfa.st [confirmed 2026-11-02]" xmlUrl="https://seedfa.st/feed.xml" htmlUrl="https://seedfa.st/blog"/>
+      <outline type="rss" text="PgDog blog [confirmed 2026-11-02]" xmlUrl="https://pgdog.dev/feed.xml" htmlUrl="https://pgdog.dev/blog"/>
       <outline type="rss" text="DuckDB [advertised, unfetched]" xmlUrl="https://duckdb.org/feed.xml" htmlUrl="https://duckdb.org/news/"/>
       <!-- No usable feed: questdb.com/blog (JS-rendered), techcommunity SQL Server (use HTML category page), snowflake.com engineering, stormatics.tech (browser index). -->
     </outline>
@@ -148,7 +148,7 @@
       <outline type="rss" text="Materialize blog" xmlUrl="https://materialize.com/rss.xml" htmlUrl="https://materialize.com/blog/"/>
       <outline type="rss" text="Daniel Lemire" xmlUrl="https://lemire.me/blog/feed/" htmlUrl="https://lemire.me/blog/"/>
       <outline type="rss" text="YugabyteDB blog" xmlUrl="https://www.yugabyte.com/blog/feed/" htmlUrl="https://www.yugabyte.com/blog/"/>
-      <outline type="rss" text="depesz [unverified feed URL]" xmlUrl="https://www.depesz.com/feed/" htmlUrl="https://www.depesz.com/"/>
+      <outline type="rss" text="depesz [confirmed 2026-11-02]" xmlUrl="https://www.depesz.com/feed/" htmlUrl="https://www.depesz.com/"/>
       <!-- blog.cloudflare.com/rss/ exists but is CORS-blocked cross-origin; read it from a blog.cloudflare.com tab. -->
     </outline>
     <outline text="Added 2026-10-26">
@@ -156,12 +156,29 @@
       <outline type="rss" text="Marc Brooker [confirmed]" xmlUrl="https://brooker.co.za/blog/rss.xml" htmlUrl="https://brooker.co.za/blog/"/>
       <outline type="rss" text="Apache DataFusion blog [confirmed]" xmlUrl="https://datafusion.apache.org/blog/feed.xml" htmlUrl="https://datafusion.apache.org/blog/"/>
       <outline type="rss" text="philipotoole.com (rqlite) [confirmed]" xmlUrl="https://philipotoole.com/feed/" htmlUrl="https://philipotoole.com/"/>
-      <outline type="rss" text="Database Drops - Mats Kindahl [unverified feed URL]" xmlUrl="https://dbmsdrops.kindahl.net/feed/" htmlUrl="https://dbmsdrops.kindahl.net/"/>
-      <outline type="rss" text="Planet MySQL [unverified feed URL]" xmlUrl="https://planet.mysql.com/rss20.xml" htmlUrl="https://planet.mysql.com/"/>
-      <!-- No feed found: awide.tech/blog, villagesql.com/blog, starburst.io/blog, jepsen.io (/analyses.rss empty).
-           404 this run (do not add): igor-suhorukov.github.io/feed.xml, peter.eisentraut.org/atom.xml.
+      <outline type="rss" text="Database Drops - Mats Kindahl [confirmed 2026-11-02]" xmlUrl="https://dbmsdrops.kindahl.net/feed/" htmlUrl="https://dbmsdrops.kindahl.net/"/>
+      <outline type="rss" text="Planet MySQL [confirmed 2026-11-02, 50 items]" xmlUrl="https://planet.mysql.com/rss20.xml" htmlUrl="https://planet.mysql.com/"/>
+      <!-- No feed found: villagesql.com/blog, starburst.io/blog, jepsen.io (/analyses.rss empty).
+           404 (do not add): igor-suhorukov.github.io/feed.xml, peter.eisentraut.org/atom.xml (but /feed.xml works - see 2026-11-02 group).
+           awide.tech/rss.xml exists after all - added 2026-11-02.
            blog.pgxn.org/rss returned 0 items; event-driven.io/rss.xml items carry no dates.
            modb.pro has no feed: use /api/knowledges/find/v2 from a modb.pro tab (see fetching.md). -->
+    </outline>
+    <outline text="Added 2026-11-02">
+      <outline type="rss" text="Database Architects - TUM/CWI (Neumann, Leis, Boncz, Birler) [confirmed]" xmlUrl="https://databasearchitects.blogspot.com/feeds/posts/default" htmlUrl="https://databasearchitects.blogspot.com/"/>
+      <outline type="rss" text="Robert Haas (own blog) [confirmed]" xmlUrl="https://rhaas.blogspot.com/feeds/posts/default" htmlUrl="https://rhaas.blogspot.com/"/>
+      <outline type="rss" text="Peter Eisentraut [confirmed - /atom.xml 404s, /feed.xml works]" xmlUrl="http://peter.eisentraut.org/feed.xml" htmlUrl="http://peter.eisentraut.org/"/>
+      <outline type="rss" text="PostGIS news [confirmed]" xmlUrl="https://postgis.net/news/feed.xml" htmlUrl="https://postgis.net/news/"/>
+      <outline type="rss" text="kmoppel.github.io (Kaarel Moppel) [confirmed]" xmlUrl="https://kmoppel.github.io/feed.xml" htmlUrl="https://kmoppel.github.io/"/>
+      <outline type="rss" text="Awide Labs [advertised via link rel, not byte-verified]" xmlUrl="https://awide.tech/rss.xml" htmlUrl="https://awide.tech/blog"/>
+      <outline type="rss" text="brandur.org fragments [confirmed]" xmlUrl="https://brandur.org/fragments.atom" htmlUrl="https://brandur.org/"/>
+      <outline type="rss" text="vyruss.org (Jimmy Angelakos) [confirmed]" xmlUrl="https://vyruss.org/blog/feeds/all.atom.xml" htmlUrl="https://vyruss.org/blog/"/>
+      <outline type="rss" text="exobench.ai Planet feed [confirmed]" xmlUrl="https://exobench.ai/planet-postgresql.xml" htmlUrl="https://exobench.ai/blog"/>
+      <!-- 404 this run: xata.io/blog/rss.xml, blog.cleverelephant.ca/feed.xml. pgmustard.com/blog?format=rss works but newest post is 2026-02-13 (dormant).
+           thegresqlpost.org/rss.xml is XSLT-styled: in a browser read it with a same-origin fetch('/rss.xml'), not innerText.
+           tigerdata.com/blog still has no feed (browser; dates in innerText). turso.tech/blog/feed.xml is alphabetical, sort by pubDate.
+           mongodb.com/company/blog/engineering 404s; no enumerable index found.
+           Recipe: Chrome shows a raw RSS/Atom URL as plain text, so document.body.innerText -> DOMParser(text/xml) works for every feed; chain "parse, then location.href = next" in one call. -->
     </outline>
     <outline text="Japanese [ja] (added 2026-10-12)">
       <!-- Zenn has no per-topic RSS worth using; read the JSON topic API in a browser tab:
