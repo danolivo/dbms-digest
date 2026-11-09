@@ -180,6 +180,13 @@
            mongodb.com/company/blog/engineering 404s; no enumerable index found.
            Recipe: Chrome shows a raw RSS/Atom URL as plain text, so document.body.innerText -> DOMParser(text/xml) works for every feed; chain "parse, then location.href = next" in one call. -->
     </outline>
+    <outline text="Added 2026-11-09 (week of 2026-11-02)">
+      <outline type="rss" text="Brent Ozar (SQL Server) [confirmed, browser]" xmlUrl="https://www.brentozar.com/feed/" htmlUrl="https://www.brentozar.com/"/>
+      <outline type="rss" text="Jean-Francois Gagne MySQL blog [blogspot default, not byte-verified]" xmlUrl="https://jfg-mysql.blogspot.com/feeds/posts/default" htmlUrl="https://jfg-mysql.blogspot.com/"/>
+      <outline type="rss" text="Azure SQL dev blog [confirmed, browser]" xmlUrl="https://devblogs.microsoft.com/azure-sql/feed/" htmlUrl="https://devblogs.microsoft.com/azure-sql/"/>
+      <outline type="rss" text="erikdarling.com [confirmed; mostly video transcripts]" xmlUrl="https://erikdarling.com/feed/" htmlUrl="https://erikdarling.com/"/>
+      <!-- smalldatum feed works but newest post 2026-06-20 (dormant). posthog.com/blog: feed not checked. -->
+    </outline>
     <outline text="Japanese [ja] (added 2026-10-12)">
       <!-- Zenn has no per-topic RSS worth using; read the JSON topic API in a browser tab:
            https://zenn.dev/api/articles?topicname=postgresql&amp;order=latest&amp;count=48 (dated, windowable). -->

@@ -119,344 +119,16 @@
    "created_n": 46,
    "closed_n": 15,
    "net": 31
-  }
- ],
- "weeks": [
+  },
   {
    "week": "2026-10-19",
    "cf": "PG20-3 (#62)",
-   "captured_at": "2026-10-26",
-   "window": "2026-10-19 .. 2026-10-25",
-   "truncated": "Complete, not lower bounds. created = sequential patch-ID walk 7480-7513 (7514-7525 all 404 at scan time); 7480-7510 (31) created in window: 30 in PG20-3, 1 filed directly into PG20-Drafts (7493, not counted); 7511-7513 created 2026-10-26, excluded. closed/RfC = History of every one of the 839 unique patches listed in #61 (539) and #62 (620) plus the new IDs, all fetched OK, filtered to events dated 2026-10-19..10-25 (CF timestamps as shown on the site; 7446's withdrawal at 2026-10-19 00:04:53 falls in this window). Closures recorded only under other CFs (Drafts, Final) are not counted. Cross-check: #62 committed 32->48 (+16), withdrawn 10->12 (+2, 7446 was already in last scan), #61 rejected 2->3; total 578->620 = 31 new IDs in PG20-3 since last scan (7482-7513 minus 7493) + 11 moved in. The per-CF activity log was not used.",
-   "queue_at_scan": {
-    "needs_review": 383,
-    "waiting_on_author": 45,
-    "ready_for_committer": 107,
-    "committed": 48,
-    "moved_to_next_cf": 24,
-    "rejected": 1,
-    "withdrawn": 12,
-    "total": 620,
-    "active": 535,
-    "note": "#61 summary at scan: NR 43 / WoA 11 / RfC 7 / Committed 116 / Moved 322 / RwF 5 / Rejected 3 / Withdrawn 32 / total 539. During the window 11 entries were moved into PG20-3 (9 from PG20-2: 4460, 5680, 6012, 6155, 6363, 6384, 7102, 7104, 7105; 2 from PG20-1: 6024, 6730); none moved out. Scan-time #62 totals also include 7511-7513 (created Oct 26)."
-   },
    "created_n": 30,
    "closed_n": 20,
-   "ready_for_committer_n": 11,
-   "net": 10,
-   "highlight": "Net +10 (30 created / 20 closed: 16 committed, 3 withdrawn, 1 rejected [in PG20-2]; 0 RwF) vs +31 last week; both weeks complete counts. Active PG20-3 queue 535 (383 NR / 45 WoA / 107 RfC) vs 511 (366/43/102). 11 RfC promotions (7371 back to RfC after a brief Needs review). Last week's burst got worked off: 3 of the 4 ruleutils deparse fixes (7441, 7442, 7451) and 3 of the [PG19] bug entries (7447, 7449, 7450) were committed, the 4th [PG19] one (7446) withdrawn. Standout: David Geier's RelationData shrink (#7483), 488->256 bytes per relcache entry (496->248 in v4), ~53 MiB / ~10% of CacheMemoryContext saved on a 39k-table/148k-index schema. Last week's standout #7468 unchanged (Needs review, no thread activity in window); #7422 still Ready for Committer.",
-   "created": [
-    {
-     "id": "7480",
-     "title": "walreceiver: stale hot_standby_feedback xmin on primary when wal_receiver_status_interval = 0 (PG16 and later)",
-     "by": "vaibhavdalvi"
-    },
-    {
-     "id": "7481",
-     "title": "Fix leaked hash scans in pg_listening_channels()",
-     "by": "joeljacobson"
-    },
-    {
-     "id": "7482",
-     "title": "DOCS - CREATE PUBLICATION wording re 'ONLY' for partitioned tables.",
-     "by": "smithpb2250"
-    },
-    {
-     "id": "7483",
-     "title": "Reducing relcache memory usage 2: shrink sizeof(RelationData)",
-     "by": "geidav"
-    },
-    {
-     "id": "7484",
-     "title": "two small tab-completion patches (ALTER CONSTRAINT, CHECK modifiers)",
-     "by": "bajishaik"
-    },
-    {
-     "id": "7485",
-     "title": "[PATCH v1] Fix tab completion for DROP INDEX CONCURRENTLY",
-     "by": "sean0628"
-    },
-    {
-     "id": "7486",
-     "title": "EXPLAIN prints another ModifyTable's RETURNING aliases in a SubPlan",
-     "by": "assam258.gmail.com"
-    },
-    {
-     "id": "7487",
-     "title": "Fix recovery connection detail in EXEC_BACKEND builds",
-     "by": "nitinjadhav11"
-    },
-    {
-     "id": "7488",
-     "title": "Reporting WAL replay progress during pre-consistency standby reovery",
-     "by": "nitinjadhav11"
-    },
-    {
-     "id": "7489",
-     "title": "GIN jsonb_ops misses root strings in strict jsonpath queries",
-     "by": "zhaorui"
-    },
-    {
-     "id": "7490",
-     "title": "Check XID wraparound failsafe between indexes in parallel vacuum",
-     "by": "bharathrupireddy"
-    },
-    {
-     "id": "7491",
-     "title": "AT TIME ZONE and similar as a function in FROM do not read back",
-     "by": "assam258.gmail.com"
-    },
-    {
-     "id": "7492",
-     "title": "A COLLATE clause in the URI of XMLNAMESPACES does not read back",
-     "by": "assam258.gmail.com"
-    },
-    {
-     "id": "7494",
-     "title": "Wrong result for whole-row IS NOT NULL with dropped columns",
-     "by": "matheus.alcantara"
-    },
-    {
-     "id": "7495",
-     "title": "START_REPLICATION silently truncates an overlong LSN component",
-     "by": "ha-kun"
-    },
-    {
-     "id": "7496",
-     "title": "[PATCH 0/3] Improve UNION de-duplication",
-     "by": "xiangxin-zeng"
-    },
-    {
-     "id": "7497",
-     "title": "pg_stat_statements: fix SQL/JSON behavior keywords and JSON_TABLE query jumbling",
-     "by": "ilyastar"
-    },
-    {
-     "id": "7498",
-     "title": "Use-after-free of a shared Path in add_path()/add_partial_path()",
-     "by": "jeevan.chalke"
-    },
-    {
-     "id": "7499",
-     "title": "Optimize mergejoinscansel() by avoiding redundant computations",
-     "by": "liuzizhuan"
-    },
-    {
-     "id": "7500",
-     "title": "Deparsing of unary operators applied to const",
-     "by": "nitinmotiani"
-    },
-    {
-     "id": "7501",
-     "title": "BUG #19772: ERROR: corrupt MVNDistinct entry for GROUP BY c0, ROLLUP (abs(c0)) with ndistinct statistics",
-     "by": "matheus.alcantara"
-    },
-    {
-     "id": "7502",
-     "title": "Fix rescan costing of single-batch hash joins",
-     "by": "bajishaik"
-    },
-    {
-     "id": "7503",
-     "title": "Reject incompatible options specified with VACUUM ONLY_DATABASE_STATS",
-     "by": "chaol"
-    },
-    {
-     "id": "7504",
-     "title": "Remove obsolete locking comment from AddBufferToRing()",
-     "by": "chaol"
-    },
-    {
-     "id": "7505",
-     "title": "Fix the language for new CREATE SUBSCRIPTION features",
-     "by": "thom"
-    },
-    {
-     "id": "7506",
-     "title": "Fix whole-row type errors in postgres_fdw UPDATE joins",
-     "by": "torenzhang"
-    },
-    {
-     "id": "7507",
-     "title": "pgcrypto: Fix sha-crypt rounds= values that do not fit in int (BUG #19743)",
-     "by": "prashantelephant2"
-    },
-    {
-     "id": "7508",
-     "title": "[PATCH v1] Fix tab completion for REINDEX SYSTEM",
-     "by": "sean0628"
-    },
-    {
-     "id": "7509",
-     "title": "Avoid truncated or zero-padded copies of replaced files in backups.",
-     "by": "dsteele"
-    },
-    {
-     "id": "7510",
-     "title": "Add compiler option -fstrict-flex-arrays=1",
-     "by": "petere"
-    }
-   ],
-   "closed": [
-    {
-     "id": "7332",
-     "title": "fix more casting away of qualifiers",
-     "status": "Committed"
-    },
-    {
-     "id": "7473",
-     "title": "Fix stale allocChunkLimit when recycling AllocSet",
-     "status": "Committed"
-    },
-    {
-     "id": "7447",
-     "title": "[PG19]btree_gin misses rows for a timestamptz bound in the repeated DST hour",
-     "status": "Committed"
-    },
-    {
-     "id": "7449",
-     "title": "[PG19]jsonb_object_agg as a window function returns stale values",
-     "status": "Committed"
-    },
-    {
-     "id": "7450",
-     "title": "[PG19]Stale state after the join removal restart gives wrong results",
-     "status": "Committed"
-    },
-    {
-     "id": "7451",
-     "title": "IS DOCUMENT as an operand loses needed parentheses",
-     "status": "Committed"
-    },
-    {
-     "id": "7441",
-     "title": "Pretty-printed sublink test expressions lose needed parentheses",
-     "status": "Committed"
-    },
-    {
-     "id": "7442",
-     "title": "An alias named 'set' on an UPDATE, DELETE or MERGE target does not read back",
-     "status": "Committed"
-    },
-    {
-     "id": "7486",
-     "title": "EXPLAIN prints another ModifyTable's RETURNING aliases in a SubPlan",
-     "status": "Committed"
-    },
-    {
-     "id": "7342",
-     "title": "Report no unpinned buffers as insufficient resources",
-     "status": "Committed"
-    },
-    {
-     "id": "7445",
-     "title": "[PG19] psql backslash commands fail with translated messages and a non UTF-8 client encoding",
-     "status": "Committed"
-    },
-    {
-     "id": "7247",
-     "title": "035_standby_logical_decoding might fail due to FATAL message lost inside libpq",
-     "status": "Committed"
-    },
-    {
-     "id": "7485",
-     "title": "[PATCH v1] Fix tab completion for DROP INDEX CONCURRENTLY",
-     "status": "Committed"
-    },
-    {
-     "id": "7469",
-     "title": "Reject COPY TO of unlogged relations during recovery",
-     "status": "Committed"
-    },
-    {
-     "id": "7463",
-     "title": "Fix WITHOUT OVERLAPS multirange with logical replication",
-     "status": "Committed"
-    },
-    {
-     "id": "7481",
-     "title": "Fix leaked hash scans in pg_listening_channels()",
-     "status": "Committed"
-    },
-    {
-     "id": "7446",
-     "title": "[PG19]pg_dump --statistics restores extended statistics by attribute number",
-     "status": "Withdrawn"
-    },
-    {
-     "id": "4105",
-     "title": "pgbench - adding pl/pgsql versions of tests",
-     "status": "Withdrawn"
-    },
-    {
-     "id": "7225",
-     "title": "makes pgbench functions available on server side - Common Library Extraction (patch 1 - refactoring only) & Server Extension (patch 2 adds extension)",
-     "status": "Withdrawn"
-    },
-    {
-     "id": "5396",
-     "title": "Add Option to Check All Addresses For Matching target_session_attr",
-     "status": "Rejected (closed in PG20-2)"
-    }
-   ],
-   "rfc": [
-    {
-     "id": "6442",
-     "title": "tablecmds: fix Deadlock caused by Attach Partition"
-    },
-    {
-     "id": "7296",
-     "title": "BUG #19684: Assertion in tuplesort_begin_heap() falsified by parallel plan with sort"
-    },
-    {
-     "id": "7451",
-     "title": "IS DOCUMENT as an operand loses needed parentheses"
-    },
-    {
-     "id": "7484",
-     "title": "two small tab-completion patches (ALTER CONSTRAINT, CHECK modifiers)"
-    },
-    {
-     "id": "7452",
-     "title": "Operators on ROW() constructors read back as row comparisons"
-    },
-    {
-     "id": "7481",
-     "title": "Fix leaked hash scans in pg_listening_channels()"
-    },
-    {
-     "id": "7371",
-     "title": "Corruption Issue: Fix missing tts_tid in ExecForceStoreHeapTuple"
-    },
-    {
-     "id": "7492",
-     "title": "A COLLATE clause in the URI of XMLNAMESPACES does not read back"
-    },
-    {
-     "id": "7488",
-     "title": "Reporting WAL replay progress during pre-consistency standby reovery"
-    },
-    {
-     "id": "7290",
-     "title": "BUG #19599: RestoreBlockImage: the decode cross-checks never bound hole_offset + hole_length against BLCKSZ"
-    },
-    {
-     "id": "7384",
-     "title": "Fix reuse of stale hash tables by duplicated hashed SubPlans"
-    }
-   ],
-   "filed_to_drafts": [
-    {
-     "id": "7493",
-     "title": "[PATCH] Unify duplicate-option handling across utility commands",
-     "by": "bajishaik"
-    }
-   ],
-   "fate_of_prior": {
-    "7468": "Needs review, no CF or thread activity in window",
-    "7422": "Ready for Committer since 2026-10-15; reviewer added 2026-10-19; not committed"
-   }
-  },
+   "net": 10
+  }
+ ],
+ "weeks": [
   {
    "week": "2026-10-26",
    "cf": "PG20-3 (#62) In Progress 2026-11-01..11-30; PG20-4 (#63) OPEN since 2026-11-01 (to 2026-12-31)",
@@ -966,6 +638,393 @@
     "7502": "Needs review; reviewers Etsuro Fujita (10-27) and Nazneen Jafri (10-28) added; latest mail 10-27",
     "7496": "Needs review, no reviewer; latest mail 2026-10-22",
     "7509": "Committed 2026-10-28 (Michael Paquier)"
+   }
+  },
+  {
+   "week": "2026-11-02",
+   "cf": "PG20-3 (#62) In Progress 2026-11-01..11-30; PG20-4 (#63) OPEN (2027-01-01..01-31), receiving all new entries",
+   "captured_at": "2026-11-09",
+   "window": "2026-11-02 .. 2026-11-08",
+   "truncated": "Complete, not lower bounds. created = sequential patch-ID walk from 7575: 7575-7611 (37) all exist, all created 2026-11-02 07:40:56 .. 2026-11-08 22:26:50 (CF timestamps as shown on the site), all filed into PG20-4; 7612-7630 all 404 at scan (2026-11-09). closed/RfC = History of every patch listed in #60 (27), #61 (539), #62 (684), #63 (42) plus the 37 new IDs - 961 unique pages, 0 fetch errors - filtered to events dated 2026-11-02..11-08. Cross-check: #62 Committed 63->76 (+13), Withdrawn 16->17; #63 Withdrawn 3; active #62+#63 581 + 37 - 17 - 1 (7580 to Drafts) + 2 (6843, 7016 from #61) = 602. Moves in window: 4237 PG20-3->PG20-4; 6843, 7016 PG20-2->PG20-4; 7576 PG20-4->PG20-3 (then committed); 7580 PG20-4->Drafts. #7602 is authored by the digest owner: counted, 'by' blanked, never mention.",
+   "queue_at_scan": {
+    "needs_review": 395,
+    "waiting_on_author": 50,
+    "ready_for_committer": 120,
+    "committed": 76,
+    "moved_to_next_cf": 25,
+    "rejected": 1,
+    "withdrawn": 17,
+    "total": 684,
+    "active": 565,
+    "note": "#62 PG20-3 figures. #63 PG20-4 at scan: NR 30 / RfC 7 / Moved 2 / Withdrawn 3 / total 42 (active 37). #61 PG20-2 at scan: NR 40 / WoA 11 / RfC 6 / Committed 116 / Moved 326 / RwF 5 / Rejected 3 / Withdrawn 32 / total 539. #60 Drafts: NR 16 / WoA 8 / Withdrawn 3 / total 27. Combined active #62+#63 = 602 (581 a week earlier)."
+   },
+   "created_n": 37,
+   "closed_n": 17,
+   "ready_for_committer_n": 19,
+   "net": 20,
+   "highlight": "Net +20 (37 created / 17 closed: 13 committed, 4 withdrawn, 0 rejected, 0 RwF) vs +44 last week (delta -24); both weeks complete counts. First full week after PG20-3 closed to new entries: intake fell 64 -> 37, all filed into PG20-4. PG20-3 active queue 565 (395 NR / 50 WoA / 120 RfC) vs 579 (415/48/116); PG20-4 active 37 (30 NR / 7 RfC); combined active 602 vs 581. 19 RfC promotions (7 on entries filed this week; 2 then committed, 2 withdrawn, 1 reverted to NR; 14 still RfC at scan). One filer (Tender Wang) produced 9 entries, 6 of them MERGE bugs. Only same-week commit: #7576 (two_phase, filed 11-02, committed 11-05 by Amit Kapila). Standout: #7578 periodically refresh datfrozenxid during autovacuum (Jingtang Zhang) - 600k-table DB keeps a stale XID-stop-limit horizon until a worker finishes its list; refresh between tables every 10 min (tentative), conditional lock; 1,000-table test with 3 workers and 10 s interval: unpatched db age flat ~150 s, patched follows max table age; v2 after Andres Freund review covers manual multi-relation VACUUM and refreshes only when relfrozenxid/relminmxid advanced.",
+   "created": [
+    {
+     "id": "7575",
+     "title": "contrib/fuzzystrmatch: improve test coverage",
+     "by": "Aleksander Alekseev"
+    },
+    {
+     "id": "7576",
+     "title": "Avoid resetting subscription two_phase state to pending when already enabled",
+     "by": "Zhijie Hou"
+    },
+    {
+     "id": "7577",
+     "title": "Stale hash entries when reusing an auxiliary resource owner",
+     "by": "Jingtang Zhang"
+    },
+    {
+     "id": "7578",
+     "title": "Periodically refresh database frozen IDs during autovacuum",
+     "by": "Jingtang Zhang"
+    },
+    {
+     "id": "7579",
+     "title": "Fix ReadStream handling when heap rescan strategy changes",
+     "by": "Bertrand Drouvot"
+    },
+    {
+     "id": "7580",
+     "title": "doc: Fix description of relative extension \"directory\" setting",
+     "by": "mahendrakar s"
+    },
+    {
+     "id": "7581",
+     "title": "extension_control_path: ignore empty elements and deduplicate directories",
+     "by": "Chao Li"
+    },
+    {
+     "id": "7582",
+     "title": "Reject empty rounds values in pgcrypto's SHA-crypt salts",
+     "by": "Chao Li"
+    },
+    {
+     "id": "7583",
+     "title": "Fix DEFAULT marker handling in COPY FROM ... HEADER MATCH",
+     "by": "Ayoub Kazar"
+    },
+    {
+     "id": "7584",
+     "title": "[PATCH v1] psql: Do not complete JSON format for COPY FROM",
+     "by": "Taiki Koshino"
+    },
+    {
+     "id": "7585",
+     "title": "[PATCH v1] psql: Do not complete HEADER MATCH for COPY TO",
+     "by": "Taiki Koshino"
+    },
+    {
+     "id": "7586",
+     "title": "BUG #19802: MERGE into a partitioned table fails with \"SubPlan found with no parent plan\"",
+     "by": "Tender Wang"
+    },
+    {
+     "id": "7587",
+     "title": "pg_combinebackup: Don't point only to pg_checksums for mixed checksum states",
+     "by": "Raja Sai pranav"
+    },
+    {
+     "id": "7588",
+     "title": "doc: Fix pg_combinebackup's description of --sync-method",
+     "by": "Raja Sai pranav"
+    },
+    {
+     "id": "7589",
+     "title": "Fix exclude generated columns in COPY TO with RLS",
+     "by": "Ayoub Kazar"
+    },
+    {
+     "id": "7590",
+     "title": "BUG #19689: MERGE INSERT accepts a set-returning function during PREPARE but fails at EXECUTE",
+     "by": "Tender Wang"
+    },
+    {
+     "id": "7591",
+     "title": "BUG? Unpublished generated columns are reported \"missing\" by the subscription",
+     "by": "Ajin Cherian"
+    },
+    {
+     "id": "7592",
+     "title": "Assertion failure in WAL summarizer after promotion",
+     "by": "shihao zhong, Manuel Reyes Bravo"
+    },
+    {
+     "id": "7593",
+     "title": "Fix initial sync of zero-column published tables",
+     "by": "Mingjie Gao"
+    },
+    {
+     "id": "7594",
+     "title": "Fix initial sync of zero-column published tables",
+     "by": "Mingjie Gao"
+    },
+    {
+     "id": "7595",
+     "title": "MERGE fails to reject source references in NOT MATCHED BY SOURCE actions",
+     "by": "Tender Wang"
+    },
+    {
+     "id": "7596",
+     "title": "MERGE fails with RETURNING when an excluded inheritance parent has an extra-column child",
+     "by": "Tender Wang"
+    },
+    {
+     "id": "7597",
+     "title": "MERGE loses UPDATE transition rows when moving rows between partitions",
+     "by": "Tender Wang"
+    },
+    {
+     "id": "7598",
+     "title": "Improve row mark handling in self-join elimination",
+     "by": "Tender Wang"
+    },
+    {
+     "id": "7599",
+     "title": "doc: Mention that * does not include system columns",
+     "by": "Arvind Kandpal"
+    },
+    {
+     "id": "7600",
+     "title": "\"variable not found in subplan target list\", DISTINCT agg over Gather`",
+     "by": "Tender Wang"
+    },
+    {
+     "id": "7601",
+     "title": "BUG #19798: \"failed to build any 4-way joins\" with ROLLUP over a LATERAL subquery that references the nullable s…",
+     "by": "Tender Wang"
+    },
+    {
+     "id": "7602",
+     "title": "Propagate LIMIT bound through the outer side of left join",
+     "by": ""
+    },
+    {
+     "id": "7603",
+     "title": "file_fdw: Fix ANALYZE does not enforce REJECT_LIMIT with on_error 'ignore'",
+     "by": "Ayoub Kazar"
+    },
+    {
+     "id": "7604",
+     "title": "Include schema-qualified names in publication error messages (generalised to all of LR).",
+     "by": "Peter Smith"
+    },
+    {
+     "id": "7605",
+     "title": "Validate JSON object keys before omitting null values (BUG #19736)",
+     "by": "Yeongjae Min"
+    },
+    {
+     "id": "7606",
+     "title": "EXPLAIN ANALYZE overcounts MERGE inserts suppressed by triggers",
+     "by": "Tender Wang"
+    },
+    {
+     "id": "7607",
+     "title": "psql: Don't offer partitioned tables after CREATE INDEX CONCURRENTLY",
+     "by": "Ishjaap Singh"
+    },
+    {
+     "id": "7608",
+     "title": "Add pg_stat_progress overview view",
+     "by": "Josef Šimánek"
+    },
+    {
+     "id": "7609",
+     "title": "XMLTable treats a column of a domain over xml as a non-xml column",
+     "by": "Jim Jones"
+    },
+    {
+     "id": "7610",
+     "title": "psql: Complete INDEX after REPACK USING",
+     "by": "Sho Ito"
+    },
+    {
+     "id": "7611",
+     "title": "psql: Fix REPACK index completion after a column list",
+     "by": "Sho Ito"
+    }
+   ],
+   "closed": [
+    {
+     "id": "7371",
+     "title": "Corruption Issue: Fix missing tts_tid in ExecForceStoreHeapTuple",
+     "status": "Committed"
+    },
+    {
+     "id": "7262",
+     "title": "Teach pg_upgrade to deal with invalid databases",
+     "status": "Committed"
+    },
+    {
+     "id": "7375",
+     "title": "Wrong LSN in WAL decoding error messages",
+     "status": "Committed"
+    },
+    {
+     "id": "7384",
+     "title": "Fix reuse of stale hash tables by duplicated hashed SubPlans",
+     "status": "Committed"
+    },
+    {
+     "id": "7385",
+     "title": "Fix pg_trgm GiST union dropping SIGNKEY from all-true keys",
+     "status": "Committed"
+    },
+    {
+     "id": "7414",
+     "title": "Unexpected results of JSON_VALUE with DEFAULT ON EMPTY",
+     "status": "Committed"
+    },
+    {
+     "id": "7440",
+     "title": "Fix tab completion for concurrent materialized view refresh",
+     "status": "Committed"
+    },
+    {
+     "id": "7504",
+     "title": "Remove obsolete locking comment from AddBufferToRing()",
+     "status": "Committed"
+    },
+    {
+     "id": "7510",
+     "title": "Add compiler option -fstrict-flex-arrays=1",
+     "status": "Committed"
+    },
+    {
+     "id": "7547",
+     "title": "Avoid crashes on a concurrently dropped schema",
+     "status": "Committed"
+    },
+    {
+     "id": "7549",
+     "title": "dynahash.c refactoring",
+     "status": "Committed"
+    },
+    {
+     "id": "7557",
+     "title": "PL/pgSQL: \"missing X at end of SQL expression\" is never reported at end of input",
+     "status": "Committed"
+    },
+    {
+     "id": "7576",
+     "title": "Avoid resetting subscription two_phase state to pending when already enabled",
+     "status": "Committed"
+    },
+    {
+     "id": "7528",
+     "title": "Don't close relation files when the visibility map is extended",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "7584",
+     "title": "[PATCH v1] psql: Do not complete JSON format for COPY FROM",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "7585",
+     "title": "[PATCH v1] psql: Do not complete HEADER MATCH for COPY TO",
+     "status": "Withdrawn"
+    },
+    {
+     "id": "7594",
+     "title": "Fix initial sync of zero-column published tables (duplicate of #7593)",
+     "status": "Withdrawn"
+    }
+   ],
+   "rfc": [
+    {
+     "id": "6819",
+     "title": "Add wait events for server logging destination writes"
+    },
+    {
+     "id": "7262",
+     "title": "Teach pg_upgrade to deal with invalid databases"
+    },
+    {
+     "id": "7409",
+     "title": "BUG #19594: to_char/jsonpath format cache serves a format tree parsed in the wrong strict-mode"
+    },
+    {
+     "id": "7475",
+     "title": "Add a hint to the \"WAL summaries are required\" errors"
+    },
+    {
+     "id": "7478",
+     "title": "Reject unlogged relations in contrib during recovery"
+    },
+    {
+     "id": "7482",
+     "title": "DOCS - CREATE PUBLICATION wording re 'ONLY' for partitioned tables."
+    },
+    {
+     "id": "7510",
+     "title": "Add compiler option -fstrict-flex-arrays=1"
+    },
+    {
+     "id": "7516",
+     "title": "PL/pgSQL: allow parallel query for assignment statements"
+    },
+    {
+     "id": "7521",
+     "title": "Fix recovery conflict canceling the startup progress timeout"
+    },
+    {
+     "id": "7559",
+     "title": "Parameters in SQL-standard function bodies do not read back"
+    },
+    {
+     "id": "7562",
+     "title": "PL/pgSQL: apply the too_many_rows extra check to EXECUTE ... INTO"
+    },
+    {
+     "id": "7564",
+     "title": "Columns assigned by MERGE can be dropped from SQL-standard function bodies"
+    },
+    {
+     "id": "7581",
+     "title": "extension_control_path: ignore empty elements and deduplicate directories"
+    },
+    {
+     "id": "7582",
+     "title": "Reject empty rounds values in pgcrypto's SHA-crypt salts"
+    },
+    {
+     "id": "7583",
+     "title": "Fix DEFAULT marker handling in COPY FROM ... HEADER MATCH"
+    },
+    {
+     "id": "7584",
+     "title": "[PATCH v1] psql: Do not complete JSON format for COPY FROM"
+    },
+    {
+     "id": "7585",
+     "title": "[PATCH v1] psql: Do not complete HEADER MATCH for COPY TO"
+    },
+    {
+     "id": "7586",
+     "title": "BUG #19802: MERGE into a partitioned table fails with \"SubPlan found with no parent plan\""
+    },
+    {
+     "id": "7607",
+     "title": "psql: Don't offer partitioned tables after CREATE INDEX CONCURRENTLY"
+    }
+   ],
+   "fate_of_prior": {
+    "7523": "Needs review, no registered reviewer; very active thread: v7 (11-03) fixed un-MAXALIGNed high-key offset in prefix-split/dedup WAL replay caught by UBSan CI; v8 skip-decode for TID-only scans (bitmap -14.6%, index scan -19.9%, IOS unchanged; author's bare-metal numbers); Peter Geoghegan posted his own April vibe-coded prefix-compression patch + LLM comparison and asked for architectural trade-offs first (on-disk format forever; column-level compression); Burd agreed to look at multi-column prefixes. Latest mail 2026-11-04.",
+    "7422": "Ready for Committer since 2026-10-15; no CF activity in window; latest mail 2026-10-26; not committed",
+    "7468": "Needs review, no reviewer; latest mail 2026-10-16; untouched third week",
+    "7514": "Ready for Committer since 2026-10-31; latest mail 2026-11-03; not committed",
+    "7551": "Ready for Committer since 2026-10-29; second reviewer (solai v) added 2026-11-02; not committed",
+    "7565": "Needs review, no reviewer; latest mail 2026-10-30; no activity in window",
+    "7483": "Needs review; reviewer Matthias van de Meent; latest mail 2026-10-20; no activity in window",
+    "7502": "Needs review; reviewers Etsuro Fujita, Nazneen Jafri; latest mail 2026-10-27; no activity in window",
+    "7532": "Needs review; new mail thread attached by Greg Burd 2026-11-03"
    }
   }
  ]

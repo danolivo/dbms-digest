@@ -10,6 +10,7 @@
 
 _Newest first._
 
+- [2026-11-02 — week of Nov 2–8](digests/2026-11-02.md)
 - [2026-10-26 — week of Oct 26–Nov 1](digests/2026-10-26.md)
 - [2026-10-19 — week of Oct 19–25](digests/2026-10-19.md)
 - [2026-10-12 — week of Oct 12–18](digests/2026-10-12.md)
