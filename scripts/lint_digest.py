@@ -9,7 +9,9 @@ Rules checked:
     "## Upcoming events" (at most 3 sub-bullets per event, <=25 words each);
   * regular item: <=35 words after the headline;
   * item tagged `[release]`: <=60 words and <=3 sentences;
-  * "## CommitFest" is exempt from word limits, not from nesting.
+  * "## CommitFest" is exempt from word limits, not from nesting;
+  * the intro paragraph (text between the title and the first "## ") has at
+    most 4 sentences.
 Word counts exclude the linked headline, URLs, the trailing *(author · source)*,
 backtick tags, [xx] language tags, _(orig: …)_ and _[paper]_.
 """
@@ -20,6 +22,7 @@ REGULAR_MAX = 35
 RELEASE_MAX = 60
 RELEASE_SENTENCES = 3
 TALK_MAX = 25
+INTRO_SENTENCES = 4
 
 
 def body_words(line):
@@ -45,7 +48,16 @@ def main(path):
     errors = []
     section = ''
     talks = 0
-    for n, raw in enumerate(open(path, encoding='utf-8').read().split('\n'), 1):
+    lines = open(path, encoding='utf-8').read().split('\n')
+    intro = []
+    for raw in lines[1:]:
+        if raw.startswith('## '):
+            break
+        intro.append(raw)
+    intro_text = ' '.join(x.strip() for x in intro if x.strip()).strip('_ ')
+    if intro_text and sentences(intro_text) > INTRO_SENTENCES:
+        errors.append(f'intro: {sentences(intro_text)} sentences (max {INTRO_SENTENCES})')
+    for n, raw in enumerate(lines, 1):
         line = raw.rstrip()
         if line.startswith('## '):
             section = line[3:]

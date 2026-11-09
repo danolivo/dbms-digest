@@ -299,6 +299,7 @@ For each surviving item, do a quick sanity pass: does the headline claim match t
 Use the exact format below. The value is in being scannable, so the length limits below are hard rules, not style advice.
 
 **Length limits (hard — apply to every section).**
+- **Intro paragraph:** optional, one italic paragraph between the title and the first section, **at most four sentences**. It names the week's few biggest stories; it is not a table of contents for the issue.
 - **Regular item:** the linked headline, then **one sentence of at most 35 words**, then the italic author/source and any tags. If the story needs more, pick the single most telling fact or number and let the link carry the rest.
 - **Release item:** the linked headline, then **one paragraph of at most three lines — at most 3 sentences and 60 words** — summarising what changed (features, notable fixes, breaking changes, target server version).
 - **No nested lists, anywhere** — no sub-bullets, no indented continuation paragraphs, no umbrella items that bundle several stories ("Releases on pgsql-announce", "Shorter", "Wrong results fixed this week"). One story per item; a closely related thread or commit may be linked inline within the same sentence. The single exception is the Upcoming-events talk picks (at most three one-line sub-bullets).
@@ -314,6 +315,8 @@ Use the exact format below. The value is in being scannable, so the length limit
 
 ```
 # DBMS Weekly — <YYYY-MM-DD> (week of <start>–<end>)
+
+_<optional intro: at most four sentences on the week's biggest stories>_
 
 ## PostgreSQL
 - **[<Headline>](URL)** — <one-line why-it-matters>. *(<Author> · <source>)*

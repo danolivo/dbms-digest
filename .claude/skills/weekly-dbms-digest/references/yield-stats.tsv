@@ -606,9 +606,9 @@ run_date	outlet	outlet_class	candidates	published
 2026-10-26	zenn.dev/sponge841841	solo	1	0
 2026-10-26	sraoss.co.jp	org	1	0
 2026-10-26	heise.de	org	3	0
-2026-11-02	pgsql-hackers	pipe	50	36
-2026-11-02	pgsql-bugs	pipe	15	10
-2026-11-02	pgsql-committers	pipe	14	14
+2026-11-02	pgsql-hackers	pipe	50	25
+2026-11-02	pgsql-bugs	pipe	15	5
+2026-11-02	pgsql-committers	pipe	14	8
 2026-11-02	pgsql-announce	pipe	10	5
 2026-11-02	postgres.ai	solo	1	1
 2026-11-02	tapoueh.org	solo	1	1
