@@ -130,7 +130,7 @@
       <outline type="rss" text="seedfa.st [confirmed 2026-11-02]" xmlUrl="https://seedfa.st/feed.xml" htmlUrl="https://seedfa.st/blog"/>
       <outline type="rss" text="PgDog blog [confirmed 2026-11-02]" xmlUrl="https://pgdog.dev/feed.xml" htmlUrl="https://pgdog.dev/blog"/>
       <outline type="rss" text="DuckDB [advertised, unfetched]" xmlUrl="https://duckdb.org/feed.xml" htmlUrl="https://duckdb.org/news/"/>
-      <!-- No usable feed: questdb.com/blog (JS-rendered), techcommunity SQL Server (use HTML category page), snowflake.com engineering, stormatics.tech (browser index). -->
+      <!-- No usable feed: questdb.com/blog (JS-rendered), snowflake.com engineering, stormatics.tech (browser index). -->
     </outline>
     <outline text="English blogs (added 2026-10-12)">
       <outline type="rss" text="Command Prompt - Joshua Drake, Postgres category [browser-confirmed]" xmlUrl="https://www.commandprompt.com/rss/author/jd/category/postgres/" htmlUrl="https://www.commandprompt.com/blog/"/>
@@ -186,6 +186,13 @@
       <outline type="rss" text="Azure SQL dev blog [confirmed, browser]" xmlUrl="https://devblogs.microsoft.com/azure-sql/feed/" htmlUrl="https://devblogs.microsoft.com/azure-sql/"/>
       <outline type="rss" text="erikdarling.com [confirmed; mostly video transcripts]" xmlUrl="https://erikdarling.com/feed/" htmlUrl="https://erikdarling.com/"/>
       <!-- smalldatum feed works but newest post 2026-06-20 (dormant). posthog.com/blog: feed not checked. -->
+    </outline>
+    <outline text="Added 2026-11-16 (week of 2026-11-09)">
+      <outline type="rss" text="transactional.blog (Alex Miller) [confirmed, Atom]" xmlUrl="https://transactional.blog/feed.xml" htmlUrl="https://transactional.blog/"/>
+      <outline type="rss" text="xminxmax.dev (Bryan Green) [confirmed, Hugo RSS]" xmlUrl="https://xminxmax.dev/index.xml" htmlUrl="https://xminxmax.dev/"/>
+      <outline type="rss" text="jordivillar.com (Jordi Villar) [confirmed]" xmlUrl="https://jordivillar.com/rss.xml" htmlUrl="https://jordivillar.com/"/>
+      <outline type="rss" text="SQL Server techcommunity category [confirmed, browser; mixes forum posts - keep only /sql-server-blog/ links]" xmlUrl="https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/Category?category.id=SQL-Server" htmlUrl="https://techcommunity.microsoft.com/category/sql-server"/>
+      <!-- agentml.ai/blog: no feed (/rss.xml, /blog/rss.xml, /feed.xml all 404). Postgres Weekly: /rss/ CORS-blocked, unconfirmed; read postgresweekly.com/issues/<n> in a browser tab. -->
     </outline>
     <outline text="Japanese [ja] (added 2026-10-12)">
       <!-- Zenn has no per-topic RSS worth using; read the JSON topic API in a browser tab:

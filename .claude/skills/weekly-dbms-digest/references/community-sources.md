@@ -40,8 +40,8 @@ Access tier tells you whether it can be scanned without an account:
   https://www.reddit.com/r/PostgreSQL/top/?t=week . P1.
 - **r/databasedevelopment** — DB *internals* community (storage engines, query processing);
   exactly the reader's wheelhouse — but **link discovery only, not Community pulse** (2026-10-26: zero posts
-  Oct 19–25; 2026-11-02: 3 posts Oct 26–Nov 1 incl. the Jepsen ParticleDB thread at 20 pts / 5 comments — not
-  empty, retirement watch continues, recheck December). `[js]`
+  Oct 19–25; 2026-11-02: 3 posts Oct 26–Nov 1 incl. the Jepsen ParticleDB thread at 20 pts / 5 comments; 2026-11-09: 3 posts, max 17 comments on
+  a career question — not empty, retirement watch continues, recheck December). `[js]`
   https://www.reddit.com/r/databasedevelopment/ . P1 for discovery, skip for the pulse.
 - **r/SQL** — broader SQL Q&A and discussion; filter heavily. `[js]`
   https://www.reddit.com/r/SQL/top/?t=week . P2.
